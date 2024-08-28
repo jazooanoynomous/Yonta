@@ -5,10 +5,7 @@ import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import Toast from './components/Notifications/Toast';
 import Users from './screens/users';
 
-
-function App() {
-  
-
+function App() {  
   return (
     <>
       {/* Toaster */}

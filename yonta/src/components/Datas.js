@@ -28,64 +28,76 @@ import {
 } from 'react-icons/md';
 import { AiOutlineSetting } from 'react-icons/ai';
 import { BiCalendar, BiUserPlus } from 'react-icons/bi';
+import { FiGrid, FiUsers, FiBox } from 'react-icons/fi'; // Example for diamond icon, adjust as needed
+import { FaRegGem} from 'react-icons/fa';
+import { MdOutlineSettings } from 'react-icons/md';
+import { BsGraphUp, BsGear } from 'react-icons/bs';
+import {  RiArticleLine } from 'react-icons/ri';
+import { GiNotebook } from 'react-icons/gi';
+import { BiNews } from 'react-icons/bi';
 
 export const MenuDatas = [
   {
     title: 'Dashboard',
     path: '/',
-    icon: HiOutlineHome,
+    icon: FiGrid, // Square grid icon
+  },
+  {
+    title: 'Vendors',
+    path: '/vendors',
+    icon: FaRegGem, // Gem/Diamond icon
+  },
+  {
+    title: 'Subscription',
+    path: '/subscription',
+    icon: FaRegGem, // Gem/Diamond icon (same as above)
   },
   {
     title: 'Users',
-    path: '/patients',
-    icon: TbUsers,
+    path: '/users',
+    icon: FiUsers, // Group of users icon
   },
-  // {
-  //   title: 'Receptions',
-  //   path: '/receptions',
-  //   icon: HiOutlineUsers,
-  // },
   {
-    title: 'Dermatologists',
-    path: '/doctors',
-    icon: RiUserHeartLine,
+    title: 'Sliders',
+    path: '/sliders',
+    icon: FiBox, // Image/Slider icon
+  },
+  {
+    title: 'Expert',
+    path: '/expert',
+    icon: GiNotebook, // Notebook icon
+  },
+  {
+    title: 'Diet Plans',
+    path: '/diet-plans',
+    icon: RiArticleLine, // Document icon
+  },
+  {
+    title: 'Ingredients',
+    path: '/ingredients',
+    icon: GiNotebook, // Ingredient icon
+  },
+  {
+    title: 'Activity',
+    path: '/activity',
+    icon: BsGraphUp, // Graph icon
+  },
+  {
+    title: 'Podcasts',
+    path: '/podcasts',
+    icon: MdOutlineCampaign, // Microphone/Podcast icon
+  },
+  {
+    title: 'Blogs',
+    path: '/blogs',
+    icon: BiNews, // Blog/Newspaper icon
+  },
+  {
+    title: 'Ecommerce',
+    path: '/ecommerce',
+    icon: BiNews, // Ecommerce icon
   },
 
-  {
-    title: 'Appointments',
-    path: '/appointments',
-    icon: FaRegCalendarAlt,
-  },
-  {
-    title: 'Payments',
-    path: '/payments',
-    icon: MdListAlt,
-  },
-  // {
-  //   title: 'Invoices',
-  //   path: '/invoices',
-  //   icon: TbFileInvoice,
-  // },
-  // {
-  //   title: 'Services',
-  //   path: '/services',
-  //   icon: MdOutlineInventory2,
-  // },
-  {
-    title: 'Derm Emporium',
-    path: '/medicine',
-    icon: RiMedicineBottleLine,
-  },
-  {
-    title: 'Skin Tips',
-    path: '/campaigns',
-    icon: MdOutlineCampaign,
-  },
-  {
-    title: 'Settings',
-    path: '/settings',
-    icon: AiOutlineSetting,
-  },
 ];
 export const memberData = [
   {
