@@ -10,8 +10,8 @@ function index({ children, title }) {
           <Sidebar />
         </div>
         <div className="col-span-10 xl:h-screen overflow-y-scroll relative">
-          <Header title={title} />
-          <div className="xs:px-8 px-2 pt-24">{children}</div>
+          {/* <Header title={title} /> */}
+          <div className="xs:px-8 px-2 pt-4">{children}</div>
         </div>
       </div>
     </div>
