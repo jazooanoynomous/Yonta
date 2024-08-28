@@ -28,12 +28,12 @@ export function Input({ label, name, type, color, placeholder, register }) {
 
 // button
 
-export function Button({ label, onClick, loading, Icon }) {
+export function Button({ label, onClick, loading, Icon,className }) {
   return (
     <button
       disabled={loading}
       onClick={onClick}
-      className={`w-full flex-rows gap-4 hover:opacity-80 transitions bg-subMain text-white text-sm font-medium px-2 py-4 rounded`}
+      className={`flex items-center justify-center w-[144px] h-[40px] px-2 hover:opacity-80 transition bg-blue text-white text-sm font-medium py-2 rounded ${className}`}
     >
       {loading ? (
         <BiLoaderCircle className="animate-spin text-white text-2xl" />
