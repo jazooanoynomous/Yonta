@@ -69,7 +69,7 @@ export const MenuDatas = [
   },
   {
     title: 'Diet Plans',
-    path: '/diet-plans',
+    path: '/dietplans',
     icon: RiArticleLine, // Document icon
   },
   {

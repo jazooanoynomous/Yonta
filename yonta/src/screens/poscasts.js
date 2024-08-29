@@ -52,7 +52,7 @@ const PodCasts = () => {
                         <div
                             key={index}
                             onClick={() => handleSuggestionClick(index)}
-                            className={`cursor-pointer px-4 border rounded-xl h-[34px] mt-4 ${activeSuggestion === index ? 'bg-blue-500 text-white' : 'bg-gray-100'}`}
+                            className={`cursor-pointer px-4 border rounded-xl h-[34px] mt-4 ${activeSuggestion === index ? 'bg-blue text-white' : 'bg-gray-100'}`}
                         >
                             {suggestion}
                         </div>
