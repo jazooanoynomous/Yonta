@@ -39,7 +39,7 @@ const TopPicks = ({ onDeleteCategory }) => {
                             <div className="bg-[#FB5458] p-2 rounded-lg" onClick={() => onDeleteCategory(category.id)}>
                                 <FaTrash className="text-white cursor-pointer" />
                             </div>
-                            <div className="flex bg-blue-500 p-2 rounded-lg gap-1">
+                            <div className="flex bg-blue p-2 rounded-lg gap-1">
                                 <FaEdit className="text-white cursor-pointer" />
                                 <p className='text-white text-xs'>Edit</p>
                             </div>
