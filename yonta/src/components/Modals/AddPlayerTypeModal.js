@@ -1,61 +1,88 @@
 import React, { useState } from 'react';
+import { FaPlus, FaSave } from 'react-icons/fa';
 
-function AddPlayerTypeModal() {
-  const [isAddModalOpen, setIsAddModalOpen] = useState(false);
+const AddPlayerTypeModal = ({ onAddPlayerType }) => {
+  const [type, setType] = useState('Football');
+  const [image, setImage] = useState(null);
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
-  const handleOpenAddModal = () => {
-    setIsAddModalOpen(true);
+  const handleImageUpload = (e) => {
+    const file = e.target.files[0];
+    setImage(URL.createObjectURL(file));
+  };
+
+  const handleAddPlayerType = () => {
+    if (type && image) {
+      onAddPlayerType({ type, image });
+      setType('Football');
+      setImage(null);
+      setIsModalOpen(false);
+    }
+  };
+
+  const handleModalOpen = () => {
+    setIsModalOpen(true);
+  };
+
+  const handleModalClose = () => {
+    setIsModalOpen(false);
   };
 
   return (
     <>
       <div
-        className="fixed"
-        style={{ top: '461px', left: '583px' }}
+        className="bg-white rounded-lg w-[148px] h-[334px] shadow-lg p-4 flex flex-col items-center justify-center cursor-pointer"
+        onClick={handleModalOpen}
       >
-        <div className="w-[148px] h-[334px] bg-white flex items-center justify-center flex-col rounded opacity-0">
-          <div className="text-4xl">+</div>
-          <p className="mt-2">Add player type</p>
-          <button
-            onClick={handleOpenAddModal}
-            className="absolute inset-0 opacity-0 cursor-pointer"
-          />
-        </div>
+        <FaPlus className="text-green-500 text-2xl mb-2" />
+        <span className="text-gray-700 font-semibold">Add player type</span>
       </div>
 
-      {isAddModalOpen && <AddPlayerFormModal close={() => setIsAddModalOpen(false)} />}
+      {isModalOpen && (
+        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
+          <div className="bg-white rounded-lg w-[400px] shadow-lg p-6 relative">
+            <div className="flex gap-2 ">
+              <div className="w-[148px] h-[334px] bg-gray-100 border border-dashed border-gray-300 rounded-[30px] flex items-center justify-center">
+                {image ? (
+                  <img src={image} alt="Uploaded" className="object-cover h-full w-full rounded-md" />
+                ) : (
+                  <label className="cursor-pointer flex flex-col items-center justify-center">
+                    <span className="text-gray-400 mb-2">Upload Image</span>
+                    <input type="file" className="hidden" onChange={handleImageUpload} />
+                  </label>
+                )}
+              </div>
+              <div className="flex flex-col flex-grow">
+                <label className="mb-2 text-gray-700 font-semibold">Player type name</label>
+                <input
+                  type="text"
+                  placeholder="Player Type"
+                  value={type}
+                  onChange={(e) => setType(e.target.value)}
+                  className="w-full p-2 mb-4 border rounded-lg bg-gray-100"
+                />
+              </div>
+            </div>
+            <button
+              className="absolute top-2 right-2 text-gray-500 hover:text-gray-700"
+              onClick={handleModalClose}
+            >
+              &times;
+            </button>
+            <div className="absolute bottom-4 bg-green rounded-md right-4">
+              <button
+                className="bg-green-500 text-white w-[125.44px] h-[50px] rounded-lg flex items-center justify-center"
+                onClick={handleAddPlayerType}
+              >
+                <FaSave className="mr-2" />
+                Save
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
     </>
   );
-}
-
-function AddPlayerFormModal({ close }) {
-  return (
-    <>
-      <div className="fixed inset-0 bg-black bg-opacity-50 z-40" />
-      <div className="fixed top-[10%] left-1/2 transform -translate-x-1/2 bg-white w-[470px] h-[390px] flex rounded-lg z-50">
-        {/* Left Column */}
-        <div className="w-[148px] h-[334px] flex items-center justify-center bg-gray-100">
-          <span className="text-5xl">📷</span>
-        </div>
-
-        {/* Right Column */}
-        <div className="w-[251px] h-[80px] ml-6 flex flex-col justify-between">
-          {/* Player Name */}
-          <div className="w-[142px] h-[24px] text-center">Player Name</div>
-          <textarea
-            className="w-[251px] h-[50px] rounded-tl-lg"
-            placeholder="Enter player name"
-          />
-        </div>
-      </div>
-      <button
-        className="fixed top-4 right-4 text-2xl z-50"
-        onClick={close}
-      >
-        &times;
-      </button>
-    </>
-  );
-}
+};
 
 export default AddPlayerTypeModal;

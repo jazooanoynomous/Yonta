@@ -1,34 +1,29 @@
-import React, { useRef } from 'react';
+import React, { useState } from 'react';
+import { FaCamera } from 'react-icons/fa'; // Import the camera icon
 
-function ImageUploadModal() {
-  const fileInputRef = useRef(null);
+const UploadImageModal = () => {
+  const [image, setImage] = useState(null);
 
-  const handleButtonClick = () => {
-    fileInputRef.current.click();
+  const handleImageUpload = (e) => {
+    const file = e.target.files[0];
+    setImage(URL.createObjectURL(file));
   };
 
   return (
-    <div className="fixed inset-0 flex items-center justify-center bg-white bg-opacity-50">
-      <div className="w-[243px] h-[243px] rounded-lg bg-white flex items-center justify-center relative">
-        <button
-          className="flex items-center justify-center w-full h-full outline-none"
-          onClick={handleButtonClick}
-        >
-          <span className="text-4xl">📷</span>
-          <input
-            type="file"
-            accept="image/*"
-            ref={fileInputRef}
-            className="absolute inset-0 opacity-0 cursor-pointer"
-            onChange={(e) => {
-              // Handle file selection
-              console.log(e.target.files[0]);
-            }}
-          />
-        </button>
+    <div className="bg-white p-4 rounded-[10px] shadow-lg w-[243px] h-[243px] relative">
+      <div className="flex items-center justify-center h-48 border border-dashed rounded-md">
+        {image ? (
+          <img src={image} alt="Uploaded" className="object-cover h-full w-full rounded-md" />
+        ) : (
+          <label className="cursor-pointer flex flex-col items-center">
+            <FaCamera className="text-gray-400 text-3xl mb-2" /> {/* Camera Icon */}
+            <span className="text-gray-400">Upload Image</span>
+            <input type="file" className="hidden" onChange={handleImageUpload} />
+          </label>
+        )}
       </div>
     </div>
   );
-}
+};
 
-export default ImageUploadModal;
+export default UploadImageModal;

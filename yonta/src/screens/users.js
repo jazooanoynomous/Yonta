@@ -8,7 +8,6 @@ import { MdFilterList, MdOutlineCalendarMonth } from "react-icons/md";
 import { toast } from "react-hot-toast";
 import { Button, FromToDate, Select } from "../components/Form";
 import { PatientTable } from "../components/Tables";
-import Sidebar from "../Layout/Sidebar";
 import { FaSearch } from "react-icons/fa";
 
 function Users() {
