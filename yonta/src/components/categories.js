@@ -4,10 +4,10 @@ import { FaEdit, FaTrash, FaPlus } from 'react-icons/fa';
 const initialCategories = [
     { id: 1, name: 'Category 1', imageUrl: '/images/Rectangle 4341.png' },
     { id: 2, name: 'Category 2', imageUrl: '/images/Group 183382.png' },
-    { id: 3, name: 'Category 3', imageUrl: '/images/Group 183383.png' },
-    { id: 4, name: 'Category 4', imageUrl: '/images/Rectangle 4346.png' },
-    { id: 5, name: 'Category 5', imageUrl: '/images/Group 183384.png' },
-    { id: 6, name: 'Category 6', imageUrl: '/images/Group 183381.png' },
+    // { id: 3, name: 'Category 3', imageUrl: '/images/Group 183383.png' },
+    // { id: 4, name: 'Category 4', imageUrl: '/images/Rectangle 4346.png' },
+    // { id: 5, name: 'Category 5', imageUrl: '/images/Group 183384.png' },
+    // { id: 6, name: 'Category 6', imageUrl: '/images/Group 183381.png' },
 ];
 
 const Categories = ({ onAddCategory, onDeleteCategory }) => {

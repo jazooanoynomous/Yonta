@@ -9,6 +9,7 @@ import ActivityAdd from './screens/Activity/activityAdd';
 import PodCasts from './screens/poscasts';
 import DietPlans from './screens/dietPlans';
 import AddUser from './screens/addUser';
+import AddWorkout from './screens/Activity/addWorkout';
 
 function App() {  
   return (
@@ -20,6 +21,7 @@ function App() {
         <Routes>
         <Route path="/" element={<Dashboard/>} />
         <Route path="/patients" element={<Users/>} />
+        <Route path="/add-workout" element={<AddWorkout/>} />
         <Route path="/activity" element={<ActivityAdd/>} />
         <Route path="/podcasts" element={<PodCasts/>}/>
         <Route path="/dietplans" element={<DietPlans/>}/>
