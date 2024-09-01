@@ -1,20 +1,15 @@
-import React, { useState } from "react";
+import React from "react";
 import Layout from "../Layout";
-import { memberData, sortsDatas } from "../components/Datas";
-import { Link, useNavigate } from "react-router-dom";
-import { BiChevronDown, BiPlus, BiTime } from "react-icons/bi";
-import { BsCalendarMonth } from "react-icons/bs";
-import { MdFilterList, MdOutlineCalendarMonth } from "react-icons/md";
-import { toast } from "react-hot-toast";
-import { Button, FromToDate, Select } from "../components/Form";
+import { memberData } from "../components/Datas";
+import {  useNavigate } from "react-router-dom";
+import { BiPlus } from "react-icons/bi";
+
+import { Button } from "../components/Form";
 import { PatientTable } from "../components/Tables";
 import { FaSearch } from "react-icons/fa";
 
 function Users() {
-  const [status, setStatus] = useState(sortsDatas.filterPatient[0]);
-  const [gender, setGender] = useState(sortsDatas.genderFilter[0]);
-  const [dateRange, setDateRange] = useState([new Date(), new Date()]);
-  const [startDate, endDate] = dateRange;
+  
   const navigate = useNavigate();
   // preview
   const previewPayment = (id) => {

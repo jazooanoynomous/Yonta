@@ -1,35 +1,35 @@
-import React from 'react';
-import { MenuSelect } from './Form';
-import { BiDotsHorizontalRounded } from 'react-icons/bi';
-import { FiEdit, FiEye } from 'react-icons/fi';
-import { RiDeleteBin6Line, RiDeleteBinLine } from 'react-icons/ri';
-import { toast } from 'react-hot-toast';
-import { useNavigate } from 'react-router-dom';
+import React from "react";
+import { MenuSelect } from "./Form";
+import { BiDotsHorizontalRounded } from "react-icons/bi";
+import { FiEdit, FiEye, FiTrash2 } from "react-icons/fi";
+import { RiDeleteBin6Line, RiDeleteBinLine } from "react-icons/ri";
+import { toast } from "react-hot-toast";
+import { useNavigate } from "react-router-dom";
 
-const thclass = 'text-start text-sm font-medium py-3 px-2 whitespace-nowrap';
-const tdclass = 'text-start text-sm py-4 px-2 whitespace-nowrap';
+const thclass = "text-start text-sm font-medium py-3 px-2 whitespace-nowrap";
+const tdclass = "text-start text-sm py-4 px-2 whitespace-nowrap";
 
 export function Transactiontable({ data, action, functions }) {
   const DropDown1 = [
     {
-      title: 'Edit',
+      title: "Edit",
       icon: FiEdit,
       onClick: (data) => {
         functions.edit(data.id);
       },
     },
     {
-      title: 'View',
+      title: "View",
       icon: FiEye,
       onClick: (data) => {
         functions.preview(data.id);
       },
     },
     {
-      title: 'Delete',
+      title: "Delete",
       icon: RiDeleteBin6Line,
       onClick: () => {
-        toast.error('This feature is not available yet');
+        toast.error("This feature is not available yet");
       },
     },
   ];
@@ -77,11 +77,11 @@ export function Transactiontable({ data, action, functions }) {
             <td className={tdclass}>
               <span
                 className={`py-1 px-4 ${
-                  item.status === 'Paid'
-                    ? 'bg-subMain text-subMain'
-                    : item.status === 'Pending'
-                    ? 'bg-orange-500 text-orange-500'
-                    : item.status === 'Cancel' && 'bg-red-600 text-red-600'
+                  item.status === "Paid"
+                    ? "bg-subMain text-subMain"
+                    : item.status === "Pending"
+                    ? "bg-orange-500 text-orange-500"
+                    : item.status === "Cancel" && "bg-red-600 text-red-600"
                 } bg-opacity-10 text-xs rounded-xl`}
               >
                 {item.status}
@@ -110,24 +110,24 @@ export function InvoiceTable({ data }) {
   const navigate = useNavigate();
   const DropDown1 = [
     {
-      title: 'Edit',
+      title: "Edit",
       icon: FiEdit,
       onClick: (item) => {
         navigate(`/invoices/edit/${item.id}`);
       },
     },
     {
-      title: 'View',
+      title: "View",
       icon: FiEye,
       onClick: (item) => {
         navigate(`/invoices/preview/${item.id}`);
       },
     },
     {
-      title: 'Delete',
+      title: "Delete",
       icon: RiDeleteBin6Line,
       onClick: () => {
-        toast.error('This feature is not available yet');
+        toast.error("This feature is not available yet");
       },
     },
   ];
@@ -190,17 +190,17 @@ export function InvoiceTable({ data }) {
 export function MedicineTable({ data, onEdit }) {
   const DropDown1 = [
     {
-      title: 'Edit',
+      title: "Edit",
       icon: FiEdit,
       onClick: (item) => {
         onEdit(item);
       },
     },
     {
-      title: 'Delete',
+      title: "Delete",
       icon: RiDeleteBin6Line,
       onClick: () => {
-        toast.error('This feature is not available yet');
+        toast.error("This feature is not available yet");
       },
     },
   ];
@@ -231,9 +231,9 @@ export function MedicineTable({ data, onEdit }) {
             <td className={tdclass}>
               <span
                 className={`text-xs font-medium ${
-                  item?.status === 'Out of stock'
-                    ? 'text-red-600'
-                    : 'text-green-600'
+                  item?.status === "Out of stock"
+                    ? "text-red-600"
+                    : "text-green-600"
                 }`}
               >
                 {item?.status}
@@ -259,17 +259,17 @@ export function MedicineTable({ data, onEdit }) {
 export function ServiceTable({ data, onEdit }) {
   const DropDown1 = [
     {
-      title: 'Edit',
+      title: "Edit",
       icon: FiEdit,
       onClick: (item) => {
         onEdit(item);
       },
     },
     {
-      title: 'Delete',
+      title: "Delete",
       icon: RiDeleteBin6Line,
       onClick: () => {
-        toast.error('This feature is not available yet');
+        toast.error("This feature is not available yet");
       },
     },
   ];
@@ -300,10 +300,10 @@ export function ServiceTable({ data, onEdit }) {
             <td className={tdclass}>
               <span
                 className={`text-xs font-medium ${
-                  !item?.status ? 'text-red-600' : 'text-green-600'
+                  !item?.status ? "text-red-600" : "text-green-600"
                 }`}
               >
-                {!item?.status ? 'Disabled' : 'Enabled'}
+                {!item?.status ? "Disabled" : "Enabled"}
               </span>
             </td>
             <td className={tdclass}>
@@ -325,130 +325,42 @@ export function PatientTable({ data, functions, used }) {
   const DropDown1 = !used
     ? [
         {
-          title: 'View',
+          title: "View",
           icon: FiEye,
           onClick: (data) => {
             functions.preview(data.id);
           },
         },
         {
-          title: 'Delete',
+          title: "Delete",
           icon: RiDeleteBin6Line,
           onClick: () => {
-            toast.error('This feature is not available yet');
+            toast.error("This feature is not available yet");
           },
         },
       ]
     : [
         {
-          title: 'View',
+          title: "View",
           icon: FiEye,
           onClick: (data) => {
             functions.preview(data.id);
           },
         },
       ];
-  const thclasse = 'text-start text-sm font-medium py-3 px-2 whitespace-nowrap';
-  const tdclasse = 'text-start text-xs py-4 px-2 whitespace-nowrap';
-  return (
-    <table className="table-auto w-full">
-    <thead className="bg-dry rounded-md overflow-hidden">
-      <tr>
-        <th className={thclasse}>Name</th>
-        <th className={thclasse}>Email</th>
-        <th className={thclasse}>Phone Number</th>
-        <th className={thclasse}>Gender</th>          
-        <th className={thclasse}>Plan</th>
-        <th className={thclasse}>Status</th>
-        <th className={thclasse}>Actions</th>
-      </tr>
-    </thead>
-    <tbody>
-      {data.map((item, index) => (
-        <tr
-          key={item.id}
-          className="border-b border-border hover:bg-greyed transitions"
-        >
-          <td className={tdclasse}>
-            <div className="flex gap-4 items-center">
-              <span className="w-12">
-                <img
-                  src={item.image}
-                  alt={item.title}
-                  className="w-full h-12 rounded-full object-cover border border-border"
-                />
-              </span>
-              <div>
-                <h4 className="text-sm font-medium">{item.title}</h4>
-              </div>
-            </div>
-          </td>
-          <td className={tdclasse}>{item.email}</td>
-          <td className={tdclasse}>{item.phone}</td>
-          <td className={tdclasse}>
-            <span
-              className={`py-1 px-4 ${
-                item.gender === 'Male'
-                  ? 'bg-green text-bluetext'
-                  : 'bg-red text-pinktext'
-              } bg-opacity-10 text-xs rounded-xl`}
-            >
-              {item.gender}
-            </span>
-          </td>
-          <td className={tdclasse}>{item.Plan}</td>
-          <td className={tdclasse}>
-          <span
-              className={`py-1 px-4 ${
-                item.status === 'Active'
-                  ? 'text-textgreen'
-                  : ' text-textred'
-              } bg-opacity-10 text-xs rounded-xl`}
-            >{item.status}</span></td>
-          <td className={tdclasse}>
-            <MenuSelect datas={DropDown1} item={item}>
-              <div className="bg-dry border text-main text-xl py-2 px-4 rounded-lg">
-                <BiDotsHorizontalRounded />
-              </div>
-            </MenuSelect>
-          </td>
-        </tr>
-      ))}
-    </tbody>
-  </table>
-  
-  );
-}
-
-// doctor table
-export function DoctorsTable({ data, functions, doctor }) {
-  const DropDown1 = [
-    {
-      title: 'View',
-      icon: FiEye,
-      onClick: (data) => {
-        functions.preview(data);
-      },
-    },
-    {
-      title: 'Delete',
-      icon: RiDeleteBin6Line,
-      onClick: () => {
-        toast.error('This feature is not available yet');
-      },
-    },
-  ];
+  const thclasse = "text-start text-sm font-medium py-3 px-2 whitespace-nowrap";
+  const tdclasse = "text-start text-xs py-4 px-2 whitespace-nowrap";
   return (
     <table className="table-auto w-full">
       <thead className="bg-dry rounded-md overflow-hidden">
         <tr>
-          <th className={thclass}>#</th>
-          <th className={thclass}>{doctor ? 'Doctor' : 'Receptionist'}</th>
-          <th className={thclass}>Created At</th>
-          <th className={thclass}>Phone</th>
-          <th className={thclass}>Title</th>
-          <th className={thclass}>Email</th>
-          <th className={thclass}>Actions</th>
+          <th className={thclasse}>Name</th>
+          <th className={thclasse}>Email</th>
+          <th className={thclasse}>Phone Number</th>
+          <th className={thclasse}>Gender</th>
+          <th className={thclasse}>Plan</th>
+          <th className={thclasse}>Status</th>
+          <th className={thclasse}>Actions</th>
         </tr>
       </thead>
       <tbody>
@@ -457,27 +369,44 @@ export function DoctorsTable({ data, functions, doctor }) {
             key={item.id}
             className="border-b border-border hover:bg-greyed transitions"
           >
-            <td className={tdclass}>{index + 1}</td>
-            <td className={tdclass}>
+            <td className={tdclasse}>
               <div className="flex gap-4 items-center">
                 <span className="w-12">
                   <img
-                    src={item.user.image}
-                    alt={item.user.title}
+                    src={item.image}
+                    alt={item.title}
                     className="w-full h-12 rounded-full object-cover border border-border"
                   />
                 </span>
-                <h4 className="text-sm font-medium">{item.user.title}</h4>
+                <div>
+                  <h4 className="text-sm font-medium">{item.title}</h4>
+                </div>
               </div>
             </td>
-            <td className={tdclass}>12 May, 2021</td>
-            <td className={tdclass}>
-              <p className="text-textGray">{item.user.phone}</p>
+            <td className={tdclasse}>{item.email}</td>
+            <td className={tdclasse}>{item.phone}</td>
+            <td className={tdclasse}>
+              <span
+                className={`py-1 px-4 ${
+                  item.gender === "Male"
+                    ? "bg-green text-bluetext"
+                    : "bg-red text-pinktext"
+                } bg-opacity-10 text-xs rounded-xl`}
+              >
+                {item.gender}
+              </span>
             </td>
-            <td className={tdclass}>{item.title}</td>
-            <td className={tdclass}>{item.user.email}</td>
-
-            <td className={tdclass}>
+            <td className={tdclasse}>{item.Plan}</td>
+            <td className={tdclasse}>
+              <span
+                className={`py-1 px-4 ${
+                  item.status === "Active" ? "text-textgreen" : " text-textred"
+                } bg-opacity-10 text-xs rounded-xl`}
+              >
+                {item.status}
+              </span>
+            </td>
+            <td className={tdclasse}>
               <MenuSelect datas={DropDown1} item={item}>
                 <div className="bg-dry border text-main text-xl py-2 px-4 rounded-lg">
                   <BiDotsHorizontalRounded />
@@ -491,6 +420,90 @@ export function DoctorsTable({ data, functions, doctor }) {
   );
 }
 
+
+export function ExpertTable({ data, functions }) {
+  const thclasse = "text-start text-sm font-medium py-3 px-2 whitespace-nowrap";
+  const tdclasse = "text-start text-xs py-4 px-2 whitespace-nowrap";
+
+  return (
+    <table className="table-auto w-full">
+      <thead className="rounded-md">
+        <tr>
+          <th
+            className={`relative ${thclasse}`}
+            style={{ width: "1061px", height: "19px" }}
+          >
+            <span className="flex items-center gap-1 pr-1">Name</span>
+          </th>
+          <th
+            className={`relative ${thclasse}`}
+            style={{ width: "82px", height: "19px" }}
+          >
+            <span className="flex items-center gap-1">Description</span>
+          </th>
+          <th
+            className={`relative ${thclasse}`}
+            style={{ width: "60px", height: "19px" }}
+          >
+            <span className="flex items-center gap-1">Edit/Save</span>
+          </th>
+          <th
+            className={`relative ${thclasse}`}
+            style={{ width: "102px", height: "19px" }}
+          >
+            <span className="flex items-center gap-1">Delete/Cancel</span>
+          </th>
+        </tr>
+      </thead>
+      <tbody className="space-y-2.5"> 
+        {data.map((item) => (
+          <tr
+            key={item.id}
+            className="  bg-white h-[60px] mb-[10px] rounded-xl "
+          >
+            <td className={tdclasse} style={{  width: "1103px", marginBottom:'10px' }}>
+              <div className="flex gap-4 items-center">
+                <span className="w-12">
+                  <img
+                    src={item.image}
+                    alt={item.name}
+                    className="w-full h-12 rounded-full object-cover border  border-gray-300"
+                  />
+                </span>
+                <div>
+                  <h4 className="text-sm font-medium">{item.name}</h4>
+                </div>
+              </div>
+            </td>
+            <td className={tdclasse}>
+              <p className="text-xs text-gray-700">{item.description}</p>
+            </td>
+            <td className={tdclasse}>
+              <button
+                onClick={() => functions.edit(item.id)}
+                className="bg-blue-500 text-white bg-blue px-2 py-1 rounded hover:bg-blue-600 flex items-center justify-center"
+              ><FiEdit />
+                Edit
+                
+              </button>
+            </td>
+            <td className={tdclasse}>
+              <button
+                onClick={() => functions.delete(item.id)}
+                className="bg-red-500 text-white bg-red px-2 py-1 rounded hover:bg-red-600 flex items-center justify-center"
+              ><FiTrash2 />
+                Delete                
+              </button>
+            </td>
+          </tr>
+        ))}
+      </tbody>
+    </table>
+  );
+}
+
+
+
 // appointment table
 export function AppointmentTable({ data, functions, doctor }) {
   return (
@@ -498,7 +511,7 @@ export function AppointmentTable({ data, functions, doctor }) {
       <thead className="bg-dry rounded-md overflow-hidden">
         <tr>
           <th className={thclass}>Date</th>
-          <th className={thclass}>{doctor ? 'Patient' : 'Doctor'}</th>
+          <th className={thclass}>{doctor ? "Patient" : "Doctor"}</th>
           <th className={thclass}>Status</th>
           <th className={thclass}>Time</th>
           <th className={thclass}>Action</th>
@@ -524,11 +537,11 @@ export function AppointmentTable({ data, functions, doctor }) {
             <td className={tdclass}>
               <span
                 className={`py-1  px-4 ${
-                  item.status === 'Approved'
-                    ? 'bg-subMain text-subMain'
-                    : item.status === 'Pending'
-                    ? 'bg-orange-500 text-orange-500'
-                    : item.status === 'Cancel' && 'bg-red-600 text-red-600'
+                  item.status === "Approved"
+                    ? "bg-subMain text-subMain"
+                    : item.status === "Pending"
+                    ? "bg-orange-500 text-orange-500"
+                    : item.status === "Cancel" && "bg-red-600 text-red-600"
                 } bg-opacity-10 text-xs rounded-xl`}
               >
                 {item.status}
@@ -560,7 +573,7 @@ export function PaymentTable({ data, functions, doctor }) {
       <thead className="bg-dry rounded-md overflow-hidden">
         <tr>
           <th className={thclass}>Date</th>
-          <th className={thclass}>{doctor ? 'Patient' : 'Doctor'}</th>
+          <th className={thclass}>{doctor ? "Patient" : "Doctor"}</th>
           <th className={thclass}>Status</th>
           <th className={thclass}>Amount</th>
           <th className={thclass}>Method</th>
@@ -587,11 +600,11 @@ export function PaymentTable({ data, functions, doctor }) {
             <td className={tdclass}>
               <span
                 className={`py-1  px-4 ${
-                  item.status === 'Paid'
-                    ? 'bg-subMain text-subMain'
-                    : item.status === 'Pending'
-                    ? 'bg-orange-500 text-orange-500'
-                    : item.status === 'Cancel' && 'bg-red-600 text-red-600'
+                  item.status === "Paid"
+                    ? "bg-subMain text-subMain"
+                    : item.status === "Pending"
+                    ? "bg-orange-500 text-orange-500"
+                    : item.status === "Cancel" && "bg-red-600 text-red-600"
                 } bg-opacity-10 text-xs rounded-xl`}
               >
                 {item.status}
@@ -716,8 +729,8 @@ export function InvoiceProductsTable({ data, functions, button }) {
 // medicine Dosage table
 
 export function MedicineDosageTable({ data, functions, button }) {
-  const thclasse = 'text-start text-xs font-medium py-3 px-2 whitespace-nowrap';
-  const tdclasse = 'text-start text-xs py-4 px-2 whitespace-nowrap';
+  const thclasse = "text-start text-xs font-medium py-3 px-2 whitespace-nowrap";
+  const tdclasse = "text-start text-xs py-4 px-2 whitespace-nowrap";
   return (
     <table className="table-auto w-full">
       <thead className="bg-dry rounded-md overflow-hidden">

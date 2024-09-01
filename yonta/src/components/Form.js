@@ -3,13 +3,13 @@ import React from 'react';
 import { BiLoaderCircle } from 'react-icons/bi';
 import { FaCheck } from 'react-icons/fa';
 
-export function Input({ label, name, type, color, placeholder, register }) {
+export function Input({ label, name, type, color, placeholder, register, className }) {
   return (
     <div className="text-sm w-full">
       <label
         className={`${
-          color ? 'text-black text-sm' : 'text-white font-semibold'
-        } `}
+          color ? 'text-black text-sm font-bold' : 'text-white font-semibold'
+        }`}
       >
         {label}
       </label>
@@ -20,11 +20,13 @@ export function Input({ label, name, type, color, placeholder, register }) {
         placeholder={placeholder}
         className={`w-full bg-transparent text-sm mt-3 p-4 border ${
           color ? 'border-border font-light' : 'border-white text-white'
-        } rounded-lg focus:border focus:border-subMain`}
+        } rounded-lg focus:border focus:border-subMain ${className || ''}`}
       />
     </div>
   );
 }
+
+export default Input;
 
 // button
 
@@ -33,7 +35,7 @@ export function Button({ label, onClick, loading, Icon,className }) {
     <button
       disabled={loading}
       onClick={onClick}
-      className={`flex items-center justify-center w-[144px] h-[40px] px-2 hover:opacity-80 transition bg-blue text-white text-sm font-medium py-2 rounded ${className}`}
+      className={`flex items-center justify-center w-[144px] h-[40px] px-2 hover:opacity-80 transition bg-blue  text-sm font-medium py-2 rounded ${className}`}
     >
       {loading ? (
         <BiLoaderCircle className="animate-spin text-white text-2xl" />

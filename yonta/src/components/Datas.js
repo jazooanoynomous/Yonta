@@ -51,7 +51,12 @@ export const MenuDatas = [
     title: 'Subscription',
     path: '/subscription',
     icon: FaRegGem, // Gem/Diamond icon (same as above)
-  },
+  },  
+  {
+    title: 'Add Expert',
+    path: '/expertsBoard',
+    icon: FaRegGem, // Gem/Diamond icon (same as above)
+  }, 
   {
     title: 'Users',
     path: '/patients',
@@ -64,7 +69,7 @@ export const MenuDatas = [
   },
   {
     title: 'Expert',
-    path: '/expert',
+    path: '/experts',
     icon: GiNotebook, // Notebook icon
   },
   {
@@ -451,312 +456,28 @@ export const sortsDatas = {
   ],
 };
 
-export const campaignData = [
+
+export const expertsTypeData = [
   {
     id: 1,
-    title: 'Offer on routine Checkup',
-    date: '3 days ago',
-    type: 'email',
-    sendTo: 'All Patients',
-    action: {
-      subject: 'Delight patients with a free routine checkup',
-      message:
-        'Dear Patient, We are delighted to offer you a free routine checkup. Please visit our clinic to avail this offer. Thank you. and have a nice day. and welcome to our clinic.',
-      subHeader: 'Offer on routine Checkup',
-      header: 'How to avail this offer?',
-      footer: 'This offer is valid till 30th June, 2021',
-    },
+    name: 'Diet Expert',
   },
   {
     id: 2,
-    title: 'Britam Insurance Offer',
-    date: '8 days ago',
-    type: 'whatsapp',
-    sendTo: 'Britam Patients',
-    action: {
-      message:
-        'Hellow Patient, are you looking for a free routine checkup? We are delighted to offer you a free routine checkup. Please visit our clinic to avail this offer. Thank you.',
-    },
+    name: 'Physio Expert',
   },
   {
     id: 3,
-    title: 'NHCF Insurance Offer',
-    date: '10 days ago',
-    type: 'sms',
-    sendTo: 'NHCF Patients',
-    action: {
-      message:
-        'Hola, Delight patient with NHCF Insurance, We are delighted to offer you a free routine checkup. Please visit our clinic to avail this offer. Thank you.',
-    },
+    name: 'Fitness Expert',
   },
   {
     id: 4,
-    title: 'MCB card patients offer',
-    date: '15 days ago',
-    type: 'sms',
-    sendTo: 'Cash Patients',
-    action: {
-      message:
-        'Delight Patient, now get 50% off on routine checkup. Thank you. and have a nice day. and welcome to our clinic.',
-    },
+    name: 'Medical Expert',
   },
-  {
-    id: 5,
-    title: 'Braces Offer',
-    date: '12 days ago',
-    type: 'email',
-    sendTo: 'Britam Patients',
-    action: {
-      subject: 'Delight patients with a free routine checkup',
-      message:
-        'Dear Patient, Britam Insurance is delighted to offer you a free routine checkup. Please visit our clinic to avail this offer. Thank you. and have a nice day. and welcome to our clinic.',
-      subHeader: 'Braces Offer for Britam Patients',
-      header: 'Now get braces at 50% off',
-      footer: 'This offer is valid till 30th June, 2021',
-    },
-  },
-  {
-    id: 6,
-    title: 'Teeth Whitening Offer',
-    date: '20 days ago',
-    type: 'whatsapp',
-    sendTo: 'All Patients',
-    action: {
-      message:
-        'Hola, Delight patient with Teeth Whitening Offer, We are delighted to offer you a free routine checkup. Please visit our clinic to avail this offer. Thank you.',
-    },
-  },
-];
-export const servicesData = [
-  {
-    id: 1,
-    name: 'Select service.. ',
-  },
-  {
-    id: 2,
-    name: 'Root Canal',
-    price: 40000,
-    date: '23 June, 2021',
-    status: true,
-  },
-  {
-    id: 3,
-    name: 'Teeth Whitening',
-    price: 20000,
-    date: '12 Jan, 2022',
-    status: true,
-  },
-  {
-    id: 4,
-    name: 'routine Implants',
-    price: 50000,
-    date: '11 April, 2023',
-    status: false,
-  },
-  {
-    id: 5,
-    name: 'routine Crowns',
-    price: 34000,
-    date: '10 Agst, 2021',
-    status: true,
-  },
-  {
-    id: 6,
-    name: 'routine Bridges',
-    price: 10400,
-    date: '23 June, 2021',
-    status: false,
-  },
-  {
-    id: 7,
-    name: 'routine Veneers',
-    price: 150000,
-    date: '09 Dec, 2023',
-    status: false,
-  },
-  {
-    id: 8,
-    name: 'routine Braces',
-    price: 23000,
-    date: '05 Feb, 2019',
-    status: true,
-  },
-  {
-    id: 9,
-    name: 'routine Sealants',
-    price: 40000,
-    date: '16 Nov, 2022',
-    status: true,
-  },
-  {
-    id: 10,
-    name: 'Dentures',
-    price: 19000,
-    date: '02 Jun, 2022',
-    status: false,
-  },
-  {
-    id: 11,
-    name: 'Tooth Extraction',
-    price: 160000,
-    date: '23 June, 2021',
-    status: true,
-  },
+
 ];
 
-export const invoicesData = [
-  {
-    id: 206719,
-    to: memberData[5],
-    total: 6070,
-    createdDate: '12/06/2021',
-    dueDate: '16/06/2021',
-    items: [
-      {
-        id: 1,
-        name: servicesData[0].name,
-        price: 500,
-        description:
-          'Root Canal Treatment with X-Ray and Consultation is included in this package',
-      },
-      {
-        id: 2,
-        name: servicesData[1].name,
-        price: 300,
-        description: 'Teeth Whitening Treatment',
-      },
-      {
-        id: 3,
-        name: servicesData[2].name,
-        price: 260,
-        description: 'routine Implants Treatment',
-      },
-      {
-        id: 4,
-        name: servicesData[3].name,
-        price: 190000,
-        description: 'routine Crowns Treatment',
-      },
-      {
-        id: 5,
-        name: servicesData[4].name,
-        price: 15000,
-        description: 'routine Bridges Treatment',
-      },
-    ],
-  },
-  {
-    id: 198772,
-    to: memberData[6],
-    total: 5000,
-    createdDate: '10/02/2023',
-    dueDate: '14/02/2023',
-    items: [
-      {
-        id: 1,
-        name: servicesData[3].name,
-        price: 190000,
-        description: 'routine Crowns Treatment',
-      },
-      {
-        id: 2,
-        name: servicesData[4].name,
-        price: 15000,
-        description: 'routine Bridges Treatment',
-      },
-      {
-        id: 3,
-        name: servicesData[8].name,
-        price: 20000,
-        description: 'Dentures Treatment',
-      },
-      {
-        id: 4,
-        name: servicesData[3].name,
-        price: 190000,
-        description: 'routine Crowns Treatment',
-      },
-    ],
-  },
-  {
-    id: 456789,
-    to: memberData[7],
-    total: 10000,
-    createdDate: '09/01/2023',
-    dueDate: '13/01/2023',
-    items: [
-      {
-        id: 1,
-        name: servicesData[5].name,
-        price: 5000,
-        description: 'routine Veneers Treatment',
-      },
-      {
-        id: 2,
-        name: servicesData[6].name,
-        price: 16000,
-        description: 'routine Braces Treatment',
-      },
-      {
-        id: 3,
-        name: servicesData[7].name,
-        price: 10000,
-        description: 'routine Sealants Treatment',
-      },
-      {
-        id: 4,
-        name: servicesData[8].name,
-        price: 20000,
-        description: 'Dentures Treatment',
-      },
-    ],
-  },
-  {
-    id: 876543,
-    to: memberData[4],
-    total: 19000,
-    createdDate: '08/01/2023',
-    dueDate: '12/01/2023',
-    items: [
-      {
-        id: 1,
-        name: servicesData[5].name,
-        price: 5000,
-        description: 'routine Veneers Treatment',
-      },
-      {
-        id: 2,
-        name: servicesData[6].name,
-        price: 16000,
-        description: 'routine Braces Treatment',
-      },
-      {
-        id: 3,
-        name: servicesData[7].name,
-        price: 10000,
-        description: 'routine Sealants Treatment',
-      },
-      {
-        id: 4,
-        name: servicesData[8].name,
-        price: 20000,
-        description: 'Dentures Treatment',
-      },
-      {
-        id: 5,
-        name: servicesData[3].name,
-        price: 190000,
-        description: 'routine Crowns Treatment',
-      },
-      {
-        id: 6,
-        name: servicesData[4].name,
-        price: 15000,
-        description: 'routine Bridges Treatment',
-      },
-    ],
-  },
-];
+
 
 export const appointmentsData = [
   {
@@ -1354,5 +1075,58 @@ export const receptionsData = [
     id: 6,
     user: memberData[1],
     title: 'Dr.',
+  },
+];
+
+export const expertData = [
+  {
+    id: 1,
+    name: 'Dr. Emma Thompson',
+    description: 'A balanced diet can provide your body with the nutrients it needs to function optimally and maintain overall health.',
+  },
+  {
+    id: 2,
+    name: 'Dr. Liam Johnson',
+    description: 'Understanding the role of physical activity in maintaining a healthy lifestyle and its impact on mental well-being.',
+  },
+  {
+    id: 3,
+    name: 'Dr. Olivia Martinez',
+    description: 'Effective strategies for stress management and how it influences physical and mental health.',
+  },
+  {
+    id: 4,
+    name: 'Dr. Noah Brown',
+    description: 'The importance of hydration and its role in metabolic processes and overall bodily functions.',
+  },
+  {
+    id: 5,
+    name: 'Dr. Ava Wilson',
+    description: 'Nutritional guidelines for different age groups and how dietary needs change throughout life.',
+  },
+  {
+    id: 6,
+    name: 'Dr. Ethan Garcia',
+    description: 'The impact of sleep on health and practical tips for improving sleep quality and duration.',
+  },
+  {
+    id: 7,
+    name: 'Dr. Isabella Lee',
+    description: 'How to create a personalized fitness plan that aligns with individual health goals and fitness levels.',
+  },
+  {
+    id: 8,
+    name: 'Dr. Mason Davis',
+    description: 'The role of mental health in overall wellness and techniques for maintaining a positive mental state.',
+  },
+  {
+    id: 9,
+    name: 'Dr. Sophia Rodriguez',
+    description: 'Exploring the benefits of mindfulness and meditation practices for stress reduction and mental clarity.',
+  },
+  {
+    id: 10,
+    name: 'Dr. Jacob Martinez',
+    description: 'The importance of regular health screenings and preventive care in maintaining long-term health and wellness.',
   },
 ];

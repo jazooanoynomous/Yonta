@@ -1,24 +1,30 @@
 import React, { useState } from "react";
-import { FaSave, FaEdit, FaPlus, FaTrashAlt } from "react-icons/fa";
+import { FaSave, FaPlus } from "react-icons/fa";
 import Layout from "../../Layout";
-
-import PlayerTypeCard from "../../components/Modals/PlayerTypeModal";
-
-import EssentialsModal from "../../components/Modals/addEssentials"; // Assuming these imports are correct
 import ImageModal from "../../components/Modals/imageModal";
+import MuscleModal from "../../components/Modals/addMuscle";
+import WorkoutModal from "../../components/Modals/workoutModal";
 
 const AddWorkout = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const [muscleGroup, setMuscleGroup] = useState("Chest"); // Example state for selected muscle group
-  const handleAddCategory = (category) => {
-    console.log("Add Category:", category);
-    // Handle category addition logic
+  const [muscleGroup, setMuscleGroup] = useState("Chest");
+  const [workoutName, setWorkoutName] = useState("");
+  const [isWorkoutModalOpen, setIsWorkoutModalOpen] = useState(false);
+  const handleAddMuscleClick = () => {
+    setIsModalOpen(true);
   };
 
-  const handleDeleteCategory = (id) => {
-    console.log("Delete Category ID:", id);
-    // Handle category deletion logic
+  const handleAddWorkoutClick = () => {
+    console.log('hello');
+    
+    setIsWorkoutModalOpen(true);
   };
+
+  const handleSaveWorkout = () => {
+    console.log("Workout Saved:", workoutName);
+    setIsWorkoutModalOpen(false);
+  };
+
   return (
     <Layout>
       <div className="min-h-screen bg-gray-100 p-6">
@@ -37,8 +43,8 @@ const AddWorkout = () => {
         {/* Main Content */}
         <div className="flex gap-2">
           {/* Player Types Section */}
-          <div className="w-1/3  p-4 rounded-lg ">
-            <div className="flex  space-x-2 mb-4">
+          <div className="w-1/3 p-4 rounded-lg">
+            <div className="flex space-x-2 mb-4">
               <h4 className="text-[16px] w-[110px] h-[24px] font-semibold mb-4">
                 Player Types:
               </h4>
@@ -61,7 +67,10 @@ const AddWorkout = () => {
               <ImageModal title="Thigh" imageSrc="images/diet.png" />
 
               {/* Repeat for other player types */}
-              <button className="flex flex-col items-center justify-center bg-white rounded-lg h-[156px] w-[156px] ">
+              <button
+                className="flex flex-col items-center justify-center bg-white rounded-lg h-[156px] w-[156px]"
+                onClick={handleAddMuscleClick}
+              >
                 <FaPlus className="text-2xl" />
                 <span>Add Muscle</span>
               </button>
@@ -69,8 +78,8 @@ const AddWorkout = () => {
           </div>
 
           {/* Muscle Group Section */}
-          <div className="w-3/5 p-4 rounded-lg ">
-            <div className="flex  space-x-1 mb-4">
+          <div className="w-3/5 p-4 rounded-lg">
+            <div className="flex space-x-1 mb-4">
               <h4 className="text-lg font-semibold mb-4">Muscle group :</h4>
               <div className="flex gap-[16px] mb-4">
                 <button
@@ -133,10 +142,9 @@ const AddWorkout = () => {
                 >
                   Biceps
                 </button>
+              </div>
             </div>
-            </div>
-            <div className="grid grid-cols-4 gap-3 pr-4 ">
-             
+            <div className="grid grid-cols-4 gap-3 pr-4">
               {/* Repeat for other workouts */}
               <ImageModal title="Thigh" imageSrc="images/diet.png" />
               <ImageModal title="Thigh" imageSrc="images/diet.png" />
@@ -145,31 +153,41 @@ const AddWorkout = () => {
               <ImageModal title="Thigh" imageSrc="images/diet.png" />
               <ImageModal title="Thigh" imageSrc="images/diet.png" />
               <ImageModal title="Thigh" imageSrc="images/diet.png" />
-              <ImageModal title="Thigh" imageSrc="images/diet.png" />              
+              <ImageModal title="Thigh" imageSrc="images/diet.png" />
               <div className="space-x-4">
-              <button className="flex flex-col items-center justify-center bg-white rounded-lg h-[156px] w-[156px] ">
-                <FaPlus className="text-2xl" />
-                <span>Add Workout</span>
-              </button>
+                <button
+                  className="flex flex-col items-center justify-center bg-white rounded-lg h-[156px] w-[156px]"
+                  onClick={handleAddWorkoutClick} 
+                >
+                  <FaPlus className="text-2xl" />
+                  <span>Add Workout</span>
+                </button>
               </div>
             </div>
-          
           </div>
         </div>
         <button className="bg-textgreen text-white px-6 py-3 rounded-lg flex items-center">
-            <FaSave className="mr-2" />
-            Save
-          </button>
+          <FaSave className="mr-2" />
+          Save
+        </button>
       </div>
-
-      {/* Modals */}
-      <EssentialsModal
+      <MuscleModal
         isOpen={isModalOpen}
         onClose={() => setIsModalOpen(false)}
         onAddMealType={(data) => console.log(data)}
       />
+
+<WorkoutModal
+  isOpen={isWorkoutModalOpen}
+  onClose={() => setIsWorkoutModalOpen(false)}
+  onSave={handleSaveWorkout}
+  workoutName={workoutName}
+  setWorkoutName={setWorkoutName}
+/>
     </Layout>
   );
 };
 
-export default AddWorkout;             
+export default AddWorkout;
+
+  

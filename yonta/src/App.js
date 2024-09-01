@@ -10,6 +10,8 @@ import PodCasts from './screens/poscasts';
 import DietPlans from './screens/dietPlans';
 import AddUser from './screens/addUser';
 import AddWorkout from './screens/Activity/addWorkout';
+import Experts from './screens/experts';
+import AddExpertBoard from './screens/addExpertBoard';
 
 function App() {  
   return (
@@ -27,6 +29,9 @@ function App() {
         <Route path="/dietplans" element={<DietPlans/>}/>
         <Route path="/dashboard" element={<Dashboard/>} />
         <Route path="/addUser" element={<AddUser/>}/>
+        <Route path="/experts" element={<Experts/>}/>
+        <Route path="/expertsBoard" element={<AddExpertBoard/>}/>
+
         </Routes>
 
     </BrowserRouter>
