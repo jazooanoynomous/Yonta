@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import { FaChevronDown, FaChevronUp, FaPlus } from 'react-icons/fa';
-import DietPlanBox from './dietPlanBox';
 import { FaTrash, FaEdit } from 'react-icons/fa';
+import DietPlanDay from './dietPlanDay';
 
-const DropdownMenu = ({ title, plans, handleDelete, handleEdit, toggleModal }) => {
+const DropMenuDays = ({ title, plans, handleDelete, handleEdit, toggleModal }) => {
   const [isOpen, setIsOpen] = useState(false);
 
   const toggleDropdown = () => {
@@ -28,14 +28,14 @@ const DropdownMenu = ({ title, plans, handleDelete, handleEdit, toggleModal }) =
         </div>
 
         {plans.map((box, index) => (
-          <DietPlanBox key={index} box={box} handleDelete={handleDelete} handleEdit={handleEdit} />
+          <DietPlanDay key={index} box={box} handleDelete={handleDelete} handleEdit={handleEdit} />
           
         ))}
 
         <div className="mb-4">
           <div
             onClick={toggleModal}
-            className="p-4 border rounded-lg h-[87px] w-[296px] bg-[#F1F4FA] flex justify-center items-center cursor-pointer"
+            className="p-4 border rounded-lg h-[50px] w-[296px] bg-[#F1F4FA] flex justify-center items-center cursor-pointer"
           >
             <FaPlus className="text-[#1782AF] w-6 h-6" />
             <span className="ml-2 text-lg text-[#1782AF]">Add New Plan</span>
@@ -56,4 +56,4 @@ const DropdownMenu = ({ title, plans, handleDelete, handleEdit, toggleModal }) =
   );
 };
 
-export default DropdownMenu;
+export default DropMenuDays;

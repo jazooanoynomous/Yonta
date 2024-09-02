@@ -1,11 +1,13 @@
 import React, { useState } from 'react';
 import Layout from '../Layout';
 import { FaUpload } from 'react-icons/fa'; // Import the upload icon from react-icons
+import { useNavigate } from 'react-router-dom';
 
 const PlanForm = () => {
   // State to manage dropdown visibility and selected options
   const [dropdownVisible, setDropdownVisible] = useState(null);
   const [selectedOptions, setSelectedOptions] = useState({});
+  const navigate = useNavigate();
 
   // Toggle dropdown visibility
   const toggleDropdown = (index) => {
@@ -19,6 +21,10 @@ const PlanForm = () => {
       [areaIndex]: option
     }));
     setDropdownVisible(null); // Close dropdown after selection
+  };
+
+  const handleAddUserClick = () => {
+    navigate('/dayDiet'); 
   };
 
   // Options for dropdown menus
@@ -697,6 +703,11 @@ const PlanForm = () => {
             <div className="flex justify-between mt-8 py-2">
             <button className="bg-green text-white px-6 py-2 rounded-lg">
               Save
+            </button>
+            <button 
+                          onClick={handleAddUserClick} 
+                          className="bg-green text-white px-6 py-2 rounded-lg">
+              Next
             </button>
             <button className="bg-purple-500 text-white px-6 py-2 rounded-lg">
               Save & proceed to workout selection

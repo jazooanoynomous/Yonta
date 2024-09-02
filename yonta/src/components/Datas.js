@@ -98,8 +98,8 @@ export const MenuDatas = [
     icon: BiNews, // Blog/Newspaper icon
   },
   {
-    title: 'Ecommerce',
-    path: '/ecommerce',
+    title: 'Questionars',
+    path: '/questionars',
     icon: BiNews, // Ecommerce icon
   },
 

@@ -1,31 +1,73 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { FaEdit, FaTrash, FaPlus } from 'react-icons/fa';
+import { FaSave } from "react-icons/fa";
 
-const initialCategories = [
-    { id: 1, name: 'Category 1', imageUrl: '/images/Rectangle 4341.png' },
-    { id: 2, name: 'Category 2', imageUrl: '/images/Group 183382.png' },
-    // { id: 3, name: 'Category 3', imageUrl: '/images/Group 183383.png' },
-    // { id: 4, name: 'Category 4', imageUrl: '/images/Rectangle 4346.png' },
-    // { id: 5, name: 'Category 5', imageUrl: '/images/Group 183384.png' },
-    // { id: 6, name: 'Category 6', imageUrl: '/images/Group 183381.png' },
-];
 
-const Categories = ({ onAddCategory, onDeleteCategory }) => {
-    const [categories, setCategories] = useState(initialCategories);
+const Categories = ({onClose}) => {
+    const [categories, setCategories] = useState([]);
     const [showModal, setShowModal] = useState(false);
     const [newCategory, setNewCategory] = useState({ name: '', imageUrl: '' });
 
-    const handleAddCategory = () => {
-        const newCategoryWithId = { ...newCategory, id: Date.now() };
-        setCategories([...categories, newCategoryWithId]);
-        setShowModal(false);
-        onAddCategory(newCategoryWithId);
+    const baseUrl = "your-base-url-here"; // Replace with your actual base URL
+
+    // Fetch categories from the API
+    useEffect(() => {
+        const fetchCategories = async () => {
+            try {
+                const response = await fetch(`${baseUrl}/ecomCategory`);
+                const data = await response.json();
+                setCategories(data);
+            } catch (error) {
+                console.error("Failed to fetch categories", error);
+            }
+        };
+
+        fetchCategories();
+    }, []);
+
+    // Add a new category
+    const handleAddCategory = async () => {
+        
+        const newCategoryData = { image: newCategory.imageUrl, title: newCategory.name };
+        
+
+        try {
+            const response = await fetch(`${baseUrl}/ecomCategory`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(newCategoryData),
+            });
+
+            if (response.ok) {
+                const addedCategory = await response.json();
+                setCategories([...categories, addedCategory]);
+                setShowModal(false);
+                setNewCategory({ name: '', imageUrl: '' });
+            } else {
+                console.error("Failed to add category");
+            }
+        } catch (error) {
+            console.error("Error adding category", error);
+        }
     };
 
-    const handleDeleteCategory = (id) => {
-        const updatedCategories = categories.filter((category) => category.id !== id);
-        setCategories(updatedCategories);
-        onDeleteCategory(id);
+    // Delete a category
+    const handleDeleteCategory = async (id) => {
+        try {
+            const response = await fetch(`${baseUrl}/ecomCategory/${id}`, {
+                method: 'DELETE',
+            });
+
+            if (response.ok) {
+                setCategories(categories.filter((category) => category.id !== id));
+            } else {
+                console.error("Failed to delete category");
+            }
+        } catch (error) {
+            console.error("Error deleting category", error);
+        }
     };
 
     return (
@@ -34,22 +76,20 @@ const Categories = ({ onAddCategory, onDeleteCategory }) => {
                 {categories.map((category) => (
                     <div
                         key={category.id}
-                        className="flex flex-col items-center rounded-xl bg-white shadow-md p-1 h-[196px] w-[156px] "
+                        className="flex flex-col items-center rounded-xl bg-white shadow-md p-1 h-[196px] w-[156px]"
                     >
                         <img
-                            src={category.imageUrl}
-                            alt={category.name}
+                            src={category.image}
+                            alt={category.title}
                             className="object-cover rounded-xl mb-2 h-[148px] w-[148px]"
                         />
-                       
-                       <div className="flex space-x-2 ml-12">
+                        <div className="flex space-x-2 ml-12">
                             <div className="bg-[#FB5458] p-2 rounded-lg" onClick={() => handleDeleteCategory(category.id)}>
                                 <FaTrash className="text-white cursor-pointer" />
                             </div>
                             <div className="flex bg-blue p-2 rounded-lg gap-1">
                                 <FaEdit className="text-white cursor-pointer" />
                                 <p className='text-white text-xs'>Edit</p>
-
                             </div>
                         </div>
                     </div>
@@ -89,18 +129,23 @@ const Categories = ({ onAddCategory, onDeleteCategory }) => {
                             }
                             className="border rounded px-2 py-1 mb-4 w-full"
                         />
+                        <div className='flex'>
+                    
                         <button
+                            className="bg-textgreen text-white w-[125.44px] h-[50px] rounded-lg flex items-center justify-center"
                             onClick={handleAddCategory}
-                            className="bg-blue-500 text-white px-4 py-2 rounded"
                         >
+                            <FaSave className="mr-2" />
                             Save
                         </button>
+
                         <button
                             onClick={() => setShowModal(false)}
-                            className="ml-2 bg-gray-300 text-black px-4 py-2 rounded"
+                            className="ml-10 mb-10 bg-gray-300 w-[125.44px] h-[50px] text-black px-4 py-2 rounded"
                         >
                             Cancel
                         </button>
+                        </div>
                     </div>
                 </div>
             )}

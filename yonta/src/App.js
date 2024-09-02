@@ -1,5 +1,4 @@
 
-
 import './App.css';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import Toast from './components/Notifications/Toast';
@@ -12,6 +11,8 @@ import AddUser from './screens/addUser';
 import AddWorkout from './screens/Activity/addWorkout';
 import Experts from './screens/experts';
 import AddExpertBoard from './screens/addExpertBoard';
+import DayDiet from './screens/dayDiet';
+import Questionaris from './screens/questionars';
 
 function App() {  
   return (
@@ -31,6 +32,8 @@ function App() {
         <Route path="/addUser" element={<AddUser/>}/>
         <Route path="/experts" element={<Experts/>}/>
         <Route path="/expertsBoard" element={<AddExpertBoard/>}/>
+        <Route path="/dayDiet" element={<DayDiet/>} />
+        <Route path="/questionars" element={<Questionaris/>}/>
 
         </Routes>
 
