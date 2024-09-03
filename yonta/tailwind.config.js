@@ -13,7 +13,7 @@ module.exports = {
       },
       colors: {
         main: '#183253',
-        subMain: '#66B5A3',
+        subMain: '#06152B',
         text: '#F2FAF8',
         border: '#E8EBEE',
         textGray: '#A0A0A0',
@@ -25,7 +25,7 @@ module.exports = {
         pinktext:'#FF8F6B',
         textgreen:'#2EDB72',
         textred:'#FB5458',
-        blue:'#3A36DB'
+        blue:'#5A4BDA'
 
 
       },

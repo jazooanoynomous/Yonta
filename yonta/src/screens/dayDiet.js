@@ -3,8 +3,7 @@ import Layout from '../Layout';
 import DropMenuDays from '../components/dropMenuDays';
 import AddPlanModal from '../components/Modals/addPlanModel';
 import AddNewFoodModel from '../components/Modals/addNewFoodModel';
-import { useNavigate } from 'react-router-dom';
-import { FaChevronDown, FaChevronUp, FaPlus } from 'react-icons/fa';
+import { FaPlus } from 'react-icons/fa';
 
 
 const DayDiet = () => {
@@ -16,8 +15,6 @@ const DayDiet = () => {
     const [plans3, setPlans3] = useState([11, 12, 13, 14,]);
     const [plans4, setPlans4] = useState([16, 17, 18, 19,]);
     const [plans5, setPlans5] = useState([21, 22, 23, 24,]);
-    const [plans6, setPlans6] = useState([26, 27, 28, 29,]);
-    const navigate = useNavigate();
 
     const toggleModal = () => {
         setIsModalOpen(!isModalOpen);
@@ -42,10 +39,6 @@ const DayDiet = () => {
             setNewPlanTitle('');
             toggleModal();
         }
-    };
-
-    const handleAddUserClick = () => {
-        navigate('/adduser'); // Navigate to the '/add-user' page
     };
 
     return (

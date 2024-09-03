@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { FaChevronDown, FaChevronUp, FaPlus, FaTrash } from 'react-icons/fa';
+import { FaChevronDown, FaChevronUp, FaPlus } from 'react-icons/fa';
 
 const Dropdown = ({ title, plans, handleDelete, handleEdit, toggleModal, ItemComponent }) => {
   const [isOpen, setIsOpen] = useState(false);

@@ -3,7 +3,6 @@ import UploadImageModal from "../../components/Modals/ImageUploadModal";
 import AddPlayerTypeModal from "../../components/Modals/AddPlayerTypeModal";
 import PlayerTypeCard from "../../components/Modals/PlayerTypeModal";
 import Layout from "../../Layout";
-import DropdownMenu from "../../components/dropdownMenu";
 import Dropdown from "../../components/dropdowncontainer";
 import Essentials from "../../components/Modals/essentials";
 import EssentialsModal from "../../components/Modals/addEssentials";
@@ -15,7 +14,6 @@ const Activity = () => {
     { type: "Goalkeeper", imageSrc: "/path/to/goalkeeper-image.jpg" },
   ]);
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const [newPlanTitle, setNewPlanTitle] = useState('');
   const [plans1, setPlans1] = useState([1, 2, 3, 4, 5]);
   const [plans2, setPlans2] = useState([6, 7, 8, 9, 10, 11, 12, 13]);
   const [plans3, setPlans3] = useState([]);

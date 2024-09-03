@@ -1,37 +1,30 @@
-import { HiOutlineHome, HiOutlineMail, HiOutlineUsers } from 'react-icons/hi';
+import {  HiOutlineMail } from 'react-icons/hi';
 import {
   TbCalendar,
   TbChartHistogram,
   TbFile,
-  TbFileInvoice,
   TbLockAccess,
   TbUsers,
 } from 'react-icons/tb';
-import { FaRegCalendarAlt, FaTelegramPlane, FaWhatsapp } from 'react-icons/fa';
+import {  FaTelegramPlane, FaWhatsapp } from 'react-icons/fa';
 import {
   RiFileList3Line,
   RiHeartLine,
   RiImageLine,
   RiLockPasswordLine,
-  RiMedicineBottleLine,
   RiMoneyDollarCircleLine,
   RiStethoscopeLine,
-  RiUserHeartLine,
   RiUserLine,
 } from 'react-icons/ri';
 import {
-  MdListAlt,
   MdOutlineAttachMoney,
   MdOutlineCampaign,
-  MdOutlineInventory2,
   MdOutlineTextsms,
 } from 'react-icons/md';
-import { AiOutlineSetting } from 'react-icons/ai';
 import { BiCalendar, BiUserPlus } from 'react-icons/bi';
 import { FiGrid, FiUsers, FiBox } from 'react-icons/fi'; // Example for diamond icon, adjust as needed
 import { FaRegGem} from 'react-icons/fa';
-import { MdOutlineSettings } from 'react-icons/md';
-import { BsGraphUp, BsGear } from 'react-icons/bs';
+import { BsGraphUp } from 'react-icons/bs';
 import {  RiArticleLine } from 'react-icons/ri';
 import { GiNotebook } from 'react-icons/gi';
 import { BiNews } from 'react-icons/bi';

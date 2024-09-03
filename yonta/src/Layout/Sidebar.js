@@ -14,29 +14,28 @@ function Sidebar() {
   };
 
   return (
-    <div className="bg-white xl:shadow-lg py-6 px-4 xl:h-screen w-full border-r border-border">
-      <Link to="/">
+<div className="bg-white xl:shadow-lg py-6 px-4 xl:h-screen xl:overflow-y-auto w-full">
+    <Link to="/">
         <img
           src="/images/logo.png"
           alt="logo"
           className="w-2/4 h-12 ml-4 object-contain"
         />
       </Link>
-      <div className="flex-colo gap-2 mt-12">
+      <div className="flex-colo gap-2 mt-2">
         {MenuDatas.map((item, index) => (
           <Link
             to={item.path}
             key={index}
             className={`
-            ${currentPath(item.path) === item.path ? 'bg-text' : ''}
-            flex gap-4 transitions group items-center w-full p-4 rounded-lg hover:bg-text`}
+            ${currentPath(item.path) === item.path ? 'bg-blue' : ''}
+            flex gap-4 transitions group items-center w-full p-4 rounded-l`}
           >
             <item.icon
-              className={`text-xl text-subMain
-            `}
+              className={`h-[20px] w-[20px] text-subMain`}
             />
             <p
-              className={`text-sm font-medium group-hover:text-subMain ${
+              className={`text-[16px] font-medium group-hover:text-subMain ${
                 currentPath(item.path) === item.path
                   ? 'text-subMain'
                   : 'text-gray-500'

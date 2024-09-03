@@ -182,7 +182,7 @@ const AddWorkout = () => {
   onClose={() => setIsWorkoutModalOpen(false)}
   onSave={handleSaveWorkout}
   workoutName={workoutName}
-  setWorkoutName={setWorkoutName}
+  setWorkoutName={setWorkoutName}z
 />
     </Layout>
   );
