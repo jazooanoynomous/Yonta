@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { FaEdit, FaTrash, FaPlus, FaSave, FaUpload } from 'react-icons/fa';
+import CategoryCard from  '../components/Modals/categoryCard'
 
 const initialCategories = [
     { id: 1, name: 'Category 1', imageUrl: '/images/Rectangle 4495.png' },
@@ -11,7 +12,7 @@ const initialCategories = [
 
 ];
 
-const Healthy = ({ onAddCategory, onDeleteCategory }) => {
+const Healthy = ({ onAddCategory, onDeleteCategory, onEditCategory }) => {
     const [categories, setCategories] = useState(initialCategories);
     const [showModal, setShowModal] = useState(false);
     const [newCategory, setNewCategory] = useState({ name: '', imageUrl: '' });
@@ -29,6 +30,11 @@ const Healthy = ({ onAddCategory, onDeleteCategory }) => {
         onDeleteCategory(id);
     };
 
+    const handleEditCategory = (id) => {
+        // handle edit logic here, you can use a modal or something similar
+        onEditCategory(id);
+    };
+
     const handleImageChange = (e) => {
         const file = e.target.files[0];
         if (file) {
@@ -43,26 +49,13 @@ const Healthy = ({ onAddCategory, onDeleteCategory }) => {
     return (
         <div className="mb-20">
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-6 gap-4 rounded-lg">
-                {categories.map((category) => (
-                    <div
+            {categories.map((category) => (
+                    <CategoryCard
                         key={category.id}
-                        className="flex flex-col items-center rounded-xl bg-white shadow-md p-1 h-[196px] w-[156px]"
-                    >
-                        <img
-                            src={category.imageUrl}
-                            alt={category.name}
-                            className="object-cover rounded-xl mb-2 h-[148px] w-[148px]"
-                        />
-                        <div className="flex space-x-2 ml-12">
-                            <div className="bg-[#FB5458] p-2 rounded-lg" onClick={() => handleDeleteCategory(category.id)}>
-                                <FaTrash className="text-white cursor-pointer" />
-                            </div>
-                            <div className="flex bg-blue p-2 rounded-lg gap-1">
-                                <FaEdit className="text-white cursor-pointer" />
-                                <p className='text-white text-xs'>Edit</p>
-                            </div>
-                        </div>
-                    </div>
+                        category={category}
+                        onDelete={handleDeleteCategory}
+                        onEdit={handleEditCategory}
+                    />
                 ))}
                 <div
                     className="border p-4 flex flex-col items-center justify-center cursor-pointer rounded-2xl bg-white h-[188px] w-[156px]"

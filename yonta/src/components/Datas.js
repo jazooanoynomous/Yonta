@@ -91,6 +91,12 @@ export const MenuDatas = [
     icon: MdOutlineCampaign, // Microphone/Podcast icon
   },
   {
+    title: 'Notification',
+    path: '/notification',
+    icon: MdOutlineCampaign, // Microphone/Podcast icon
+  },
+
+  {
     title: 'Blogs',
     path: '/blogs',
     icon: BiNews, // Blog/Newspaper icon
