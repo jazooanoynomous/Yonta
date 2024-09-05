@@ -28,6 +28,7 @@ import Notification from './screens/notification/notification';
 import CouponsAdd from './screens/coupons/couponsAdd';
 import AddNotification from './screens/notification/addNotification';
 import Coupons from './screens/coupons/coupons';
+import Report from './screens/reports';
 
 function App() {  
   return (
@@ -64,6 +65,7 @@ function App() {
         <Route path="/couponsaddorder" element={<CouponsAddOrder/>}/>
         <Route path="/notification" element={<Notification/>}/>
         <Route path="/addnotification" element={<AddNotification/>}/>
+        <Route path="/report" element={<Report/>}/>
 
 
         </Routes>

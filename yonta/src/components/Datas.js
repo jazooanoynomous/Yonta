@@ -66,6 +66,11 @@ export const MenuDatas = [
     icon: GiNotebook, // Notebook icon
   },
   {
+    title: 'Report',
+    path: '/report',
+    icon: GiNotebook, // Notebook icon
+  },
+  {
     title: 'Diet Plans',
     path: '/dietplans',
     icon: RiArticleLine, // Document icon

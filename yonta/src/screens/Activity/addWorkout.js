@@ -55,7 +55,7 @@ const AddWorkout = () => {
                 Goalkeeper
               </button>
             </div>
-            <div className="grid grid-cols-2 gap-4 pr-2">
+            <div className="grid grid-cols-2 gap-10 pr-2">
               {/* Player Type Cards */}
               <ImageModal title="Chest" imageSrc="images/diet.png" />
               <ImageModal title="Thigh" imageSrc="images/diet.png" />
@@ -144,7 +144,7 @@ const AddWorkout = () => {
                 </button>
               </div>
             </div>
-            <div className="grid grid-cols-4 gap-3 pr-4">
+            <div className="grid grid-cols-3 gap-4 pl-4">
               {/* Repeat for other workouts */}
               <ImageModal title="Thigh" imageSrc="images/diet.png" />
               <ImageModal title="Thigh" imageSrc="images/diet.png" />
