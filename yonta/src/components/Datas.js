@@ -363,6 +363,57 @@ export  const discountTypes = [
     route: "/couponsaddorder"
   },
 ];
+export const notificationsData = [
+  {
+    dateFrom: "30/07/2013",
+    dateTo: "23/04/2016",
+    section: "User",
+    frequency: "Custom",
+    link: "/notification1",
+    content: "Get your diet with our professional Nutritionist. Book an appointment now!"
+  },
+  {
+    dateFrom: "01/01/2024",
+    dateTo: "31/12/2024",
+    section: "Expert",
+    frequency: "Monthly",
+    link: "/notification2",
+    content: "Exclusive tips from experts to enhance your wellness. Subscribe for monthly updates!"
+  },
+  {
+    dateFrom: "15/03/2024",
+    dateTo: "15/06/2024",
+    section: "Nutritionist appointment",
+    frequency: "Weekly",
+    link: "/notification3",
+    content: "Weekly nutrition tips and advice from top nutritionists. Stay informed and healthy!"
+  },
+  {
+    dateFrom: "01/05/2024",
+    dateTo: "30/09/2024",
+    section: "User",
+    frequency: "Bi-weekly",
+    link: "/notification4",
+    content: "Special offers and discounts tailored just for you. Don't miss out on exclusive deals!"
+  },
+  {
+    dateFrom: "10/06/2024",
+    dateTo: "15/12/2024",
+    section: "Custom",
+    frequency: "Daily",
+    link: "/notification5",
+    content: "Daily health tips and motivational quotes to keep you inspired throughout the day."
+  },
+  {
+    dateFrom: "01/09/2024",
+    dateTo: "31/12/2024",
+    section: "Expert, Nutritionist appointment",
+    frequency: "Monthly",
+    link: "/notification6",
+    content: "Book your consultation with our top nutritionists and experts. Get personalized advice every month!"
+  }
+];
+
 export const sortsDatas = {
   status: [
     {
@@ -793,33 +844,6 @@ export const dashboardCards = [
     percent: 45.06,
     color: ['bg-red-500', 'text-red-500', '#FF3B30'],
     datas: [20, 50, 75, 15, 108, 97, 70, 41, 50, 20, 90, 60],
-  },
-];
-
-export const notificationsData = [
-  {
-    id: 1,
-    action: 1,
-    user: memberData[0],
-    time: '2 hours ago',
-  },
-  {
-    id: 2,
-    action: 2,
-    user: memberData[1],
-    time: '2 days ago',
-  },
-  {
-    id: 3,
-    action: 1,
-    user: memberData[2],
-    time: '3 days ago',
-  },
-  {
-    id: 4,
-    action: 2,
-    user: memberData[3],
-    time: '4 days ago',
   },
 ];
 

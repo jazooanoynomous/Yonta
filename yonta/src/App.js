@@ -19,17 +19,15 @@ import Ingredient from './screens/ingredient/ingredient';
 import AddIngredient from './screens/ingredient/addIngredient';
 import HealthyRecipes from './screens/healthRecipes/healthyRecipes';
 import AddRecipes from './screens/healthRecipes/addRecipes';
-<<<<<<< Updated upstream
 import Agility from './screens/agility';
-import Coupons from './screens/Coupons/coupons';
-=======
+import Coupons from './screens/coupons/coupons';
 import Blog from './screens/blog/blog';
 import AddBlog from './screens/blog/addBlog';
 import CouponsAddX from './screens/coupons/couponsAddX';
 import CouponsAddOrder from './screens/coupons/couponsAddOrder';
 import Notification from './screens/notification/notification';
 import CouponsAdd from './screens/coupons/couponsAdd';
->>>>>>> Stashed changes
+import AddNotification from './screens/notification/addNotification';
 
 function App() {  
   return (
@@ -57,7 +55,6 @@ function App() {
         <Route path="addingredient" element={<AddIngredient/>}/>
         <Route path="/healthyrecipes" element={<HealthyRecipes/>}/>
         <Route path="/addrecipes" element={<AddRecipes/>}/>
-<<<<<<< Updated upstream
         <Route path="/agility" element={<Agility/>}/>
         <Route path="/coupons" element={<Coupons/>}/>
 =======
@@ -67,7 +64,8 @@ function App() {
         <Route path="/couponsaddx" element={<CouponsAddX/>}/>
         <Route path="/couponsaddorder" element={<CouponsAddOrder/>}/>
         <Route path="/notification" element={<Notification/>}/>
->>>>>>> Stashed changes
+        <Route path="/addnotification" element={<AddNotification/>}/>
+
 
         </Routes>
 

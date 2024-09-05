@@ -41,8 +41,8 @@ export function Button({ label, onClick, loading, Icon,className }) {
         <BiLoaderCircle className="animate-spin text-white text-2xl" />
       ) : (
         <>
+                  {Icon && <Icon className=" text-xl" />}
           {label}
-          {Icon && <Icon className="text-white text-xl" />}
         </>
       )}
     </button>

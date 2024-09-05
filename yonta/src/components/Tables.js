@@ -584,6 +584,7 @@ export function CouponTable({ data, functions, used }) {
     </div>
   );
 }
+
 export function ManageOffers({ data, functions, used }) {
   const DropDown1 = !used
     ? [
@@ -614,7 +615,7 @@ export function ManageOffers({ data, functions, used }) {
 
   return (
     <div className="p-6 rounded-lg">
-<div className="flex justify-between items-center mb-4">
+      <div className="flex justify-between items-center mb-4">
         <h2 className="text-xl font-semibold">Manage Offers</h2>
         <Button
           Icon={BiPlus}
@@ -622,15 +623,13 @@ export function ManageOffers({ data, functions, used }) {
           // onClick={openModal}
           className="text-white"
         />
-      </div>      
+      </div>
       <div className="overflow-x-auto bg-white py-2  px-8 rounded-[10px]">
         <div className="flex justify-between items-center mb-4">
-        
           <h2 className="text-xl font-semibold mb-4 text-tableheadtext">
             Yonta Deals
           </h2>
 
-        
           <button
             className="flex items-center justify-center bg-[#1782AF] rounded-[6px] w-[56.01px] h-[24px] p-[7px_10px]"
             // onClick={onEdit}
@@ -640,7 +639,6 @@ export function ManageOffers({ data, functions, used }) {
               Edit
             </span>
           </button>
-        
         </div>
 
         <table className="w-full bg-backgroundgray border-separate border-spacing-y-4 px-4 h-[60px] rounded-[10px]">
@@ -724,24 +722,21 @@ export function FlashSales({ data, functions, used }) {
   return (
     <div className="p-6 rounded-lg">
       <div className="overflow-x-auto bg-white py-2  px-8 rounded-[10px]">
-      <div className="flex justify-between items-center mb-4">
-        
-        <h2 className="text-xl font-semibold mb-4 text-tableheadtext">
-          Flash Sales
-        </h2>
+        <div className="flex justify-between items-center mb-4">
+          <h2 className="text-xl font-semibold mb-4 text-tableheadtext">
+            Flash Sales
+          </h2>
 
-      
-        <button
-          className="flex items-center justify-center bg-[#1782AF] rounded-[6px] w-[56.01px] h-[24px] p-[7px_10px]"
-          // onClick={onEdit}
-        >
-          <FaEdit className="w-[10.01px] h-[10px] text-white mr-2" />
-          <span className="text-[10px] font-normal leading-[100%] tracking-[-0.01em] text-white">
-            Edit
-          </span>
-        </button>
-      
-      </div>
+          <button
+            className="flex items-center justify-center bg-[#1782AF] rounded-[6px] w-[56.01px] h-[24px] p-[7px_10px]"
+            // onClick={onEdit}
+          >
+            <FaEdit className="w-[10.01px] h-[10px] text-white mr-2" />
+            <span className="text-[10px] font-normal leading-[100%] tracking-[-0.01em] text-white">
+              Edit
+            </span>
+          </button>
+        </div>
 
         <table className="w-full bg-backgroundgray border-separate border-spacing-y-4 px-4 h-[60px] rounded-[10px]">
           <thead>
@@ -790,6 +785,79 @@ export function FlashSales({ data, functions, used }) {
           </tbody>
         </table>
       </div>
+    </div>
+  );
+}
+
+export function NotificationTable({ data, functions, used }) {
+  const DropDown1 = !used
+    ? [
+        {
+          title: "View",
+          icon: FiEye,
+          onClick: (data) => {
+            functions.preview(data.id);
+          },
+        },
+        {
+          title: "Delete",
+          icon: RiDeleteBin6Line,
+          onClick: () => {
+            toast.error("This feature is not available yet");
+          },
+        },
+      ]
+    : [
+        {
+          title: "View",
+          icon: FiEye,
+          onClick: (data) => {
+            functions.preview(data.id);
+          },
+        },
+      ];
+
+  return (
+    <div className="p-6 rounded-lg">
+      <>
+        <table className="w-full  border-separate border-spacing-y-4 px-4 h-[60px] rounded-[10px]">
+          <thead>
+            <tr className="text-left text-sm text-gray-500">
+              <th className="px-4">Date From</th>
+              <th className="px-4">Date To</th>
+              <th className="px-4">Selection</th>
+              <th className="px-4">Frequency</th>
+              <th className="px-4">Link</th>
+              <th className="px-4">Notifications center</th>
+            </tr>
+          </thead>
+          <tbody>
+            {data.map((item, index) => (
+              <tr key={index} className="bg-white relative h-[60px]">
+                <td className="py-4 px-4 text-sm rounded-l-lg">
+                  {item.dateFrom}
+                </td>
+                <td className="py-4 px-4 text-sm">{item.dateTo}</td>
+                <td className="py-4 px-4 text-sm">{item.section}</td>
+                <td className="py-4 px-4 text-sm">{item.frequency}</td>
+                <td className="py-4 px-4 text-sm">
+                  <a href={item.link} className="text-blue-500 hover:underline">
+                    {item.link}
+                  </a>
+                </td>
+                <td className="py-4 px-4 text-sm">{item.content}</td>
+                <td className="py-4 px-4 rounded-r-lg">
+                  <MenuSelect datas={DropDown1} item={item}>
+                    <div className="text-main text-xl py-2 px-4">
+                      <BiDotsHorizontalRounded />
+                    </div>
+                  </MenuSelect>
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </>
     </div>
   );
 }
