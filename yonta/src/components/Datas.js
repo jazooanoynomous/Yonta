@@ -102,11 +102,45 @@ export const MenuDatas = [
   },
 
 ];
+export const community = [
+  {
+    id: 1,
+    name: "John Deo",
+    level: "Level 8",
+    image: '/images/hero.png',
+    progress: 90,
+    achievements: ["🐢", "🐢", "🐢", "🐢", "🐢"],
+  },
+  {
+    id: 2,
+    name: "Shelby Goode",
+    image: '/images/hero.png',
+    level: "Level 5",
+    progress: 79,
+    achievements: ["🐢", "🐢", "🐢", "🐢"],
+  },
+  {
+    id: 3,
+    name: "Robert Bacins",
+    image: '/images/hero.png',
+    level: "Level 4",
+    progress: 78,
+    achievements: ["🐢", "🐢", "🐢"],
+  },
+  {
+    id: 4,
+    name: "John Carlio",
+    image: '/images/hero.png',
+    level: "Level 3",
+    progress: 20,
+    achievements: ["🐢", "🐢", "🐢", "🌅"],
+  },
+]
 export const memberData = [
   {
     id: 1,
     title: 'Hugo Lloris',
-    image: '/images/user1.png',
+    image: '/images/hero.png',
     admin: false,
     email: 'hugolloris@gmail.com',
     phone: '+1 234 567 890',
@@ -205,7 +239,7 @@ export const memberData = [
   {
     id: 10,
     title: 'Davinson Sánchez',
-    image: '/images/user10.png',
+    image: '/images/hero0.png',
     admin: false,
     email: 'sanchez@gmail.com',
     phone: '+1 234 567 899',
@@ -214,8 +248,115 @@ export const memberData = [
     status: 'Active',
   },
 ];
-
-
+export const couponData = [
+  {
+    id: 1,
+    discountCode: "Yonta10",
+    discountDescription: "Offer 10% off the purchase price",
+    couponType: "Buy X get Y",
+    useLimit: "Single use",
+    lastModified: "12/10/2001",
+    status: "Inactive",
+  },
+  {
+    id: 2,
+    discountCode: "Winter50",
+    discountDescription: "50% off for winter season items",
+    couponType: "Seasonal",
+    useLimit: "Multi-use",
+    lastModified: "01/12/2023",
+    status: "Active",
+  },
+  {
+    id: 3,
+    discountCode: "FreeShip",
+    discountDescription: "Free shipping on all orders above $50",
+    couponType: "Shipping",
+    useLimit: "Single use",
+    lastModified: "05/08/2023",
+    status: "Active",
+  },
+  {
+    id: 4,
+    discountCode: "SUMMER20",
+    discountDescription: "20% off on summer collection",
+    couponType: "Seasonal",
+    useLimit: "Single use",
+    lastModified: "15/06/2023",
+    status: "Inactive",
+  },
+  {
+    id: 5,
+    discountCode: "FIRSTBUY",
+    discountDescription: "5% off on your first purchase",
+    couponType: "First Purchase",
+    useLimit: "Single use",
+    lastModified: "10/11/2023",
+    status: "Active",
+  },
+  {
+    id: 6,
+    discountCode: "FREEMASK",
+    discountDescription: "Free mask with every purchase",
+    couponType: "Gift with Purchase",
+    useLimit: "Single use",
+    lastModified: "22/07/2023",
+    status: "Inactive",
+  },
+  {
+    id: 7,
+    discountCode: "MEGASALE",
+    discountDescription: "30% off during the mega sale",
+    couponType: "Event",
+    useLimit: "Multi-use",
+    lastModified: "05/09/2023",
+    status: "Active",
+  },
+  {
+    id: 8,
+    discountCode: "NEWYEAR20",
+    discountDescription: "20% off for New Year's Sale",
+    couponType: "Seasonal",
+    useLimit: "Multi-use",
+    lastModified: "02/01/2023",
+    status: "Inactive",
+  },
+  {
+    id: 9,
+    discountCode: "BLACKFRIDAY",
+    discountDescription: "50% off for Black Friday",
+    couponType: "Event",
+    useLimit: "Single use",
+    lastModified: "25/11/2023",
+    status: "Active",
+  },
+  {
+    id: 10,
+    discountCode: "CYBERDEAL",
+    discountDescription: "40% off during Cyber Monday",
+    couponType: "Event",
+    useLimit: "Single use",
+    lastModified: "28/11/2023",
+    status: "Inactive",
+  },
+];
+export  const discountTypes = [
+  {
+    title: "Amount off Products",
+    description: "Discount specific Products or collection of products",
+    route: "/couponsadd"
+  },
+  {
+    title: "Buy X get Y",
+    description: "Discount products based on a customer’s purchase",
+    route: "/couponsaddX"
+  },
+  {
+    title: "Amount off order",
+    description: "Discount the total order amount",
+    route: "/couponsaddorder"
+  },
+];
 export const sortsDatas = {
   status: [
     {

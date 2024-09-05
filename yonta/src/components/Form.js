@@ -35,7 +35,7 @@ export function Button({ label, onClick, loading, Icon,className }) {
     <button
       disabled={loading}
       onClick={onClick}
-      className={`flex items-center justify-center w-[144px] h-[40px] px-2 hover:opacity-80 transition bg-blue  text-sm font-medium py-2 rounded ${className}`}
+      className={`flex items-center justify-center w-[122px] h-[40px] px-2 hover:opacity-80 transition bg-buttonblue  text-sm font-medium py-2 rounded ${className}`}
     >
       {loading ? (
         <BiLoaderCircle className="animate-spin text-white text-2xl" />

@@ -4,7 +4,7 @@ import { FaTrash, FaEdit } from 'react-icons/fa';
 const ImageModal = ({ imageSrc, type, onDelete, onEdit, title }) => {
   return (
     <div className="bg-white rounded-lg w-[156px] h-[199px] shadow-lg px-2 py-3">
-      <div className="relative h-[148px] w-[148px]">
+      <div className="relative h-[148px] w-[148px] pr-2">
         <img
           src={imageSrc}
           alt={type}

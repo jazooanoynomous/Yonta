@@ -1,10 +1,14 @@
-import React from "react";
-import { MenuSelect } from "./Form";
-import { BiDotsHorizontalRounded } from "react-icons/bi";
+import React, { useState } from "react";
+import { Button, MenuSelect } from "./Form";
+import { BiDotsHorizontalRounded, BiPlus } from "react-icons/bi";
 import { FiEdit, FiEye, FiTrash2 } from "react-icons/fi";
 import { RiDeleteBin6Line, RiDeleteBinLine } from "react-icons/ri";
 import { toast } from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
+import ProgressBar from "./progressBar";
+import { FaEdit } from "react-icons/fa";
+import CouponsPopup from "./Modals/couponsPopup";
+import { discountTypes } from "./Datas";
 
 const thclass = "text-start text-sm font-medium py-3 px-2 whitespace-nowrap";
 const tdclass = "text-start text-sm py-4 px-2 whitespace-nowrap";
@@ -420,6 +424,375 @@ export function PatientTable({ data, functions, used }) {
   );
 }
 
+export function AgilityTable({ data }) {
+  return (
+    <div className=" p-6 rounded-lg ">
+      <h2 className="text-xl font-semibold mb-4">Community Progress</h2>
+      <div className="overflow-x-auto">
+        <table className="w-full border-separate border-spacing-y-4 h-[60px]">
+          <thead>
+            <tr className="text-left text-sm text-gray-500">
+              <th className="px-4">Sr no.</th>
+              <th className="px-4">Name</th>
+              <th className="px-4">Levels</th>
+              <th className="px-4">Progress</th>
+              <th className="px-4">Achievements</th>
+            </tr>
+          </thead>
+          <tbody>
+            {data.map((item, index) => (
+              <tr key={item.id} className="bg-white relative h-[60px]">
+                <td className="py-4 px-4 text-sm rounded-l-lg">{index + 1}</td>
+                <td className="py-4 px-4">
+                  <div className="flex items-center">
+                    <img
+                      src={item.image}
+                      alt={item.name}
+                      className="w-8 h-8 rounded-full mr-3"
+                    />
+                    <span className="text-sm font-medium">{item.name}</span>
+                  </div>
+                </td>
+                <td className="py-4 px-4 text-sm">{item.level}</td>
+                <td className="py-4 px-4">
+                  <div className="flex items-center">
+                    <ProgressBar progress={item.progress} />
+                    <span className="text-[12px] text-textred ml-2">
+                      {item.progress}%
+                    </span>
+                  </div>
+                </td>
+                <td className="py-4 px-4 rounded-r-lg">
+                  <div className="flex gap-1">
+                    {item.achievements.map((achieve, i) => (
+                      <span key={i} className="h-[26px] w-[29px]">
+                        {achieve}
+                      </span>
+                    ))}
+                  </div>
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  );
+}
+export function CouponTable({ data, functions, used }) {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const openModal = () => {
+    setIsModalOpen(true);
+  };
+
+  const closeModal = () => {
+    setIsModalOpen(false);
+  };
+  const DropDown1 = !used
+    ? [
+        {
+          title: "View",
+          icon: FiEye,
+          onClick: (data) => {
+            functions.preview(data.id);
+          },
+        },
+        {
+          title: "Delete",
+          icon: RiDeleteBin6Line,
+          onClick: () => {
+            toast.error("This feature is not available yet");
+          },
+        },
+      ]
+    : [
+        {
+          title: "View",
+          icon: FiEye,
+          onClick: (data) => {
+            functions.preview(data.id);
+          },
+        },
+      ];
+
+  return (
+    <div className="p-6 rounded-lg">
+      <div className="flex justify-between items-center mb-4">
+        <h2 className="text-xl font-semibold">Manage Coupon</h2>
+        <Button
+          Icon={BiPlus}
+          label="Add New"
+          onClick={openModal}
+          className="text-white"
+        />
+      </div>
+
+      <div className="overflow-x-auto">
+        <table className="w-full bg-white rounded-[10px] border-separate border-spacing-y-4 px-4 h-[60px]">
+          <thead>
+            <tr className="text-left text-sm text-gray-500">
+              <th className="px-4">Discount Code</th>
+              <th className="px-4">Discount Description</th>
+              <th className="px-4">Coupon Type</th>
+              <th className="px-4">Use Limit</th>
+              <th className="px-4">Last Modified</th>
+              <th className="px-4">Status</th>
+              <th className="px-4">Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            {data.map((item, index) => (
+              <tr key={item.id} className="bg-backgroundgray relative h-[60px]">
+                <td className="py-4 px-4 text-sm rounded-l-lg">
+                  {item.discountCode}
+                </td>
+                <td className="py-4 px-4 text-sm">
+                  {item.discountDescription}
+                </td>
+                <td className="py-4 px-4 text-sm">{item.couponType}</td>
+                <td className="py-4 px-4 text-sm">{item.useLimit}</td>
+                <td className="py-4 px-4 text-sm">{item.lastModified}</td>
+                <td className="py-4 px-4 text-sm">
+                  <span
+                    className={`py-1 px-4 ${
+                      item.status === "Active"
+                        ? "text-textgreen"
+                        : " text-textred"
+                    } bg-opacity-10 text-xs rounded-xl`}
+                  >
+                    {item.status}
+                  </span>
+                </td>
+                <td className="py-4 px-4 rounded-r-lg">
+                  <MenuSelect datas={DropDown1} item={item}>
+                    <div className="  text-main text-xl py-2 px-4 ">
+                      <BiDotsHorizontalRounded />
+                    </div>
+                  </MenuSelect>
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+      {isModalOpen && (
+        <CouponsPopup
+          discountTypes={discountTypes} // Pass the discountTypes data to the modal
+          onClose={closeModal}
+        />
+      )}
+    </div>
+  );
+}
+export function ManageOffers({ data, functions, used }) {
+  const DropDown1 = !used
+    ? [
+        {
+          title: "View",
+          icon: FiEye,
+          onClick: (data) => {
+            functions.preview(data.id);
+          },
+        },
+        {
+          title: "Delete",
+          icon: RiDeleteBin6Line,
+          onClick: () => {
+            toast.error("This feature is not available yet");
+          },
+        },
+      ]
+    : [
+        {
+          title: "View",
+          icon: FiEye,
+          onClick: (data) => {
+            functions.preview(data.id);
+          },
+        },
+      ];
+
+  return (
+    <div className="p-6 rounded-lg">
+<div className="flex justify-between items-center mb-4">
+        <h2 className="text-xl font-semibold">Manage Offers</h2>
+        <Button
+          Icon={BiPlus}
+          label="Add New"
+          // onClick={openModal}
+          className="text-white"
+        />
+      </div>      
+      <div className="overflow-x-auto bg-white py-2  px-8 rounded-[10px]">
+        <div className="flex justify-between items-center mb-4">
+        
+          <h2 className="text-xl font-semibold mb-4 text-tableheadtext">
+            Yonta Deals
+          </h2>
+
+        
+          <button
+            className="flex items-center justify-center bg-[#1782AF] rounded-[6px] w-[56.01px] h-[24px] p-[7px_10px]"
+            // onClick={onEdit}
+          >
+            <FaEdit className="w-[10.01px] h-[10px] text-white mr-2" />
+            <span className="text-[10px] font-normal leading-[100%] tracking-[-0.01em] text-white">
+              Edit
+            </span>
+          </button>
+        
+        </div>
+
+        <table className="w-full bg-backgroundgray border-separate border-spacing-y-4 px-4 h-[60px] rounded-[10px]">
+          <thead>
+            <tr className="text-left text-sm text-gray-500">
+              <th className="px-4">Product</th>
+              <th className="px-4">Weight</th>
+              <th className="px-4">Flavour</th>
+              <th className="px-4">Expiry</th>
+              <th className="px-4">Stock</th>
+              <th className="px-4">MRP</th>
+              <th className="px-4">Price</th>
+            </tr>
+          </thead>
+          <tbody>
+            {data.map((item, index) => (
+              <tr key={item.id} className="bg-white  relative h-[60px]">
+                <td className="py-4 px-4 text-sm rounded-l-lg">
+                  {item.discountCode}
+                </td>
+                <td className="py-4 px-4 text-sm">
+                  {item.discountDescription}
+                </td>
+                <td className="py-4 px-4 text-sm">{item.couponType}</td>
+                <td className="py-4 px-4 text-sm">{item.useLimit}</td>
+                <td className="py-4 px-4 text-sm">{item.lastModified}</td>
+                <td className="py-4 px-4 text-sm">
+                  <span
+                    className={`py-1 px-4 ${
+                      item.status === "Active"
+                        ? "text-textgreen"
+                        : " text-textred"
+                    } bg-opacity-10 text-xs rounded-xl`}
+                  >
+                    {item.status}
+                  </span>
+                </td>
+                <td className="py-4 px-4 rounded-r-lg">
+                  <MenuSelect datas={DropDown1} item={item}>
+                    <div className="  text-main text-xl py-2 px-4 ">
+                      <BiDotsHorizontalRounded />
+                    </div>
+                  </MenuSelect>
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  );
+}
+export function FlashSales({ data, functions, used }) {
+  const DropDown1 = !used
+    ? [
+        {
+          title: "View",
+          icon: FiEye,
+          onClick: (data) => {
+            functions.preview(data.id);
+          },
+        },
+        {
+          title: "Delete",
+          icon: RiDeleteBin6Line,
+          onClick: () => {
+            toast.error("This feature is not available yet");
+          },
+        },
+      ]
+    : [
+        {
+          title: "View",
+          icon: FiEye,
+          onClick: (data) => {
+            functions.preview(data.id);
+          },
+        },
+      ];
+
+  return (
+    <div className="p-6 rounded-lg">
+      <div className="overflow-x-auto bg-white py-2  px-8 rounded-[10px]">
+      <div className="flex justify-between items-center mb-4">
+        
+        <h2 className="text-xl font-semibold mb-4 text-tableheadtext">
+          Flash Sales
+        </h2>
+
+      
+        <button
+          className="flex items-center justify-center bg-[#1782AF] rounded-[6px] w-[56.01px] h-[24px] p-[7px_10px]"
+          // onClick={onEdit}
+        >
+          <FaEdit className="w-[10.01px] h-[10px] text-white mr-2" />
+          <span className="text-[10px] font-normal leading-[100%] tracking-[-0.01em] text-white">
+            Edit
+          </span>
+        </button>
+      
+      </div>
+
+        <table className="w-full bg-backgroundgray border-separate border-spacing-y-4 px-4 h-[60px] rounded-[10px]">
+          <thead>
+            <tr className="text-left text-sm text-gray-500">
+              <th className="px-4">Product</th>
+              <th className="px-4">Weight</th>
+              <th className="px-4">Flavour</th>
+              <th className="px-4">Expiry</th>
+              <th className="px-4">Stock</th>
+              <th className="px-4">MRP</th>
+              <th className="px-4">Price</th>
+            </tr>
+          </thead>
+          <tbody>
+            {data.map((item, index) => (
+              <tr key={item.id} className="bg-white  relative h-[60px]">
+                <td className="py-4 px-4 text-sm rounded-l-lg">
+                  {item.discountCode}
+                </td>
+                <td className="py-4 px-4 text-sm">
+                  {item.discountDescription}
+                </td>
+                <td className="py-4 px-4 text-sm">{item.couponType}</td>
+                <td className="py-4 px-4 text-sm">{item.useLimit}</td>
+                <td className="py-4 px-4 text-sm">{item.lastModified}</td>
+                <td className="py-4 px-4 text-sm">
+                  <span
+                    className={`py-1 px-4 ${
+                      item.status === "Active"
+                        ? "text-textgreen"
+                        : " text-textred"
+                    } bg-opacity-10 text-xs rounded-xl`}
+                  >
+                    {item.status}
+                  </span>
+                </td>
+                <td className="py-4 px-4 rounded-r-lg">
+                  <MenuSelect datas={DropDown1} item={item}>
+                    <div className="  text-main text-xl py-2 px-4 ">
+                      <BiDotsHorizontalRounded />
+                    </div>
+                  </MenuSelect>
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  );
+}
 
 export function ExpertTable({ data, functions }) {
   const thclasse = "text-start text-sm font-medium py-3 px-2 whitespace-nowrap";
@@ -455,13 +828,16 @@ export function ExpertTable({ data, functions }) {
           </th>
         </tr>
       </thead>
-      <tbody className="space-y-2.5"> 
+      <tbody className="space-y-2.5">
         {data.map((item) => (
           <tr
             key={item.id}
             className="  bg-white h-[60px] mb-[10px] rounded-xl "
           >
-            <td className={tdclasse} style={{  width: "1103px", marginBottom:'10px' }}>
+            <td
+              className={tdclasse}
+              style={{ width: "1103px", marginBottom: "10px" }}
+            >
               <div className="flex gap-4 items-center">
                 <span className="w-12">
                   <img
@@ -482,17 +858,18 @@ export function ExpertTable({ data, functions }) {
               <button
                 onClick={() => functions.edit(item.id)}
                 className="bg-blue-500 text-white bg-blue px-2 py-1 rounded hover:bg-blue-600 flex items-center justify-center"
-              ><FiEdit />
+              >
+                <FiEdit />
                 Edit
-                
               </button>
             </td>
             <td className={tdclasse}>
               <button
                 onClick={() => functions.delete(item.id)}
                 className="bg-red-500 text-white bg-red px-2 py-1 rounded hover:bg-red-600 flex items-center justify-center"
-              ><FiTrash2 />
-                Delete                
+              >
+                <FiTrash2 />
+                Delete
               </button>
             </td>
           </tr>
@@ -501,8 +878,6 @@ export function ExpertTable({ data, functions }) {
     </table>
   );
 }
-
-
 
 // appointment table
 export function AppointmentTable({ data, functions, doctor }) {

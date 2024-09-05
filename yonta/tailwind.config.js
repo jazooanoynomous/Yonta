@@ -30,7 +30,10 @@ module.exports = {
         greytext:'#838A95',
         blue:'#5A4BDA',
         blacktext:'#06152B',
-        lightgray:'#B5B7C0'
+        lightgray:'#B5B7C0',
+        backgroundgray:'#F1F4FA',
+        tableheadtext:'#4B4F55',
+        buttonblue:'#3A36DB'
 
 
 

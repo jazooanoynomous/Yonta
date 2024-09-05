@@ -19,6 +19,8 @@ import Ingredient from './screens/ingredient/ingredient';
 import AddIngredient from './screens/ingredient/addIngredient';
 import HealthyRecipes from './screens/healthRecipes/healthyRecipes';
 import AddRecipes from './screens/healthRecipes/addRecipes';
+import Agility from './screens/agility';
+import Coupons from './screens/Coupons/coupons';
 
 function App() {  
   return (
@@ -46,6 +48,8 @@ function App() {
         <Route path="addingredient" element={<AddIngredient/>}/>
         <Route path="/healthyrecipes" element={<HealthyRecipes/>}/>
         <Route path="/addrecipes" element={<AddRecipes/>}/>
+        <Route path="/agility" element={<Agility/>}/>
+        <Route path="/coupons" element={<Coupons/>}/>
 
         </Routes>
 
