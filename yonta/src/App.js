@@ -20,7 +20,6 @@ import AddIngredient from './screens/ingredient/addIngredient';
 import HealthyRecipes from './screens/healthRecipes/healthyRecipes';
 import AddRecipes from './screens/healthRecipes/addRecipes';
 import Agility from './screens/agility';
-import Coupons from './screens/coupons/coupons';
 import Blog from './screens/blog/blog';
 import AddBlog from './screens/blog/addBlog';
 import CouponsAddX from './screens/coupons/couponsAddX';
@@ -28,6 +27,7 @@ import CouponsAddOrder from './screens/coupons/couponsAddOrder';
 import Notification from './screens/notification/notification';
 import CouponsAdd from './screens/coupons/couponsAdd';
 import AddNotification from './screens/notification/addNotification';
+import Coupons from './screens/coupons/coupons';
 
 function App() {  
   return (
@@ -57,7 +57,6 @@ function App() {
         <Route path="/addrecipes" element={<AddRecipes/>}/>
         <Route path="/agility" element={<Agility/>}/>
         <Route path="/coupons" element={<Coupons/>}/>
-=======
         <Route path="/blogs" element={<Blog/>} />
         <Route path="/addblog"element={<AddBlog/>}/>
         <Route path="/couponsadd" element={<CouponsAdd/>}/>

@@ -32,7 +32,7 @@ const AddRecipes = () => {
 
                 </div>
                 <h4>Ingredient image</h4>
-                <div className='flex justify-start text-start mr-60 gap-6  '>
+                <div className='flex justify-start text-start  gap-6  '>
                     {/* Image Picker with Icon */}
                     <div className="mb-2  mt-2">
                         <label htmlFor="image-upload" className="cursor-pointer bg-white flex flex-col items-center justify-center w-[243px] h-[243px] rounded-lg hover:bg-gray-100">
@@ -63,7 +63,28 @@ const AddRecipes = () => {
                         </div>
 
                         {/* Two Input Fields */}
-                        <div className="mb-4 grid grid-cols-1 sm:grid-cols-2 gap-4">
+                        <div className="mb-4 grid grid-cols-1 sm:grid-cols-3">
+                            <div>
+                                <label className="block text-lg font-medium mb-2" htmlFor="input2">
+                                    Services
+                                </label>
+                                <div className='flex gap-4 mr-8'>
+                                    <p className='mt-4 text-sm'>mint:</p>
+                                    <input
+                                        type="text"
+                                        id="input2"
+                                        
+                                        className="block w-[60px] h-[50px]  rounded-lg p-2"
+                                    />
+                                    <p className='mt-4 text-sm'>hr:</p>
+
+                                    <input
+                                        type="text"
+                                        id="input2"
+                                        className="block w-[60px] h-[50px]  rounded-lg p-2"
+                                    />
+                                </div>
+                            </div>
                             <div>
                                 <label className="block text-lg font-medium mb-2" htmlFor="input2">
                                     Services
