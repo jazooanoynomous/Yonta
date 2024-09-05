@@ -25,7 +25,7 @@ function Users() {
         <input
           type="text"
           placeholder='Search "User"'
-          className="flex-grow h-full text-sm text-main bg-transparent rounded-l-md px-2 outline-none"
+          className="flex-grow h-full text-sm text-lightgray bg-transparent rounded-l-md px-2 outline-none"
         />
         <span className="flex items-center justify-center h-full px-2">
           <FaSearch color="grey" className="h-4 w-4 text-main" />

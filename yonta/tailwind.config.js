@@ -14,7 +14,7 @@ module.exports = {
       colors: {
         main: '#183253',
         subMain: '#06152B',
-        text: '#F2FAF8',
+        text: '#515B6B',
         border: '#E8EBEE',
         textGray: '#A0A0A0',
         dry: '#F8F9FA',
@@ -25,7 +25,13 @@ module.exports = {
         pinktext:'#FF8F6B',
         textgreen:'#2EDB72',
         textred:'#FB5458',
-        blue:'#5A4BDA'
+        bluetext:'#5D4CFF',
+        menubg:'#F3F2FF',
+        greytext:'#838A95',
+        blue:'#5A4BDA',
+        blacktext:'#06152B',
+        lightgray:'#B5B7C0'
+
 
 
       },

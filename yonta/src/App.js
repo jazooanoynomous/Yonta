@@ -13,6 +13,8 @@ import Experts from './screens/experts';
 import AddExpertBoard from './screens/addExpertBoard';
 import DayDiet from './screens/dayDiet';
 import Questionaris from './screens/questionars';
+import ActivityHome from './screens/Activity/activityHome';
+import FitnessHome from './screens/Fitness/fitnessHome';
 
 function App() {  
   return (
@@ -25,7 +27,7 @@ function App() {
         <Route path="/" element={<Dashboard/>} />
         <Route path="/patients" element={<Users/>} />
         <Route path="/add-workout" element={<AddWorkout/>} />
-        <Route path="/activity" element={<ActivityAdd/>} />
+        <Route path="/activityadd" element={<ActivityAdd/>} />
         <Route path="/podcasts" element={<PodCasts/>}/>
         <Route path="/dietplans" element={<DietPlans/>}/>
         <Route path="/dashboard" element={<Dashboard/>} />
@@ -34,6 +36,9 @@ function App() {
         <Route path="/expertsBoard" element={<AddExpertBoard/>}/>
         <Route path="/dayDiet" element={<DayDiet/>} />
         <Route path="/questionars" element={<Questionaris/>}/>
+        <Route path="/activity" element={<ActivityHome/>}/>
+        <Route path="/fitness" element={<FitnessHome/>}/>
+
 
         </Routes>
 
