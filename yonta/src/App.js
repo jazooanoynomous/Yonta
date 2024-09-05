@@ -13,6 +13,10 @@ import Experts from './screens/experts';
 import AddExpertBoard from './screens/addExpertBoard';
 import DayDiet from './screens/dayDiet';
 import Questionaris from './screens/questionars';
+import Ingredient from './screens/ingredient/ingredient';
+import AddIngredient from './screens/ingredient/addIngredient';
+import HealthyRecipes from './screens/healthRecipes/healthyRecipes';
+import AddRecipes from './screens/healthRecipes/addRecipes';
 
 function App() {  
   return (
@@ -34,6 +38,10 @@ function App() {
         <Route path="/expertsBoard" element={<AddExpertBoard/>}/>
         <Route path="/dayDiet" element={<DayDiet/>} />
         <Route path="/questionars" element={<Questionaris/>}/>
+        <Route path="/ingredients" element={<Ingredient/>} />
+        <Route path="addingredient" element={<AddIngredient/>}/>
+        <Route path="/healthyrecipes" element={<HealthyRecipes/>}/>
+        <Route path="/addrecipes" element={<AddRecipes/>}/>
 
         </Routes>
 

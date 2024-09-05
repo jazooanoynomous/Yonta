@@ -1,33 +1,32 @@
 import React from 'react';
 import { FaTrash, FaEdit } from 'react-icons/fa';
-import { GiMeat, GiWheat, GiOlive } from 'react-icons/gi';
 
 const DietPlanBox = ({ box, handleDelete, handleEdit }) => {
   return (
     <div className="mb-4">
-      <div className="p-4 border rounded-lg h-[110px] w-[296px] bg-[#F1F4FA]">
+      <div className="p-4 rounded-lg h-[120px] w-[296px] bg-[#F1F4FA]">
         <h2 className="text-lg font-bold">Calorie Deficit Plan</h2>
         <div className="flex items-center space-x-4 mb-4">
           <div className="flex items-center">
-            <GiMeat className="w-4 h-4 mr-1 text-[#7000FF]" />
+            <img src="/images/carb.png" alt="Protein" className="w-4 h-4 mr-1" />
             <span className="text-sm text-[#7000FF] flex items-center">
-              Protein <b className="ml-1 text-black">7g</b>
-            </span>
-          </div>
-          <div className="flex items-center">
-            <GiWheat className="w-4 h-4 mr-1 text-[#AA170C]" />
-            <span className="text-sm text-[#AA170C] flex items-center">
               Carbs <b className="ml-1 text-black">7g</b>
             </span>
           </div>
           <div className="flex items-center">
-            <GiOlive className="w-4 h-4 mr-1 text-[#FF9910]" />
+            <img src="/images/protien.png" alt="Carbs" className="w-4 h-4 mr-1" />
+            <span className="text-sm text-[#AA170C] flex items-center">
+              protien <b className="ml-1 text-black">7g</b>
+            </span>
+          </div>
+          <div className="flex items-center">
+            <img src="/images/fat.png" alt="Fats" className="w-4 h-4 mr-1" />
             <span className="text-sm text-[#FF9910] flex items-center">
               Fats <b className="ml-1 text-black">7g</b>
             </span>
           </div>
         </div>
-        <button className="bg-[#5D4CFF] text-white px-3 rounded-lg">
+        <button className="bg-[#5D4CFF] text-white px-3 rounded-lg mb-4">
           Calories: 3000
         </button>
       </div>

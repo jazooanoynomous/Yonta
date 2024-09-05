@@ -2,15 +2,16 @@ import React, { useState } from 'react';
 import { FaEdit, FaTrash, FaPlus, FaSave, FaUpload } from 'react-icons/fa';
 
 const initialCategories = [
-    { id: 1, name: 'Category 1', imageUrl: '/images/Rectangle 4341.png' },
-    { id: 2, name: 'Category 2', imageUrl: '/images/Group 183382.png' },
-    { id: 3, name: 'Category 3', imageUrl: '/images/Group 183383.png' },
-    { id: 4, name: 'Category 4', imageUrl: '/images/Rectangle 4346.png' },
-    { id: 5, name: 'Category 5', imageUrl: '/images/Group 183384.png' },
-    { id: 6, name: 'Category 6', imageUrl: '/images/Group 183381.png' },
+    { id: 1, name: 'Category 1', imageUrl: '/images/Rectangle 4495.png' },
+    { id: 2, name: 'Category 2', imageUrl: '/images/Rectangle 4496 (1).png' },
+    { id: 3, name: 'Category 3', imageUrl: '/images/Rectangle 4497 (1).png' },
+    { id: 4, name: 'Category 4', imageUrl: '/images/Rectangle 4498.png' },
+    { id: 5, name: 'Category 5', imageUrl: '/images/Group 183265.png' },
+        { id: 6, name: 'Category 5', imageUrl: '/images/Group 183259.png' },
+
 ];
 
-const Categories = ({ onAddCategory, onDeleteCategory }) => {
+const Healthy = ({ onAddCategory, onDeleteCategory }) => {
     const [categories, setCategories] = useState(initialCategories);
     const [showModal, setShowModal] = useState(false);
     const [newCategory, setNewCategory] = useState({ name: '', imageUrl: '' });
@@ -123,4 +124,4 @@ const Categories = ({ onAddCategory, onDeleteCategory }) => {
     );
 };
 
-export default Categories;
+export default Healthy;

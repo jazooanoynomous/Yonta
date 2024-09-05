@@ -3,6 +3,8 @@ import Layout from '../Layout';
 import DropdownMenu from '../components/dropdownMenu';
 import AddPlanModal from '../components/Modals/addPlanModel';
 import { useNavigate } from 'react-router-dom';
+import { FaChevronDown, FaChevronUp, FaPlus } from 'react-icons/fa';
+
 
 const DietPlans = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -56,23 +58,33 @@ const DietPlans = () => {
   return (
     <Layout>
       <div className="p-4">
-      <header className="flex justify-between items-center mb-6">
-          <h1 className="text-2xl font-bold">DietPlans</h1>
-          <div className="flex space-x-4">
+        <header className="flex justify-between items-center mb-6">
+          <h1 className="text-2xl font-bold">Nutrition & diet</h1>
+          <div className="flex space-x-4 ">
             <input
               type="text"
-              placeholder="Search..."
-              className="border rounded px-2 py-1"
+              placeholder="Search diet plans"
+              className=" rounded-xl px-2 py-1 mr-28 w-[360px]"
+              
             />
-            <button 
-              onClick={handleAddUserClick} 
-              className="bg-blue text-white px-4 py-2 rounded"
+            <button
+              onClick={handleAddUserClick}
+              className="text-blue border px-4 py-2 rounded-xl"
             >
+              Edit Questions
+            </button>
+
+            <button
+              onClick={handleAddUserClick}
+              className="bg-blue text-white rounded-xl flex px-4 py-2"
+            >
+              <FaPlus className=" w-6 h-6 font-thin" />
+
               Add User
             </button>
           </div>
         </header>
-        <div className="py-10 flex space-x-10">
+        <div className="py-10 flex space-x-6 mr-20">
 
 
           {/* First Dropdown Menu */}
@@ -86,14 +98,14 @@ const DietPlans = () => {
 
           {/* Second Dropdown Menu */}
           <DropdownMenu
-            title="Special Diet Plans 2"
+            title="1000 Calories Diet Plans"
             plans={plans2}
             handleDelete={handleDelete2}
             handleEdit={handleEdit2}
             toggleModal={toggleModal}
           />
           <DropdownMenu
-            title="Special Diet Plans 3"
+            title="1000 Calories Diet Plans"
             plans={plans2}
             handleDelete={handleDelete3}
             handleEdit={handleEdit3}

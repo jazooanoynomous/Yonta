@@ -1,16 +1,13 @@
 import React, { useState } from 'react';
 import { FaEdit, FaTrash, FaPlus } from 'react-icons/fa';
-import CurratedMOdel from '../components/Modals/curratedModel'
+import TopPicModel from '../components/Modals/topPicModel'
+
 const topPic = [
-    { id: 1, name: 'Category 1', imageUrl: '/images/Rectangle 4561.png', author: 'Ajay', duration: '10:00' },
-    { id: 2, name: 'Category 2', imageUrl: '/images/Rectangle 4562.png', author: 'Ajay', duration: '15:30' },
-    { id: 3, name: 'Category 3', imageUrl: '/images/Rectangle 4563.png', author: 'Ajay', duration: '15:30' },
-    { id: 4, name: 'Category 4', imageUrl: '/images/Rectangle 4564.png', author: 'Ajay', duration: '15:30' },
-
-
+    { id: 1, name: 'Salad with Wheat & white Egg', imageUrl: '/images/Rectangle 4512.png', },
+    { id: 2, name: 'Salad with Wheat & white Egg', imageUrl: '/images/Rectangle 4512.png', author: 'Ajay',  },
 ];
 
-const Curated = ({ onDeleteCategory }) => {
+const Healthy2 = ({ onDeleteCategory }) => {
     const [showModal, setShowModal] = useState(false);
     const [newCategory, setNewCategory] = useState({ name: '', author: '', duration: '', imageUrl: '' });
     const [PodCastsName, setPodCastName] = useState("");
@@ -37,44 +34,42 @@ const Curated = ({ onDeleteCategory }) => {
 
     return (
         <div className="mt-10">
-            <h1 className="font-semibold text-xl mb-5">Curated:</h1>
             <div className="flex gap-6 rounded-lg">
                 {topPic.map((category) => (
                     <div
                         key={category.id}
-                        className="flex flex-col items-center rounded-2xl h-[218px] w-[124px] bg-white p-1"
+                        className="flex flex-col items-center rounded-2xl h-[290px] w-[200px] bg-white"
                     >
                         <img
                             src={category.imageUrl}
                             alt={category.name}
-                            className="mb-1 w-[185px] h-[98px] object-cover rounded-xl"
+                            className=" w-[200px] h-[200px] object-cover rounded-xl"
                         />
-                        <div className="flex flex-col items-start px-2 rounded-2xl h-[116px] w-[116px] bg-white">
+                        <div className="flex flex-col items-start px-2 rounded-2xl h-[220px] w-[193px] bg-white">
                             <p className="text-md font-semibold">{category.name}</p>
-                            <p className="text-sm text-gray-500">Author: {category.author}</p>
-                            <p className="text-sm text-gray-500">Duration: {category.duration}</p>
                         </div>
-                        <div className="flex space-x-2 mt-2 mr-4">
+                        <div className="flex space-x-2 mb-1 mr-20">
                             <div className="bg-[#FB5458] p-2 rounded-lg" onClick={() => onDeleteCategory(category.id)}>
-                                <FaTrash className="text-white cursor-pointer size-3" />
+                                <FaTrash className="text-white cursor-pointer" />
                             </div>
                             <div className="flex bg-blue p-2 rounded-lg gap-1">
-                                <FaEdit className="text-white cursor-pointer size-4" />
+                                <FaEdit className="text-white cursor-pointer" />
                                 <p className='text-white text-xs'>Edit</p>
                             </div>
                         </div>
                     </div>
                 ))}
                 <div
-                    className="border p-4 flex flex-col items-center justify-center cursor-pointer rounded-2xl h-[116px] w-[116px] bg-white"
-                    onClick={() => handleOpenModal(true)}
+                    className="border p-4 flex flex-col items-center justify-center cursor-pointer rounded-2xl w-[193px] h-[291px] bg-white"
+                    onClick={handleOpenModal}
                 >
                     <FaPlus className="text-3xl text-gray-500 mb-2" />
-                    <p>Add Categories</p>
+                    <p>Add Recipes</p>
                 </div>
             </div>
 
-            <CurratedMOdel
+            {/* Modal for adding new categories */}
+            <TopPicModel
                 isOpen={isWorkoutModalOpen}
                 onClose={handleCloseModal}
                 onSave={handleSaveWorkout}
@@ -87,4 +82,4 @@ const Curated = ({ onDeleteCategory }) => {
     );
 };
 
-export default Curated;
+export default Healthy2;
