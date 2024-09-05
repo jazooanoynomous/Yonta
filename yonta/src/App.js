@@ -15,6 +15,10 @@ import DayDiet from './screens/dayDiet';
 import Questionaris from './screens/questionars';
 import ActivityHome from './screens/Activity/activityHome';
 import FitnessHome from './screens/Fitness/fitnessHome';
+import Ingredient from './screens/ingredient/ingredient';
+import AddIngredient from './screens/ingredient/addIngredient';
+import HealthyRecipes from './screens/healthRecipes/healthyRecipes';
+import AddRecipes from './screens/healthRecipes/addRecipes';
 
 function App() {  
   return (
@@ -38,7 +42,10 @@ function App() {
         <Route path="/questionars" element={<Questionaris/>}/>
         <Route path="/activity" element={<ActivityHome/>}/>
         <Route path="/fitness" element={<FitnessHome/>}/>
-
+        <Route path="/ingredients" element={<Ingredient/>} />
+        <Route path="addingredient" element={<AddIngredient/>}/>
+        <Route path="/healthyrecipes" element={<HealthyRecipes/>}/>
+        <Route path="/addrecipes" element={<AddRecipes/>}/>
 
         </Routes>
 

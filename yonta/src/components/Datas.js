@@ -71,6 +71,11 @@ export const MenuDatas = [
     icon: RiArticleLine, // Document icon
   },
   {
+    title: 'Healthy recipes',
+    path: '/healthyrecipes',
+    icon: RiArticleLine, // Document icon
+  },
+  {
     title: 'Ingredients',
     path: '/ingredients',
     icon: GiNotebook, // Ingredient icon

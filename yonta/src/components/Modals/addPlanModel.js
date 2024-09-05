@@ -11,7 +11,7 @@ const AddPlanModal = ({ isModalOpen, toggleModal, newPlanTitle, setNewPlanTitle,
         <input
           type="text"
           className="border p-4 rounded mb-4 bg-[#F1F4FA] w-[318px] h-[50px]"
-          placeholder="Enter plan category name"
+          placeholder="Special Diet plan"
           value={newPlanTitle}
           onChange={(e) => setNewPlanTitle(e.target.value)}
         />

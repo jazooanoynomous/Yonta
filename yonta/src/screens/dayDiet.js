@@ -4,6 +4,8 @@ import DropMenuDays from '../components/dropMenuDays';
 import AddPlanModal from '../components/Modals/addPlanModel';
 import AddNewFoodModel from '../components/Modals/addNewFoodModel';
 import { FaPlus } from 'react-icons/fa';
+import { FaSave } from "react-icons/fa";
+
 
 
 const DayDiet = () => {
@@ -44,21 +46,13 @@ const DayDiet = () => {
     return (
         <Layout>
             <div className="p-4">
-                <header className="flex justify-between items-center mb-6">
-                    <h1 className="text-2xl font-bold">Diet Plans</h1>
-                    <div className="flex space-x-4">
-                        <input
-                            type="text"
-                            placeholder="Search..."
-                            className="border rounded px-2 py-1"
-                        />
-                        <button
-                            className="bg-blue text-white px-4 py-2 rounded"
-                        >
-                            Add User
-                        </button>
-                    </div>
-                </header>
+                <div className="flex justify-between items-center mb-4">
+                    <h3 className="text-2xl font-bold">
+                        <span className="text-gray-500 font-normal">Nutrition & diet</span>
+                        <span className="text-black"> &gt;Calorie Deficiet plan</span>
+                    </h3>
+
+                </div>
                 <div className="py-10 grid grid-cols-3 gap-y-96">
                     <DropMenuDays
                         title="Day 1"
@@ -102,7 +96,7 @@ const DayDiet = () => {
 
                     {/* Add New button */}
                     <div className="flex justify-center items-center h-[44px] w-[296px] bg-white rounded-lg">
-                    <FaPlus className="text-[#010102] w-6 h-6 mr-3" />
+                        <FaPlus className="text-[#010102] w-6 h-6 mr-3" />
 
                         <button
                             onClick={toggleAddNewFoodModal}
@@ -110,6 +104,15 @@ const DayDiet = () => {
                         >
 
                             New Food
+                        </button>
+                    </div>
+                    <div className='justify-end ml-[900px] '>
+                        <button
+                            className="bg-textgreen text-white w-[100.44px] h-[45px] rounded-lg flex items-center justify-center"
+                            onClick
+                        >
+                            <FaSave className="mr-2" />
+                            Save
                         </button>
                     </div>
                 </div>

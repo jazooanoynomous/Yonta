@@ -19,7 +19,7 @@ const DropdownMenu = ({ title, plans, handleDelete, handleEdit, toggleModal }) =
         </button>
       )}
 
-      <div className={`mt-4 bg-white shadow-md rounded-lg p-4 transition-all duration-300 ${isOpen ? 'block' : 'hidden'}`}>
+      <div className={`mt-4 bg-white rounded-lg p-4 transition-all duration-300 ${isOpen ? 'block' : 'hidden'}`}>
         <div className="flex justify-between items-center mb-4">
           <h2 className="text-xl font-bold">{title}</h2>
           <button onClick={toggleDropdown} className="p-2 rounded">
@@ -35,10 +35,10 @@ const DropdownMenu = ({ title, plans, handleDelete, handleEdit, toggleModal }) =
         <div className="mb-4">
           <div
             onClick={toggleModal}
-            className="p-4 border rounded-lg h-[87px] w-[296px] bg-[#F1F4FA] flex justify-center items-center cursor-pointer"
+            className="p-4 rounded-lg h-[50px] w-[296px] bg-[#F1F4FA] flex justify-center items-center cursor-pointer"
           >
-            <FaPlus className="text-[#1782AF] w-6 h-6" />
-            <span className="ml-2 text-lg text-[#1782AF]">Add New Plan</span>
+            <FaPlus className=" w-6 h-6" />
+            <span className="ml-2 text-lg ">Add New Plan</span>
           </div>
         </div>
         

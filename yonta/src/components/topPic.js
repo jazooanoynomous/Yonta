@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { FaEdit, FaTrash, FaPlus } from 'react-icons/fa';
+import TopPicModel from '../components/Modals/topPicModel'
 
 const topPic = [
     { id: 1, name: 'Category 1', imageUrl: '/images/Rectangle 4556.png', author: 'Ajay', duration: '10:00' },
@@ -9,11 +10,26 @@ const topPic = [
 const TopPicks = ({ onDeleteCategory }) => {
     const [showModal, setShowModal] = useState(false);
     const [newCategory, setNewCategory] = useState({ name: '', author: '', duration: '', imageUrl: '' });
+    const [PodCastsName, setPodCastName] = useState("");
+    const [isWorkoutModalOpen, setIsWorkoutModalOpen] = useState(false);
 
     const handleAddCategory = () => {
-        // Logic to handle adding a new category can be implemented here
         console.log('Category added:', newCategory);
         setShowModal(false);
+    };
+
+    const handleOpenModal = () => {
+        setIsWorkoutModalOpen(true);
+    };
+
+    const handleCloseModal = () => {
+        setIsWorkoutModalOpen(false);
+    };
+
+    const handleSaveWorkout = () => {
+        // Save workout logic
+        handleAddCategory();
+        handleCloseModal();
     };
 
     return (
@@ -48,7 +64,7 @@ const TopPicks = ({ onDeleteCategory }) => {
                 ))}
                 <div
                     className="border p-4 flex flex-col items-center justify-center cursor-pointer rounded-2xl w-[185px] h-[98px] bg-white"
-                    onClick={() => setShowModal(true)}
+                    onClick={handleOpenModal}
                 >
                     <FaPlus className="text-3xl text-gray-500 mb-2" />
                     <p>Add Categories</p>
@@ -56,61 +72,15 @@ const TopPicks = ({ onDeleteCategory }) => {
             </div>
 
             {/* Modal for adding new categories */}
-            {showModal && (
-                <div className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center">
-                    <div className="bg-white p-6 rounded shadow-lg w-80">
-                        <h2 className="text-lg font-bold mb-4">Add New Category</h2>
-                        <input
-                            type="text"
-                            placeholder="Category Name"
-                            value={newCategory.name}
-                            onChange={(e) =>
-                                setNewCategory({ ...newCategory, name: e.target.value })
-                            }
-                            className="border rounded px-2 py-1 mb-4 w-full"
-                        />
-                        <input
-                            type="text"
-                            placeholder="Author"
-                            value={newCategory.author}
-                            onChange={(e) =>
-                                setNewCategory({ ...newCategory, author: e.target.value })
-                            }
-                            className="border rounded px-2 py-1 mb-4 w-full"
-                        />
-                        <input
-                            type="text"
-                            placeholder="Duration"
-                            value={newCategory.duration}
-                            onChange={(e) =>
-                                setNewCategory({ ...newCategory, duration: e.target.value })
-                            }
-                            className="border rounded px-2 py-1 mb-4 w-full"
-                        />
-                        <input
-                            type="text"
-                            placeholder="Image URL"
-                            value={newCategory.imageUrl}
-                            onChange={(e) =>
-                                setNewCategory({ ...newCategory, imageUrl: e.target.value })
-                            }
-                            className="border rounded px-2 py-1 mb-4 w-full"
-                        />
-                        <button
-                            onClick={handleAddCategory}
-                            className="bg-blue-500 text-white px-4 py-2 rounded"
-                        >
-                            Save
-                        </button>
-                        <button
-                            onClick={() => setShowModal(false)}
-                            className="ml-2 bg-gray-300 text-black px-4 py-2 rounded"
-                        >
-                            Cancel
-                        </button>
-                    </div>
-                </div>
-            )}
+            <TopPicModel
+                isOpen={isWorkoutModalOpen}
+                onClose={handleCloseModal}
+                onSave={handleSaveWorkout}
+                workoutName={PodCastsName}
+                setPodCastName={setPodCastName}
+                newCategory={newCategory}
+                setNewCategory={setNewCategory}
+            />
         </div>
     );
 };
