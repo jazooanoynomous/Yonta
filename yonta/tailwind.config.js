@@ -33,7 +33,8 @@ module.exports = {
         lightgray:'#B5B7C0',
         backgroundgray:'#F1F4FA',
         tableheadtext:'#4B4F55',
-        buttonblue:'#3A36DB'
+        buttonblue:'#3A36DB',
+        lightred:"#AA170C"
 
 
 

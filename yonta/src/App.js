@@ -28,7 +28,9 @@ import Notification from './screens/notification/notification';
 import CouponsAdd from './screens/coupons/couponsAdd';
 import AddNotification from './screens/notification/addNotification';
 import Coupons from './screens/coupons/coupons';
-import Report from './screens/reports';
+import Analytics from './screens/analytics';
+import Subscription from './screens/subscription';
+import Product from './screens/product';
 
 function App() {  
   return (
@@ -65,7 +67,9 @@ function App() {
         <Route path="/couponsaddorder" element={<CouponsAddOrder/>}/>
         <Route path="/notification" element={<Notification/>}/>
         <Route path="/addnotification" element={<AddNotification/>}/>
-        <Route path="/report" element={<Report/>}/>
+        <Route path="analytics" element={<Analytics/>}/>
+        <Route path="/subscription" element={<Subscription/>}/>
+        <Route path="/product" element={<Product/>}/>
 
 
         </Routes>

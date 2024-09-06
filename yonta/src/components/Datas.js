@@ -50,6 +50,7 @@ export const MenuDatas = [
     path: '/expertsBoard',
     icon: FaRegGem, // Gem/Diamond icon (same as above)
   }, 
+ 
   {
     title: 'Users',
     path: '/patients',
@@ -66,8 +67,8 @@ export const MenuDatas = [
     icon: GiNotebook, // Notebook icon
   },
   {
-    title: 'Report',
-    path: '/report',
+    title: 'Analtics',
+    path: '/analytics',
     icon: GiNotebook, // Notebook icon
   },
   {
@@ -88,6 +89,11 @@ export const MenuDatas = [
   {
     title: 'Ingredients',
     path: '/ingredients',
+    icon: GiNotebook, // Ingredient icon
+  },
+  {
+    title: 'Product',
+    path: '/product',
     icon: GiNotebook, // Ingredient icon
   },
   {
@@ -262,6 +268,26 @@ export const memberData = [
     gender: 'Male',
     Plan: '12 Months of premium',
     status: 'Active',
+  },
+];
+export const plansData = [
+  {
+    title: 'PREMIUM',
+    price: '₹1,500',
+    features: ['All in one', 'Yoga', 'Home Workout', 'Nutrition', 'Expert Consultation', 'Ecommerce', 'Diet plan'],
+    isPremium: true,
+  },
+  {
+    title: 'BASIC',
+    price: '₹1,000',
+    features: ['Yoga', 'Home Workout', 'Nutrition', 'Expert Consultation', 'Ecommerce', 'Diet plan','Mindfull'],
+    excluded: ['Ecommerce', 'Diet plan',''],
+  },
+  {
+    title: 'STARTER',
+    price: '₹500',
+    features: ['Yoga', 'Home Workout','Mindfull', 'Nutrition', 'Expert Consultation', 'Ecommerce', 'Diet plan',],
+    excluded: ['Nutrition', 'Expert Consultation',  'Diet plan'],
   },
 ];
 export const couponData = [

@@ -6,7 +6,7 @@ import Users from '../components/users'
 import AvgSessionDuration from '../components/avgSession'
 import Layout from '../Layout'
 
-const Report = () => {
+const Analytics = () => {
   const [metricsData, setMetricsData] = useState([]);
 
   useEffect(() => {
@@ -50,4 +50,4 @@ const Report = () => {
   );
 };
 
-export default Report;
+export default Analytics;
