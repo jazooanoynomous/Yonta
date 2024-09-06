@@ -29,6 +29,8 @@ import CouponsAdd from './screens/coupons/couponsAdd';
 import AddNotification from './screens/notification/addNotification';
 import Coupons from './screens/coupons/coupons';
 import Report from './screens/reports';
+import AdminDashboard from './screens/settings/adminDashboard';
+import AddAdmin from './screens/settings/addAdmin';
 
 function App() {  
   return (
@@ -66,6 +68,9 @@ function App() {
         <Route path="/notification" element={<Notification/>}/>
         <Route path="/addnotification" element={<AddNotification/>}/>
         <Route path="/report" element={<Report/>}/>
+        <Route path="/settings" element={<AdminDashboard/>}/>
+        <Route path="/settings/addadmin" element={<AddAdmin/>}/>
+
 
 
         </Routes>

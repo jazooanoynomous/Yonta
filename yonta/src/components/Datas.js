@@ -118,6 +118,22 @@ export const MenuDatas = [
   },
 
 ];
+export const adminInfo = {
+  profile: {
+      fullName: "David Gupta",
+      mobile: "+44 (13) 1234 123",
+      email: "alchemistmanips@gmail.com",
+      location: "United States",
+      image:'/images/hero.png'
+  },
+  subAdmins: [
+      { name: "Esthera Jackson", email: "EstheraJackson@gmail.com", product: "Ecommerce" },
+      { name: "Esthera Jackson", email: "EstheraJackson@gmail.com", product: "Expert" },
+      { name: "Esthera Jackson", email: "EstheraJackson@gmail.com", product: "Vendor" },
+      { name: "Esthera Jackson", email: "EstheraJackson@gmail.com", product: "Vendor" }
+  ],
+};
+
 export const community = [
   {
     id: 1,
@@ -664,83 +680,23 @@ export const sortsDatas = {
 
 
 export const expertsTypeData = [
-  {
-    id: 1,
-    name: 'Diet Expert',
-  },
-  {
-    id: 2,
-    name: 'Physio Expert',
-  },
-  {
-    id: 3,
-    name: 'Fitness Expert',
-  },
-  {
-    id: 4,
-    name: 'Medical Expert',
-  },
 
+  { id: 1,name: 'Dietician', value: 7 },
+    {id: 2, name: 'Physio', value: 30 },
+    {id: 3, name: 'Fitness', value: 45 },
+    {id: 4, name: 'Medical', value: 25 },
+];
+export const regionData = [
+  { name: 'East', value: 25 },
+  { name: 'West', value: 30 },
+  { name: 'North', value: 25 },
+  { name: 'South', value: 20 },
 ];
 
 
-
 export const appointmentsData = [
-  {
-    id: 1,
-    time: '2 hrs later',
-    user: memberData[4],
-    from: '10:00 AM',
-    to: '12:00 PM',
-    hours: 2,
-    status: 'Pending',
-    doctor: memberData[0],
-    date: 'Jun 12, 2021',
-  },
-  {
-    id: 2,
-    time: '1 hrs ago',
-    user: memberData[5],
-    from: '13:00 Pm',
-    to: '18:00 PM',
-    hours: 5,
-    status: 'Cancel',
-    doctor: memberData[1],
-    date: 'Feb 24, 2021',
-  },
-  {
-    id: 3,
-    time: '2 hrs ago',
-    user: memberData[6],
-    from: '10:00 AM',
-    to: '12:00 PM',
-    hours: 2,
-    status: 'Approved',
-    doctor: memberData[2],
-    date: 'Mar 12, 2023',
-  },
-  {
-    id: 4,
-    time: '3 hrs later',
-    user: memberData[7],
-    from: '06:00 AM',
-    to: '08:00 AM',
-    hours: 3,
-    status: 'Pending',
-    doctor: memberData[3],
-    date: 'Apr 06, 2023',
-  },
-  {
-    id: 5,
-    time: '4 hrs ago',
-    user: memberData[3],
-    from: '10:00 AM',
-    to: '12:00 PM',
-    hours: 7,
-    status: 'Approved',
-    doctor: memberData[4],
-    date: 'May 18, 2023',
-  },
+  { name: 'Voice Call', value: 70 },
+  { name: 'Video Call', value: 30 },
 ];
 
 export const transactionData = [
@@ -1262,50 +1218,39 @@ export const expertData = [
     id: 1,
     name: 'Dr. Emma Thompson',
     description: 'A balanced diet can provide your body with the nutrients it needs to function optimally and maintain overall health.',
+    value: 7 
   },
   {
     id: 2,
     name: 'Dr. Liam Johnson',
     description: 'Understanding the role of physical activity in maintaining a healthy lifestyle and its impact on mental well-being.',
+    value: 10 
   },
   {
     id: 3,
     name: 'Dr. Olivia Martinez',
     description: 'Effective strategies for stress management and how it influences physical and mental health.',
+    value: 4
   },
   {
     id: 4,
     name: 'Dr. Noah Brown',
     description: 'The importance of hydration and its role in metabolic processes and overall bodily functions.',
+    value: 2
   },
   {
     id: 5,
     name: 'Dr. Ava Wilson',
     description: 'Nutritional guidelines for different age groups and how dietary needs change throughout life.',
+    value: 5
   },
-  {
-    id: 6,
-    name: 'Dr. Ethan Garcia',
-    description: 'The impact of sleep on health and practical tips for improving sleep quality and duration.',
-  },
-  {
-    id: 7,
-    name: 'Dr. Isabella Lee',
-    description: 'How to create a personalized fitness plan that aligns with individual health goals and fitness levels.',
-  },
-  {
-    id: 8,
-    name: 'Dr. Mason Davis',
-    description: 'The role of mental health in overall wellness and techniques for maintaining a positive mental state.',
-  },
-  {
-    id: 9,
-    name: 'Dr. Sophia Rodriguez',
-    description: 'Exploring the benefits of mindfulness and meditation practices for stress reduction and mental clarity.',
-  },
-  {
-    id: 10,
-    name: 'Dr. Jacob Martinez',
-    description: 'The importance of regular health screenings and preventive care in maintaining long-term health and wellness.',
-  },
+  
 ];
+
+
+export  const MetricCardData = [
+    { title: 'Net Revenue', value: '₹ 8,96,065', change: '+10.05%', description: 'since last month' },
+    { title: 'App Downloads', value: '6,065 M', change: '+5.03%', description: 'from last year' },
+    { title: 'Avg Session Duration', value: '6,065 Mins', change: '+8.00%', description: 'in the last 6 months' },
+    { title: 'Monthly Logins', value: '6,065', change: '+3.5%', description: 'from last month' },
+  ];

@@ -20,7 +20,7 @@ module.exports = {
         dry: '#F8F9FA',
         greyed: '#F3F5F7',
         red:'#FF8F6B',
-        green:'#5B93FF',
+        green:'#50E189',
         bluetext:'#5B93FF',
         pinktext:'#FF8F6B',
         textgreen:'#2EDB72',
@@ -33,7 +33,7 @@ module.exports = {
         lightgray:'#B5B7C0',
         backgroundgray:'#F1F4FA',
         tableheadtext:'#4B4F55',
-        buttonblue:'#3A36DB'
+        buttonblue:'#3A36DB',
 
 
 
