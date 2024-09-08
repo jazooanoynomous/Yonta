@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { ArrowLeft } from 'lucide-react';
-import { Button, Input } from '../components/Form';
-import Layout from "../Layout";
+import Layout from "../../Layout";
+import Input, { Button } from '../../components/Form';
 
 const AddExpertBoard = () => {
   const [fullName, setFullName] = useState('');

@@ -325,14 +325,14 @@ export function ServiceTable({ data, onEdit }) {
 }
 
 // patient table
-export function PatientTable({ data, functions, used }) {
+export function UsersTable({ data, functions, used }) {
   const DropDown1 = !used
     ? [
         {
           title: "View",
           icon: FiEye,
-          onClick: (data) => {
-            functions.preview(data.id);
+          onClick: (item) => {
+            functions.preview(item.id);
           },
         },
         {
@@ -347,13 +347,15 @@ export function PatientTable({ data, functions, used }) {
         {
           title: "View",
           icon: FiEye,
-          onClick: (data) => {
-            functions.preview(data.id);
+          onClick: (item) => {
+            functions.preview(item.id);
           },
         },
       ];
+
   const thclasse = "text-start text-sm font-medium py-3 px-2 whitespace-nowrap";
   const tdclasse = "text-start text-xs py-4 px-2 whitespace-nowrap";
+
   return (
     <table className="table-auto w-full">
       <thead className="bg-dry rounded-md overflow-hidden">
@@ -362,13 +364,13 @@ export function PatientTable({ data, functions, used }) {
           <th className={thclasse}>Email</th>
           <th className={thclasse}>Phone Number</th>
           <th className={thclasse}>Gender</th>
-          <th className={thclasse}>Plan</th>
+          <th className={thclasse}>Main Goal</th>
           <th className={thclasse}>Status</th>
           <th className={thclasse}>Actions</th>
         </tr>
       </thead>
       <tbody>
-        {data.map((item, index) => (
+        {data.map((item) => (
           <tr
             key={item.id}
             className="border-b border-border hover:bg-greyed transitions"
@@ -377,13 +379,15 @@ export function PatientTable({ data, functions, used }) {
               <div className="flex gap-4 items-center">
                 <span className="w-12">
                   <img
-                    src={item.image}
-                    alt={item.title}
+                    src={item.profilePic || "default-avatar.png"} // Handle null profilePic
+                    alt={`${item.firstName} ${item.lastName}`}
                     className="w-full h-12 rounded-full object-cover border border-border"
                   />
                 </span>
                 <div>
-                  <h4 className="text-sm font-medium">{item.title}</h4>
+                  <h4 className="text-sm font-medium">
+                    {item.firstName} {item.lastName}
+                  </h4>
                 </div>
               </div>
             </td>
@@ -400,11 +404,11 @@ export function PatientTable({ data, functions, used }) {
                 {item.gender}
               </span>
             </td>
-            <td className={tdclasse}>{item.Plan}</td>
+            <td className={tdclasse}>{item.mainGoal}</td>
             <td className={tdclasse}>
               <span
                 className={`py-1 px-4 ${
-                  item.status === "Active" ? "text-textgreen" : " text-textred"
+                  item.status === "Active" ? "text-textgreen" : "text-textred"
                 } bg-opacity-10 text-xs rounded-xl`}
               >
                 {item.status}
@@ -862,88 +866,180 @@ export function NotificationTable({ data, functions, used }) {
   );
 }
 
-export function ExpertTable({ data, functions }) {
-  const thclasse = "text-start text-sm font-medium py-3 px-2 whitespace-nowrap";
-  const tdclasse = "text-start text-xs py-4 px-2 whitespace-nowrap";
+export function AppointmentsTable({ data, functions, used }) {
+  const DropDown1 = !used
+    ? [
+        {
+          title: "View",
+          icon: FiEye,
+          onClick: (data) => {
+            functions.preview(data.id);
+          },
+        },
+        {
+          title: "Delete",
+          icon: RiDeleteBin6Line,
+          onClick: () => {
+            toast.error("This feature is not available yet");
+          },
+        },
+      ]
+    : [
+        {
+          title: "View",
+          icon: FiEye,
+          onClick: (data) => {
+            functions.preview(data.id);
+          },
+        },
+      ];
 
   return (
-    <table className="table-auto w-full">
-      <thead className="rounded-md">
-        <tr>
-          <th
-            className={`relative ${thclasse}`}
-            style={{ width: "1061px", height: "19px" }}
-          >
-            <span className="flex items-center gap-1 pr-1">Name</span>
-          </th>
-          <th
-            className={`relative ${thclasse}`}
-            style={{ width: "82px", height: "19px" }}
-          >
-            <span className="flex items-center gap-1">Description</span>
-          </th>
-          <th
-            className={`relative ${thclasse}`}
-            style={{ width: "60px", height: "19px" }}
-          >
-            <span className="flex items-center gap-1">Edit/Save</span>
-          </th>
-          <th
-            className={`relative ${thclasse}`}
-            style={{ width: "102px", height: "19px" }}
-          >
-            <span className="flex items-center gap-1">Delete/Cancel</span>
-          </th>
-        </tr>
-      </thead>
-      <tbody className="space-y-2.5">
-        {data.map((item) => (
-          <tr
-            key={item.id}
-            className="  bg-white h-[60px] mb-[10px] rounded-xl "
-          >
-            <td
-              className={tdclasse}
-              style={{ width: "1103px", marginBottom: "10px" }}
-            >
+    <div className="p-6 rounded-lg bg-white">
+      <table className="w-full border-separate border-spacing-y-4 px-4 h-[60px] rounded-[10px]">
+        <thead>
+          <tr className="text-left text-[12px] text-greytext">
+            <th className="px-4">User Name</th>
+            <th className="px-4">Appointment ID</th>
+            <th className="px-4">Phone Number</th>
+            <th className="px-4">Slot</th>
+            <th className="px-4">Time</th>
+            <th className="px-4">Appointment</th>
+            <th className="px-4">Price</th>
+            <th className="px-4">Yonta</th>
+            <th className="px-4">Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          {data.map((item, index) => (
+            <tr key={index} className="bg-backgroundgray relative h-[60px]">
               <div className="flex gap-4 items-center">
                 <span className="w-12">
                   <img
-                    src={item.image}
-                    alt={item.name}
-                    className="w-full h-12 rounded-full object-cover border  border-gray-300"
+                    src={item.profilePic || "/images/hero.png"} // Handle null profilePic
+                    alt={`${item.Username}`}
+                    className="w-full h-12 rounded-full object-cover border border-border"
                   />
                 </span>
                 <div>
-                  <h4 className="text-sm font-medium">{item.name}</h4>
+                  <h4 className="text-sm font-medium">
+                    {item.Username}
+                  </h4>
                 </div>
               </div>
-            </td>
-            <td className={tdclasse}>
-              <p className="text-xs text-gray-700">{item.description}</p>
-            </td>
-            <td className={tdclasse}>
-              <button
-                onClick={() => functions.edit(item.id)}
-                className="bg-blue-500 text-white bg-blue px-2 py-1 rounded hover:bg-blue-600 flex items-center justify-center"
-              >
-                <FiEdit />
-                Edit
-              </button>
-            </td>
-            <td className={tdclasse}>
-              <button
-                onClick={() => functions.delete(item.id)}
-                className="bg-red-500 text-white bg-red px-2 py-1 rounded hover:bg-red-600 flex items-center justify-center"
-              >
-                <FiTrash2 />
-                Delete
-              </button>
-            </td>
+              <td className="py-4 px-4 text-sm rounded-l-lg">
+                {item.AppointmentID}
+              </td>
+              <td className="py-4 px-4 text-sm">{item.PhoneNumber}</td>
+              <td className="py-4 px-4 text-sm">{item.Slot}</td>
+              <td className="py-4 px-4 text-sm">{item.Time}</td>
+              <td className="py-4 px-4 text-sm">{item.Appointment}</td>
+              <td className="py-4 px-4 text-sm">{item.Price}</td>
+              <td className="py-4 px-4 text-sm">{item.Yonta}</td>
+              <td className="py-4 px-4 rounded-r-lg">
+                <MenuSelect datas={DropDown1} item={item}>
+                  <div className="text-main text-xl py-2 px-4">
+                    <BiDotsHorizontalRounded />
+                  </div>
+                </MenuSelect>
+              </td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+  );
+}
+
+export function ExpertTable({ data, functions }) {
+  const navigate = useNavigate();
+
+  const thclass = "px-4 text-left text-sm font-medium text-gray-500";
+  const tdclass = "py-4 px-4 text-sm text-gray-700";
+
+  return (
+    <div className="p-6 rounded-lg">
+      <table className="w-full border-separate border-spacing-y-4 px-4 bg-white ">
+        <thead>
+          <tr className="text-left text-sm text-gray-500">
+            <th className={thclass} style={{ width: "200px" }}>
+              Name
+            </th>
+            <th className={thclass} style={{ width: "150px" }}>
+              Phone number
+            </th>
+            <th className={thclass} style={{ width: "150px" }}>
+              Category
+            </th>
+            <th className={thclass} style={{ width: "100px" }}>
+              Ratings
+            </th>
+            <th className={thclass} style={{ width: "100px" }}>
+              Slot Price
+            </th>
+            <th className={thclass} style={{ width: "200px" }}>
+              Location
+            </th>
+            <th className={thclass} style={{ width: "150px" }}>
+              Actions
+            </th>
           </tr>
-        ))}
-      </tbody>
-    </table>
+        </thead>
+        <tbody>
+          {data.map((item, index) => (
+            <tr
+              key={index}
+              className="bg-backgroundgray rounded-[14px] h-[60px] hover:bg-gray-50 cursor-pointer"
+              onClick={() =>
+                navigate("/expert-profile", { state: { expert: item } })
+              } // Navigate on row click
+            >
+              <td className={tdclass}>
+                <div className="flex items-center">
+                  <img
+                    src={item.profilePicture}
+                    alt={item.name}
+                    className="w-12 h-12 rounded-full object-cover border border-gray-300 mr-3"
+                  />
+                  <span className="font-medium">{item.name}</span>
+                </div>
+              </td>
+              <td className={tdclass}>{item.mobileNumber}</td>
+              <td className={tdclass}>{item.category}</td>
+              <td className={tdclass}>{item.rating.toFixed(1)}</td>
+              <td className={tdclass}>${item.slotPrice}</td>
+              <td className={tdclass}>{item.location}</td>
+              <td
+                className={
+                  tdclass + " flex items-center justify-center space-x-2"
+                }
+              >
+                <button
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    functions.edit(item.id);
+                  }}
+                  className="bg-blue text-white px-2 py-1 rounded hover:bg-blue flex items-center"
+                >
+                  <FiEdit className="mr-1" />
+                  Edit
+                </button>
+                <button
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    functions.delete(item.id);
+                  }}
+                  className="bg-red text-white px-2 py-1 rounded hover:bg-red flex items-center"
+                >
+                  <FiTrash2 className="mr-1" />
+                  Delete
+                </button>
+              </td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
   );
 }
 

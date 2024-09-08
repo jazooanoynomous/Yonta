@@ -1,28 +1,52 @@
-import React from "react";
-import Layout from "../Layout";
+import React, { useEffect, useState } from 'react';
+import axios from 'axios';
+import Layout from '../Layout';
 import {
   appointmentsData,
-  expertData,
   expertsTypeData,
-  memberData,
   MetricCardData,
   regionData,
-} from "../components/Datas";
-import { useNavigate } from "react-router-dom";
-import { BiPlus } from "react-icons/bi";
-
-import { Button } from "../components/Form";
-import { PatientTable } from "../components/Tables";
-import { FaSearch } from "react-icons/fa";
-import StatsCard from "../components/statsCard";
-import MetricCard from "../components/metricCard";
+} from '../components/Datas';
+import { useNavigate } from 'react-router-dom';
+import { BiPlus } from 'react-icons/bi';
+import { BASEURL } from '../utils/constant';
+import { Button } from '../components/Form';
+import { UsersTable } from '../components/Tables';
+import { FaSearch } from 'react-icons/fa';
+import StatsCard from '../components/statsCard';
+import MetricCard from '../components/metricCard';
 
 function Users() {
   const navigate = useNavigate();
-  // preview
+  const [userData, setUserData] = useState([]); // State to store the user data
+  const [loading, setLoading] = useState(true); // State to manage loading
+
+  // Function to fetch user data
+  const fetchUserData = async () => {
+    try {
+      const response = await axios.get(`${BASEURL}users`, {
+        headers: {
+          'VerifyMe': 'RGVlcGFrS3VzaHdhaGE5Mzk5MzY5ODU0', // Add your custom header here
+        }
+      });
+      setUserData(response.data.users || []); // Set the user data in state
+    } catch (error) {
+      console.error('Error fetching users:', error);
+    } finally {
+      setLoading(false); // Stop the loading state
+    }
+  };
+
+  useEffect(() => {
+    fetchUserData(); // Fetch the user data when the component mounts
+  }, []);
+
+  // Preview function
   const previewPayment = (id) => {
     navigate(`/patients/preview/${id}`);
   };
+
+  console.log('User data:', userData);
 
   return (
     <Layout>
@@ -50,26 +74,26 @@ function Users() {
         </div>
       </div>
       <div className="flex space-x-4">
-      <div className="bg-white p-3 rounded-[16px] h-[254px] space-y-[12px] w-[219px] ">
-        <MetricCard
-          title={MetricCardData[0].title}
-          value={MetricCardData[0].value}
-        />
-        <MetricCard
-          title={MetricCardData[0].title}
-          value={MetricCardData[0].value}
-        />
-      </div>
+        <div className="bg-white p-3 rounded-[16px] h-[254px] space-y-[12px] w-[219px] ">
+          <MetricCard
+            title={MetricCardData[0].title}
+            value={MetricCardData[0].value}
+          />
+          <MetricCard
+            title={MetricCardData[0].title}
+            value={MetricCardData[0].value}
+          />
+        </div>
 
-      <div className="flex space-x-4 h-[254px] p-4 bg-white rounded-[10px]">
-        <StatsCard title="Total Experts" total={42703} data={expertsTypeData} />
-        <StatsCard
-          title="Total Appointment"
-          total={61065}
-          data={appointmentsData}
-        />
-        <StatsCard title="Region" total={4} data={regionData} />
-      </div>
+        <div className="flex space-x-4 h-[254px] p-4 bg-white rounded-[10px]">
+          <StatsCard title="Total Experts" total={42703} data={expertsTypeData} />
+          <StatsCard
+            title="Total Appointment"
+            total={61065}
+            data={appointmentsData}
+          />
+          <StatsCard title="Region" total={4} data={regionData} />
+        </div>
       </div>
       <div
         data-aos="fade-up"
@@ -78,15 +102,19 @@ function Users() {
         data-aos-offset="200"
         className="bg-white my-8 rounded-xl border-[1px] border-border p-5"
       >
-        <div className="mt-8 w-full overflow-x-scroll">
-          <PatientTable
-            data={memberData}
-            functions={{
-              preview: previewPayment,
-            }}
-            used={false}
-          />
-        </div>
+        {loading ? (
+          <p>Loading...</p> // Show loading state while data is being fetched
+        ) : (
+          <div className="mt-8 w-full overflow-x-scroll">
+            <UsersTable
+              data={userData} // Pass the users array here
+              functions={{
+                preview: previewPayment,
+              }}
+              used={false}
+            />
+          </div>
+        )}
       </div>
     </Layout>
   );

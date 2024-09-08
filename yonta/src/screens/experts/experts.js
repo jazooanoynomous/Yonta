@@ -1,18 +1,21 @@
 import React, { useState } from "react";
-import Layout from "../Layout";
-import { expertData, appointmentsData,
+import Layout from "../../Layout";
+import {
+  appointmentsData,
   expertsTypeData,
   memberData,
   MetricCardData,
-  regionData, } from "../components/Datas";
+  regionData,
+  ExpertData,
+} from "../../components/Datas";
 import { useNavigate } from "react-router-dom";
 import { BiPlus } from "react-icons/bi";
-import { Button } from "../components/Form";
-import { ExpertTable } from "../components/Tables";
+import { Button } from "../../components/Form";
+import { ExpertTable } from "../../components/Tables";
 import { FaSearch } from "react-icons/fa";
-import AddExpertsModal from "../components/Modals/addExperts";
-import StatsCard from "../components/statsCard";
-import MetricCard from "../components/metricCard";
+import AddExpertsModal from "../../components/Modals/addExperts";
+import StatsCard from "../../components/statsCard";
+import MetricCard from "../../components/metricCard";
 
 function Experts() {
   const navigate = useNavigate();
@@ -62,26 +65,30 @@ function Experts() {
         />
       </div>
       <div className="flex space-x-4">
-      <div className="bg-white p-3 rounded-[16px] h-[254px] space-y-[12px] w-[219px] ">
-        <MetricCard
-          title={MetricCardData[0].title}
-          value={MetricCardData[0].value}
-        />
-        <MetricCard
-          title={MetricCardData[0].title}
-          value={MetricCardData[0].value}
-        />
-      </div>
+        <div className="bg-white p-3 rounded-[16px] h-[254px] space-y-[12px] w-[219px] ">
+          <MetricCard
+            title={MetricCardData[0].title}
+            value={MetricCardData[0].value}
+          />
+          <MetricCard
+            title={MetricCardData[0].title}
+            value={MetricCardData[0].value}
+          />
+        </div>
 
-      <div className="flex space-x-4 h-[254px] p-4 bg-white rounded-[10px]">
-        <StatsCard title="Total Experts" total={42703} data={expertsTypeData} />
-        <StatsCard
-          title="Total Appointment"
-          total={61065}
-          data={appointmentsData}
-        />
-        <StatsCard title="Region" total={4} data={regionData} />
-      </div>
+        <div className="flex space-x-4 h-[254px] p-4 bg-white rounded-[10px]">
+          <StatsCard
+            title="Total Experts"
+            total={42703}
+            data={expertsTypeData}
+          />
+          <StatsCard
+            title="Total Appointment"
+            total={61065}
+            data={appointmentsData}
+          />
+          <StatsCard title="Region" total={4} data={regionData} />
+        </div>
       </div>
       <div
         data-aos="fade-up"
@@ -92,7 +99,7 @@ function Experts() {
       >
         <div className="mt-8 w-full overflow-x-scroll">
           <ExpertTable
-            data={expertData}
+            data={ExpertData}
             functions={{
               preview: previewPayment,
             }}

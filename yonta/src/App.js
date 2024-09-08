@@ -9,8 +9,8 @@ import PodCasts from './screens/poscasts';
 import DietPlans from './screens/dietPlans';
 import AddUser from './screens/addUser';
 import AddWorkout from './screens/Activity/addWorkout';
-import Experts from './screens/experts';
-import AddExpertBoard from './screens/addExpertBoard';
+import Experts from './screens/experts/experts';
+import AddExpertBoard from './screens/experts/addExpertBoard';
 import DayDiet from './screens/dayDiet';
 import Questionaris from './screens/questionars';
 import ActivityHome from './screens/Activity/activityHome';
@@ -34,6 +34,9 @@ import AddAdmin from './screens/settings/addAdmin';
 import Analytics from './screens/analytics';
 import Subscription from './screens/subscription';
 import Product from './screens/product';
+import VideoHome from './screens/videos/videohome';
+import ExpertProfileScreen from './screens/experts/expertProfile';
+import ECommerce from './screens/ecommerce/eCommerce';
 
 function App() {  
   return (
@@ -52,6 +55,7 @@ function App() {
         <Route path="/dashboard" element={<Dashboard/>} />
         <Route path="/addUser" element={<AddUser/>}/>
         <Route path="/experts" element={<Experts/>}/>
+        <Route path="/expert-profile" element={<ExpertProfileScreen/>}/>
         <Route path="/expertsBoard" element={<AddExpertBoard/>}/>
         <Route path="/dayDiet" element={<DayDiet/>} />
         <Route path="/questionars" element={<Questionaris/>}/>
@@ -77,6 +81,10 @@ function App() {
         <Route path="analytics" element={<Analytics/>}/>
         <Route path="/subscription" element={<Subscription/>}/>
         <Route path="/product" element={<Product/>}/>
+        <Route path="/videos" element={<VideoHome/>}/>
+        <Route path="/store" element={<ECommerce/>}/>
+
+
 
 
         </Routes>
