@@ -25,7 +25,7 @@ module.exports = {
         pinktext:'#FF8F6B',
         textgreen:'#2EDB72',
         textred:'#FB5458',
-        // bluetext:'#5D4CFF',
+        bluetext:'#5D4CFF',
         menubg:'#F3F2FF',
         greytext:'#838A95',
         blue:'#5A4BDA',

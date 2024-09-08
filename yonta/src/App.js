@@ -37,7 +37,6 @@ import Product from './screens/product';
 import VideoHome from './screens/videos/videohome';
 import ExpertProfileScreen from './screens/experts/expertProfile';
 import ECommerce from './screens/ecommerce/eCommerce';
-import OrderDetail from './screens/ecommerce/orderDetail';
 
 function App() {  
   return (
@@ -83,9 +82,7 @@ function App() {
         <Route path="/subscription" element={<Subscription/>}/>
         <Route path="/product" element={<Product/>}/>
         <Route path="/videos" element={<VideoHome/>}/>
-        <Route path="/orders" element={<ECommerce/>}/>
-        <Route path="/orderdetail" element={<OrderDetail/>}/>
-
+        <Route path="/store" element={<ECommerce/>}/>
 
 
 
