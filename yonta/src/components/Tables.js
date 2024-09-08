@@ -865,6 +865,52 @@ export function NotificationTable({ data, functions, used }) {
     </div>
   );
 }
+export function VendorProductListTable({ data, functions, used }) {
+    
+  return (
+    <div className="p-6 rounded-lg">
+      <>
+        <table className="w-full  border-separate border-spacing-y-4 px-4 h-[60px] rounded-[10px]">
+          <thead>
+            <tr className="text-left text-sm text-gray-500">
+              <th className="px-4">Item</th>
+              <th className="px-4">Weight</th>
+
+              <th className="px-4">Flavour</th>
+              <th className="px-4">Expiry Date</th>
+              <th className="px-4">Stock</th>
+              <th className="px-4">MRP</th>
+              <th className="px-4">Price</th>
+            </tr>
+          </thead>
+          <tbody>
+            {data.map((item, index) => (
+              <tr key={index} className="bg-backgroundgray relative h-[60px]">
+                <td className="py-4 px-4 text-sm rounded-l-lg flex mt-4">
+                <img
+                    src={item.image}
+                    alt={item.name}
+                    className="w-12 h-12 rounded-2xl bg-white mr-3 p-2"
+                  />
+                  {item.item} 
+                </td>
+                <td className="py-4 px-4 text-sm">{item.weight}</td>
+                <td className="py-4 px-4 text-sm">{item.flavour}</td>
+
+                <td className="py-4 px-4 text-sm">{item.expiryDate}</td>
+                <td className="py-4 px-4 text-sm">{item.stock}</td>
+                <td className="py-4 px-4 text-sm">{item.mrp}</td>
+
+                <td className="py-4 px-4 text-sm">{item.price}</td>
+                
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </>
+    </div>
+  );
+}
 export function VendorListTable({ data, functions, used }) {
   const DropDown1 = !used
     ? [

@@ -28,6 +28,7 @@ import { BsGraphUp } from 'react-icons/bs';
 import {  RiArticleLine } from 'react-icons/ri';
 import { GiNotebook } from 'react-icons/gi';
 import { BiNews } from 'react-icons/bi';
+import { Subtitles } from 'lucide-react';
 
 export const MenuDatas = [
   {
@@ -48,6 +49,12 @@ export const MenuDatas = [
   {
     title: 'Add Expert',
     path: '/expertsBoard',
+    icon: FaRegGem, // Gem/Diamond icon (same as above)
+  
+  }, 
+  {
+    title: 'E Commerce',
+    path: '/store',
     icon: FaRegGem, // Gem/Diamond icon (same as above)
   }, 
  
@@ -187,6 +194,7 @@ export const orders = [
   },
   // Add more orders here...
 ];
+
 
 export const adminInfo = {
   profile: {
@@ -636,23 +644,54 @@ export const vendorListdata=[
     name: "MuscleBlaze Biozyme Performance Whey, 2 kg (4.4 lb), Rich Chocolate",
     price: "₹ 4,299",
     unitsSold: "3956 units sold",
-    image: "https://via.placeholder.com/100", // Replace this with actual product image link
+    image: "/images/1 (1).png", // Replace this with actual product image link
   },
   {
     id: 3,
     name: "MuscleBlaze Biozyme Performance Whey, 2 kg (4.4 lb), Rich Chocolate",
     price: "₹ 4,299",
     unitsSold: "3956 units sold",
-    image: "https://via.placeholder.com/100", // Replace this with actual product image link
+    image: "/images/1 (1).png", // Replace this with actual product image link
   },
   {
     id: 4,
     name: "MuscleBlaze Biozyme Performance Whey, 2 kg (4.4 lb), Rich Chocolate",
     price: "₹ 4,299",
     unitsSold: "3956 units sold",
-    image: "https://via.placeholder.com/100", // Replace this with actual product image link
+    image: "/images/1 (1).png", // Replace this with actual product image link
   },
 ];
+ export const productData1 = [
+  {
+    id: 1,
+    name: "MuscleBlaze Biozyme Performance Whey",
+    weight: "2 KG",
+    flavour: "Rich Chocolate",
+    expiryDate: "12/10/2021",
+    stock: 24,
+    mrp: "₹ 3,099",
+    price: "₹ 2,799",
+    category: "Protein", // Add category
+    subCategory: "Whey", // Add subcategory
+    image: "/path/to/image1", // Replace with actual image path
+  },
+  {
+    id: 2,
+    name: "MuscleBlaze Biozyme Isolate Whey",
+    weight: "2 KG",
+    flavour: "Vanilla",
+    expiryDate: "15/11/2022",
+    stock: 18,
+    mrp: "₹ 4,199",
+    price: "₹ 3,999",
+    category: "Protein", // Add category
+    subCategory: "Isolate", // Add subcategory
+    image: "/path/to/image2",
+  },
+  // Add more products with different categories and subcategories
+];
+
+
 
 export const notificationsData = [
   {
@@ -703,6 +742,68 @@ export const notificationsData = [
     link: "/notification6",
     content: "Book your consultation with our top nutritionists and experts. Get personalized advice every month!"
   }
+];
+export const VendorProductListData = [
+  {
+    image:'/images/1 (1).png',
+    item: "MuscleBlaze Biozyme Performance Whey",
+    weight: "2KG",
+    flavour: "rich Chocolate",
+    expiryDate: "23/04/2016",
+    stock:"24",
+    mrp: "₹ 3,099",
+    price: "₹ 2,799"
+  },
+  {
+    image:'/images/1 (1).png',
+    item: "MuscleBlaze Biozyme Performance Whey",
+    weight: "2KG",
+    flavour: "rich Chocolate",
+    expiryDate: "23/04/2016",
+    stock:"24",
+    mrp: "₹ 3,099",
+    price: "₹ 2,799"
+  },
+  {
+    image:'/images/1 (1).png',
+    item: "MuscleBlaze Biozyme Performance Whey",
+    weight: "2KG",
+    flavour: "rich Chocolate",
+    expiryDate: "23/04/2016",
+    stock:"24",
+    mrp: "₹ 3,099",
+    price: "₹ 2,799"
+  },
+  {
+    image:'/images/1 (1).png',
+    item: "MuscleBlaze Biozyme Performance Whey",
+    weight: "2KG",
+    flavour: "rich Chocolate",
+    expiryDate: "23/04/2016",
+    stock:"24",
+    mrp: "₹ 3,099",
+    price: "₹ 2,799"
+  },
+  {
+    image:'/images/1 (1).png',
+    item: "MuscleBlaze Biozyme Performance Whey",
+    weight: "2KG",
+    flavour: "rich Chocolate",
+    expiryDate: "23/04/2016",
+    stock:"24",
+    mrp: "₹ 3,099",
+    price: "₹ 2,799"
+  },
+  {
+    image:'/images/1 (1).png',
+    item: "MuscleBlaze Biozyme Performance Whey",
+    weight: "2KG",
+    flavour: "rich Chocolate",
+    expiryDate: "23/04/2016",
+    stock:"24",
+    mrp: "₹ 3,099",
+    price: "₹ 2,799"
+  },
 ];
 
 export const sortsDatas = {

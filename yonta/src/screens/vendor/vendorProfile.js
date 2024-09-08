@@ -6,7 +6,8 @@ import OrderRow from "../../components/orderRow";
 import BarChartComponent from "../../components/barChart";
 import { dataMonth } from "../../components/Datas";
 import { products } from "../../components/Datas";
-
+import { useNavigate } from 'react-router-dom';
+import { FaPlus } from "react-icons/fa";
 // Reusable Card Component
 const Card = ({ title, children }) => {
     return (
@@ -71,6 +72,11 @@ const VendorProfile = () => {
     const [commission, setCommission] = useState(30);
     const [filterStatus, setFilterStatus] = useState('All');
     const [category, setCategory] = useState('Protein');
+    const navigate = useNavigate();
+
+    const handleAddUserClick = () => {
+        navigate('/vendorinfo'); // Navigate to the '/add-user' page
+    };
 
 
     const filteredOrders = filterStatus === 'All'
@@ -162,79 +168,97 @@ const VendorProfile = () => {
                             </select>
                         </div>
                     </div>
-                
 
-                <div className=" rounded-lg p-4">
-                    <div className="grid grid-cols-9 font-semibold text-gray-600 mb-4 text-xs">
-                        <div className="col-span-1">Order ID</div>
-                        <div className="col-span-2">Item</div>
-                        <div className="col-span-1">Customer Name</div>
-                        <div className="col-span-1">Date</div>
-                        <div className="col-span-1">Payment Info</div>
-                        <div className="col-span-1">Price</div>
-                        <div className="col-span-1">Yonta Commission</div>
-                        <div className="col-span-1">Status</div>
-                    </div>
 
-                    {filteredOrders.map((order, index) => (
-                        <OrderRow key={index} order={order} />
-                    ))}
+                    <div className=" rounded-lg p-4">
+                        <div className="grid grid-cols-9 font-semibold text-gray-600 mb-4 text-xs">
+                            <div className="col-span-1">Order ID</div>
+                            <div className="col-span-2">Item</div>
+                            <div className="col-span-1">Customer Name</div>
+                            <div className="col-span-1">Date</div>
+                            <div className="col-span-1">Payment Info</div>
+                            <div className="col-span-1">Price</div>
+                            <div className="col-span-1">Yonta Commission</div>
+                            <div className="col-span-1">Status</div>
+                        </div>
 
-                    <div className="flex justify-between items-center mt-4">
-                        <p className="text-gray-600 text-xs">Showing 1 to 5 of 45 entries</p>
-                        <div className="flex space-x-2">
-                            <button className="px-4 py-2 bg-gray-200 rounded-lg text-xs">1</button>
-                            <button className="px-4 py-2 bg-gray-200 rounded-lg text-xs">2</button>
-                            <button className="px-4 py-2 bg-gray-200 rounded-lg text-xs">3</button>
+                        {filteredOrders.map((order, index) => (
+                            <OrderRow key={index} order={order} />
+                        ))}
+
+                        <div className="flex justify-between items-center mt-4">
+                            <p className="text-gray-600 text-xs">Showing 1 to 5 of 45 entries</p>
+                            <div className="flex space-x-2">
+                                <button className="px-4 py-2 bg-gray-200 rounded-lg text-xs">1</button>
+                                <button className="px-4 py-2 bg-gray-200 rounded-lg text-xs">2</button>
+                                <button className="px-4 py-2 bg-gray-200 rounded-lg text-xs">3</button>
+                            </div>
                         </div>
                     </div>
-                </div>
                 </div>
                 <div className="mt-4">
 
                     <BarChartComponent title="Orders" data={dataMonth} />
                 </div>
                 <div className="bg-white w-[70%] rounded-lg p-4 mb-6">
-        <div className="flex justify-between items-center">
-          <h2 className="text-gray-700 text-lg font-semibold">Best selling</h2>
-          <div className="flex space-x-4">
-            <label className="text-gray-500 text-sm">Category:</label>
-            <select
-              value={category}
-              onChange={(e) => setCategory(e.target.value)}
-              className="border border-gray-300 rounded-lg p-2 text-sm"
-            >
-              <option value="Protein">Protein</option>
-              <option value="Creatine">Creatine</option>
-              <option value="Vitamins">Vitamins</option>
-            </select>
-          </div>
-        </div>
-      
+                    <div className="flex justify-between items-center">
+                        <h2 className="text-gray-700 text-lg font-semibold">Best selling</h2>
+                        <div className="flex space-x-4">
+                            <label className="text-gray-500 text-sm">Category:</label>
+                            <select
+                                value={category}
+                                onChange={(e) => setCategory(e.target.value)}
+                                className="border border-gray-300 rounded-lg p-2 text-sm"
+                            >
+                                <option value="Protein">Protein</option>
+                                <option value="Creatine">Creatine</option>
+                                <option value="Vitamins">Vitamins</option>
+                            </select>
+                        </div>
+                    </div>
 
-      <div className=" rounded-lg p-4">
-        {products.map((product) => (
-          <div
-            key={product.id}
-            className="flex justify-between items-center mb-4 p-4 rounded-lg"
-          >
-            <div className="flex items-center">
-                <div className="bg-backgroundgray py-4 px-4 rounded-2xl mr-4">
-              <img src={product.image} alt={product.name} className="w-16 h-24" />
-              </div>
-              <div>
-                <p className="text-gray-700 font-semibold text-sm">{product.name}</p>
-                <p className="text-blue font-semibold text-lg">{product.price}</p>
-              </div>
-            </div>
-            <div className="ml-20">
-              <p className="text-blue text-sm">{product.unitsSold}</p>
-            </div>
-          </div>
-        ))}
-      </div>
-      </div>
-  
+
+                    <div className=" rounded-lg p-4">
+                        {products.map((product) => (
+                            <div
+                                key={product.id}
+                                className="flex justify-between items-center mb-4 p-4 rounded-lg"
+                            >
+                                <div className="flex items-center">
+                                    <div className="bg-backgroundgray py-4 px-4 rounded-2xl mr-4">
+                                        <img src={product.image} alt={product.name} className="w-20 h-24" />
+                                    </div>
+                                    <div>
+                                        <p className="text-gray-700 font-semibold text-sm">{product.name}</p>
+                                        <p className="text-blue font-semibold text-lg">{product.price}</p>
+                                    </div>
+                                </div>
+                                <div className="ml-20">
+                                    <p className="text-blue text-sm">{product.unitsSold}</p>
+                                </div>
+                            </div>
+                        ))}
+                    </div>
+                </div>
+                <div className="flex space-x-4 mt-9">
+
+
+                    <button
+                        onClick={handleAddUserClick}
+                        className="text-blue border px-4 py-2 rounded-xl"
+                    >
+                        Edit Questions
+                    </button>
+
+                    <button
+                        onClick={handleAddUserClick}
+                        className="bg-blue text-white rounded-xl flex px-4 py-2"
+                    >
+                        <FaPlus className=" w-6 h-6 font-thin" />
+
+                        Add Profile
+                    </button>
+                </div>
             </div>
         </Layout>
     );

@@ -12,7 +12,7 @@ function VendorDashboard() {
 
     const handleAddUserClick = () => {
         navigate('/vendorprofile'); // Navigate to the '/add-user' page
-      };
+    };
 
     return (
         <Layout>
@@ -89,24 +89,24 @@ function VendorDashboard() {
                     </div>
                 </div>
                 <div className="flex space-x-4 mt-9">
-           
-           
-            <button
-              onClick={handleAddUserClick}
-              className="text-blue border px-4 py-2 rounded-xl"
-            >
-              Edit Questions
-            </button>
 
-            <button
-              onClick={handleAddUserClick}
-              className="bg-blue text-white rounded-xl flex px-4 py-2"
-            >
-              <FaPlus className=" w-6 h-6 font-thin" />
 
-              Add Profile
-            </button>
-          </div>
+                    <button
+                        onClick={handleAddUserClick}
+                        className="text-blue border px-4 py-2 rounded-xl"
+                    >
+                        Edit Questions
+                    </button>
+
+                    <button
+                        onClick={handleAddUserClick}
+                        className="bg-blue text-white rounded-xl flex px-4 py-2"
+                    >
+                        <FaPlus className=" w-6 h-6 font-thin" />
+
+                        Add Profile
+                    </button>
+                </div>
             </div>
         </Layout>
     );

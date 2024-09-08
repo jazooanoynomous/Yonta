@@ -1,6 +1,6 @@
 import React from 'react';
 
-const OrderRow = ({ order }) => {
+const OrderRow = ({ order,product }) => {
   const statusColors = {
     Processing: 'text-red-500',
     Shipping: 'text-yellow-500',
