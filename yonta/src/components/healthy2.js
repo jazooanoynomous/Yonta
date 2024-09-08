@@ -1,25 +1,31 @@
 import React, { useState } from 'react';
 import { FaEdit, FaTrash, FaPlus } from 'react-icons/fa';
 import TopPicModel from '../components/Modals/topPicModel'
+import { useNavigate } from 'react-router-dom';
 
-const topPic = [
-    { id: 1, name: 'Salad with Wheat & white Egg', imageUrl: '/images/Rectangle 4512.png', },
-    { id: 2, name: 'Salad with Wheat & white Egg', imageUrl: '/images/Rectangle 4512.png', author: 'Ajay',  },
-];
-
-const Healthy2 = ({ onDeleteCategory }) => {
+const Recipe = ({ onDeleteCategory,data }) => {
     const [showModal, setShowModal] = useState(false);
     const [newCategory, setNewCategory] = useState({ name: '', author: '', duration: '', imageUrl: '' });
     const [PodCastsName, setPodCastName] = useState("");
     const [isWorkoutModalOpen, setIsWorkoutModalOpen] = useState(false);
+    console.log('data',data);
+    const navigate = useNavigate();
 
     const handleAddCategory = () => {
         console.log('Category added:', newCategory);
         setShowModal(false);
     };
+    const handleDeleteCategory = async (id) => {
+        // Call the prop function to handle deletion
+        await onDeleteCategory(id);
+    };
+    const handleAddRecipes = () => {
+        navigate('/addrecipes', { state: { isEdit: false } }); // Pass isEdit as false for adding a new recipe
+    };
 
-    const handleOpenModal = () => {
-        setIsWorkoutModalOpen(true);
+    // Handle editing a recipe
+    const handleEditRecipe = (recipe) => {
+        navigate('/addrecipes', { state: { recipe, isEdit: true } }); // Pass the recipe data and isEdit as true for editing
     };
 
     const handleCloseModal = () => {
@@ -35,7 +41,7 @@ const Healthy2 = ({ onDeleteCategory }) => {
     return (
         <div className="mt-10">
             <div className="flex gap-6 rounded-lg">
-                {topPic.map((category) => (
+                {data.map((category) => (
                     <div
                         key={category.id}
                         className="flex flex-col items-center rounded-2xl h-[290px] w-[200px] bg-white"
@@ -52,16 +58,16 @@ const Healthy2 = ({ onDeleteCategory }) => {
                             <div className="bg-[#FB5458] p-2 rounded-lg" onClick={() => onDeleteCategory(category.id)}>
                                 <FaTrash className="text-white cursor-pointer" />
                             </div>
-                            <div className="flex bg-blue p-2 rounded-lg gap-1">
+                            <div className="flex bg-blue p-2 rounded-lg gap-1" onClick={() => handleEditRecipe(category)}>
                                 <FaEdit className="text-white cursor-pointer" />
-                                <p className='text-white text-xs'>Edit</p>
+                                <p className="text-white text-xs">Edit</p>
                             </div>
                         </div>
                     </div>
                 ))}
                 <div
                     className="border p-4 flex flex-col items-center justify-center cursor-pointer rounded-2xl w-[193px] h-[291px] bg-white"
-                    onClick={handleOpenModal}
+                    onClick={handleAddRecipes}
                 >
                     <FaPlus className="text-3xl text-gray-500 mb-2" />
                     <p>Add Recipes</p>
@@ -82,4 +88,4 @@ const Healthy2 = ({ onDeleteCategory }) => {
     );
 };
 
-export default Healthy2;
+export default Recipe;

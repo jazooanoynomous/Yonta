@@ -27,6 +27,7 @@ const Analytics = () => {
       <div className="grid grid-cols-4 gap-[10px] mb-6">
         {metricsData.map((metric, index) => (
           <MetricCard
+          bgColor={'bg-white'}
             key={index}
             title={metric.title}
             value={metric.value}

@@ -1,5 +1,6 @@
-import React from 'react';
-import Layout from '../Layout';
+import React from "react";
+import Layout from "../Layout";
+// import bgImg from "../bg.png";
 import {
   BsArrowDownLeft,
   BsArrowDownRight,
@@ -7,21 +8,26 @@ import {
   BsCheckCircleFill,
   BsClockFill,
   BsXCircleFill,
-} from 'react-icons/bs';
+} from "react-icons/bs";
 import {
   appointmentsData,
   dashboardCards,
+  expertsTypeData,
   memberData,
+  MetricCardData,
+  regionData,
   transactionData,
-} from '../components/Datas';
-import { Transactiontable } from '../components/Tables';
-import { Link } from 'react-router-dom';
-
+} from "../components/Datas";
+import { Link } from "react-router-dom";
+import MetricCard from "../components/metricCard";
+import StatsCard from "../components/statsCard";
+import BarChartComponent from "../components/barChart";
+import { TransactionTable } from "../components/Tables";
 function Dashboard() {
   return (
     <Layout>
       {/* boxes */}
-      <div className="w-full grid xl:grid-cols-4 gap-6 lg:grid-cols-3 sm:grid-cols-2 grid-cols-1">
+      {/* <div className="w-full grid xl:grid-cols-4 gap-6 lg:grid-cols-3 sm:grid-cols-2 grid-cols-1">
         {dashboardCards.map((card, index) => (
           <div
             key={card.id}
@@ -36,7 +42,6 @@ function Dashboard() {
               <h2 className="text-sm font-medium">{card.title}</h2>
             </div>
             <div className="grid grid-cols-8 gap-4 mt-4 bg-dry py-5 px-8 items-center rounded-xl">
-              
               <div className="flex flex-col gap-4 col-span-3">
                 <h4 className="text-md font-medium">
                   {card.value}
@@ -57,127 +62,137 @@ function Dashboard() {
             </div>
           </div>
         ))}
+      </div> */}
+      <div
+        style={{
+          backgroundImage: `images/blueheader.png`,
+          backgroundSize: "cover", // Ensures the image covers the entire div
+          backgroundPosition: "center", // Centers the image within the div
+          height: "245px", // Sets a height for the div
+          width: "100%",
+        }}
+      >
+        <div className=" flex flex-row justify-between items-center px-10 -mt-10 pb-10 h-full">
+          <div className=" text-white">
+            <h2>Hello Admin,</h2>
+            <p>Here’s you statistics for today. Hope you have a great day</p>
+          </div>
+        </div>
+      </div>
+      <div className=" flex flex-row justify-between -mt-28 ">
+        {/* section 1 */}
+        <div>
+          <div className="flex space-x-2">
+            <div className=" space-y-3">
+              <h2 className=" text-white pl-5">User</h2>
+              <div className="flex space-x-2 h-[254px] p-4 bg-white rounded-[10px]">
+                <StatsCard
+                  title="Total Experts"
+                  total={42703}
+                  data={expertsTypeData}
+                />
+                <StatsCard
+                  title="Total Appointment"
+                  total={61065}
+                  data={appointmentsData}
+                />
+              </div>
+            </div>
+            <div className=" space-y-3">
+              <h2 className=" text-white pl-5">Ecommerce</h2>
+              <div className="bg-white p-3 rounded-[16px] flex flex-row  items-center space-x-3 h-[254px] space-y-[12px] w-[370px] ">
+                <div className=" space-y-3">
+                  <MetricCard
+                    title={MetricCardData[0].title}
+                    value={MetricCardData[0].value}
+                  />
+                  <MetricCard
+                    title={MetricCardData[0].title}
+                    value={MetricCardData[0].value}
+                  />
+                </div>
+                <div className=" space-y-3">
+                  <MetricCard
+                    title={MetricCardData[0].title}
+                    value={MetricCardData[0].value}
+                  />
+                  <MetricCard
+                    title={MetricCardData[0].title}
+                    value={MetricCardData[0].value}
+                  />
+                </div>
+              </div>
+            </div>
+            <div className=" space-y-3">
+              <h2 className=" text-white pl-5">Products</h2>
+              <div className="bg-white p-3 rounded-[16px] flex flex-row  items-center space-x-3 h-[254px] space-y-[12px] w-[200px] ">
+                <div className=" space-y-3">
+                  <MetricCard
+                    title={MetricCardData[0].title}
+                    value={MetricCardData[0].value}
+                  />
+                  <MetricCard
+                    title={MetricCardData[0].title}
+                    value={MetricCardData[0].value}
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        {/* Ecommerce section  */}
+        <div></div>
+        {/* Exports section  */}
+        <div></div>
+      </div>
+      <div className=" mt-10 flex flex-row space-x-2">
+        <BarChartComponent />
+        <div className="bg-white rounded-xl border-[1px] border-border p-5">
+          <h2 className="text-sm font-medium">Best Sellers</h2>
+          <div className=" grid grid-cols-4 gap-7">
+            <h1 className=" col-span-2 text-sm">Product Name</h1>
+            <h1 className=" col-span-1 text-sm">Price</h1>
+            <h1 className=" col-span-1 text-sm">Total Sales</h1>
+          </div>
+          <div className=" ">
+            {memberData.slice(3, 8).map((member, index) => (
+              <Link
+                to={`/patients/preview/${member.id}`}
+                key={index}
+                className=" grid grid-cols-4 gap-7  space-y-7"
+              >
+                <h3 className="text-xs mt-7  text-gray-400 col-span-2">
+                  {member.title}
+                </h3>
+                <p className="text-xs text-gray-400 col-span-1">
+                  {member.phone}
+                </p>
+                <p className="text-xs text-textGray col-span-1">2:00 PM</p>
+              </Link>
+            ))}
+          </div>
+        </div>
       </div>
       <div className="w-full my-6 grid xl:grid-cols-8 grid-cols-1 gap-6">
-        <div className="xl:col-span-6  w-full">
-          <div className="bg-white rounded-xl border-[1px] border-border p-5">
-            <div className="flex-btn gap-2">
-              <h2 className="text-sm font-medium">Earning Reports</h2>
-              <p className="flex gap-4 text-sm items-center">
-                5.44%{' '}
-                <span className="py-1 px-2 bg-subMain text-white text-xs rounded-xl">
-                  +2.4%
-                </span>
-              </p>
-            </div>
-            {/* Earning Reports
-            <div className="mt-4">
-              <DashboardBigChart />
-            </div> */}
-          </div>
+        <div className="xl:col-span-8  w-full">
           {/* transaction */}
           <div className="mt-6 bg-white rounded-xl border-[1px] border-border p-5">
             <div className="flex-btn gap-2">
-              <h2 className="text-sm font-medium">Recent Transaction</h2>
-              <p className="flex gap-4 text-sm items-center">
-                Today{' '}
-                <span className="py-1 px-2 bg-subMain text-white text-xs rounded-xl">
-                  27000$
-                </span>
-              </p>
+              <h2 className="text-sm font-medium">Total Sales</h2>
             </div>
             {/* table */}
             <div className="mt-4 overflow-x-scroll">
-              <Transactiontable
+              <TransactionTable
                 data={transactionData.slice(0, 5)}
                 action={false}
+                isTrue={true}
               />
             </div>
           </div>
         </div>
         {/* side 2 */}
-        <div
-          data-aos="fade-left"
-          data-aos-duration="1000"
-          data-aos-delay="10"
-          data-aos-offset="200"
-          className="xl:col-span-2 xl:block grid sm:grid-cols-2 gap-6"
-        >
-          {/* recent patients */}
-          <div className="bg-white rounded-xl border-[1px] border-border p-5">
-            <h2 className="text-sm font-medium">Recent Patients</h2>
-            {memberData.slice(3, 8).map((member, index) => (
-              <Link
-                to={`/patients/preview/${member.id}`}
-                key={index}
-                className="flex-btn gap-4 mt-6 border-b pb-4 border-border"
-              >
-                <div className="flex gap-4 items-center">
-                  <img
-                    src={member.image}
-                    alt="member"
-                    className="w-10 h-10 rounded-md object-cover"
-                  />
-                  <div className="flex flex-col gap-1">
-                    <h3 className="text-xs font-medium">{member.title}</h3>
-                    <p className="text-xs text-gray-400">{member.phone}</p>
-                  </div>
-                </div>
-                <p className="text-xs text-textGray">2:00 PM</p>
-              </Link>
-            ))}
-          </div>
-          {/* today apointments */}
-          <div className="bg-white rounded-xl border-[1px] border-border p-5 xl:mt-6">
-            <h2 className="text-sm mb-4 font-medium">Today Appointments</h2>
-            {appointmentsData.map((appointment, index) => (
-              <div
-                key={appointment.id}
-                className="grid grid-cols-12 gap-2 items-center"
-              >
-                <p className="text-textGray text-[12px] col-span-3 font-light">
-                  {appointment.time}
-                </p>
-                <div className="flex-colo relative col-span-2">
-                  <hr className="w-[2px] h-20 bg-border" />
-                  <div
-                    className={`w-7 h-7 flex-colo text-sm bg-opacity-10
-                   ${
-                     appointment.status === 'Pending' &&
-                     'bg-orange-500 text-orange-500'
-                   }
-                  ${
-                    appointment.status === 'Cancel' && 'bg-red-500 text-red-500'
-                  }
-                  ${
-                    appointment.status === 'Approved' &&
-                    'bg-green-500 text-green-500'
-                  }
-                   rounded-full absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2`}
-                  >
-                    {appointment.status === 'Pending' && <BsClockFill />}
-                    {appointment.status === 'Cancel' && <BsXCircleFill />}
-                    {appointment.status === 'Approved' && <BsCheckCircleFill />}
-                  </div>
-                </div>
-                <Link
-                  to="/appointments"
-                  className="flex flex-col gap-1 col-span-6"
-                >
-                  <h2 className="text-xs font-medium">
-                    {appointment.user?.title}
-                  </h2>
-                  <p className="text-[12px] font-light text-textGray">
-                    {appointment.from} - {appointment.to}
-                  </p>
-                </Link>
-              </div>
-            ))}
-          </div>
-        </div>
       </div>
     </Layout>
   );
 }
-
 export default Dashboard;

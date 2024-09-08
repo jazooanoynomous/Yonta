@@ -19,7 +19,8 @@ import { discountTypes } from "./Datas";
 
 const thclass = "text-start text-sm font-medium py-3 px-2 whitespace-nowrap";
 const tdclass = "text-start text-sm py-4 px-2 whitespace-nowrap";
-export function Transactiontable({ data, action, functions }) {
+
+export function TransactionTable({ data, action, functions, isTrue }) {
   const DropDown1 = [
     {
       title: "Edit",
@@ -43,18 +44,26 @@ export function Transactiontable({ data, action, functions }) {
       },
     },
   ];
+
+  const thclass = 'px-4 py-2'; // Example className for th elements
+  const tdclass = 'px-4 py-2'; // Example className for td elements
+
   return (
     <table className="table-auto w-full">
       <thead className="bg-dry rounded-md overflow-hidden">
         <tr>
-          <th className={thclass}>#</th>
-          <th className={thclass}>Patient</th>
-          <th className={thclass}>Date</th>
-          <th className={thclass}>Status</th>
-          <th className={thclass}>
-            Amout <span className="text-xs font-light">(Tsh)</span>
-          </th>
-          <th className={thclass}>Method</th>
+          <th className={thclass}>{isTrue ? "Order ID" : "#"}</th>
+          <th className={thclass}>{isTrue ? "Item" : "Patient"}</th>
+          <th className={thclass}>{isTrue ? "Customer Name" : "Date"}</th>
+          <th className={thclass}>{isTrue ? "Payment Info" : "Status"}</th>
+          {isTrue ? (
+            <th className={thclass}>Price</th>
+          ) : (
+            <th className={thclass}>
+              Amount <span className="text-xs font-light">(Tsh)</span>
+            </th>
+          )}
+          <th className={thclass}>{isTrue ? "Status" : "Method"}</th>
           {action && <th className={thclass}>Actions</th>}
         </tr>
       </thead>
@@ -74,7 +83,6 @@ export function Transactiontable({ data, action, functions }) {
                     className="w-full h-12 rounded-full object-cover border border-border"
                   />
                 </span>
-
                 <div>
                   <h4 className="text-sm font-medium">{item.user.title}</h4>
                   <p className="text-xs mt-1 text-textGray">
