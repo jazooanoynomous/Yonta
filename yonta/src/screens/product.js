@@ -4,19 +4,20 @@ import ProductCard from '../components/productCard';
 import Layout from '../Layout'
 import ProductCard2 from '../components/productCard2'
 import ProductModal from '../components/Modals/productModel';
+import { initialCategories, Product } from '../components/Datas';
 
-const initialCategories = [
-    { id: 1, name: 'Why Protien', imageUrl: '/images/P icon.png' },
-    { id: 2, name: 'Gainners', imageUrl: '/images/P icon.png' },
-    { id: 3, name: 'Pre Workout', imageUrl: '/images/P icon.png' },
+// export const initialCategories = [
+//     { id: 1, name: 'Why Protien', imageUrl: '/images/P icon.png' },
+//     { id: 2, name: 'Gainners', imageUrl: '/images/P icon.png' },
+//     { id: 3, name: 'Pre Workout', imageUrl: '/images/P icon.png' },
 
-];
-const Product = [
-    { id: 1, name: 'Why Protien', imageUrl: '/images/Group 183382 (1).png' },
-    { id: 2, name: 'Gainners', imageUrl: '/images/Group 183382 (1).png' },
-    { id: 3, name: 'Pre Workout', imageUrl: '/images/Group 183382 (1).png' },
+// ];
+// export const Product = [
+//     { id: 1, name: 'Why Protien', imageUrl: '/images/Group 183382 (1).png' },
+//     { id: 2, name: 'Gainners', imageUrl: '/images/Group 183382 (1).png' },
+//     { id: 3, name: 'Pre Workout', imageUrl: '/images/Group 183382 (1).png' },
 
-];
+// ];
 const suggestions = [
     'Improve sound',
     'Add more episodes',

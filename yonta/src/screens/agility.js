@@ -1,12 +1,10 @@
 import React, { useState } from "react";
 import Layout from "../Layout";
-import { community, expertData } from "../components/Datas";
+import { community } from "../components/Datas";
 import { useNavigate } from "react-router-dom";
-import { BiPlus } from "react-icons/bi";
-import { Button } from "../components/Form";
+
 import { AgilityTable, ExpertTable } from "../components/Tables";
-import { FaSearch } from "react-icons/fa";
-import AddExpertsModal from "../components/Modals/addExperts";
+
 
 function Agility() {
   const navigate = useNavigate();
