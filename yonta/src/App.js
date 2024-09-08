@@ -37,6 +37,8 @@ import Product from './screens/product';
 import VideoHome from './screens/videos/videohome';
 import ExpertProfileScreen from './screens/experts/expertProfile';
 import ECommerce from './screens/ecommerce/eCommerce';
+import VendorDashboard from './screens/vendor/vendorDashboard';
+import VendorProfile from './screens/vendor/vendorProfile';
 
 function App() {  
   return (
@@ -83,6 +85,8 @@ function App() {
         <Route path="/product" element={<Product/>}/>
         <Route path="/videos" element={<VideoHome/>}/>
         <Route path="/store" element={<ECommerce/>}/>
+        <Route path="/vendors" element ={<VendorDashboard/>}/>
+        <Route path="/vendorprofile" element={<VendorProfile/>}/>
 
 
 

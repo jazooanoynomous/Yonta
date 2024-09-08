@@ -5,6 +5,7 @@ import PopularProduct from '../components/popularProduct'
 import Users from '../components/users'
 import AvgSessionDuration from '../components/avgSession'
 import Layout from '../Layout'
+import { data } from '../components/Datas';
 
 const Analytics = () => {
   const [metricsData, setMetricsData] = useState([]);
@@ -14,7 +15,7 @@ const Analytics = () => {
     const fetchedData = [
       { title: 'Net Revenue', value: '₹ 8,96,065', change: '+10.05%', description: 'since last month' },
       { title: 'App Downloads', value: '6,065 M', change: '+5.03%', description: 'from last year' },
-      { title: 'Avg Session Duration', value: '6,065 Mins', change: '+8.00%', description: 'in the last 6 months' },
+      { title: 'Avg Session Duration', value: '6,065 M', change: '+8.00%', description: 'in the last 6 months' },
       { title: 'Monthly Logins', value: '6,065', change: '+3.5%', description: 'from last month' },
     ];
     setMetricsData(fetchedData);
@@ -37,7 +38,7 @@ const Analytics = () => {
       </div>
 
       {/* Bar Chart */}
-      <BarChartComponent />
+      <BarChartComponent title="Category Data" data={data} />
 
       {/* Lower Sections */}
       <div className="grid grid-cols-3 gap-4 mt-6">

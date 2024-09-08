@@ -865,6 +865,150 @@ export function NotificationTable({ data, functions, used }) {
     </div>
   );
 }
+export function VendorListTable({ data, functions, used }) {
+  const DropDown1 = !used
+    ? [
+        {
+          title: "View",
+          icon: FiEye,
+          onClick: (data) => {
+            functions.preview(data.id);
+          },
+        },
+        {
+          title: "Delete",
+          icon: RiDeleteBin6Line,
+          onClick: () => {
+            toast.error("This feature is not available yet");
+          },
+        },
+      ]
+    : [
+        {
+          title: "View",
+          icon: FiEye,
+          onClick: (data) => {
+            functions.preview(data.id);
+          },
+        },
+      ];
+
+  return (
+    <div className="p-6 rounded-lg">
+      <>
+        <table className="w-full  border-separate border-spacing-y-4 px-4 h-[60px] rounded-[10px]">
+          <thead>
+            <tr className="text-left text-sm text-gray-500">
+              <th className="px-4">BusinessName</th>
+              <th className="px-4">BusinessType</th>
+              <th className="px-4">Product</th>
+              <th className="px-4">TotalOrders</th>
+              <th className="px-4">RevenueGenerated</th>
+              <th className="px-4">JoinedDate</th>
+              <th className="px-4">Location</th>
+
+            </tr>
+          </thead>
+          <tbody>
+            {data.map((item, index) => (
+              <tr key={index} className="bg-backgroundgray relative h-[60px]">
+                <td className="py-4 px-4 text-sm rounded-l-lg">
+                  {item.BusinessName}
+                </td>
+                <td className="py-4 px-4 text-sm">{item.BusinessType}</td>
+                <td className="py-4 px-4 text-sm">{item.Product}</td>
+                <td className="py-4 px-4 text-sm">{item.TotalOrders}</td>
+                <td className="py-4 px-4 text-sm">{item.RevenueGenerated}</td>
+                <td className="py-4 px-4 text-sm">{item.JoinedDate}</td>
+                <td className="py-4 px-4 text-sm">{item.Location}</td>
+
+                <td className="py-4 px-4 rounded-r-lg">
+                  <MenuSelect datas={DropDown1} item={item}>
+                    <div className="text-main text-xl py-2 px-4">
+                      <BiDotsHorizontalRounded />
+                    </div>
+                  </MenuSelect>
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </>
+    </div>
+  );
+}
+export function VendorTable({ data, functions, used }) {
+  const DropDown1 = !used
+    ? [
+        {
+          title: "View",
+          icon: FiEye,
+          onClick: (data) => {
+            functions.preview(data.id);
+          },
+        },
+        {
+          title: "Delete",
+          icon: RiDeleteBin6Line,
+          onClick: () => {
+            toast.error("This feature is not available yet");
+          },
+        },
+      ]
+    : [
+        {
+          title: "View",
+          icon: FiEye,
+          onClick: (data) => {
+            functions.preview(data.id);
+          },
+        },
+      ];
+
+  return (
+    <div className="p-6 rounded-lg">
+      <>
+        <table className="w-full  border-separate border-spacing-y-4 px-4 h-[60px] rounded-[10px]">
+          <thead>
+            <tr className="text-left text-sm text-gray-500">
+              <th className="px-4">BusinessName</th>
+              <th className="px-4">BusinessType</th>
+              <th className="px-4">Product</th>
+              <th className="px-4">TotalOrders</th>
+              <th className="px-4">RevenueGenerated</th>
+              <th className="px-4">UnitSold</th>
+              <th className="px-4">Location</th>
+
+            </tr>
+          </thead>
+          <tbody>
+            {data.map((item, index) => (
+              <tr key={index} className="bg-backgroundgray relative h-[60px]">
+                <td className="py-4 px-4 text-sm rounded-l-lg">
+                  {item.BusinessName}
+                </td>
+                <td className="py-4 px-4 text-sm">{item.BusinessType}</td>
+                <td className="py-4 px-4 text-sm">{item.Product}</td>
+                <td className="py-4 px-4 text-sm">{item.TotalOrders}</td>
+                <td className="py-4 px-4 text-sm">{item.RevenueGenerated}</td>
+                <td className="py-4 px-4 text-sm">{item.UnitSold}</td>
+                <td className="py-4 px-4 text-sm">{item.Location}</td>
+
+                <td className="py-4 px-4 rounded-r-lg">
+                  <MenuSelect datas={DropDown1} item={item}>
+                    <div className="text-main text-xl py-2 px-4">
+                      <BiDotsHorizontalRounded />
+                    </div>
+                  </MenuSelect>
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </>
+    </div>
+  );
+}
 
 export function AppointmentsTable({ data, functions, used }) {
   const DropDown1 = !used

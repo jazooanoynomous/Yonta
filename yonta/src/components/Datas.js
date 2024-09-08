@@ -122,8 +122,72 @@ export const MenuDatas = [
     path: '/questionars',
     icon: BiNews, // Ecommerce icon
   },
+  {
+    title: 'Video',
+    path: '/videos',
+    icon: BiNews, // Ecommerce icon
+  },
 
 ];
+export const orders = [
+  {
+    id: '#Order-11414',
+    item: 'MuscleBlaze Biozyme Performance Whey, 2 kg (4.4 lb), Rich Chocolate',
+    customerName: 'Mayur kamble',
+    date: '12/10/2001',
+    paymentInfo: 'Debit Card',
+    price: '₹ 3,099',
+    commission: '₹ 399',
+    status: 'Processing',
+    image: '/images/1 (1.png)', // Placeholder for the product image
+  },
+  {
+    id: '#Order-11415',
+    item: 'MuscleBlaze Biozyme Performance Whey, 2 kg (4.4 lb), Rich Chocolate',
+    customerName: 'Mayur kamble',
+    date: '12/10/2001',
+    paymentInfo: 'Debit Card',
+    price: '₹ 3,099',
+    commission: '₹ 399',
+    status: 'Shipping',
+    image: '/images/1 (1.png)', // Placeholder for the product image
+  },
+  {
+    id: '#Order-11416',
+    item: 'MuscleBlaze Biozyme Performance Whey, 2 kg (4.4 lb), Rich Chocolate',
+    customerName: 'Mayur kamble',
+    date: '12/10/2001',
+    paymentInfo: 'Debit Card',
+    price: '₹ 3,099',
+    commission: '₹ 399',
+    status: 'Delivered',
+    image: '/images/1 (1.png)', // Placeholder for the product image
+  },
+  {
+    id: '#Order-11419',
+    item: 'MuscleBlaze Biozyme Performance Whey, 2 kg (4.4 lb), Rich Chocolate',
+    customerName: 'Mayur kamble',
+    date: '12/10/2001',
+    paymentInfo: 'Debit Card',
+    price: '₹ 3,099',
+    commission: '₹ 399',
+    status: 'Delivered',
+    image: '/images/1 (1.png)', // Placeholder for the product image
+  },
+  {
+    id: '#Order-11418',
+    item: 'MuscleBlaze Biozyme Performance Whey, 2 kg (4.4 lb), Rich Chocolate',
+    customerName: 'Mayur kamble',
+    date: '12/10/2001',
+    paymentInfo: 'Debit Card',
+    price: '₹ 3,099',
+    commission: '₹ 399',
+    status: 'Shipping',
+    image: '/images/1 (1.png)', // Placeholder for the product image
+  },
+  // Add more orders here...
+];
+
 export const adminInfo = {
   profile: {
       fullName: "David Gupta",
@@ -415,6 +479,181 @@ export  const discountTypes = [
     route: "/couponsaddorder"
   },
 ];
+
+export const data = [
+  { name: 'Fitness', value: 19000 },
+  { name: 'Ingredients', value: 25000 },
+  { name: 'Yoga', value: 180000 },
+  { name: 'Workout', value: 200000 },
+  { name: 'Ingredients', value: 150000 },
+  { name: 'Nutration', value: 18000 },
+  { name: 'Diet', value: 40000 },
+  { name: 'Workout', value: 200000 },
+
+];
+
+export const dataMonth = [
+  { name: 'Jan', value: 19000 },
+  { name: 'Feb', value: "2500" },
+  { name: 'Mar', value: 18000 },
+  { name: 'Apr', value: 22000 },
+  { name: 'May', value: 3000 },
+  { name: 'Jun', value: 20000 },
+  { name: 'Jul', value: 2000 },
+];
+export const vendordata=[
+  {
+    BusinessName:"Muscleblaze",
+    BusinessType:"Supplier",
+    Product:"26",
+    TotalOrders:"896",
+    RevenueGenerated:"₹5.265",
+    UnitSold:"5966",
+    Location:"Mumbai"
+  },
+  {
+    BusinessName:"As it is",
+    BusinessType:"Merchandise",
+    Product:"26",
+    TotalOrders:"1896",
+    RevenueGenerated:"₹2.265",
+    UnitSold:"5966",
+    Location:"Mumbai"
+  },
+  {
+    BusinessName:"Muscleblaze",
+    BusinessType:"Supplier",
+    Product:"26",
+    TotalOrders:"896",
+    RevenueGenerated:"₹3.265",
+    UnitSold:"5966",
+    Location:"Mumbai"
+  },
+  {
+    BusinessName:"On Nutrition",
+    BusinessType:"Supplier",
+    Product:"26",
+    TotalOrders:"3896",
+    RevenueGenerated:"₹6.465",
+    UnitSold:"5966",
+    Location:"Mumbai"
+  },
+  {
+    BusinessName:"Muscleblaze",
+    BusinessType:"Supplier",
+    Product:"26",
+    TotalOrders:"8196",
+    RevenueGenerated:"₹5.865",
+    UnitSold:"5966",
+    Location:"Mumbai"
+  },
+]
+export const vendorListdata=[
+  {
+    BusinessName:"Muscleblaze",
+    BusinessType:"Supplier",
+    Product:"26",
+    TotalOrders:"896",
+    RevenueGenerated:"₹5.265",
+    JoinedDate:"28/11/2023",
+    Location:"Mumbai"
+  },
+  {
+    BusinessName:"As it is",
+    BusinessType:"Merchandise",
+    Product:"26",
+    TotalOrders:"1896",
+    RevenueGenerated:"₹2.265",
+    JoinedDate:"28/11/2023",
+
+    Location:"Mumbai"
+  },
+  {
+    BusinessName:"Muscleblaze",
+    BusinessType:"Supplier",
+    Product:"26",
+    TotalOrders:"896",
+    RevenueGenerated:"₹3.265",
+    JoinedDate:"28/11/2023",
+    Location:"Mumbai"
+  },
+  {
+    BusinessName:"On Nutrition",
+    BusinessType:"Supplier",
+    Product:"26",
+    TotalOrders:"3896",
+    RevenueGenerated:"₹6.465",
+    JoinedDate:"28/11/2023",
+    Location:"Mumbai"
+  },
+  {
+    BusinessName:"Muscleblaze",
+    BusinessType:"Supplier",
+    Product:"26",
+    TotalOrders:"8196",
+    RevenueGenerated:"₹5.865",
+    JoinedDate:"28/11/2023",
+    Location:"Mumbai"
+  },
+  {
+    BusinessName:"Muscleblaze",
+    BusinessType:"Supplier",
+    Product:"26",
+    TotalOrders:"8196",
+    RevenueGenerated:"₹5.865",
+    JoinedDate:"28/11/2023",
+    Location:"Mumbai"
+  },
+  {
+    BusinessName:"Muscleblaze",
+    BusinessType:"Supplier",
+    Product:"26",
+    TotalOrders:"8196",
+    RevenueGenerated:"₹5.865",
+    JoinedDate:"28/11/2023",
+    Location:"Mumbai"
+  },
+  {
+    BusinessName:"Muscleblaze",
+    BusinessType:"Supplier",
+    Product:"26",
+    TotalOrders:"8196",
+    RevenueGenerated:"₹5.865",
+    JoinedDate:"28/11/2023",
+    Location:"Mumbai"
+  },
+]
+ export const products = [
+  {
+    id: 1,
+    name: "MuscleBlaze Biozyme Performance Whey, 2 kg (4.4 lb), Rich Chocolate",
+    price: "₹ 4,299",
+    unitsSold: "3956 units sold",
+    image: "/images/1 (1).png", // Replace this with actual product image link
+  },
+  {
+    id: 2,
+    name: "MuscleBlaze Biozyme Performance Whey, 2 kg (4.4 lb), Rich Chocolate",
+    price: "₹ 4,299",
+    unitsSold: "3956 units sold",
+    image: "https://via.placeholder.com/100", // Replace this with actual product image link
+  },
+  {
+    id: 3,
+    name: "MuscleBlaze Biozyme Performance Whey, 2 kg (4.4 lb), Rich Chocolate",
+    price: "₹ 4,299",
+    unitsSold: "3956 units sold",
+    image: "https://via.placeholder.com/100", // Replace this with actual product image link
+  },
+  {
+    id: 4,
+    name: "MuscleBlaze Biozyme Performance Whey, 2 kg (4.4 lb), Rich Chocolate",
+    price: "₹ 4,299",
+    unitsSold: "3956 units sold",
+    image: "https://via.placeholder.com/100", // Replace this with actual product image link
+  },
+];
+
 export const notificationsData = [
   {
     dateFrom: "30/07/2013",
