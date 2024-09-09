@@ -1,18 +1,18 @@
 import React, { useState } from "react";
 import Layout from "../../Layout";
 import {
-  appointmentsData,
-  expertsTypeData,
-  memberData,
   MetricCardData,
-  regionData,
   ExpertData,
+  orderData,
+ 
 } from "../../components/Datas";
 import { useNavigate } from "react-router-dom";
 import BarChartC from '../../components/BarChartC'
-import { ExpertTable } from "../../components/Tables";
+import { ExpertTable, OrderTable } from "../../components/Tables";
 
 import MetricCard from "../../components/metricCard";
+import BestSellingProducts from "../../components/bestSellingCard";
+import BuyersCard from "../../components/progressCard";
 
 function ECommerce() {
   const navigate = useNavigate();
@@ -27,24 +27,87 @@ function ECommerce() {
   const toggleModal = () => {
     setIsModalOpen(!isModalOpen);
   };
+  const products = [
+    {
+      name: "MuscleBlaze Biozyme Performance Whey, 2 kg (4.4 lb), Rich Chocolate",
+      price: 4299,
+      unitsSold: 3966,
+      image: "/images/Rectangle 4497.png"
+    },
+    {
+      name: "MuscleBlaze Biozyme Performance Whey, 2 kg (4.4 lb), Rich Chocolate",
+      price: 4299,
+      unitsSold: 3966,
+      image: "/images/Rectangle 4497.png"
+    },
+    {
+      name: "MuscleBlaze Biozyme Performance Whey, 2 kg (4.4 lb), Rich Chocolate",
+      price: 4299,
+      unitsSold: 3966,
+      image: "/images/Rectangle 4497.png"
+    },
+    {
+      name: "MuscleBlaze Biozyme Performance Whey, 2 kg (4.4 lb), Rich Chocolate",
+      price: 4299,
+      unitsSold: 3966,
+      image: "/images/Rectangle 4497.png"
+    },
+    {
+      name: "MuscleBlaze Biozyme Performance Whey, 2 kg (4.4 lb), Rich Chocolate",
+      price: 4299,
+      unitsSold: 3966,
+      image: "/images/Rectangle 4497.png"
+    },
+    {
+      name: "MuscleBlaze Biozyme Performance Whey, 2 kg (4.4 lb), Rich Chocolate",
+      price: 4299,
+      unitsSold: 3966,
+      image: "/images/Rectangle 4497.png"
+    },  ];
+  
+  const categories = ["Protein", "Vitamins", "Supplements"];
 
   return (
     <Layout>
      
       
-      <div className="flex space-x-4">
-        <div className="bg-white p-3 rounded-[16px] h-[254px] space-y-[12px] w-[219px] ">
+      <div className="flex p-5 space-x-4">
           <MetricCard
             title={MetricCardData[0].title}
             value={MetricCardData[0].value}
+            bgColor={'bg-white'}
           />
           <MetricCard
-            title={MetricCardData[0].title}
-            value={MetricCardData[0].value}
+            title={MetricCardData[1].title}
+            value={MetricCardData[1].value}
+            bgColor={'bg-white'}
+          />
+          <MetricCard
+            title={MetricCardData[2].title}
+            value={MetricCardData[2].value}
+            bgColor={'bg-white'}
+
+          />
+          <MetricCard
+            title={MetricCardData[3].title}
+            value={MetricCardData[3].value}
+            bgColor={'bg-white'}
+
           />
         </div>       
-      </div>
-      <BarChartC/>
+        <div
+        data-aos="fade-up"
+        data-aos-duration="1000"
+        data-aos-delay="10"
+        data-aos-offset="200"
+        className="my-8 flex rounded-xl"
+      >
+        <div className="mt-8 w-full ">
+        <BarChartC/>
+
+        </div>       
+        </div>
+
       <div
         data-aos="fade-up"
         data-aos-duration="1000"
@@ -53,8 +116,8 @@ function ECommerce() {
         className="my-8 rounded-xl"
       >
         <div className="mt-8 w-full overflow-x-scroll">
-          <ExpertTable
-            data={ExpertData}
+          <OrderTable
+            data={orderData}
             functions={{
               preview: previewPayment,
             }}
@@ -62,6 +125,32 @@ function ECommerce() {
           />
         </div>
       </div>
+      <div
+        data-aos="fade-up"
+        data-aos-duration="1000"
+        data-aos-delay="10"
+        data-aos-offset="200"
+        className="my-8 flex rounded-xl"
+      >
+        <div className="mt-8 w-full ">
+        <BestSellingProducts products={products} categories={categories} />
+
+        </div>
+        <div className="mt-8 w-full ">
+        <BuyersCard />
+
+        </div>
+      </div>
+      <div
+        data-aos="fade-up"
+        data-aos-duration="1000"
+        data-aos-delay="10"
+        data-aos-offset="200"
+        className="my-8 rounded-xl"
+      >
+       
+      </div>
+
 
       {/* Render the modal */}
     </Layout>

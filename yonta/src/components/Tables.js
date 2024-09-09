@@ -1,7 +1,15 @@
-import React, { useState } from "react";
+import React, { useMemo, useState } from "react";
+// import React, { useState } from "react";
 import { Button, MenuSelect } from "./Form";
 import { BiDotsHorizontalRounded, BiPlus } from "react-icons/bi";
-import { FiEdit, FiEye, FiTrash2 } from "react-icons/fi";
+import {
+  FiChevronLeft,
+  FiChevronRight,
+  FiEdit,
+  FiEye,
+  FiSearch,
+  FiTrash2,
+} from "react-icons/fi";
 import { RiDeleteBin6Line, RiDeleteBinLine } from "react-icons/ri";
 import { toast } from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
@@ -9,9 +17,18 @@ import ProgressBar from "./progressBar";
 import { FaEdit } from "react-icons/fa";
 import CouponsPopup from "./Modals/couponsPopup";
 import { discountTypes } from "./Datas";
-
+import {
+  FiChevronLeft,
+  FiChevronRight,
+  FiEdit,
+  FiEye,
+  FiSearch,
+  FiTrash2,
+} from "react-icons/fi";
 const thclass = "text-start text-sm font-medium py-3 px-2 whitespace-nowrap";
 const tdclass = "text-start text-sm py-4 px-2 whitespace-nowrap";
+
+// export function Transactiontable({ data, action, functions }) {
 
 export function Transactiontable({ data, action, functions,isTrue }) {
   const DropDown1 = [
@@ -852,7 +869,7 @@ export function NotificationTable({ data, functions, used }) {
                 <td className="py-4 px-4 text-sm">{item.section}</td>
                 <td className="py-4 px-4 text-sm">{item.frequency}</td>
                 <td className="py-4 px-4 text-sm">
-                  <a href={item.link} className="text-blue-500 hover:underline">
+                  <a href={item.link} className="text-blue hover:underline">
                     {item.link}
                   </a>
                 </td>
@@ -1514,3 +1531,229 @@ export function MedicineDosageTable({ data, functions, button }) {
     </table>
   );
 }
+
+
+export function OrderTable({ data, functions }) {
+  const [searchTerm, setSearchTerm] = useState("");
+  const [statusFilter, setStatusFilter] = useState("All");
+  const [entriesPerPage, setEntriesPerPage] = useState(5);
+  const [currentPage, setCurrentPage] = useState(1);
+
+  const thClass = "px-4 py-2 text-left text-sm font-medium text-gray-500";
+  const tdClass = "py-4 px-4 text-sm text-gray-700";
+  const navigate = useNavigate();
+
+  const filteredData = useMemo(() => {
+    return data.filter(
+      (item) =>
+        (item.customerName.toLowerCase().includes(searchTerm.toLowerCase()) ||
+          item.orderID.toLowerCase().includes(searchTerm.toLowerCase())) &&
+        (statusFilter === "All" || item.status === statusFilter)
+    );
+  }, [data, searchTerm, statusFilter]);
+
+  const pageCount = Math.ceil(filteredData.length / entriesPerPage);
+  const paginatedData = filteredData.slice(
+    (currentPage - 1) * entriesPerPage,
+    currentPage * entriesPerPage
+  );
+
+  const statusColors = {
+    Processing: "text-red",
+    Shipping: "text-bluetext",
+    Delivered: "text-green",
+  };
+  const handleRowClick = (order) => {
+    navigate('/orderdetail', { state: { orderData: order } });
+  };
+
+  return (
+    <div className="p-6 rounded-lg bg-white shadow-md">
+  <div className="flex justify-between items-center mb-4">
+    <h2 className="text-lg font-bold">Orders</h2>
+
+    <div className="flex items-center space-x-2">
+      <div className="relative">
+        <input
+          type="text"
+          placeholder="Search order..."
+          className="pl-10 h-[38px] pr-4 py-2 border bg-backgroundgray rounded-md focus:ring-blue "
+          value={searchTerm}
+          onChange={(e) => setSearchTerm(e.target.value)}
+        />
+        <FiSearch className="absolute left-3 top-3 text-gray-400" />
+      </div>
+      <select
+        value={statusFilter}
+        onChange={(e) => setStatusFilter(e.target.value)}
+        className="bg-backgroundgray h-[38px] border-backgroundgray text-[12px] text-textGray rounded-md px-2 py-1 text-sm"
+      >
+        <option value="All">All Statuses</option>
+        <option value="Processing">Processing</option>
+        <option value="Shipping">Shipping</option>
+        <option value="Delivered">Delivered</option>
+      </select>
+    </div>
+  </div>
+
+  <div className="p-2">
+    <span className="ml-2 text-sm pr-2 text-greytext">Show </span>
+    <select
+      value={entriesPerPage}
+      onChange={(e) => setEntriesPerPage(Number(e.target.value))}
+      className="border bg-backgroundgray text-greytext rounded-md px-2 py-1 text-sm"
+    >
+      <option value={5}>5</option>
+      <option value={10}>10</option>
+      <option value={20}>20</option>
+    </select>
+    <span className="ml-2 text-sm text-greytext">entries </span>
+  </div>
+
+   <table className="w-full border-separate border-spacing-y-2">
+        <thead>
+          <tr className="text-[12px]">
+            <th className={thClass}>Order ID</th>
+            <th className={thClass}>Item</th>
+            <th className={thClass}>Customer Name</th>
+            <th className={thClass}>Date</th>
+            <th className={thClass}>Payment Info</th>
+            <th className={thClass}>Price</th>
+            <th className={thClass}>Status</th>
+          </tr>
+        </thead>
+        <tbody>
+          {paginatedData.map((item, index) => (
+            <tr 
+              key={index} 
+              className="bg-backgroundgray rounded-[14px] hover:bg-gray-50 cursor-pointer"
+              onClick={() => handleRowClick(item)}
+            >
+              <td className={tdClass}>{item.orderID}</td>
+              <td className={tdClass}>
+                <div className="flex items-center">
+                  <img
+                    src={item.itemImage}
+                    alt={item.itemName}
+                    className="w-10 h-10 mr-3 bg-white rounded-[4px] object-cover"
+                  />
+                  <span>{item.itemName}</span>
+                </div>
+              </td>
+              <td className={tdClass}>{item.customerName}</td>
+              <td className={tdClass}>{item.date}</td>
+              <td className={tdClass}>{item.paymentInfo}</td>
+              <td className={tdClass}>₹ {item.price}</td>
+              <td className={`${tdClass} ${statusColors[item.status]}`}>{item.status}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+
+  {/* Pagination Section */}
+  <div className="flex flex-col items-center mt-4">
+    <div className="text-sm text-gray-600 mb-2">
+      Showing {(currentPage - 1) * entriesPerPage + 1} to{" "}
+      {Math.min(currentPage * entriesPerPage, filteredData.length)} of{" "}
+      {filteredData.length} entries
+    </div>
+    
+    <div className="flex items-center">
+      <button
+        onClick={() => setCurrentPage((prev) => Math.max(prev - 1, 1))}
+        disabled={currentPage === 1}
+        className="mr-2 p-1 border rounded-[45px] disabled:opacity-50"
+      >
+        <FiChevronLeft />
+      </button>
+      {Array.from({ length: pageCount }, (_, i) => i + 1).map((page) => (
+        <button
+          key={page}
+          onClick={() => setCurrentPage(page)}
+          className={`mx-1 px-3 py-1 border rounded-[45px] ${
+            currentPage === page ? "bg-blue text-white" : ""
+          }`}
+        >
+          {page}
+        </button>
+      ))}
+      <button
+        onClick={() => setCurrentPage((prev) => Math.min(prev + 1, pageCount))}
+        disabled={currentPage === pageCount}
+        className="ml-2 p-1 border rounded-[45px] disabled:opacity-50"
+      >
+        <FiChevronRight />
+      </button>
+    </div>
+  </div>
+</div>
+
+  );
+}
+
+export function OrderDetails({ data }) {
+  console.log("OrderDetails - data:", data); // Log data for debugging
+
+  const thClass = "px-4 py-2 text-left text-sm font-medium text-gray-500";
+  const tdClass = "py-4 px-4 text-sm text-gray-700";
+
+  // Default values if attributes are not presentco
+  const itemImage=data?.itemImage
+  const itemName = data?.itemName ;
+  const trackingID = data?.orderID || '0'; // Adjusted to use 'orderID' for Tracking ID
+  const quantity = data?.quantity || '1';
+  const price = data?.price || '0';
+
+  const calculateTotal = () => {
+    return (price * quantity, 0);
+  };
+
+  return (
+    <div className="p-6 rounded-lg bg-white shadow-md">
+      <h2 className="text-lg font-bold mb-4">Order Summary</h2>
+      <div className="overflow-x-auto">
+        <table className="w-full border-separate border-spacing-y-2">
+          <thead>
+            <tr className="text-[12px]">
+              <th className={thClass}>Item</th>
+              <th className={thClass}>Tracking ID</th>
+              <th className={thClass}>Quantity</th>
+              <th className={thClass}>Price</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr 
+              className="bg-backgroundgray hover:bg-gray-50 cursor-pointer rounded-[14px]">
+              <td className={tdClass}>
+                <div className="flex items-center">
+                  <img
+                    src={itemImage}
+                    alt={itemName}
+                    className="w-10 h-10 mr-3 bg-white rounded-[4px] object-cover"
+                  />
+                  <span>{itemName}</span>
+                </div>
+              </td>
+              <td className={tdClass}>{trackingID}</td>
+              <td className={tdClass}>{quantity}</td>
+              <td className={tdClass}>₹ {price}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div className="mt-4 flex justify-between items-center">
+        <button
+          onClick={() => window.print()}
+          className="px-4 py-2 border  border-buttonblue text-blacktext rounded-md hover:bg-blue"
+        >
+          Print Invoice
+        </button>
+      </div>
+      <div className="text-right">
+          <p className="text-sm text-gray-600">Total: ₹ {calculateTotal().toFixed(2)}</p>
+          <p className="text-sm text-gray-600">Payment Status: COD</p>
+        </div>
+    </div>
+  );
+}
+
