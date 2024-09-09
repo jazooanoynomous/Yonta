@@ -12,9 +12,13 @@ import { discountTypes } from "./Datas";
 
 const thclass = "text-start text-sm font-medium py-3 px-2 whitespace-nowrap";
 const tdclass = "text-start text-sm py-4 px-2 whitespace-nowrap";
+<<<<<<< Updated upstream
 
 // export function Transactiontable({ data, action, functions }) {
 export function TransactionTable({ data, action, functions, isTrue }) {
+=======
+export function Transactiontable({ data, action, functions,isTrue }) {
+>>>>>>> Stashed changes
   const DropDown1 = [
     {
       title: "Edit",
