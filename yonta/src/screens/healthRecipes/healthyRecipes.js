@@ -1,10 +1,12 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import Layout from '../../Layout';
 import { FaSave } from "react-icons/fa";
 
 import { useNavigate } from 'react-router-dom';
-import Healthy from '../../components/healthy';
-import Healthy2 from '../../components/healthy2';
+import Recipe from '../../components/healthy2';
+import axios from 'axios';
+import { BASEURL } from '../../utils/constant';
+import Category from '../../components/healthy';
 
 const suggestions = [
     'Diet & nutrition',
@@ -16,6 +18,105 @@ const suggestions = [
 
 const HealthyRecipes = () => {
     const [activeSuggestion, setActiveSuggestion] = useState(null);
+    const [categoryData, setCategoryData] = useState([]); 
+    const [recipeData, setRecipeData]=useState([]);
+    const [loading, setLoading] = useState(true); // State to manage loading
+  
+    // Function to fetch user data
+    const fetchCategoryData = async () => {
+      try {
+        const response = await axios.get(`${BASEURL}healthyRecipesCat`, {
+          headers: {
+            'VerifyMe': 'RGVlcGFrS3VzaHdhaGE5Mzk5MzY5ODU0', // Add your custom header here
+          }
+        });
+        setCategoryData(response.data.healthyRecipes || []); // Set the user data in state
+      } catch (error) {
+        console.error('Error fetching users:', error);
+      } finally {
+        setLoading(false); // Stop the loading state
+      }
+    };
+  
+    useEffect(() => {
+        fetchCategoryData(); // Fetch the user data when the component mounts
+    }, []);
+
+    const fetchRecipeData = async () => {
+        try {
+          const response = await axios.get(`${BASEURL}healthyRecipes/1`, {
+            headers: {
+              'VerifyMe': 'RGVlcGFrS3VzaHdhaGE5Mzk5MzY5ODU0', // Add your custom header here
+            }
+          });
+          setRecipeData(response.data.healthyRecipes || []); // Set the user data in state
+        } catch (error) {
+          console.error('Error fetching users:', error);
+        } finally {
+          setLoading(false); // Stop the loading state
+        }
+      };
+    
+      useEffect(() => {
+        fetchRecipeData(); // Fetch the user data when the component mounts
+      }, []);
+      console.log('recioerdata',recipeData);
+      
+
+      const handleDeleteReciepe = async (id) => {
+        try {
+            await axios.delete(`${BASEURL}healthyRecipes/${id}`, {
+                headers: {
+                    'VerifyMe': 'RGVlcGFrS3VzaHdhaGE5Mzk5MzY5ODU0',
+                }
+            });
+            setRecipeData(prevData => prevData.filter(category => category.id !== id));
+        } catch (error) {
+            console.error('Error deleting RecipeData:', error);
+        }
+    };
+    const handleDeleteCategory = async (id) => {
+        try {
+            await axios.delete(`${BASEURL}healthyRecipesCat/${id}`, {
+                headers: {
+                    'VerifyMe': 'RGVlcGFrS3VzaHdhaGE5Mzk5MzY5ODU0',
+                }
+            });
+            setCategoryData(prevData => prevData.filter(category => category.id !== id));
+        } catch (error) {
+            console.error('Error deleting category:', error);
+        }
+    };
+    const handleEditCategory = async (updatedCategory) => {
+        try {
+            const { id } = updatedCategory;
+            const response = await axios.put(`${BASEURL}healthyRecipesCat/${id}`, updatedCategory, {
+                headers: {
+                    'VerifyMe': 'RGVlcGFrS3VzaHdhaGE5Mzk5MzY5ODU0',
+                },
+            });
+            // Update state with edited category
+            setCategoryData((prevData) =>
+                prevData.map((category) => (category.id === id ? response.data : category))
+            );
+        } catch (error) {
+            console.error('Error editing category:', error);
+        }
+    };
+  
+    const handleAddCategory = async (newCategory) => {
+      try {
+          const response = await axios.post(`${BASEURL}healthyRecipesCat`, newCategory, {
+              headers: {
+                  'VerifyMe': 'RGVlcGFrS3VzaHdhaGE5Mzk5MzY5ODU0',
+              },
+          });
+          // Update state with newly added category
+          setCategoryData((prevData) => [...prevData, response.data]);
+      } catch (error) {
+          console.error('Error adding category:', error);
+      }
+  };
     const navigate = useNavigate();
 
     const handleSuggestionClick = (index) => {
@@ -25,15 +126,8 @@ const HealthyRecipes = () => {
         navigate('/addrecipes'); // Navigate to the '/add-user' page
       };
 
-    const handleAddCategory = (category) => {
-        console.log('Add Category:', category);
-        // Handle category addition logic
-    };
 
-    const handleDeleteCategory = (id) => {
-        console.log('Delete Category ID:', id);
-        // Handle category deletion logic
-    };
+
 
     return (
         <Layout>
@@ -47,8 +141,10 @@ const HealthyRecipes = () => {
                     />
                 </header>
 
-                <Healthy
+                <Category
+                    data={categoryData}
                     onAddCategory={handleAddCategory}
+                    onEditCategory={handleEditCategory}
                     onDeleteCategory={handleDeleteCategory}
                 />
                 <div className="flex justify-end gap-2 mt-6 mb-4">
@@ -78,7 +174,10 @@ const HealthyRecipes = () => {
                 </div>
 
 
-                <Healthy2 onDeleteCategory={handleDeleteCategory} />
+                <Recipe 
+                     onDeleteCategory={handleDeleteReciepe} 
+                     data={recipeData}
+                     />
                 <div className="flex justify-end gap-2 mt-6 mb-4">
                     <button
                         className="bg-textgreen text-white w-[100.44px] h-[43px] rounded-lg flex items-center justify-center"
