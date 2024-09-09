@@ -40,6 +40,7 @@ import ECommerce from './screens/ecommerce/eCommerce';
 import VendorDashboard from './screens/vendor/vendorDashboard';
 import VendorProfile from './screens/vendor/vendorProfile';
 import VendorInfo from './screens/vendor/vendorInfo';
+import OrderDetail from './screens/ecommerce/orderDetail';
 
 function App() {  
   return (
@@ -85,7 +86,8 @@ function App() {
         <Route path="/subscription" element={<Subscription/>}/>
         <Route path="/product" element={<Product/>}/>
         <Route path="/videos" element={<VideoHome/>}/>
-        <Route path="/store" element={<ECommerce/>}/>
+        <Route path="/orders" element={<ECommerce/>}/>
+        <Route path="/orderdetail" element={<OrderDetail/>}/>
         <Route path="/vendors" element ={<VendorDashboard/>}/>
         <Route path="/vendorprofile" element={<VendorProfile/>}/>
        <Route path="/vendorinfo" element={<VendorInfo/>}/> 
