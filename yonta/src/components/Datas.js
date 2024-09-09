@@ -54,7 +54,7 @@ export const MenuDatas = [
   }, 
   {
     title: 'E Commerce',
-    path: '/store',
+    path: '/orders',
     icon: FaRegGem, // Gem/Diamond icon (same as above)
   }, 
  

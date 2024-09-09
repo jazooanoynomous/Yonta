@@ -123,7 +123,7 @@ const HealthyRecipes = () => {
         setActiveSuggestion(index);
     };
     const handleAddRecipes = () => {
-        navigate('/addrecipes'); // Navigate to the '/add-user' page
+        navigate('/addrecipes'); 
       };
 
 

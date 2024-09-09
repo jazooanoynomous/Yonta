@@ -53,7 +53,7 @@ const VendorInfo = () => {
                                 onChange={(e) => setFilterStatus(e.target.value)}
                                 className="border border-gray-300 rounded-lg p-2 text-xs"
                             >
-                                <option value="All">Search Catagory</option>
+                                <option value="All">Search Category</option>
                                 <option value="Processing">Processing</option>
                                 <option value="Shipping">Shipping</option>
                                 <option value="Delivered">Delivered</option>

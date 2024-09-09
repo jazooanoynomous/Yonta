@@ -51,7 +51,6 @@ function App() {
   return (
     <>
       {/* Toaster */}
-      <Toast/>
     
       <BrowserRouter>
         <Routes>
@@ -107,6 +106,8 @@ function App() {
         </Routes>
 
     </BrowserRouter>
+    <Toast/>
+
     </>
   );
 }

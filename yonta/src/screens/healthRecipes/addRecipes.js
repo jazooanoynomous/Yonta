@@ -24,7 +24,7 @@ const AddRecipes = () => {
   const fileInputRef = useRef(null);
   const location = useLocation();
   const { recipe, isEdit } = location.state || {};
-
+  
   useEffect(() => {
     if (isEdit && recipe) {
       setFormData({

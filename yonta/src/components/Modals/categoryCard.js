@@ -1,12 +1,16 @@
-// CategoryCard.js
 import React from 'react';
 import { FaEdit, FaTrash } from 'react-icons/fa';
+import { IMAGEURL } from '../../utils/constant';
 
-const CategoryCard = ({ category, onDelete, onEdit }) => {
+const CategoryCard = ({ category, onEdit, onDelete }) => {
+    const imageUrl = `${IMAGEURL}${category.image}`;
+    
+    
+    
     return (
         <div className="flex flex-col items-center rounded-xl bg-white shadow-md p-1 h-[196px] w-[156px]">
             <img
-                src={category.imageUrl}
+                src={imageUrl}
                 alt={category.name}
                 className="object-cover rounded-xl mb-2 h-[148px] w-[148px]"
             />
@@ -14,7 +18,7 @@ const CategoryCard = ({ category, onDelete, onEdit }) => {
                 <div className="bg-[#FB5458] p-2 rounded-lg" onClick={() => onDelete(category.id)}>
                     <FaTrash className="text-white cursor-pointer" />
                 </div>
-                <div className="flex bg-blue p-2 rounded-lg gap-1" onClick={() => onEdit(category.id)}>
+                <div className="flex bg-blue p-2 rounded-lg gap-1" onClick={() => onEdit(category)}>
                     <FaEdit className="text-white cursor-pointer" />
                     <p className='text-white text-xs'>Edit</p>
                 </div>
