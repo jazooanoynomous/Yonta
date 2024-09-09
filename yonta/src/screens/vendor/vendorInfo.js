@@ -13,6 +13,9 @@ const VendorInfo = () => {
     const handleAddUserClick = () => {
         navigate('/vendorprofile'); // Navigate to the '/add-user' page
     };
+    const handleRegistrationClick = () => {
+        navigate('/venderbusinessdetails'); // Navigate to the '/add-user' page
+    };
 
     return (
         <Layout>
@@ -22,7 +25,7 @@ const VendorInfo = () => {
 
 
                     <button
-                        onClick={handleAddUserClick}
+                        onClick={handleRegistrationClick}
                         className="text-blue border px-4 py-2 rounded-xl"
                     >
                         Register Information

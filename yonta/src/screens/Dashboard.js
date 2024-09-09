@@ -22,7 +22,7 @@ import { Link } from "react-router-dom";
 import MetricCard from "../components/metricCard";
 import StatsCard from "../components/statsCard";
 import BarChartComponent from "../components/barChart";
-import { TransactionTable } from "../components/Tables";
+import { Transactiontable } from "../components/Tables";
 function Dashboard() {
   return (
     <Layout>
@@ -182,7 +182,7 @@ function Dashboard() {
             </div>
             {/* table */}
             <div className="mt-4 overflow-x-scroll">
-              <TransactionTable
+              <Transactiontable
                 data={transactionData.slice(0, 5)}
                 action={false}
                 isTrue={true}

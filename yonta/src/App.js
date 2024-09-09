@@ -40,6 +40,11 @@ import ECommerce from './screens/ecommerce/eCommerce';
 import VendorDashboard from './screens/vendor/vendorDashboard';
 import VendorProfile from './screens/vendor/vendorProfile';
 import VendorInfo from './screens/vendor/vendorInfo';
+import VendorBusinessdetails from './screens/vendor/vendorBusinessdetails';
+import Banner from './screens/banner/banner';
+import EditBanner from './screens/banner/editBanner';
+import Report from './screens/report';
+
 
 function App() {  
   return (
@@ -89,6 +94,10 @@ function App() {
         <Route path="/vendors" element ={<VendorDashboard/>}/>
         <Route path="/vendorprofile" element={<VendorProfile/>}/>
        <Route path="/vendorinfo" element={<VendorInfo/>}/> 
+       <Route path="venderbusinessdetails" element={<VendorBusinessdetails/>}/>
+       <Route path="/banner" element ={<Banner/>}/>
+       <Route path="/editbanner" element={<EditBanner/>}/>
+       <Route path="/report" element={<Report/>}/>
 
 
 

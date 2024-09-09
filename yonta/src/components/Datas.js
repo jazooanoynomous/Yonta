@@ -74,8 +74,18 @@ export const MenuDatas = [
     icon: GiNotebook, // Notebook icon
   },
   {
-    title: 'Analtics',
+    title: 'Analytics',
     path: '/analytics',
+    icon: GiNotebook, // Notebook icon
+  },
+  {
+    title: 'Report',
+    path: '/report',
+    icon: GiNotebook, // Notebook icon
+  },
+  {
+    title: 'Banner',
+    path: '/banner',
     icon: GiNotebook, // Notebook icon
   },
   {
@@ -502,6 +512,15 @@ export const data = [
 
 export const dataMonth = [
   { name: 'Jan', value: 19000 },
+  { name: 'Feb', value: "2500" },
+  { name: 'Mar', value: 18000 },
+  { name: 'Apr', value: 22000 },
+  { name: 'May', value: 3000 },
+  { name: 'Jun', value: 20000 },
+  { name: 'Jul', value: 2000 },
+];
+export const RevenuData = [
+  { name: 'Jan', value: 1900 },
   { name: 'Feb', value: "2500" },
   { name: 'Mar', value: 18000 },
   { name: 'Apr', value: 22000 },
@@ -1042,7 +1061,16 @@ export const sortsDatas = {
       value: 'evening',
     },
   ],
-};
+};export const ReportTypeData = [
+
+  { id: 1,name: 'InActive', value: 7 },
+    {id: 2, name: 'Active', value: 30 },
+    {id: 3, name: 'New', value: 45 },
+];
+export const reportData = [
+  { name: 'Paid', value: 70 },
+  { name: 'trial', value: 30 },
+];
 
 
 export const expertsTypeData = [
