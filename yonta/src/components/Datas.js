@@ -1,4 +1,4 @@
-import {  HiOutlineMail } from 'react-icons/hi';
+import { HiOutlineMail } from 'react-icons/hi';
 import {
   TbCalendar,
   TbChartHistogram,
@@ -6,7 +6,7 @@ import {
   TbLockAccess,
   TbUsers,
 } from 'react-icons/tb';
-import {  FaTelegramPlane, FaWhatsapp } from 'react-icons/fa';
+import { FaHome, FaTelegramPlane, FaUser, FaUsers, FaWhatsapp } from 'react-icons/fa';
 import {
   RiFileList3Line,
   RiHeartLine,
@@ -23,9 +23,9 @@ import {
 } from 'react-icons/md';
 import { BiCalendar, BiUserPlus } from 'react-icons/bi';
 import { FiGrid, FiUsers, FiBox } from 'react-icons/fi'; // Example for diamond icon, adjust as needed
-import { FaRegGem} from 'react-icons/fa';
+import { FaRegGem } from 'react-icons/fa';
 import { BsGraphUp } from 'react-icons/bs';
-import {  RiArticleLine } from 'react-icons/ri';
+import { RiArticleLine } from 'react-icons/ri';
 import { GiNotebook } from 'react-icons/gi';
 import { BiNews } from 'react-icons/bi';
 import { Subtitles } from 'lucide-react';
@@ -37,27 +37,72 @@ export const MenuDatas = [
     icon: FiGrid, // Square grid icon
   },
   {
+    title: 'HomePage',
+    path: '/activity',
+    icon: FaHome,
+
+    subMenu: [
+
+      {
+        title: 'Activity',
+        path: '/activity',
+
+      },
+      {
+        title: 'Diet Plans',
+        path: '/dietplans',
+      },
+    
+      {
+        title: 'Yoga & Mindfullness',
+        path: '/podcasts',
+      },
+     
+    ]
+
+  },
+
+  {
     title: 'Vendors',
     path: '/vendors',
-    icon: FaRegGem, // Gem/Diamond icon
+    icon: FaUsers,
+    subMenu: [
+
+      {
+        title: 'VendorProfile',
+        path: '/vendorprofile',
+
+      },
+      // {
+      //   title: 'VendorProfile',
+      //   path: '/vendorprofile',
+
+      // },
+      {
+        title: 'VendorInfo',
+        path: '/vendorinfo',
+
+      }
+    ]
+
   },
   {
     title: 'Subscription',
     path: '/subscription',
     icon: FaRegGem, // Gem/Diamond icon (same as above)
-  },  
+  },
   {
     title: 'Add Expert',
     path: '/expertsBoard',
     icon: FaRegGem, // Gem/Diamond icon (same as above)
-  
-  }, 
+
+  },
   {
     title: 'E Commerce',
     path: '/orders',
     icon: FaRegGem, // Gem/Diamond icon (same as above)
-  }, 
- 
+  },
+
   {
     title: 'Users',
     path: '/patients',
@@ -208,17 +253,17 @@ export const orders = [
 
 export const adminInfo = {
   profile: {
-      fullName: "David Gupta",
-      mobile: "+44 (13) 1234 123",
-      email: "alchemistmanips@gmail.com",
-      location: "United States",
-      image:'/images/hero.png'
+    fullName: "David Gupta",
+    mobile: "+44 (13) 1234 123",
+    email: "alchemistmanips@gmail.com",
+    location: "United States",
+    image: '/images/hero.png'
   },
   subAdmins: [
-      { name: "Esthera Jackson", email: "EstheraJackson@gmail.com", product: "Ecommerce" },
-      { name: "Esthera Jackson", email: "EstheraJackson@gmail.com", product: "Expert" },
-      { name: "Esthera Jackson", email: "EstheraJackson@gmail.com", product: "Vendor" },
-      { name: "Esthera Jackson", email: "EstheraJackson@gmail.com", product: "Vendor" }
+    { name: "Esthera Jackson", email: "EstheraJackson@gmail.com", product: "Ecommerce" },
+    { name: "Esthera Jackson", email: "EstheraJackson@gmail.com", product: "Expert" },
+    { name: "Esthera Jackson", email: "EstheraJackson@gmail.com", product: "Vendor" },
+    { name: "Esthera Jackson", email: "EstheraJackson@gmail.com", product: "Vendor" }
   ],
 };
 
@@ -378,14 +423,14 @@ export const plansData = [
   {
     title: 'BASIC',
     price: '₹1,000',
-    features: ['Yoga', 'Home Workout', 'Nutrition', 'Expert Consultation', 'Ecommerce', 'Diet plan','Mindfull'],
-    excluded: ['Ecommerce', 'Diet plan',''],
+    features: ['Yoga', 'Home Workout', 'Nutrition', 'Expert Consultation', 'Ecommerce', 'Diet plan', 'Mindfull'],
+    excluded: ['Ecommerce', 'Diet plan', ''],
   },
   {
     title: 'STARTER',
     price: '₹500',
-    features: ['Yoga', 'Home Workout','Mindfull', 'Nutrition', 'Expert Consultation', 'Ecommerce', 'Diet plan',],
-    excluded: ['Nutrition', 'Expert Consultation',  'Diet plan'],
+    features: ['Yoga', 'Home Workout', 'Mindfull', 'Nutrition', 'Expert Consultation', 'Ecommerce', 'Diet plan',],
+    excluded: ['Nutrition', 'Expert Consultation', 'Diet plan'],
   },
 ];
 export const couponData = [
@@ -480,7 +525,7 @@ export const couponData = [
     status: "Inactive",
   },
 ];
-export  const discountTypes = [
+export const discountTypes = [
   {
     title: "Amount off Products",
     description: "Discount specific Products or collection of products",
@@ -528,129 +573,129 @@ export const RevenuData = [
   { name: 'Jun', value: 20000 },
   { name: 'Jul', value: 2000 },
 ];
-export const vendordata=[
+export const vendordata = [
   {
-    BusinessName:"Muscleblaze",
-    BusinessType:"Supplier",
-    Product:"26",
-    TotalOrders:"896",
-    RevenueGenerated:"₹5.265",
-    UnitSold:"5966",
-    Location:"Mumbai"
+    BusinessName: "Muscleblaze",
+    BusinessType: "Supplier",
+    Product: "26",
+    TotalOrders: "896",
+    RevenueGenerated: "₹5.265",
+    UnitSold: "5966",
+    Location: "Mumbai"
   },
   {
-    BusinessName:"As it is",
-    BusinessType:"Merchandise",
-    Product:"26",
-    TotalOrders:"1896",
-    RevenueGenerated:"₹2.265",
-    UnitSold:"5966",
-    Location:"Mumbai"
+    BusinessName: "As it is",
+    BusinessType: "Merchandise",
+    Product: "26",
+    TotalOrders: "1896",
+    RevenueGenerated: "₹2.265",
+    UnitSold: "5966",
+    Location: "Mumbai"
   },
   {
-    BusinessName:"Muscleblaze",
-    BusinessType:"Supplier",
-    Product:"26",
-    TotalOrders:"896",
-    RevenueGenerated:"₹3.265",
-    UnitSold:"5966",
-    Location:"Mumbai"
+    BusinessName: "Muscleblaze",
+    BusinessType: "Supplier",
+    Product: "26",
+    TotalOrders: "896",
+    RevenueGenerated: "₹3.265",
+    UnitSold: "5966",
+    Location: "Mumbai"
   },
   {
-    BusinessName:"On Nutrition",
-    BusinessType:"Supplier",
-    Product:"26",
-    TotalOrders:"3896",
-    RevenueGenerated:"₹6.465",
-    UnitSold:"5966",
-    Location:"Mumbai"
+    BusinessName: "On Nutrition",
+    BusinessType: "Supplier",
+    Product: "26",
+    TotalOrders: "3896",
+    RevenueGenerated: "₹6.465",
+    UnitSold: "5966",
+    Location: "Mumbai"
   },
   {
-    BusinessName:"Muscleblaze",
-    BusinessType:"Supplier",
-    Product:"26",
-    TotalOrders:"8196",
-    RevenueGenerated:"₹5.865",
-    UnitSold:"5966",
-    Location:"Mumbai"
+    BusinessName: "Muscleblaze",
+    BusinessType: "Supplier",
+    Product: "26",
+    TotalOrders: "8196",
+    RevenueGenerated: "₹5.865",
+    UnitSold: "5966",
+    Location: "Mumbai"
   },
 ]
-export const vendorListdata=[
+export const vendorListdata = [
   {
-    BusinessName:"Muscleblaze",
-    BusinessType:"Supplier",
-    Product:"26",
-    TotalOrders:"896",
-    RevenueGenerated:"₹5.265",
-    JoinedDate:"28/11/2023",
-    Location:"Mumbai"
+    BusinessName: "Muscleblaze",
+    BusinessType: "Supplier",
+    Product: "26",
+    TotalOrders: "896",
+    RevenueGenerated: "₹5.265",
+    JoinedDate: "28/11/2023",
+    Location: "Mumbai"
   },
   {
-    BusinessName:"As it is",
-    BusinessType:"Merchandise",
-    Product:"26",
-    TotalOrders:"1896",
-    RevenueGenerated:"₹2.265",
-    JoinedDate:"28/11/2023",
+    BusinessName: "As it is",
+    BusinessType: "Merchandise",
+    Product: "26",
+    TotalOrders: "1896",
+    RevenueGenerated: "₹2.265",
+    JoinedDate: "28/11/2023",
 
-    Location:"Mumbai"
+    Location: "Mumbai"
   },
   {
-    BusinessName:"Muscleblaze",
-    BusinessType:"Supplier",
-    Product:"26",
-    TotalOrders:"896",
-    RevenueGenerated:"₹3.265",
-    JoinedDate:"28/11/2023",
-    Location:"Mumbai"
+    BusinessName: "Muscleblaze",
+    BusinessType: "Supplier",
+    Product: "26",
+    TotalOrders: "896",
+    RevenueGenerated: "₹3.265",
+    JoinedDate: "28/11/2023",
+    Location: "Mumbai"
   },
   {
-    BusinessName:"On Nutrition",
-    BusinessType:"Supplier",
-    Product:"26",
-    TotalOrders:"3896",
-    RevenueGenerated:"₹6.465",
-    JoinedDate:"28/11/2023",
-    Location:"Mumbai"
+    BusinessName: "On Nutrition",
+    BusinessType: "Supplier",
+    Product: "26",
+    TotalOrders: "3896",
+    RevenueGenerated: "₹6.465",
+    JoinedDate: "28/11/2023",
+    Location: "Mumbai"
   },
   {
-    BusinessName:"Muscleblaze",
-    BusinessType:"Supplier",
-    Product:"26",
-    TotalOrders:"8196",
-    RevenueGenerated:"₹5.865",
-    JoinedDate:"28/11/2023",
-    Location:"Mumbai"
+    BusinessName: "Muscleblaze",
+    BusinessType: "Supplier",
+    Product: "26",
+    TotalOrders: "8196",
+    RevenueGenerated: "₹5.865",
+    JoinedDate: "28/11/2023",
+    Location: "Mumbai"
   },
   {
-    BusinessName:"Muscleblaze",
-    BusinessType:"Supplier",
-    Product:"26",
-    TotalOrders:"8196",
-    RevenueGenerated:"₹5.865",
-    JoinedDate:"28/11/2023",
-    Location:"Mumbai"
+    BusinessName: "Muscleblaze",
+    BusinessType: "Supplier",
+    Product: "26",
+    TotalOrders: "8196",
+    RevenueGenerated: "₹5.865",
+    JoinedDate: "28/11/2023",
+    Location: "Mumbai"
   },
   {
-    BusinessName:"Muscleblaze",
-    BusinessType:"Supplier",
-    Product:"26",
-    TotalOrders:"8196",
-    RevenueGenerated:"₹5.865",
-    JoinedDate:"28/11/2023",
-    Location:"Mumbai"
+    BusinessName: "Muscleblaze",
+    BusinessType: "Supplier",
+    Product: "26",
+    TotalOrders: "8196",
+    RevenueGenerated: "₹5.865",
+    JoinedDate: "28/11/2023",
+    Location: "Mumbai"
   },
   {
-    BusinessName:"Muscleblaze",
-    BusinessType:"Supplier",
-    Product:"26",
-    TotalOrders:"8196",
-    RevenueGenerated:"₹5.865",
-    JoinedDate:"28/11/2023",
-    Location:"Mumbai"
+    BusinessName: "Muscleblaze",
+    BusinessType: "Supplier",
+    Product: "26",
+    TotalOrders: "8196",
+    RevenueGenerated: "₹5.865",
+    JoinedDate: "28/11/2023",
+    Location: "Mumbai"
   },
 ]
- export const products = [
+export const products = [
   {
     id: 1,
     name: "MuscleBlaze Biozyme Performance Whey, 2 kg (4.4 lb), Rich Chocolate",
@@ -680,7 +725,7 @@ export const vendorListdata=[
     image: "/images/1 (1).png", // Replace this with actual product image link
   },
 ];
- export const productData1 = [
+export const productData1 = [
   {
     id: 1,
     name: "MuscleBlaze Biozyme Performance Whey",
@@ -764,62 +809,62 @@ export const notificationsData = [
 ];
 export const VendorProductListData = [
   {
-    image:'/images/1 (1).png',
+    image: '/images/1 (1).png',
     item: "MuscleBlaze Biozyme Performance Whey",
     weight: "2KG",
     flavour: "rich Chocolate",
     expiryDate: "23/04/2016",
-    stock:"24",
+    stock: "24",
     mrp: "₹ 3,099",
     price: "₹ 2,799"
   },
   {
-    image:'/images/1 (1).png',
+    image: '/images/1 (1).png',
     item: "MuscleBlaze Biozyme Performance Whey",
     weight: "2KG",
     flavour: "rich Chocolate",
     expiryDate: "23/04/2016",
-    stock:"24",
+    stock: "24",
     mrp: "₹ 3,099",
     price: "₹ 2,799"
   },
   {
-    image:'/images/1 (1).png',
+    image: '/images/1 (1).png',
     item: "MuscleBlaze Biozyme Performance Whey",
     weight: "2KG",
     flavour: "rich Chocolate",
     expiryDate: "23/04/2016",
-    stock:"24",
+    stock: "24",
     mrp: "₹ 3,099",
     price: "₹ 2,799"
   },
   {
-    image:'/images/1 (1).png',
+    image: '/images/1 (1).png',
     item: "MuscleBlaze Biozyme Performance Whey",
     weight: "2KG",
     flavour: "rich Chocolate",
     expiryDate: "23/04/2016",
-    stock:"24",
+    stock: "24",
     mrp: "₹ 3,099",
     price: "₹ 2,799"
   },
   {
-    image:'/images/1 (1).png',
+    image: '/images/1 (1).png',
     item: "MuscleBlaze Biozyme Performance Whey",
     weight: "2KG",
     flavour: "rich Chocolate",
     expiryDate: "23/04/2016",
-    stock:"24",
+    stock: "24",
     mrp: "₹ 3,099",
     price: "₹ 2,799"
   },
   {
-    image:'/images/1 (1).png',
+    image: '/images/1 (1).png',
     item: "MuscleBlaze Biozyme Performance Whey",
     weight: "2KG",
     flavour: "rich Chocolate",
     expiryDate: "23/04/2016",
-    stock:"24",
+    stock: "24",
     mrp: "₹ 3,099",
     price: "₹ 2,799"
   },
@@ -1061,11 +1106,11 @@ export const sortsDatas = {
       value: 'evening',
     },
   ],
-};export const ReportTypeData = [
+}; export const ReportTypeData = [
 
-  { id: 1,name: 'InActive', value: 7 },
-    {id: 2, name: 'Active', value: 30 },
-    {id: 3, name: 'New', value: 45 },
+  { id: 1, name: 'InActive', value: 7 },
+  { id: 2, name: 'Active', value: 30 },
+  { id: 3, name: 'New', value: 45 },
 ];
 export const reportData = [
   { name: 'Paid', value: 70 },
@@ -1075,10 +1120,10 @@ export const reportData = [
 
 export const expertsTypeData = [
 
-  { id: 1,name: 'Dietician', value: 7 },
-    {id: 2, name: 'Physio', value: 30 },
-    {id: 3, name: 'Fitness', value: 45 },
-    {id: 4, name: 'Medical', value: 25 },
+  { id: 1, name: 'Dietician', value: 7 },
+  { id: 2, name: 'Physio', value: 30 },
+  { id: 3, name: 'Fitness', value: 45 },
+  { id: 4, name: 'Medical', value: 25 },
 ];
 export const regionData = [
   { name: 'East', value: 25 },
@@ -1837,13 +1882,15 @@ export const ExpertData = [
 
 
 
-export  const MetricCardData = [
-    { title: 'Net Revenue', value: '₹ 8,96,065', change: '+10.05%', description: 'since last month' },
-    { title: 'App Downloads', value: '6,065 M', change: '+5.03%', description: 'from last year' },
-    { title: 'Avg Session Duration', value: '6,065 Mins', change: '+8.00%', description: 'in the last 6 months' },
-    { title: 'Monthly Logins', value: '6,065', change: '+3.5%', description: 'from last month' },
-  ];
+export const MetricCardData = [
+  { title: 'Net Revenue', value: '₹ 8,96,065', change: '+10.05%', description: 'since last month' },
+  { title: 'App Downloads', value: '6,065 M', change: '+5.03%', description: 'from last year' },
+  { title: 'Avg Session Duration', value: '6,065 Mins', change: '+8.00%', description: 'in the last 6 months' },
+  { title: 'Monthly Logins', value: '6,065', change: '+3.5%', description: 'from last month' },
+];
 
+
+<<<<<<< Updated upstream
   export const bestSellersData = [
     {
       id: 1,
@@ -1877,6 +1924,8 @@ export  const MetricCardData = [
     }
   ];
   
+=======
+>>>>>>> Stashed changes
 export const orderData = [
   {
     orderID: "#Order-1144",
