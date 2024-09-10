@@ -27,8 +27,6 @@ import Notification from "./screens/notification/notification";
 import CouponsAdd from "./screens/coupons/couponsAdd";
 import AddNotification from "./screens/notification/addNotification";
 import Coupons from "./screens/coupons/coupons";
-// import Report from './screens/reports';
-<<<<<<< HEAD
 import AdminDashboard from "./screens/settings/adminDashboard";
 import AddAdmin from "./screens/settings/addAdmin";
 import Analytics from "./screens/analytics";
@@ -40,32 +38,15 @@ import ECommerce from "./screens/ecommerce/eCommerce";
 import VendorDashboard from "./screens/vendor/vendorDashboard";
 import VendorProfile from "./screens/vendor/vendorProfile";
 import VendorInfo from "./screens/vendor/vendorInfo";
+import VendorBusinessdetails from "./screens/vendor/vendorBusinessdetails";
+import Banner from "./screens/banner/banner";
+import EditBanner from "./screens/banner/editBanner";
+import Report from "./screens/report";
 import OrderDetail from "./screens/ecommerce/orderDetail";
-=======
-import AdminDashboard from './screens/settings/adminDashboard';
-import AddAdmin from './screens/settings/addAdmin';
-import Analytics from './screens/analytics';
-import Subscription from './screens/subscription';
-import Product from './screens/product';
-import VideoHome from './screens/videos/videohome';
-import ExpertProfileScreen from './screens/experts/expertProfile';
-import ECommerce from './screens/ecommerce/eCommerce';
-import VendorDashboard from './screens/vendor/vendorDashboard';
-import VendorProfile from './screens/vendor/vendorProfile';
-import VendorInfo from './screens/vendor/vendorInfo';
-import VendorBusinessdetails from './screens/vendor/vendorBusinessdetails';
-import Banner from './screens/banner/banner';
-import EditBanner from './screens/banner/editBanner';
-import Report from './screens/report';
-
-import OrderDetail from './screens/ecommerce/orderDetail';
->>>>>>> b3be1a0d2fb2f1b1cdd5959c3c002dbd75083236
 
 function App() {
   return (
     <>
-      {/* Toaster */}
-<<<<<<< HEAD
       <Toast />
 
       <BrowserRouter>
@@ -98,63 +79,8 @@ function App() {
           <Route path="/couponsaddorder" element={<CouponsAddOrder />} />
           <Route path="/notification" element={<Notification />} />
           <Route path="/addnotification" element={<AddNotification />} />
-          {/* <Route path="/report" element={<Report/>}/> */}
           <Route path="/settings" element={<AdminDashboard />} />
           <Route path="/settings/addadmin" element={<AddAdmin />} />
-=======
-    
-      <BrowserRouter>
-        <Routes>
-        <Route path="/" element={<Dashboard/>} />
-        <Route path="/patients" element={<Users/>} />
-        <Route path="/add-workout" element={<AddWorkout/>} />
-        <Route path="/activityadd" element={<ActivityAdd/>} />
-        <Route path="/podcasts" element={<PodCasts/>}/>
-        <Route path="/dietplans" element={<DietPlans/>}/>
-        <Route path="/dashboard" element={<Dashboard/>} />
-        <Route path="/addUser" element={<AddUser/>}/>
-        <Route path="/experts" element={<Experts/>}/>
-        <Route path="/expert-profile" element={<ExpertProfileScreen/>}/>
-        <Route path="/expertsBoard" element={<AddExpertBoard/>}/>
-        <Route path="/dayDiet" element={<DayDiet/>} />
-        <Route path="/questionars" element={<Questionaris/>}/>
-        <Route path="/activity" element={<ActivityHome/>}/>
-        <Route path="/fitness" element={<FitnessHome/>}/>
-        <Route path="/ingredients" element={<Ingredient/>} />
-        <Route path="addingredient" element={<AddIngredient/>}/>
-        <Route path="/healthyrecipes" element={<HealthyRecipes/>}/>
-        <Route path="/addrecipes" element={<AddRecipes/>}/>
-        <Route path="/agility" element={<Agility/>}/>
-        <Route path="/coupons" element={<Coupons/>}/>
-        <Route path="/blogs" element={<Blog/>} />
-        <Route path="/addblog"element={<AddBlog/>}/>
-        <Route path="/couponsadd" element={<CouponsAdd/>}/>
-        <Route path="/couponsaddx" element={<CouponsAddX/>}/>
-        <Route path="/couponsaddorder" element={<CouponsAddOrder/>}/>
-        <Route path="/notification" element={<Notification/>}/>
-        <Route path="/addnotification" element={<AddNotification/>}/>
-        {/* <Route path="/report" element={<Report/>}/> */}
-        <Route path="/settings" element={<AdminDashboard/>}/>
-        <Route path="/settings/addadmin" element={<AddAdmin/>}/>
-
-        <Route path="analytics" element={<Analytics/>}/>
-        <Route path="/subscription" element={<Subscription/>}/>
-        <Route path="/product" element={<Product/>}/>
-        <Route path="/videos" element={<VideoHome/>}/>
-        <Route path="/orders" element={<ECommerce/>}/>
-        <Route path="/orderdetail" element={<OrderDetail/>}/>
-        <Route path="/vendors" element ={<VendorDashboard/>}/>
-        <Route path="/vendorprofile" element={<VendorProfile/>}/>
-       <Route path="/vendorinfo" element={<VendorInfo/>}/> 
-       <Route path="venderbusinessdetails" element={<VendorBusinessdetails/>}/>
-       <Route path="/banner" element ={<Banner/>}/>
-       <Route path="/editbanner" element={<EditBanner/>}/>
-       <Route path="/report" element={<Report/>}/>
-
-
-
->>>>>>> b3be1a0d2fb2f1b1cdd5959c3c002dbd75083236
-
           <Route path="analytics" element={<Analytics />} />
           <Route path="/subscription" element={<Subscription />} />
           <Route path="/product" element={<Product />} />
@@ -164,15 +90,15 @@ function App() {
           <Route path="/vendors" element={<VendorDashboard />} />
           <Route path="/vendorprofile" element={<VendorProfile />} />
           <Route path="/vendorinfo" element={<VendorInfo />} />
+          <Route
+            path="/venderbusinessdetails"
+            element={<VendorBusinessdetails />}
+          />
+          <Route path="/banner" element={<Banner />} />
+          <Route path="/editbanner" element={<EditBanner />} />
+          <Route path="/report" element={<Report />} />
         </Routes>
-<<<<<<< HEAD
       </BrowserRouter>
-=======
-
-    </BrowserRouter>
-    <Toast/>
-
->>>>>>> b3be1a0d2fb2f1b1cdd5959c3c002dbd75083236
     </>
   );
 }
