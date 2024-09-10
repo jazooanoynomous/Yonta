@@ -89,7 +89,7 @@ function Dashboard() {
           }}
         >
           <div className=" text-white  absolute top-4 left-5 md:left-12 w-[100vw] ">
-            <h2 className="font-bold text-xl">Hello Admin,</h2>
+            <h2 className="font-bold text-xl pt-5">Hello Admin,</h2>
             <p>
               Here’s you statistics for today. Hope you have a<br /> great day
             </p>
