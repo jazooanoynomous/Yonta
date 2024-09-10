@@ -1,7 +1,8 @@
 import React, { useMemo, useState } from "react";
-import React, { useState } from "react";
 import { Button, MenuSelect } from "./Form";
 import { BiDotsHorizontalRounded, BiPlus } from "react-icons/bi";
+import { FaAngleLeft } from "react-icons/fa";
+import { FaAngleRight } from "react-icons/fa";
 import {
   FiChevronLeft,
   FiChevronRight,
@@ -17,20 +18,12 @@ import ProgressBar from "./progressBar";
 import { FaEdit } from "react-icons/fa";
 import CouponsPopup from "./Modals/couponsPopup";
 import { discountTypes } from "./Datas";
-import {
-  FiChevronLeft,
-  FiChevronRight,
-  FiEdit,
-  FiEye,
-  FiSearch,
-  FiTrash2,
-} from "react-icons/fi";
 const thclass = "text-start text-sm font-medium py-3 px-2 whitespace-nowrap";
 const tdclass = "text-start text-sm py-4 px-2 whitespace-nowrap";
 
 // export function Transactiontable({ data, action, functions }) {
 
-export function Transactiontable({ data, action, functions,isTrue }) {
+export function Transactiontable({ data, action, functions, isTrue }) {
   const DropDown1 = [
     {
       title: "Edit",
@@ -55,81 +48,121 @@ export function Transactiontable({ data, action, functions,isTrue }) {
     },
   ];
 
-  const thclass = 'px-4 py-2'; // Example className for th elements
-  const tdclass = 'px-4 py-2'; // Example className for td elements
+  const thclass = "px-4 py-2"; // Example className for th elements
+  const tdclass = "px-4 py-2"; // Example className for td elements
 
   return (
-    <table className="table-auto w-full">
-      <thead className="bg-dry rounded-md overflow-hidden">
-        <tr>
-          <th className={thclass}>{isTrue ? "Order ID" : "#"}</th>
-          <th className={thclass}>{isTrue ? "Item" : "Patient"}</th>
-          <th className={thclass}>{isTrue ? "Customer Name" : "Date"}</th>
-          <th className={thclass}>{isTrue ? "Payment Info" : "Status"}</th>
-          {isTrue ? (
-            <th className={thclass}>Price</th>
-          ) : (
-            <th className={thclass}>
-              Amount <span className="text-xs font-light">(Tsh)</span>
-            </th>
-          )}
-          <th className={thclass}>{isTrue ? "Status" : "Method"}</th>
-          {action && <th className={thclass}>Actions</th>}
-        </tr>
-      </thead>
-      <tbody>
-        {data.map((item, index) => (
-          <tr
-            key={item.id}
-            className="border-b border-border hover:bg-greyed transitions"
-          >
-            <td className={tdclass}>{index + 1}</td>
-            <td className={tdclass}>
-              <div className="flex gap-4 items-center">
-                <span className="w-12">
-                  <img
-                    src={item.user.image}
-                    alt={item.user.title}
-                    className="w-full h-12 rounded-full object-cover border border-border"
-                  />
-                </span>
-                <div>
-                  <h4 className="text-sm font-medium">{item.user.title}</h4>
-                  <p className="text-xs mt-1 text-textGray">
-                    {item.user.phone}
-                  </p>
-                </div>
-              </div>
-            </td>
-            <td className={tdclass}>{item.date}</td>
-            <td className={tdclass}>
-              <span
-                className={`py-1 px-4 ${
-                  item.status === "Paid"
-                    ? "bg-subMain text-subMain"
-                    : item.status === "Pending"
-                    ? "bg-orange-500 text-orange-500"
-                    : item.status === "Cancel" && "bg-red-600 text-red-600"
-                } bg-opacity-10 text-xs rounded-xl`}
-              >
-                {item.status}
-              </span>
-            </td>
-            <td className={`${tdclass} font-semibold`}>{item.amount}</td>
-            <td className={tdclass}>{item.method}</td>
-            {action && (
-              <td className={tdclass}>
-                <MenuSelect datas={DropDown1} item={item}>
-                  <div className="bg-dry border text-main text-xl py-2 px-4 rounded-lg">
-                    <BiDotsHorizontalRounded />
-                  </div>
-                </MenuSelect>
-              </td>
+    <>
+      <table className="table-auto">
+        <thead className="bg-dry rounded-md overflow-hidden">
+          <tr>
+            <th className={thclass}>{isTrue ? "Order ID" : "#"}</th>
+            <th className={thclass}>{isTrue ? "Item" : "Patient"}</th>
+            <th className={thclass}>{isTrue ? "Customer Name" : "Date"}</th>
+            <th className={thclass}>{isTrue ? "Payment Info" : "Status"}</th>
+            {isTrue ? (
+              <th className={thclass}>Price</th>
+            ) : (
+              <th className={thclass}>
+                Amount <span className="text-xs font-light">(Tsh)</span>
+              </th>
             )}
+            <th className={thclass}>{isTrue ? "Status" : "Method"}</th>
+            {action && <th className={thclass}>Actions</th>}
           </tr>
-        ))}
-      </tbody>
-    </table>
+        </thead>
+        <tbody>
+          {data.map((item, index) => (
+            <tr
+              key={item.id}
+              className="border-b border-border hover:bg-greyed transitions"
+            >
+              <td className={tdclass}>{index + 1}</td>
+              <td className={tdclass}>
+                <div className="flex gap-4 items-center">
+                  <span className="w-12">
+                    <img
+                      src={item.user.image}
+                      alt={item.user.title}
+                      className="w-full h-12 rounded-full object-cover border border-border"
+                    />
+                  </span>
+                  <div>
+                    <h4 className="text-sm font-medium">{item.user.title}</h4>
+                    <p className="text-xs mt-1 text-textGray">
+                      {item.user.phone}
+                    </p>
+                  </div>
+                </div>
+              </td>
+              <td className={tdclass}>{item.date}</td>
+              <td className={tdclass}>
+                <span
+                  className={`py-1 px-4 ${
+                    item.status === "Paid"
+                      ? "bg-subMain text-subMain"
+                      : item.status === "Pending"
+                      ? "bg-orange-500 text-orange-500"
+                      : item.status === "Cancel" && "bg-red-600 text-red-600"
+                  } bg-opacity-10 text-xs rounded-xl`}
+                >
+                  {item.status}
+                </span>
+              </td>
+              <td className={`${tdclass} font-semibold`}>{item.amount}</td>
+              <td className={tdclass}>{item.method}</td>
+              {action && (
+                <td className={tdclass}>
+                  <MenuSelect datas={DropDown1} item={item}>
+                    <div className="bg-dry border text-main text-xl py-2 px-4 rounded-lg">
+                      <BiDotsHorizontalRounded />
+                    </div>
+                  </MenuSelect>
+                </td>
+              )}
+            </tr>
+          ))}
+        </tbody>
+      </table>
+      <div className=" w-full flex justify-center mt-5">
+        <div
+          className="w-[250px] mb-20
+      flex flex-col items-start justify-center gap-4"
+        >
+          <p className="text-black text-sm font-semibold">
+            Showing 1 to 5 of 45,365 enteries
+          </p>
+          <div className="flex space-x-3 items-center justify-center">
+            <p className="text-blue text-lg">
+              <FaAngleLeft />
+            </p>
+            <p className="flex space-x-2 items-center justify-center">
+              <p
+                className="w-9 h-9 rounded-full border bg-blue border-gray-500 flex items-center
+        justify-center"
+              >
+                1
+              </p>
+              <p
+                className="w-9 h-9 rounded-full border border-gray-500 flex items-center
+        justify-center"
+              >
+                2
+              </p>
+              <p
+                className="w-9 h-9 rounded-full border border-gray-500 flex items-center
+        justify-center"
+              >
+                33
+              </p>
+            </p>
+            <p className="text-blue text-lg">
+              <FaAngleRight />
+            </p>
+          </div>
+        </div>
+      </div>
+    </>
   );
 }
 
@@ -160,57 +193,97 @@ export function InvoiceTable({ data }) {
     },
   ];
   return (
-    <table className="table-auto w-full">
-      <thead className="bg-dry rounded-md overflow-hidden">
-        <tr>
-          <th className={thclass}>Invoice ID</th>
-          <th className={thclass}>Patient</th>
-          <th className={thclass}>Created Date</th>
-          <th className={thclass}>Due Date</th>
-          <th className={thclass}>
-            Amout <span className="text-xs font-light">(Tsh)</span>
-          </th>
-          <th className={thclass}>Actions</th>
-        </tr>
-      </thead>
-      <tbody>
-        {data.map((item) => (
-          <tr
-            key={item.id}
-            className="border-b border-border hover:bg-greyed transitions"
-          >
-            <td className={tdclass}>#{item?.id}</td>
-            <td className={tdclass}>
-              <div className="flex gap-4 items-center">
-                <span className="w-12">
-                  <img
-                    src={item?.to?.image}
-                    alt={item?.to?.title}
-                    className="w-full h-12 rounded-full object-cover border border-border"
-                  />
-                </span>
-                <div>
-                  <h4 className="text-sm font-medium">{item?.to?.title}</h4>
-                  <p className="text-xs mt-1 text-textGray">
-                    {item?.to?.email}
-                  </p>
-                </div>
-              </div>
-            </td>
-            <td className={tdclass}>{item?.createdDate}</td>
-            <td className={tdclass}>{item?.dueDate}</td>
-            <td className={`${tdclass} font-semibold`}>{item?.total}</td>
-            <td className={tdclass}>
-              <MenuSelect datas={DropDown1} item={item}>
-                <div className="bg-dry border text-main text-xl py-2 px-4 rounded-lg">
-                  <BiDotsHorizontalRounded />
-                </div>
-              </MenuSelect>
-            </td>
+    <>
+      <table className="table-auto w-full">
+        <thead className="bg-dry rounded-md overflow-hidden">
+          <tr>
+            <th className={thclass}>Invoice ID</th>
+            <th className={thclass}>Patient</th>
+            <th className={thclass}>Created Date</th>
+            <th className={thclass}>Due Date</th>
+            <th className={thclass}>
+              Amout <span className="text-xs font-light">(Tsh)</span>
+            </th>
+            <th className={thclass}>Actions</th>
           </tr>
-        ))}
-      </tbody>
-    </table>
+        </thead>
+        <tbody>
+          {data.map((item) => (
+            <tr
+              key={item.id}
+              className="border-b border-border hover:bg-greyed transitions"
+            >
+              <td className={tdclass}>#{item?.id}</td>
+              <td className={tdclass}>
+                <div className="flex gap-4 items-center">
+                  <span className="w-12">
+                    <img
+                      src={item?.to?.image}
+                      alt={item?.to?.title}
+                      className="w-full h-12 rounded-full object-cover border border-border"
+                    />
+                  </span>
+                  <div>
+                    <h4 className="text-sm font-medium">{item?.to?.title}</h4>
+                    <p className="text-xs mt-1 text-textGray">
+                      {item?.to?.email}
+                    </p>
+                  </div>
+                </div>
+              </td>
+              <td className={tdclass}>{item?.createdDate}</td>
+              <td className={tdclass}>{item?.dueDate}</td>
+              <td className={`${tdclass} font-semibold`}>{item?.total}</td>
+              <td className={tdclass}>
+                <MenuSelect datas={DropDown1} item={item}>
+                  <div className="bg-dry border text-main text-xl py-2 px-4 rounded-lg">
+                    <BiDotsHorizontalRounded />
+                  </div>
+                </MenuSelect>
+              </td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+      <div className=" w-full flex justify-center mt-5">
+        <div
+          className="w-[250px] mb-20
+      flex flex-col items-start justify-center gap-4"
+        >
+          <p className="text-black text-sm font-semibold">
+            Showing 1 to 5 of 45,365 enteries
+          </p>
+          <div className="flex space-x-3 items-center justify-center">
+            <p className="text-blue text-lg">
+              <FaAngleLeft />
+            </p>
+            <p className="flex space-x-2 items-center justify-center">
+              <p
+                className="w-9 h-9 rounded-full border bg-blue border-gray-500 flex items-center
+        justify-center"
+              >
+                1
+              </p>
+              <p
+                className="w-9 h-9 rounded-full border border-gray-500 flex items-center
+        justify-center"
+              >
+                2
+              </p>
+              <p
+                className="w-9 h-9 rounded-full border border-gray-500 flex items-center
+        justify-center"
+              >
+                33
+              </p>
+            </p>
+            <p className="text-blue text-lg">
+              <FaAngleRight />
+            </p>
+          </div>
+        </div>
+      </div>
+    </>
   );
 }
 
@@ -233,53 +306,93 @@ export function MedicineTable({ data, onEdit }) {
     },
   ];
   return (
-    <table className="table-auto w-full">
-      <thead className="bg-dry rounded-md overflow-hidden">
-        <tr>
-          <th className={thclass}>Name</th>
-          <th className={thclass}>
-            Price <span className="text-xs font-light">(Tsh)</span>
-          </th>
-          <th className={thclass}>Status</th>
-          <th className={thclass}>InStock</th>
-          <th className={thclass}>Measure</th>
-          <th className={thclass}>Actions</th>
-        </tr>
-      </thead>
-      <tbody>
-        {data.map((item, index) => (
-          <tr
-            key={item.id}
-            className="border-b border-border hover:bg-greyed transitions"
-          >
-            <td className={tdclass}>
-              <h4 className="text-sm font-medium">{item?.name}</h4>
-            </td>
-            <td className={`${tdclass} font-semibold`}>{item?.price}</td>
-            <td className={tdclass}>
-              <span
-                className={`text-xs font-medium ${
-                  item?.status === "Out of stock"
-                    ? "text-red-600"
-                    : "text-green-600"
-                }`}
-              >
-                {item?.status}
-              </span>
-            </td>
-            <td className={tdclass}>{item?.stock}</td>
-            <td className={tdclass}>{item?.measure}</td>
-            <td className={tdclass}>
-              <MenuSelect datas={DropDown1} item={item}>
-                <div className="bg-dry border text-main text-xl py-2 px-4 rounded-lg">
-                  <BiDotsHorizontalRounded />
-                </div>
-              </MenuSelect>
-            </td>
+    <>
+      <table className="table-auto w-full">
+        <thead className="bg-dry rounded-md overflow-hidden">
+          <tr>
+            <th className={thclass}>Name</th>
+            <th className={thclass}>
+              Price <span className="text-xs font-light">(Tsh)</span>
+            </th>
+            <th className={thclass}>Status</th>
+            <th className={thclass}>InStock</th>
+            <th className={thclass}>Measure</th>
+            <th className={thclass}>Actions</th>
           </tr>
-        ))}
-      </tbody>
-    </table>
+        </thead>
+        <tbody>
+          {data.map((item, index) => (
+            <tr
+              key={item.id}
+              className="border-b border-border hover:bg-greyed transitions"
+            >
+              <td className={tdclass}>
+                <h4 className="text-sm font-medium">{item?.name}</h4>
+              </td>
+              <td className={`${tdclass} font-semibold`}>{item?.price}</td>
+              <td className={tdclass}>
+                <span
+                  className={`text-xs font-medium ${
+                    item?.status === "Out of stock"
+                      ? "text-red-600"
+                      : "text-green-600"
+                  }`}
+                >
+                  {item?.status}
+                </span>
+              </td>
+              <td className={tdclass}>{item?.stock}</td>
+              <td className={tdclass}>{item?.measure}</td>
+              <td className={tdclass}>
+                <MenuSelect datas={DropDown1} item={item}>
+                  <div className="bg-dry border text-main text-xl py-2 px-4 rounded-lg">
+                    <BiDotsHorizontalRounded />
+                  </div>
+                </MenuSelect>
+              </td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+      <div className=" w-full flex justify-center">
+        <div
+          className="w-[250px] mb-20
+      flex flex-col items-start justify-center gap-4"
+        >
+          <p className="text-black text-sm font-semibold">
+            Showing 1 to 5 of 45,365 enteries
+          </p>
+          <div className="flex space-x-3 items-center justify-center">
+            <p className="text-blue text-lg">
+              <FaAngleLeft />
+            </p>
+            <p className="flex space-x-2 items-center justify-center">
+              <p
+                className="w-9 h-9 rounded-full border bg-blue border-gray-500 flex items-center
+        justify-center"
+              >
+                1
+              </p>
+              <p
+                className="w-9 h-9 rounded-full border border-gray-500 flex items-center
+        justify-center"
+              >
+                2
+              </p>
+              <p
+                className="w-9 h-9 rounded-full border border-gray-500 flex items-center
+        justify-center"
+              >
+                33
+              </p>
+            </p>
+            <p className="text-blue text-lg">
+              <FaAngleRight />
+            </p>
+          </div>
+        </div>
+      </div>
+    </>
   );
 }
 
@@ -302,49 +415,89 @@ export function ServiceTable({ data, onEdit }) {
     },
   ];
   return (
-    <table className="table-auto w-full">
-      <thead className="bg-dry rounded-md overflow-hidden">
-        <tr>
-          <th className={thclass}>Name</th>
-          <th className={thclass}>Created At</th>
-          <th className={thclass}>
-            Price <span className="text-xs font-light">(Tsh)</span>
-          </th>
-          <th className={thclass}>Status</th>
-          <th className={thclass}>Actions</th>
-        </tr>
-      </thead>
-      <tbody>
-        {data.map((item, index) => (
-          <tr
-            key={item.id}
-            className="border-b border-border hover:bg-greyed transitions"
-          >
-            <td className={tdclass}>
-              <h4 className="text-sm font-medium">{item?.name}</h4>
-            </td>
-            <td className={tdclass}>{item?.date}</td>
-            <td className={`${tdclass} font-semibold`}>{item?.price}</td>
-            <td className={tdclass}>
-              <span
-                className={`text-xs font-medium ${
-                  !item?.status ? "text-red-600" : "text-green-600"
-                }`}
-              >
-                {!item?.status ? "Disabled" : "Enabled"}
-              </span>
-            </td>
-            <td className={tdclass}>
-              <MenuSelect datas={DropDown1} item={item}>
-                <div className="bg-dry border text-main text-xl py-2 px-4 rounded-lg">
-                  <BiDotsHorizontalRounded />
-                </div>
-              </MenuSelect>
-            </td>
+    <>
+      <table className="table-auto w-full">
+        <thead className="bg-dry rounded-md overflow-hidden">
+          <tr>
+            <th className={thclass}>Name</th>
+            <th className={thclass}>Created At</th>
+            <th className={thclass}>
+              Price <span className="text-xs font-light">(Tsh)</span>
+            </th>
+            <th className={thclass}>Status</th>
+            <th className={thclass}>Actions</th>
           </tr>
-        ))}
-      </tbody>
-    </table>
+        </thead>
+        <tbody>
+          {data.map((item, index) => (
+            <tr
+              key={item.id}
+              className="border-b border-border hover:bg-greyed transitions"
+            >
+              <td className={tdclass}>
+                <h4 className="text-sm font-medium">{item?.name}</h4>
+              </td>
+              <td className={tdclass}>{item?.date}</td>
+              <td className={`${tdclass} font-semibold`}>{item?.price}</td>
+              <td className={tdclass}>
+                <span
+                  className={`text-xs font-medium ${
+                    !item?.status ? "text-red-600" : "text-green-600"
+                  }`}
+                >
+                  {!item?.status ? "Disabled" : "Enabled"}
+                </span>
+              </td>
+              <td className={tdclass}>
+                <MenuSelect datas={DropDown1} item={item}>
+                  <div className="bg-dry border text-main text-xl py-2 px-4 rounded-lg">
+                    <BiDotsHorizontalRounded />
+                  </div>
+                </MenuSelect>
+              </td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+      <div className=" w-full flex justify-center">
+        <div
+          className="w-[250px] mb-20
+    flex flex-col items-start justify-center gap-4"
+        >
+          <p className="text-black text-sm font-semibold">
+            Showing 1 to 5 of 45,365 enteries
+          </p>
+          <div className="flex space-x-3 items-center justify-center">
+            <p className="text-blue text-lg">
+              <FaAngleLeft />
+            </p>
+            <p className="flex space-x-2 items-center justify-center">
+              <p
+                className="w-9 h-9 rounded-full border bg-blue border-gray-500 flex items-center
+      justify-center"
+              >
+                1
+              </p>
+              <p
+                className="w-9 h-9 rounded-full border border-gray-500 flex items-center
+      justify-center"
+              >
+                2
+              </p>
+              <p
+                className="w-9 h-9 rounded-full border border-gray-500 flex items-center
+      justify-center"
+              >
+                33
+              </p>
+            </p>
+            <p className="text-blue text-lg">
+              <FaAngleRight />
+            </p>
+          </div>
+        </div>
+      </div>
+    </>
   );
 }
 
@@ -381,74 +534,114 @@ export function UsersTable({ data, functions, used }) {
   const tdclasse = "text-start text-xs py-4 px-2 whitespace-nowrap";
 
   return (
-    <table className="table-auto w-full">
-      <thead className="bg-dry rounded-md overflow-hidden">
-        <tr>
-          <th className={thclasse}>Name</th>
-          <th className={thclasse}>Email</th>
-          <th className={thclasse}>Phone Number</th>
-          <th className={thclasse}>Gender</th>
-          <th className={thclasse}>Main Goal</th>
-          <th className={thclasse}>Status</th>
-          <th className={thclasse}>Actions</th>
-        </tr>
-      </thead>
-      <tbody>
-        {data.map((item) => (
-          <tr
-            key={item.id}
-            className="border-b border-border hover:bg-greyed transitions"
-          >
-            <td className={tdclasse}>
-              <div className="flex gap-4 items-center">
-                <span className="w-12">
-                  <img
-                    src={item.profilePic || "default-avatar.png"} // Handle null profilePic
-                    alt={`${item.firstName} ${item.lastName}`}
-                    className="w-full h-12 rounded-full object-cover border border-border"
-                  />
-                </span>
-                <div>
-                  <h4 className="text-sm font-medium">
-                    {item.firstName} {item.lastName}
-                  </h4>
-                </div>
-              </div>
-            </td>
-            <td className={tdclasse}>{item.email}</td>
-            <td className={tdclasse}>{item.phone}</td>
-            <td className={tdclasse}>
-              <span
-                className={`py-1 px-4 ${
-                  item.gender === "Male"
-                    ? "bg-green text-bluetext"
-                    : "bg-red text-pinktext"
-                } bg-opacity-10 text-xs rounded-xl`}
-              >
-                {item.gender}
-              </span>
-            </td>
-            <td className={tdclasse}>{item.mainGoal}</td>
-            <td className={tdclasse}>
-              <span
-                className={`py-1 px-4 ${
-                  item.status === "Active" ? "text-textgreen" : "text-textred"
-                } bg-opacity-10 text-xs rounded-xl`}
-              >
-                {item.status}
-              </span>
-            </td>
-            <td className={tdclasse}>
-              <MenuSelect datas={DropDown1} item={item}>
-                <div className="bg-dry border text-main text-xl py-2 px-4 rounded-lg">
-                  <BiDotsHorizontalRounded />
-                </div>
-              </MenuSelect>
-            </td>
+    <>
+      <table className="table-auto w-full">
+        <thead className="bg-dry rounded-md overflow-hidden">
+          <tr>
+            <th className={thclasse}>Name</th>
+            <th className={thclasse}>Email</th>
+            <th className={thclasse}>Phone Number</th>
+            <th className={thclasse}>Gender</th>
+            <th className={thclasse}>Main Goal</th>
+            <th className={thclasse}>Status</th>
+            <th className={thclasse}>Actions</th>
           </tr>
-        ))}
-      </tbody>
-    </table>
+        </thead>
+        <tbody>
+          {data.map((item) => (
+            <tr
+              key={item.id}
+              className="border-b border-border hover:bg-greyed transitions"
+            >
+              <td className={tdclasse}>
+                <div className="flex gap-4 items-center">
+                  <span className="w-12">
+                    <img
+                      src={item.profilePic || "default-avatar.png"} // Handle null profilePic
+                      alt={`${item.firstName} ${item.lastName}`}
+                      className="w-full h-12 rounded-full object-cover border border-border"
+                    />
+                  </span>
+                  <div>
+                    <h4 className="text-sm font-medium">
+                      {item.firstName} {item.lastName}
+                    </h4>
+                  </div>
+                </div>
+              </td>
+              <td className={tdclasse}>{item.email}</td>
+              <td className={tdclasse}>{item.phone}</td>
+              <td className={tdclasse}>
+                <span
+                  className={`py-1 px-4 ${
+                    item.gender === "Male"
+                      ? "bg-green text-bluetext"
+                      : "bg-red text-pinktext"
+                  } bg-opacity-10 text-xs rounded-xl`}
+                >
+                  {item.gender}
+                </span>
+              </td>
+              <td className={tdclasse}>{item.mainGoal}</td>
+              <td className={tdclasse}>
+                <span
+                  className={`py-1 px-4 ${
+                    item.status === "Active" ? "text-textgreen" : "text-textred"
+                  } bg-opacity-10 text-xs rounded-xl`}
+                >
+                  {item.status}
+                </span>
+              </td>
+              <td className={tdclasse}>
+                <MenuSelect datas={DropDown1} item={item}>
+                  <div className="bg-dry border text-main text-xl py-2 px-4 rounded-lg">
+                    <BiDotsHorizontalRounded />
+                  </div>
+                </MenuSelect>
+              </td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+      <div className=" w-full flex justify-center">
+        <div
+          className="w-[250px] mb-20
+    flex flex-col items-start justify-center gap-4"
+        >
+          <p className="text-black text-sm font-semibold">
+            Showing 1 to 5 of 45,365 enteries
+          </p>
+          <div className="flex space-x-3 items-center justify-center">
+            <p className="text-blue text-lg">
+              <FaAngleLeft />
+            </p>
+            <p className="flex space-x-2 items-center justify-center">
+              <p
+                className="w-9 h-9 rounded-full border bg-blue border-gray-500 flex items-center
+      justify-center"
+              >
+                1
+              </p>
+              <p
+                className="w-9 h-9 rounded-full border border-gray-500 flex items-center
+      justify-center"
+              >
+                2
+              </p>
+              <p
+                className="w-9 h-9 rounded-full border border-gray-500 flex items-center
+      justify-center"
+              >
+                33
+              </p>
+            </p>
+            <p className="text-blue text-lg">
+              <FaAngleRight />
+            </p>
+          </div>
+        </div>
+      </div>
+    </>
   );
 }
 
@@ -503,6 +696,44 @@ export function AgilityTable({ data }) {
             ))}
           </tbody>
         </table>
+        <div className=" w-full flex justify-center">
+          <div
+            className="w-[250px] mb-20
+      flex flex-col items-start justify-center gap-4"
+          >
+            <p className="text-black text-sm font-semibold">
+              Showing 1 to 5 of 45,365 enteries
+            </p>
+            <div className="flex space-x-3 items-center justify-center">
+              <p className="text-blue text-lg">
+                <FaAngleLeft />
+              </p>
+              <p className="flex space-x-2 items-center justify-center">
+                <p
+                  className="w-9 h-9 rounded-full border bg-blue border-gray-500 flex items-center
+        justify-center"
+                >
+                  1
+                </p>
+                <p
+                  className="w-9 h-9 rounded-full border border-gray-500 flex items-center
+        justify-center"
+                >
+                  2
+                </p>
+                <p
+                  className="w-9 h-9 rounded-full border border-gray-500 flex items-center
+        justify-center"
+                >
+                  33
+                </p>
+              </p>
+              <p className="text-blue text-lg">
+                <FaAngleRight />
+              </p>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   );
@@ -602,6 +833,44 @@ export function CouponTable({ data, functions, used }) {
             ))}
           </tbody>
         </table>
+        <div className=" w-full flex justify-center">
+          <div
+            className="w-[250px] mb-20
+      flex flex-col items-start justify-center gap-4"
+          >
+            <p className="text-black text-sm font-semibold">
+              Showing 1 to 5 of 45,365 enteries
+            </p>
+            <div className="flex space-x-3 items-center justify-center">
+              <p className="text-blue text-lg">
+                <FaAngleLeft />
+              </p>
+              <p className="flex space-x-2 items-center justify-center">
+                <p
+                  className="w-9 h-9 rounded-full border bg-blue border-gray-500 flex items-center
+        justify-center"
+                >
+                  1
+                </p>
+                <p
+                  className="w-9 h-9 rounded-full border border-gray-500 flex items-center
+        justify-center"
+                >
+                  2
+                </p>
+                <p
+                  className="w-9 h-9 rounded-full border border-gray-500 flex items-center
+        justify-center"
+                >
+                  33
+                </p>
+              </p>
+              <p className="text-blue text-lg">
+                <FaAngleRight />
+              </p>
+            </div>
+          </div>
+        </div>
       </div>
       {isModalOpen && (
         <CouponsPopup
@@ -715,6 +984,44 @@ export function ManageOffers({ data, functions, used }) {
             ))}
           </tbody>
         </table>
+        <div className=" w-full flex justify-center">
+          <div
+            className="w-[250px] mb-20
+      flex flex-col items-start justify-center gap-4"
+          >
+            <p className="text-black text-sm font-semibold">
+              Showing 1 to 5 of 45,365 enteries
+            </p>
+            <div className="flex space-x-3 items-center justify-center">
+              <p className="text-blue text-lg">
+                <FaAngleLeft />
+              </p>
+              <p className="flex space-x-2 items-center justify-center">
+                <p
+                  className="w-9 h-9 rounded-full border bg-blue border-gray-500 flex items-center
+        justify-center"
+                >
+                  1
+                </p>
+                <p
+                  className="w-9 h-9 rounded-full border border-gray-500 flex items-center
+        justify-center"
+                >
+                  2
+                </p>
+                <p
+                  className="w-9 h-9 rounded-full border border-gray-500 flex items-center
+        justify-center"
+                >
+                  33
+                </p>
+              </p>
+              <p className="text-blue text-lg">
+                <FaAngleRight />
+              </p>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   );
@@ -812,6 +1119,44 @@ export function FlashSales({ data, functions, used }) {
             ))}
           </tbody>
         </table>
+        <div className=" w-full flex justify-center">
+          <div
+            className="w-[250px] mb-20
+      flex flex-col items-start justify-center gap-4"
+          >
+            <p className="text-black text-sm font-semibold">
+              Showing 1 to 5 of 45,365 enteries
+            </p>
+            <div className="flex space-x-3 items-center justify-center">
+              <p className="text-blue text-lg">
+                <FaAngleLeft />
+              </p>
+              <p className="flex space-x-2 items-center justify-center">
+                <p
+                  className="w-9 h-9 rounded-full border bg-blue border-gray-500 flex items-center
+        justify-center"
+                >
+                  1
+                </p>
+                <p
+                  className="w-9 h-9 rounded-full border border-gray-500 flex items-center
+        justify-center"
+                >
+                  2
+                </p>
+                <p
+                  className="w-9 h-9 rounded-full border border-gray-500 flex items-center
+        justify-center"
+                >
+                  33
+                </p>
+              </p>
+              <p className="text-blue text-lg">
+                <FaAngleRight />
+              </p>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   );
@@ -885,12 +1230,49 @@ export function NotificationTable({ data, functions, used }) {
             ))}
           </tbody>
         </table>
+        <div className=" w-full flex justify-center">
+          <div
+            className="w-[250px] mb-20
+      flex flex-col items-start justify-center gap-4"
+          >
+            <p className="text-black text-sm font-semibold">
+              Showing 1 to 5 of 45,365 enteries
+            </p>
+            <div className="flex space-x-3 items-center justify-center">
+              <p className="text-blue text-lg">
+                <FaAngleLeft />
+              </p>
+              <p className="flex space-x-2 items-center justify-center">
+                <p
+                  className="w-9 h-9 rounded-full border bg-blue border-gray-500 flex items-center
+        justify-center"
+                >
+                  1
+                </p>
+                <p
+                  className="w-9 h-9 rounded-full border border-gray-500 flex items-center
+        justify-center"
+                >
+                  2
+                </p>
+                <p
+                  className="w-9 h-9 rounded-full border border-gray-500 flex items-center
+        justify-center"
+                >
+                  33
+                </p>
+              </p>
+              <p className="text-blue text-lg">
+                <FaAngleRight />
+              </p>
+            </div>
+          </div>
+        </div>
       </>
     </div>
   );
 }
 export function VendorProductListTable({ data, functions, used }) {
-    
   return (
     <div className="p-6 rounded-lg">
       <>
@@ -911,12 +1293,12 @@ export function VendorProductListTable({ data, functions, used }) {
             {data.map((item, index) => (
               <tr key={index} className="bg-backgroundgray relative h-[60px]">
                 <td className="py-4 px-4 text-sm rounded-l-lg flex mt-4">
-                <img
+                  <img
                     src={item.image}
                     alt={item.name}
                     className="w-12 h-12 rounded-2xl bg-white mr-3 p-2"
                   />
-                  {item.item} 
+                  {item.item}
                 </td>
                 <td className="py-4 px-4 text-sm">{item.weight}</td>
                 <td className="py-4 px-4 text-sm">{item.flavour}</td>
@@ -926,11 +1308,48 @@ export function VendorProductListTable({ data, functions, used }) {
                 <td className="py-4 px-4 text-sm">{item.mrp}</td>
 
                 <td className="py-4 px-4 text-sm">{item.price}</td>
-                
               </tr>
             ))}
           </tbody>
         </table>
+        <div className=" w-full flex justify-center">
+          <div
+            className="w-[250px] mb-20
+      flex flex-col items-start justify-center gap-4"
+          >
+            <p className="text-black text-sm font-semibold">
+              Showing 1 to 5 of 45,365 enteries
+            </p>
+            <div className="flex space-x-3 items-center justify-center">
+              <p className="text-blue text-lg">
+                <FaAngleLeft />
+              </p>
+              <p className="flex space-x-2 items-center justify-center">
+                <p
+                  className="w-9 h-9 rounded-full border bg-blue border-gray-500 flex items-center
+        justify-center"
+                >
+                  1
+                </p>
+                <p
+                  className="w-9 h-9 rounded-full border border-gray-500 flex items-center
+        justify-center"
+                >
+                  2
+                </p>
+                <p
+                  className="w-9 h-9 rounded-full border border-gray-500 flex items-center
+        justify-center"
+                >
+                  33
+                </p>
+              </p>
+              <p className="text-blue text-lg">
+                <FaAngleRight />
+              </p>
+            </div>
+          </div>
+        </div>
       </>
     </div>
   );
@@ -976,7 +1395,6 @@ export function VendorListTable({ data, functions, used }) {
               <th className="px-4">RevenueGenerated</th>
               <th className="px-4">JoinedDate</th>
               <th className="px-4">Location</th>
-
             </tr>
           </thead>
           <tbody>
@@ -1003,6 +1421,44 @@ export function VendorListTable({ data, functions, used }) {
             ))}
           </tbody>
         </table>
+        <div className=" w-full flex justify-center mt-5">
+          <div
+            className="w-[250px] mb-20
+      flex flex-col items-start justify-center gap-4"
+          >
+            <p className="text-black text-sm font-semibold">
+              Showing 1 to 5 of 45,365 enteries
+            </p>
+            <div className="flex space-x-3 items-center justify-center">
+              <p className="text-blue text-lg">
+                <FaAngleLeft />
+              </p>
+              <p className="flex space-x-2 items-center justify-center">
+                <p
+                  className="w-9 h-9 rounded-full border bg-blue border-gray-500 flex items-center
+        justify-center"
+                >
+                  1
+                </p>
+                <p
+                  className="w-9 h-9 rounded-full border border-gray-500 flex items-center
+        justify-center"
+                >
+                  2
+                </p>
+                <p
+                  className="w-9 h-9 rounded-full border border-gray-500 flex items-center
+        justify-center"
+                >
+                  33
+                </p>
+              </p>
+              <p className="text-blue text-lg">
+                <FaAngleRight />
+              </p>
+            </div>
+          </div>
+        </div>
       </>
     </div>
   );
@@ -1048,7 +1504,6 @@ export function VendorTable({ data, functions, used }) {
               <th className="px-4">RevenueGenerated</th>
               <th className="px-4">UnitSold</th>
               <th className="px-4">Location</th>
-
             </tr>
           </thead>
           <tbody>
@@ -1075,6 +1530,44 @@ export function VendorTable({ data, functions, used }) {
             ))}
           </tbody>
         </table>
+        <div className=" w-full flex justify-center">
+          <div
+            className="w-[250px] mb-20
+      flex flex-col items-start justify-center gap-4"
+          >
+            <p className="text-black text-sm font-semibold">
+              Showing 1 to 5 of 45,365 enteries
+            </p>
+            <div className="flex space-x-3 items-center justify-center">
+              <p className="text-blue text-lg">
+                <FaAngleLeft />
+              </p>
+              <p className="flex space-x-2 items-center justify-center">
+                <p
+                  className="w-9 h-9 rounded-full border bg-blue border-gray-500 flex items-center
+        justify-center"
+                >
+                  1
+                </p>
+                <p
+                  className="w-9 h-9 rounded-full border border-gray-500 flex items-center
+        justify-center"
+                >
+                  2
+                </p>
+                <p
+                  className="w-9 h-9 rounded-full border border-gray-500 flex items-center
+        justify-center"
+                >
+                  33
+                </p>
+              </p>
+              <p className="text-blue text-lg">
+                <FaAngleRight />
+              </p>
+            </div>
+          </div>
+        </div>
       </>
     </div>
   );
@@ -1136,9 +1629,7 @@ export function AppointmentsTable({ data, functions, used }) {
                   />
                 </span>
                 <div>
-                  <h4 className="text-sm font-medium">
-                    {item.Username}
-                  </h4>
+                  <h4 className="text-sm font-medium">{item.Username}</h4>
                 </div>
               </div>
               <td className="py-4 px-4 text-sm rounded-l-lg">
@@ -1161,6 +1652,44 @@ export function AppointmentsTable({ data, functions, used }) {
           ))}
         </tbody>
       </table>
+      <div className=" w-full flex justify-center">
+        <div
+          className="w-[250px] mb-20
+      flex flex-col items-start justify-center gap-4"
+        >
+          <p className="text-black text-sm font-semibold">
+            Showing 1 to 5 of 45,365 enteries
+          </p>
+          <div className="flex space-x-3 items-center justify-center">
+            <p className="text-blue text-lg">
+              <FaAngleLeft />
+            </p>
+            <p className="flex space-x-2 items-center justify-center">
+              <p
+                className="w-9 h-9 rounded-full border bg-blue border-gray-500 flex items-center
+        justify-center"
+              >
+                1
+              </p>
+              <p
+                className="w-9 h-9 rounded-full border border-gray-500 flex items-center
+        justify-center"
+              >
+                2
+              </p>
+              <p
+                className="w-9 h-9 rounded-full border border-gray-500 flex items-center
+        justify-center"
+              >
+                33
+              </p>
+            </p>
+            <p className="text-blue text-lg">
+              <FaAngleRight />
+            </p>
+          </div>
+        </div>
+      </div>
     </div>
   );
 }
@@ -1253,6 +1782,44 @@ export function ExpertTable({ data, functions }) {
           ))}
         </tbody>
       </table>
+      <div className=" w-full flex justify-center">
+        <div
+          className="w-[250px] mb-20
+      flex flex-col items-start justify-center gap-4"
+        >
+          <p className="text-black text-sm font-semibold">
+            Showing 1 to 5 of 45,365 enteries
+          </p>
+          <div className="flex space-x-3 items-center justify-center">
+            <p className="text-blue text-lg">
+              <FaAngleLeft />
+            </p>
+            <p className="flex space-x-2 items-center justify-center">
+              <p
+                className="w-9 h-9 rounded-full border bg-blue border-gray-500 flex items-center
+        justify-center"
+              >
+                1
+              </p>
+              <p
+                className="w-9 h-9 rounded-full border border-gray-500 flex items-center
+        justify-center"
+              >
+                2
+              </p>
+              <p
+                className="w-9 h-9 rounded-full border border-gray-500 flex items-center
+        justify-center"
+              >
+                33
+              </p>
+            </p>
+            <p className="text-blue text-lg">
+              <FaAngleRight />
+            </p>
+          </div>
+        </div>
+      </div>
     </div>
   );
 }
@@ -1260,222 +1827,382 @@ export function ExpertTable({ data, functions }) {
 // appointment table
 export function AppointmentTable({ data, functions, doctor }) {
   return (
-    <table className="table-auto w-full">
-      <thead className="bg-dry rounded-md overflow-hidden">
-        <tr>
-          <th className={thclass}>Date</th>
-          <th className={thclass}>{doctor ? "Patient" : "Doctor"}</th>
-          <th className={thclass}>Status</th>
-          <th className={thclass}>Time</th>
-          <th className={thclass}>Action</th>
-        </tr>
-      </thead>
-      <tbody>
-        {data.map((item) => (
-          <tr
-            key={item.id}
-            className="border-b border-border hover:bg-greyed transitions"
-          >
-            <td className={tdclass}>
-              <p className="text-xs">{item.date}</p>
-            </td>
-            <td className={tdclass}>
-              <h4 className="text-xs font-medium">
-                {doctor ? item.user.title : item.doctor.title}
-              </h4>
-              <p className="text-xs mt-1 text-textGray">
-                {doctor ? item.user.phone : item.doctor.phone}
-              </p>
-            </td>
-            <td className={tdclass}>
-              <span
-                className={`py-1  px-4 ${
-                  item.status === "Approved"
-                    ? "bg-subMain text-subMain"
-                    : item.status === "Pending"
-                    ? "bg-orange-500 text-orange-500"
-                    : item.status === "Cancel" && "bg-red-600 text-red-600"
-                } bg-opacity-10 text-xs rounded-xl`}
-              >
-                {item.status}
-              </span>
-            </td>
-            <td className={tdclass}>
-              <p className="text-xs">{`${item.from} - ${item.to}`}</p>
-            </td>
-
-            <td className={tdclass}>
-              <button
-                onClick={() => functions.preview(item)}
-                className="text-sm flex-colo bg-white text-subMain border rounded-md w-10 h-10"
-              >
-                <FiEye />
-              </button>
-            </td>
+    <>
+      <table className="table-auto w-full">
+        <thead className="bg-dry rounded-md overflow-hidden">
+          <tr>
+            <th className={thclass}>Date</th>
+            <th className={thclass}>{doctor ? "Patient" : "Doctor"}</th>
+            <th className={thclass}>Status</th>
+            <th className={thclass}>Time</th>
+            <th className={thclass}>Action</th>
           </tr>
-        ))}
-      </tbody>
-    </table>
+        </thead>
+        <tbody>
+          {data.map((item) => (
+            <tr
+              key={item.id}
+              className="border-b border-border hover:bg-greyed transitions"
+            >
+              <td className={tdclass}>
+                <p className="text-xs">{item.date}</p>
+              </td>
+              <td className={tdclass}>
+                <h4 className="text-xs font-medium">
+                  {doctor ? item.user.title : item.doctor.title}
+                </h4>
+                <p className="text-xs mt-1 text-textGray">
+                  {doctor ? item.user.phone : item.doctor.phone}
+                </p>
+              </td>
+              <td className={tdclass}>
+                <span
+                  className={`py-1  px-4 ${
+                    item.status === "Approved"
+                      ? "bg-subMain text-subMain"
+                      : item.status === "Pending"
+                      ? "bg-orange-500 text-orange-500"
+                      : item.status === "Cancel" && "bg-red-600 text-red-600"
+                  } bg-opacity-10 text-xs rounded-xl`}
+                >
+                  {item.status}
+                </span>
+              </td>
+              <td className={tdclass}>
+                <p className="text-xs">{`${item.from} - ${item.to}`}</p>
+              </td>
+
+              <td className={tdclass}>
+                <button
+                  onClick={() => functions.preview(item)}
+                  className="text-sm flex-colo bg-white text-subMain border rounded-md w-10 h-10"
+                >
+                  <FiEye />
+                </button>
+              </td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+      <div className=" w-full flex justify-center">
+        <div
+          className="w-[250px] mb-20
+    flex flex-col items-start justify-center gap-4"
+        >
+          <p className="text-black text-sm font-semibold">
+            Showing 1 to 5 of 45,365 enteries
+          </p>
+          <div className="flex space-x-3 items-center justify-center">
+            <p className="text-blue text-lg">
+              <FaAngleLeft />
+            </p>
+            <p className="flex space-x-2 items-center justify-center">
+              <p
+                className="w-9 h-9 rounded-full border bg-blue border-gray-500 flex items-center
+      justify-center"
+              >
+                1
+              </p>
+              <p
+                className="w-9 h-9 rounded-full border border-gray-500 flex items-center
+      justify-center"
+              >
+                2
+              </p>
+              <p
+                className="w-9 h-9 rounded-full border border-gray-500 flex items-center
+      justify-center"
+              >
+                33
+              </p>
+            </p>
+            <p className="text-blue text-lg">
+              <FaAngleRight />
+            </p>
+          </div>
+        </div>
+      </div>
+    </>
   );
 }
 
 // payment table
 export function PaymentTable({ data, functions, doctor }) {
   return (
-    <table className="table-auto w-full">
-      <thead className="bg-dry rounded-md overflow-hidden">
-        <tr>
-          <th className={thclass}>Date</th>
-          <th className={thclass}>{doctor ? "Patient" : "Doctor"}</th>
-          <th className={thclass}>Status</th>
-          <th className={thclass}>Amount</th>
-          <th className={thclass}>Method</th>
-          <th className={thclass}>Action</th>
-        </tr>
-      </thead>
-      <tbody>
-        {data.map((item) => (
-          <tr
-            key={item.id}
-            className="border-b border-border hover:bg-greyed transitions"
-          >
-            <td className={tdclass}>
-              <p className="text-xs">{item.date}</p>
-            </td>
-            <td className={tdclass}>
-              <h4 className="text-xs font-medium">
-                {doctor ? item.user.title : item.doctor.title}
-              </h4>
-              <p className="text-xs mt-1 text-textGray">
-                {doctor ? item.user.phone : item.doctor.phone}
-              </p>
-            </td>
-            <td className={tdclass}>
-              <span
-                className={`py-1  px-4 ${
-                  item.status === "Paid"
-                    ? "bg-subMain text-subMain"
-                    : item.status === "Pending"
-                    ? "bg-orange-500 text-orange-500"
-                    : item.status === "Cancel" && "bg-red-600 text-red-600"
-                } bg-opacity-10 text-xs rounded-xl`}
-              >
-                {item.status}
-              </span>
-            </td>
-            <td className={tdclass}>
-              <p className="text-xs font-semibold">{`$${item.amount}`}</p>
-            </td>
-            <td className={tdclass}>
-              <p className="text-xs">{item.method}</p>
-            </td>
-
-            <td className={tdclass}>
-              <button
-                onClick={() => functions.preview(item.id)}
-                className="text-sm flex-colo bg-white text-subMain border rounded-md w-10 h-10"
-              >
-                <FiEye />
-              </button>
-            </td>
+    <>
+      <table className="table-auto w-full">
+        <thead className="bg-dry rounded-md overflow-hidden">
+          <tr>
+            <th className={thclass}>Date</th>
+            <th className={thclass}>{doctor ? "Patient" : "Doctor"}</th>
+            <th className={thclass}>Status</th>
+            <th className={thclass}>Amount</th>
+            <th className={thclass}>Method</th>
+            <th className={thclass}>Action</th>
           </tr>
-        ))}
-      </tbody>
-    </table>
+        </thead>
+        <tbody>
+          {data.map((item) => (
+            <tr
+              key={item.id}
+              className="border-b border-border hover:bg-greyed transitions"
+            >
+              <td className={tdclass}>
+                <p className="text-xs">{item.date}</p>
+              </td>
+              <td className={tdclass}>
+                <h4 className="text-xs font-medium">
+                  {doctor ? item.user.title : item.doctor.title}
+                </h4>
+                <p className="text-xs mt-1 text-textGray">
+                  {doctor ? item.user.phone : item.doctor.phone}
+                </p>
+              </td>
+              <td className={tdclass}>
+                <span
+                  className={`py-1  px-4 ${
+                    item.status === "Paid"
+                      ? "bg-subMain text-subMain"
+                      : item.status === "Pending"
+                      ? "bg-orange-500 text-orange-500"
+                      : item.status === "Cancel" && "bg-red-600 text-red-600"
+                  } bg-opacity-10 text-xs rounded-xl`}
+                >
+                  {item.status}
+                </span>
+              </td>
+              <td className={tdclass}>
+                <p className="text-xs font-semibold">{`$${item.amount}`}</p>
+              </td>
+              <td className={tdclass}>
+                <p className="text-xs">{item.method}</p>
+              </td>
+
+              <td className={tdclass}>
+                <button
+                  onClick={() => functions.preview(item.id)}
+                  className="text-sm flex-colo bg-white text-subMain border rounded-md w-10 h-10"
+                >
+                  <FiEye />
+                </button>
+              </td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+      <div className=" w-full flex justify-center">
+        <div
+          className="w-[250px] mb-20
+      flex flex-col items-start justify-center gap-4"
+        >
+          <p className="text-black text-sm font-semibold">
+            Showing 1 to 5 of 45,365 enteries
+          </p>
+          <div className="flex space-x-3 items-center justify-center">
+            <p className="text-blue text-lg">
+              <FaAngleLeft />
+            </p>
+            <p className="flex space-x-2 items-center justify-center">
+              <p
+                className="w-9 h-9 rounded-full border bg-blue border-gray-500 flex items-center
+        justify-center"
+              >
+                1
+              </p>
+              <p
+                className="w-9 h-9 rounded-full border border-gray-500 flex items-center
+        justify-center"
+              >
+                2
+              </p>
+              <p
+                className="w-9 h-9 rounded-full border border-gray-500 flex items-center
+        justify-center"
+              >
+                33
+              </p>
+            </p>
+            <p className="text-blue text-lg">
+              <FaAngleRight />
+            </p>
+          </div>
+        </div>
+      </div>
+    </>
   );
 }
 
 // invoice used table
 export function InvoiceUsedTable({ data, functions }) {
   return (
-    <table className="table-auto w-full">
-      <thead className="bg-dry rounded-md overflow-hidden">
-        <tr>
-          <th className={thclass}>Invoice ID</th>
-          <th className={thclass}>Create Date</th>
-          <th className={thclass}>Due Date</th>
-          <th className={thclass}>Amount</th>
-          <th className={thclass}>Action</th>
-        </tr>
-      </thead>
-      <tbody>
-        {data.map((item) => (
-          <tr
-            key={item.id}
-            className="border-b border-border hover:bg-greyed transitions"
-          >
-            <td className={tdclass}>
-              <p className="text-xs">#{item.id}</p>
-            </td>
-            <td className={tdclass}>
-              <p className="text-xs">{item.createdDate}</p>
-            </td>
-            <td className={tdclass}>
-              <p className="text-xs">{item.dueDate}</p>
-            </td>
-
-            <td className={tdclass}>
-              <p className="text-xs font-semibold">{`$${item.total}`}</p>
-            </td>
-
-            <td className={tdclass}>
-              <button
-                onClick={() => functions.preview(item.id)}
-                className="text-sm flex-colo bg-white text-subMain border rounded-md w-10 h-10"
-              >
-                <FiEye />
-              </button>
-            </td>
+    <>
+      <table className="table-auto w-full">
+        <thead className="bg-dry rounded-md overflow-hidden">
+          <tr>
+            <th className={thclass}>Invoice ID</th>
+            <th className={thclass}>Create Date</th>
+            <th className={thclass}>Due Date</th>
+            <th className={thclass}>Amount</th>
+            <th className={thclass}>Action</th>
           </tr>
-        ))}
-      </tbody>
-    </table>
+        </thead>
+        <tbody>
+          {data.map((item) => (
+            <tr
+              key={item.id}
+              className="border-b border-border hover:bg-greyed transitions"
+            >
+              <td className={tdclass}>
+                <p className="text-xs">#{item.id}</p>
+              </td>
+              <td className={tdclass}>
+                <p className="text-xs">{item.createdDate}</p>
+              </td>
+              <td className={tdclass}>
+                <p className="text-xs">{item.dueDate}</p>
+              </td>
+
+              <td className={tdclass}>
+                <p className="text-xs font-semibold">{`$${item.total}`}</p>
+              </td>
+
+              <td className={tdclass}>
+                <button
+                  onClick={() => functions.preview(item.id)}
+                  className="text-sm flex-colo bg-white text-subMain border rounded-md w-10 h-10"
+                >
+                  <FiEye />
+                </button>
+              </td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+      <div className=" w-full flex justify-center">
+        <div
+          className="w-[250px] mb-20
+    flex flex-col items-start justify-center gap-4"
+        >
+          <p className="text-black text-sm font-semibold">
+            Showing 1 to 5 of 45,365 enteries
+          </p>
+          <div className="flex space-x-3 items-center justify-center">
+            <p className="text-blue text-lg">
+              <FaAngleLeft />
+            </p>
+            <p className="flex space-x-2 items-center justify-center">
+              <p
+                className="w-9 h-9 rounded-full border bg-blue border-gray-500 flex items-center
+      justify-center"
+              >
+                1
+              </p>
+              <p
+                className="w-9 h-9 rounded-full border border-gray-500 flex items-center
+      justify-center"
+              >
+                2
+              </p>
+              <p
+                className="w-9 h-9 rounded-full border border-gray-500 flex items-center
+      justify-center"
+              >
+                33
+              </p>
+            </p>
+            <p className="text-blue text-lg">
+              <FaAngleRight />
+            </p>
+          </div>
+        </div>
+      </div>
+    </>
   );
 }
 
 // invoice table
 export function InvoiceProductsTable({ data, functions, button }) {
   return (
-    <table className="table-auto w-full">
-      <thead className="bg-dry rounded-md overflow-hidden">
-        <tr>
-          <th className={thclass}>Item</th>
-          <th className={thclass}>
-            Item Price
-            <span className="text-xs font-light ml-1">(Tsh)</span>
-          </th>
-          <th className={thclass}>Quantity</th>
-          <th className={thclass}>
-            Amout
-            <span className="text-xs font-light ml-1">(Tsh)</span>
-          </th>
-          {button && <th className={thclass}>Actions</th>}
-        </tr>
-      </thead>
-      <tbody>
-        {data?.map((item) => (
-          <tr
-            key={item.id}
-            className="border-b border-border hover:bg-greyed transitions"
-          >
-            <td className={`${tdclass}  font-medium`}>{item.name}</td>
-            <td className={`${tdclass} text-xs`}>{item.price}</td>
-            <td className={tdclass}>{item.id}</td>
-            <td className={tdclass}>{item.price * item.id}</td>
-            {button && (
-              <td className={tdclass}>
-                <button
-                  onClick={() => functions.deleteItem(item.id)}
-                  className="bg-red-600 bg-opacity-5 text-red-600 rounded-lg border border-red-100 py-3 px-4 text-sm"
-                >
-                  <RiDeleteBinLine />
-                </button>
-              </td>
-            )}
+    <>
+      <table className="table-auto w-full">
+        <thead className="bg-dry rounded-md overflow-hidden">
+          <tr>
+            <th className={thclass}>Item</th>
+            <th className={thclass}>
+              Item Price
+              <span className="text-xs font-light ml-1">(Tsh)</span>
+            </th>
+            <th className={thclass}>Quantity</th>
+            <th className={thclass}>
+              Amout
+              <span className="text-xs font-light ml-1">(Tsh)</span>
+            </th>
+            {button && <th className={thclass}>Actions</th>}
           </tr>
-        ))}
-      </tbody>
-    </table>
+        </thead>
+        <tbody>
+          {data?.map((item) => (
+            <tr
+              key={item.id}
+              className="border-b border-border hover:bg-greyed transitions"
+            >
+              <td className={`${tdclass}  font-medium`}>{item.name}</td>
+              <td className={`${tdclass} text-xs`}>{item.price}</td>
+              <td className={tdclass}>{item.id}</td>
+              <td className={tdclass}>{item.price * item.id}</td>
+              {button && (
+                <td className={tdclass}>
+                  <button
+                    onClick={() => functions.deleteItem(item.id)}
+                    className="bg-red-600 bg-opacity-5 text-red-600 rounded-lg border border-red-100 py-3 px-4 text-sm"
+                  >
+                    <RiDeleteBinLine />
+                  </button>
+                </td>
+              )}
+            </tr>
+          ))}
+        </tbody>
+      </table>
+      <div className=" w-full flex justify-center">
+        <div
+          className="w-[250px] mb-20
+      flex flex-col items-start justify-center gap-4"
+        >
+          <p className="text-black text-sm font-semibold">
+            Showing 1 to 5 of 45,365 enteries
+          </p>
+          <div className="flex space-x-3 items-center justify-center">
+            <p className="text-blue text-lg">
+              <FaAngleLeft />
+            </p>
+            <p className="flex space-x-2 items-center justify-center">
+              <p
+                className="w-9 h-9 rounded-full border bg-blue border-gray-500 flex items-center
+        justify-center"
+              >
+                1
+              </p>
+              <p
+                className="w-9 h-9 rounded-full border border-gray-500 flex items-center
+        justify-center"
+              >
+                2
+              </p>
+              <p
+                className="w-9 h-9 rounded-full border border-gray-500 flex items-center
+        justify-center"
+              >
+                33
+              </p>
+            </p>
+            <p className="text-blue text-lg">
+              <FaAngleRight />
+            </p>
+          </div>
+        </div>
+      </div>
+    </>
   );
 }
 
@@ -1485,53 +2212,92 @@ export function MedicineDosageTable({ data, functions, button }) {
   const thclasse = "text-start text-xs font-medium py-3 px-2 whitespace-nowrap";
   const tdclasse = "text-start text-xs py-4 px-2 whitespace-nowrap";
   return (
-    <table className="table-auto w-full">
-      <thead className="bg-dry rounded-md overflow-hidden">
-        <tr>
-          <th className={thclasse}>Item</th>
-          <th className={thclasse}>
-            Item Price
-            <span className="text-xs font-light ml-1">(Tsh)</span>
-          </th>
-          <th className={thclasse}>Dosage</th>
-          <th className={thclasse}>Instraction</th>
-          <th className={thclasse}>Quantity</th>
-          <th className={thclasse}>
-            Amout
-            <span className="text-xs font-light ml-1">(Tsh)</span>
-          </th>
-          {button && <th className={thclasse}>Actions</th>}
-        </tr>
-      </thead>
-      <tbody>
-        {data?.map((item) => (
-          <tr
-            key={item.id}
-            className="border-b border-border hover:bg-greyed transitions"
-          >
-            <td className={tdclasse}>{item.name}</td>
-            <td className={tdclasse}>{item.price}</td>
-            <td className={tdclasse}>{item.id} - M/A/E</td>
-            <td className={tdclasse}>{item.instraction}</td>
-            <td className={tdclasse}>{item.id}</td>
-            <td className={tdclasse}>{item.price * item.id}</td>
-            {button && (
-              <td className={tdclasse}>
-                <button
-                  onClick={() => functions.delete(item.id)}
-                  className="bg-red-600 bg-opacity-5 text-red-600 rounded-lg border border-red-100 py-3 px-4 text-sm"
-                >
-                  <RiDeleteBinLine />
-                </button>
-              </td>
-            )}
+    <>
+      <table className="table-auto w-full">
+        <thead className="bg-dry rounded-md overflow-hidden">
+          <tr>
+            <th className={thclasse}>Item</th>
+            <th className={thclasse}>
+              Item Price
+              <span className="text-xs font-light ml-1">(Tsh)</span>
+            </th>
+            <th className={thclasse}>Dosage</th>
+            <th className={thclasse}>Instraction</th>
+            <th className={thclasse}>Quantity</th>
+            <th className={thclasse}>
+              Amout
+              <span className="text-xs font-light ml-1">(Tsh)</span>
+            </th>
+            {button && <th className={thclasse}>Actions</th>}
           </tr>
-        ))}
-      </tbody>
-    </table>
+        </thead>
+        <tbody>
+          {data?.map((item) => (
+            <tr
+              key={item.id}
+              className="border-b border-border hover:bg-greyed transitions"
+            >
+              <td className={tdclasse}>{item.name}</td>
+              <td className={tdclasse}>{item.price}</td>
+              <td className={tdclasse}>{item.id} - M/A/E</td>
+              <td className={tdclasse}>{item.instraction}</td>
+              <td className={tdclasse}>{item.id}</td>
+              <td className={tdclasse}>{item.price * item.id}</td>
+              {button && (
+                <td className={tdclasse}>
+                  <button
+                    onClick={() => functions.delete(item.id)}
+                    className="bg-red-600 bg-opacity-5 text-red-600 rounded-lg border border-red-100 py-3 px-4 text-sm"
+                  >
+                    <RiDeleteBinLine />
+                  </button>
+                </td>
+              )}
+            </tr>
+          ))}
+        </tbody>
+      </table>
+      <div className=" w-full flex justify-center">
+        <div
+          className="w-[250px] mb-20
+      flex flex-col items-start justify-center gap-4"
+        >
+          <p className="text-black text-sm font-semibold">
+            Showing 1 to 5 of 45,365 enteries
+          </p>
+          <div className="flex space-x-3 items-center justify-center">
+            <p className="text-blue text-lg">
+              <FaAngleLeft />
+            </p>
+            <p className="flex space-x-2 items-center justify-center">
+              <p
+                className="w-9 h-9 rounded-full border bg-blue border-gray-500 flex items-center
+        justify-center"
+              >
+                1
+              </p>
+              <p
+                className="w-9 h-9 rounded-full border border-gray-500 flex items-center
+        justify-center"
+              >
+                2
+              </p>
+              <p
+                className="w-9 h-9 rounded-full border border-gray-500 flex items-center
+        justify-center"
+              >
+                33
+              </p>
+            </p>
+            <p className="text-blue text-lg">
+              <FaAngleRight />
+            </p>
+          </div>
+        </div>
+      </div>
+    </>
   );
 }
-
 
 export function OrderTable({ data, functions }) {
   const [searchTerm, setSearchTerm] = useState("");
@@ -1564,53 +2330,53 @@ export function OrderTable({ data, functions }) {
     Delivered: "text-green",
   };
   const handleRowClick = (order) => {
-    navigate('/orderdetail', { state: { orderData: order } });
+    navigate("/orderdetail", { state: { orderData: order } });
   };
 
   return (
     <div className="p-6 rounded-lg bg-white shadow-md">
-  <div className="flex justify-between items-center mb-4">
-    <h2 className="text-lg font-bold">Orders</h2>
+      <div className="flex justify-between items-center mb-4">
+        <h2 className="text-lg font-bold">Orders</h2>
 
-    <div className="flex items-center space-x-2">
-      <div className="relative">
-        <input
-          type="text"
-          placeholder="Search order..."
-          className="pl-10 h-[38px] pr-4 py-2 border bg-backgroundgray rounded-md focus:ring-blue "
-          value={searchTerm}
-          onChange={(e) => setSearchTerm(e.target.value)}
-        />
-        <FiSearch className="absolute left-3 top-3 text-gray-400" />
+        <div className="flex items-center space-x-2">
+          <div className="relative">
+            <input
+              type="text"
+              placeholder="Search order..."
+              className="pl-10 h-[38px] pr-4 py-2 border bg-backgroundgray rounded-md focus:ring-blue "
+              value={searchTerm}
+              onChange={(e) => setSearchTerm(e.target.value)}
+            />
+            <FiSearch className="absolute left-3 top-3 text-gray-400" />
+          </div>
+          <select
+            value={statusFilter}
+            onChange={(e) => setStatusFilter(e.target.value)}
+            className="bg-backgroundgray h-[38px] border-backgroundgray text-[12px] text-textGray rounded-md px-2 py-1 text-sm"
+          >
+            <option value="All">All Statuses</option>
+            <option value="Processing">Processing</option>
+            <option value="Shipping">Shipping</option>
+            <option value="Delivered">Delivered</option>
+          </select>
+        </div>
       </div>
-      <select
-        value={statusFilter}
-        onChange={(e) => setStatusFilter(e.target.value)}
-        className="bg-backgroundgray h-[38px] border-backgroundgray text-[12px] text-textGray rounded-md px-2 py-1 text-sm"
-      >
-        <option value="All">All Statuses</option>
-        <option value="Processing">Processing</option>
-        <option value="Shipping">Shipping</option>
-        <option value="Delivered">Delivered</option>
-      </select>
-    </div>
-  </div>
 
-  <div className="p-2">
-    <span className="ml-2 text-sm pr-2 text-greytext">Show </span>
-    <select
-      value={entriesPerPage}
-      onChange={(e) => setEntriesPerPage(Number(e.target.value))}
-      className="border bg-backgroundgray text-greytext rounded-md px-2 py-1 text-sm"
-    >
-      <option value={5}>5</option>
-      <option value={10}>10</option>
-      <option value={20}>20</option>
-    </select>
-    <span className="ml-2 text-sm text-greytext">entries </span>
-  </div>
+      <div className="p-2">
+        <span className="ml-2 text-sm pr-2 text-greytext">Show </span>
+        <select
+          value={entriesPerPage}
+          onChange={(e) => setEntriesPerPage(Number(e.target.value))}
+          className="border bg-backgroundgray text-greytext rounded-md px-2 py-1 text-sm"
+        >
+          <option value={5}>5</option>
+          <option value={10}>10</option>
+          <option value={20}>20</option>
+        </select>
+        <span className="ml-2 text-sm text-greytext">entries </span>
+      </div>
 
-   <table className="w-full border-separate border-spacing-y-2">
+      <table className="w-full border-separate border-spacing-y-2">
         <thead>
           <tr className="text-[12px]">
             <th className={thClass}>Order ID</th>
@@ -1624,8 +2390,8 @@ export function OrderTable({ data, functions }) {
         </thead>
         <tbody>
           {paginatedData.map((item, index) => (
-            <tr 
-              key={index} 
+            <tr
+              key={index}
               className="bg-backgroundgray rounded-[14px] hover:bg-gray-50 cursor-pointer"
               onClick={() => handleRowClick(item)}
             >
@@ -1644,50 +2410,91 @@ export function OrderTable({ data, functions }) {
               <td className={tdClass}>{item.date}</td>
               <td className={tdClass}>{item.paymentInfo}</td>
               <td className={tdClass}>₹ {item.price}</td>
-              <td className={`${tdClass} ${statusColors[item.status]}`}>{item.status}</td>
+              <td className={`${tdClass} ${statusColors[item.status]}`}>
+                {item.status}
+              </td>
             </tr>
           ))}
         </tbody>
       </table>
-
-  {/* Pagination Section */}
-  <div className="flex flex-col items-center mt-4">
-    <div className="text-sm text-gray-600 mb-2">
-      Showing {(currentPage - 1) * entriesPerPage + 1} to{" "}
-      {Math.min(currentPage * entriesPerPage, filteredData.length)} of{" "}
-      {filteredData.length} entries
-    </div>
-    
-    <div className="flex items-center">
-      <button
-        onClick={() => setCurrentPage((prev) => Math.max(prev - 1, 1))}
-        disabled={currentPage === 1}
-        className="mr-2 p-1 border rounded-[45px] disabled:opacity-50"
-      >
-        <FiChevronLeft />
-      </button>
-      {Array.from({ length: pageCount }, (_, i) => i + 1).map((page) => (
-        <button
-          key={page}
-          onClick={() => setCurrentPage(page)}
-          className={`mx-1 px-3 py-1 border rounded-[45px] ${
-            currentPage === page ? "bg-blue text-white" : ""
-          }`}
+      <div className=" w-full flex justify-center">
+        <div
+          className="w-[250px] mb-20
+      flex flex-col items-start justify-center gap-4"
         >
-          {page}
-        </button>
-      ))}
-      <button
-        onClick={() => setCurrentPage((prev) => Math.min(prev + 1, pageCount))}
-        disabled={currentPage === pageCount}
-        className="ml-2 p-1 border rounded-[45px] disabled:opacity-50"
-      >
-        <FiChevronRight />
-      </button>
-    </div>
-  </div>
-</div>
+          <p className="text-black text-sm font-semibold">
+            Showing 1 to 5 of 45,365 enteries
+          </p>
+          <div className="flex space-x-3 items-center justify-center">
+            <p className="text-blue text-lg">
+              <FaAngleLeft />
+            </p>
+            <p className="flex space-x-2 items-center justify-center">
+              <p
+                className="w-9 h-9 rounded-full border bg-blue border-gray-500 flex items-center
+        justify-center"
+              >
+                1
+              </p>
+              <p
+                className="w-9 h-9 rounded-full border border-gray-500 flex items-center
+        justify-center"
+              >
+                2
+              </p>
+              <p
+                className="w-9 h-9 rounded-full border border-gray-500 flex items-center
+        justify-center"
+              >
+                33
+              </p>
+            </p>
+            <p className="text-blue text-lg">
+              <FaAngleRight />
+            </p>
+          </div>
+        </div>
+      </div>
 
+      {/* Pagination Section */}
+      <div className="flex flex-col items-center mt-4">
+        <div className="text-sm text-gray-600 mb-2">
+          Showing {(currentPage - 1) * entriesPerPage + 1} to{" "}
+          {Math.min(currentPage * entriesPerPage, filteredData.length)} of{" "}
+          {filteredData.length} entries
+        </div>
+
+        <div className="flex items-center">
+          <button
+            onClick={() => setCurrentPage((prev) => Math.max(prev - 1, 1))}
+            disabled={currentPage === 1}
+            className="mr-2 p-1 border rounded-[45px] disabled:opacity-50"
+          >
+            <FiChevronLeft />
+          </button>
+          {Array.from({ length: pageCount }, (_, i) => i + 1).map((page) => (
+            <button
+              key={page}
+              onClick={() => setCurrentPage(page)}
+              className={`mx-1 px-3 py-1 border rounded-[45px] ${
+                currentPage === page ? "bg-blue text-white" : ""
+              }`}
+            >
+              {page}
+            </button>
+          ))}
+          <button
+            onClick={() =>
+              setCurrentPage((prev) => Math.min(prev + 1, pageCount))
+            }
+            disabled={currentPage === pageCount}
+            className="ml-2 p-1 border rounded-[45px] disabled:opacity-50"
+          >
+            <FiChevronRight />
+          </button>
+        </div>
+      </div>
+    </div>
   );
 }
 
@@ -1698,14 +2505,14 @@ export function OrderDetails({ data }) {
   const tdClass = "py-4 px-4 text-sm text-gray-700";
 
   // Default values if attributes are not presentco
-  const itemImage=data?.itemImage
-  const itemName = data?.itemName ;
-  const trackingID = data?.orderID || '0'; // Adjusted to use 'orderID' for Tracking ID
-  const quantity = data?.quantity || '1';
-  const price = data?.price || '0';
+  const itemImage = data?.itemImage;
+  const itemName = data?.itemName;
+  const trackingID = data?.orderID || "0"; // Adjusted to use 'orderID' for Tracking ID
+  const quantity = data?.quantity || "1";
+  const price = data?.price || "0";
 
   const calculateTotal = () => {
-    return (price * quantity, 0);
+    return price * quantity, 0;
   };
 
   return (
@@ -1722,8 +2529,7 @@ export function OrderDetails({ data }) {
             </tr>
           </thead>
           <tbody>
-            <tr 
-              className="bg-backgroundgray hover:bg-gray-50 cursor-pointer rounded-[14px]">
+            <tr className="bg-backgroundgray hover:bg-gray-50 cursor-pointer rounded-[14px]">
               <td className={tdClass}>
                 <div className="flex items-center">
                   <img
@@ -1740,6 +2546,44 @@ export function OrderDetails({ data }) {
             </tr>
           </tbody>
         </table>
+        <div className=" w-full flex justify-center">
+          <div
+            className="w-[250px] mb-20
+      flex flex-col items-start justify-center gap-4"
+          >
+            <p className="text-black text-sm font-semibold">
+              Showing 1 to 5 of 45,365 enteries
+            </p>
+            <div className="flex space-x-3 items-center justify-center">
+              <p className="text-blue text-lg">
+                <FaAngleLeft />
+              </p>
+              <p className="flex space-x-2 items-center justify-center">
+                <p
+                  className="w-9 h-9 rounded-full border bg-blue border-gray-500 flex items-center
+        justify-center"
+                >
+                  1
+                </p>
+                <p
+                  className="w-9 h-9 rounded-full border border-gray-500 flex items-center
+        justify-center"
+                >
+                  2
+                </p>
+                <p
+                  className="w-9 h-9 rounded-full border border-gray-500 flex items-center
+        justify-center"
+                >
+                  33
+                </p>
+              </p>
+              <p className="text-blue text-lg">
+                <FaAngleRight />
+              </p>
+            </div>
+          </div>
+        </div>
       </div>
       <div className="mt-4 flex justify-between items-center">
         <button
@@ -1750,10 +2594,11 @@ export function OrderDetails({ data }) {
         </button>
       </div>
       <div className="text-right">
-          <p className="text-sm text-gray-600">Total: ₹ {calculateTotal().toFixed(2)}</p>
-          <p className="text-sm text-gray-600">Payment Status: COD</p>
-        </div>
+        <p className="text-sm text-gray-600">
+          Total: ₹ {calculateTotal().toFixed(2)}
+        </p>
+        <p className="text-sm text-gray-600">Payment Status: COD</p>
+      </div>
     </div>
   );
 }
-

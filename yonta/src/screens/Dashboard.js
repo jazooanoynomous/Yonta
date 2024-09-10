@@ -9,6 +9,8 @@ import {
   BsClockFill,
   BsXCircleFill,
 } from "react-icons/bs";
+import { FaAngleLeft } from "react-icons/fa";
+import { FaAngleRight } from "react-icons/fa";
 import {
   appointmentsData,
   dashboardCards,
@@ -22,12 +24,14 @@ import { Link } from "react-router-dom";
 import MetricCard from "../components/metricCard";
 import StatsCard from "../components/statsCard";
 import BarChartComponent from "../components/barChart";
-import { TransactionTable } from "../components/Tables";
+import { Transactiontable as TransactionTable } from "../components/Tables";
+
 function Dashboard() {
   return (
     <Layout>
-      {/* boxes */}
-      {/* <div className="w-full grid xl:grid-cols-4 gap-6 lg:grid-cols-3 sm:grid-cols-2 grid-cols-1">
+      <div>
+        {/* boxes */}
+        {/* <div className="w-full grid xl:grid-cols-4 gap-6 lg:grid-cols-3 sm:grid-cols-2 grid-cols-1">
         {dashboardCards.map((card, index) => (
           <div
             key={card.id}
@@ -63,6 +67,7 @@ function Dashboard() {
           </div>
         ))}
       </div> */}
+      </div>
       <div
         style={{
           backgroundImage: `images/blueheader.png`,
@@ -72,20 +77,35 @@ function Dashboard() {
           width: "100%",
         }}
       >
-        <div className=" flex flex-row justify-between items-center px-10 -mt-10 pb-10 h-full">
-          <div className=" text-white">
-            <h2>Hello Admin,</h2>
-            <p>Here’s you statistics for today. Hope you have a great day</p>
+        <div
+          className=" flex flex-row  justify-between items-center px-10 -mt-10 pb-10 h-full
+          "
+          style={{
+            background: "linear-gradient(to right, #6D68E0, #9216FE)",
+            borderRadius: "0px 0px 16px 16px",
+          }}
+        >
+          <div className=" text-white   absolute top-4 left-5 md:left-12 w-[100vw] ">
+            <h2 className="font-bold text-xl">Hello Admin,</h2>
+            <p>
+              Here’s you statistics for today. Hope you have a<br /> great day
+            </p>
           </div>
         </div>
       </div>
-      <div className=" flex flex-row justify-between -mt-28 ">
+      <div
+        className=" flex   flex-row justify-center md:justify-between
+        -mt-28 "
+      >
         {/* section 1 */}
         <div>
-          <div className="flex space-x-2">
+          <div className="flex   justify-center flex-col md:flex-row flex-wrap sm:ml-0 lg:ml-3.5 space-x-2">
             <div className=" space-y-3">
               <h2 className=" text-white pl-5">User</h2>
-              <div className="flex space-x-2 h-[254px] p-4 bg-white rounded-[10px]">
+              <div
+                className="flex  flex-wrap gap-3
+               space-x-2 sm:h-[min-content]  p-4 bg-white rounded-[10px]"
+              >
                 <StatsCard
                   title="Total Experts"
                   total={42703}
@@ -100,7 +120,7 @@ function Dashboard() {
             </div>
             <div className=" space-y-3">
               <h2 className=" text-white pl-5">Ecommerce</h2>
-              <div className="bg-white p-3 rounded-[16px] flex flex-row  items-center space-x-3 h-[254px] space-y-[12px] w-[370px] ">
+              <div className="bg-white p-3 rounded-[16px] flex flex-row  items-center space-x-3 h-[254px] space-y-[12px] w-[min-content] ">
                 <div className=" space-y-3">
                   <MetricCard
                     title={MetricCardData[0].title}
@@ -125,7 +145,7 @@ function Dashboard() {
             </div>
             <div className=" space-y-3">
               <h2 className=" text-white pl-5">Products</h2>
-              <div className="bg-white p-3 rounded-[16px] flex flex-row  items-center space-x-3 h-[254px] space-y-[12px] w-[200px] ">
+              <div className="bg-white p-3 rounded-[16px] flex flex-row  items-center space-x-3 h-[254px] space-y-[12px] w-[min-content] ">
                 <div className=" space-y-3">
                   <MetricCard
                     title={MetricCardData[0].title}
@@ -145,7 +165,7 @@ function Dashboard() {
         {/* Exports section  */}
         <div></div>
       </div>
-      <div className=" mt-10 flex flex-row space-x-2">
+      <div className=" mt-10 flex flex-col md:flex-row space-x-2  ml-3.5">
         <BarChartComponent />
         <div className="bg-white rounded-xl border-[1px] border-border p-5">
           <h2 className="text-sm font-medium">Best Sellers</h2>
@@ -173,7 +193,7 @@ function Dashboard() {
           </div>
         </div>
       </div>
-      <div className="w-full my-6 grid xl:grid-cols-8 grid-cols-1 gap-6">
+      <div className="w-full my-6 grid xl:grid-cols-8 grid-cols-1 gap-6 p-2">
         <div className="xl:col-span-8  w-full">
           {/* transaction */}
           <div className="mt-6 bg-white rounded-xl border-[1px] border-border p-5">
