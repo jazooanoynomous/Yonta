@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Layout from "../../Layout";
 import { useNavigate } from "react-router-dom";
 
@@ -7,12 +7,52 @@ import { notificationsData } from "../../components/Datas";
 import { FaSearch } from "react-icons/fa";
 import { Button } from "../../components/Form";
 import { BiPlus } from "react-icons/bi";
+import { BASEURL } from "../../utils/constant";
+import axios from "axios";
+import { toast } from "react-hot-toast";
 
 
 function Notifications() {
   const navigate = useNavigate();
-  const [isModalOpen, setIsModalOpen] = useState(false); // State to control the modal
+  const [notifications, setNotifications] = useState([]);
+  const [loading, setLoading] = useState(true); // State to manage loading
 
+  const fetchNotificationsData = async () => {
+    try {
+      const response = await axios.get(`${BASEURL}notification`, {
+        headers: {
+          'VerifyMe': 'RGVlcGFrS3VzaHdhaGE5Mzk5MzY5ODU0',
+        },
+      });
+      setNotifications(response.data.notifications || []); 
+    } catch (error) {
+      console.error('Error fetching ingredients:', error);
+    } finally {
+      setLoading(false); 
+    }
+  };
+
+  useEffect(() => {
+    fetchNotificationsData(); 
+  }, []);
+
+  const handleDeleteNotification = async (id) => {
+    try {
+      await axios.delete(`${BASEURL}notification/${id}`, {
+        headers: {
+          VerifyMe: "RGVlcGFrS3VzaHdhaGE5Mzk5MzY5ODU0",
+        },
+      });
+      const updatedNotifications = notifications.filter(
+        (notification) => notification.id !== id
+      );
+      setNotifications(updatedNotifications);
+      toast.success("Notification successfully deleted!"); // Success message with react-hot-toast
+    } catch (error) {
+      toast.error("This feature is not available yet"); // Error message with react-hot-toast
+      console.error("Error deleting notification:", error);
+    }
+  };
 
   return (
     <Layout>
@@ -47,10 +87,14 @@ function Notifications() {
         data-aos-offset="200"
         className=" rounded-xl"
       >
-        <div className="mt-0 w-full overflow-x-scroll">
+        <div className="mt-0 w-full h-full">
           <NotificationTable
-            data={notificationsData}
-            used={false}            
+            data={notifications}
+            used={false}      
+            functions={{
+              preview: (id) => console.log("Preview", id),
+              deleteNotification: handleDeleteNotification, // Pass delete function
+            }}      
           />
           
         </div>

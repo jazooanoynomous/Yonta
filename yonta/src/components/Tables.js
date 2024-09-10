@@ -1,6 +1,7 @@
 import React, { useMemo, useState } from "react";
 import { Button, MenuSelect } from "./Form";
 import { BiDotsHorizontalRounded, BiPlus } from "react-icons/bi";
+<<<<<<< HEAD
 import { FaAngleLeft } from "react-icons/fa";
 import { FaAngleRight } from "react-icons/fa";
 import {
@@ -11,6 +12,8 @@ import {
   FiSearch,
   FiTrash2,
 } from "react-icons/fi";
+=======
+>>>>>>> b3be1a0d2fb2f1b1cdd5959c3c002dbd75083236
 import { RiDeleteBin6Line, RiDeleteBinLine } from "react-icons/ri";
 import { toast } from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
@@ -1175,8 +1178,8 @@ export function NotificationTable({ data, functions, used }) {
         {
           title: "Delete",
           icon: RiDeleteBin6Line,
-          onClick: () => {
-            toast.error("This feature is not available yet");
+          onClick: (data) => {
+            functions.deleteNotification(data.id); // Call delete function
           },
         },
       ]
@@ -1193,7 +1196,7 @@ export function NotificationTable({ data, functions, used }) {
   return (
     <div className="p-6 rounded-lg">
       <>
-        <table className="w-full  border-separate border-spacing-y-4 px-4 h-[60px] rounded-[10px]">
+        <table className="w-full border-separate border-spacing-y-4 px-4 h-[60px] rounded-[10px]">
           <thead>
             <tr className="text-left text-sm text-gray-500">
               <th className="px-4">Date From</th>
@@ -1201,21 +1204,28 @@ export function NotificationTable({ data, functions, used }) {
               <th className="px-4">Selection</th>
               <th className="px-4">Frequency</th>
               <th className="px-4">Link</th>
-              <th className="px-4">Notifications center</th>
+              <th className="px-4">Notifications Center</th>
             </tr>
           </thead>
           <tbody>
             {data.map((item, index) => (
               <tr key={index} className="bg-white relative h-[60px]">
                 <td className="py-4 px-4 text-sm rounded-l-lg">
-                  {item.dateFrom}
+                  {new Date(item.createdAt).toLocaleDateString()}
                 </td>
-                <td className="py-4 px-4 text-sm">{item.dateTo}</td>
-                <td className="py-4 px-4 text-sm">{item.section}</td>
-                <td className="py-4 px-4 text-sm">{item.frequency}</td>
                 <td className="py-4 px-4 text-sm">
-                  <a href={item.link} className="text-blue hover:underline">
-                    {item.link}
+                  {new Date(item.updatedAt).toLocaleDateString()}
+                </td>
+                <td className="py-4 px-4 text-sm">{item.module}</td>
+                <td className="py-4 px-4 text-sm">
+                  {item.notificationFrequency}
+                </td>
+                <td className="py-4 px-4 text-sm">
+                  <a
+                    href="#"
+                    className="text-blue hover:underline"
+                  >
+                    {Object.values(JSON.parse(item.link)).join(", ")}
                   </a>
                 </td>
                 <td className="py-4 px-4 text-sm">{item.content}</td>
@@ -1272,6 +1282,7 @@ export function NotificationTable({ data, functions, used }) {
     </div>
   );
 }
+
 export function VendorProductListTable({ data, functions, used }) {
   return (
     <div className="p-6 rounded-lg">
@@ -2376,8 +2387,13 @@ export function OrderTable({ data, functions }) {
         <span className="ml-2 text-sm text-greytext">entries </span>
       </div>
 
+<<<<<<< HEAD
       <table className="w-full border-separate border-spacing-y-2">
         <thead>
+=======
+  <table className="w-full  border-separate border-spacing-y-4 px-4 h-[60px] rounded-[10px]">
+  <thead>
+>>>>>>> b3be1a0d2fb2f1b1cdd5959c3c002dbd75083236
           <tr className="text-[12px]">
             <th className={thClass}>Order ID</th>
             <th className={thClass}>Item</th>
@@ -2389,10 +2405,17 @@ export function OrderTable({ data, functions }) {
           </tr>
         </thead>
         <tbody>
+
           {paginatedData.map((item, index) => (
+<<<<<<< HEAD
             <tr
               key={index}
               className="bg-backgroundgray rounded-[14px] hover:bg-gray-50 cursor-pointer"
+=======
+            <tr 
+              key={index} 
+              className="bg-backgroundgray rounded-l-lgrelative h-[60px] hover:bg-gray-50 "
+>>>>>>> b3be1a0d2fb2f1b1cdd5959c3c002dbd75083236
               onClick={() => handleRowClick(item)}
             >
               <td className={tdClass}>{item.orderID}</td>

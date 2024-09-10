@@ -19,9 +19,7 @@ function OrderDetail() {
   const [isModalOpen, setIsModalOpen] = useState(false); // State to control the modal
 
   // Function to preview payment (not directly related to modal)
-  const previewPayment = (id) => {
-    navigate(`/experts/preview/${id}`);
-  };
+ 
   const location = useLocation();
   const orderData = location.state?.orderData;
   console.log('assxcvbndfg',orderData);

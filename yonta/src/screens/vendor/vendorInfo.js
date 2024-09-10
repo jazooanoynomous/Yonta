@@ -13,6 +13,9 @@ const VendorInfo = () => {
     const handleAddUserClick = () => {
         navigate('/vendorprofile'); // Navigate to the '/add-user' page
     };
+    const handleRegistrationClick = () => {
+        navigate('/venderbusinessdetails'); // Navigate to the '/add-user' page
+    };
 
     return (
         <Layout>
@@ -22,7 +25,7 @@ const VendorInfo = () => {
 
 
                     <button
-                        onClick={handleAddUserClick}
+                        onClick={handleRegistrationClick}
                         className="text-blue border px-4 py-2 rounded-xl"
                     >
                         Register Information
@@ -50,7 +53,7 @@ const VendorInfo = () => {
                                 onChange={(e) => setFilterStatus(e.target.value)}
                                 className="border border-gray-300 rounded-lg p-2 text-xs"
                             >
-                                <option value="All">Search Catagory</option>
+                                <option value="All">Search Category</option>
                                 <option value="Processing">Processing</option>
                                 <option value="Shipping">Shipping</option>
                                 <option value="Delivered">Delivered</option>
