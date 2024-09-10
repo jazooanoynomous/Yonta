@@ -7,7 +7,7 @@ const StatsCard = ({ title, total, data }) => {
   return (
     <div
       className="bg-backgroundgray p-3 lg:p-4  rounded-lg shadow-sm w-[95%]  md:w-[198px] 
-      md:m-3 mt-0 lg:w-[170px] xl:w-[220px] 
+      md:m-3 mt-0 lg:w-[150px] xl:w-[200px] 
       sm:h-[min-content] md:h-[280px] "
     >
       <h2 className="text-[14px] font-bold text-bluetext mb-2">{title}</h2>

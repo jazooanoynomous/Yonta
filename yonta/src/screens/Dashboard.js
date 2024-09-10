@@ -79,14 +79,16 @@ function Dashboard() {
         }}
       >
         <div
-          className=" w-[100vw] flex flex-row  justify-between items-center px-10 -mt-10 pb-10 h-full
+          className=" w-[100%]  flex flex-row   justify-between items-center px-10 -mt-10 pb-10 h-full
           "
           style={{
+            width: "100%",
+            margin: "0px",
             background: "linear-gradient(to right, #6D68E0, #9216FE)",
             borderRadius: "0px 0px 16px 16px",
           }}
         >
-          <div className=" text-white   absolute top-4 left-5 md:left-12 w-[100vw] ">
+          <div className=" text-white  absolute top-4 left-5 md:left-12 w-[100vw] ">
             <h2 className="font-bold text-xl">Hello Admin,</h2>
             <p>
               Here’s you statistics for today. Hope you have a<br /> great day
