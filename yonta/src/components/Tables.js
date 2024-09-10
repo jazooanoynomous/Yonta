@@ -1,7 +1,6 @@
 import React, { useMemo, useState } from "react";
 import { Button, MenuSelect } from "./Form";
 import { BiDotsHorizontalRounded, BiPlus } from "react-icons/bi";
-<<<<<<< HEAD
 import { FaAngleLeft } from "react-icons/fa";
 import { FaAngleRight } from "react-icons/fa";
 import {
@@ -12,8 +11,6 @@ import {
   FiSearch,
   FiTrash2,
 } from "react-icons/fi";
-=======
->>>>>>> b3be1a0d2fb2f1b1cdd5959c3c002dbd75083236
 import { RiDeleteBin6Line, RiDeleteBinLine } from "react-icons/ri";
 import { toast } from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
@@ -1221,10 +1218,7 @@ export function NotificationTable({ data, functions, used }) {
                   {item.notificationFrequency}
                 </td>
                 <td className="py-4 px-4 text-sm">
-                  <a
-                    href="#"
-                    className="text-blue hover:underline"
-                  >
+                  <a href="#" className="text-blue hover:underline">
                     {Object.values(JSON.parse(item.link)).join(", ")}
                   </a>
                 </td>
@@ -2387,13 +2381,8 @@ export function OrderTable({ data, functions }) {
         <span className="ml-2 text-sm text-greytext">entries </span>
       </div>
 
-<<<<<<< HEAD
       <table className="w-full border-separate border-spacing-y-2">
         <thead>
-=======
-  <table className="w-full  border-separate border-spacing-y-4 px-4 h-[60px] rounded-[10px]">
-  <thead>
->>>>>>> b3be1a0d2fb2f1b1cdd5959c3c002dbd75083236
           <tr className="text-[12px]">
             <th className={thClass}>Order ID</th>
             <th className={thClass}>Item</th>
@@ -2405,17 +2394,10 @@ export function OrderTable({ data, functions }) {
           </tr>
         </thead>
         <tbody>
-
           {paginatedData.map((item, index) => (
-<<<<<<< HEAD
             <tr
               key={index}
               className="bg-backgroundgray rounded-[14px] hover:bg-gray-50 cursor-pointer"
-=======
-            <tr 
-              key={index} 
-              className="bg-backgroundgray rounded-l-lgrelative h-[60px] hover:bg-gray-50 "
->>>>>>> b3be1a0d2fb2f1b1cdd5959c3c002dbd75083236
               onClick={() => handleRowClick(item)}
             >
               <td className={tdClass}>{item.orderID}</td>
