@@ -21,7 +21,7 @@ const StatsCard = ({ title, total, data }) => {
               data={data}
               cx={35} // 86 / 2
               cy={35} // 86 / 2
-              innerRadius={20} // Adjust as needed
+              innerRadius={20}
               outerRadius={30} // Adjust as needed
               paddingAngle={5}
               dataKey="value"
