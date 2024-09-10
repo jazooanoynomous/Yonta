@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import UploadImageModal from "../../components/Modals/ImageUploadModal";
 import AddPlayerTypeModal from "../../components/Modals/AddPlayerTypeModal";
 import PlayerTypeCard from "../../components/Modals/PlayerTypeModal";
@@ -9,17 +9,17 @@ import EssentialsModal from "../../components/Modals/addEssentials";
 import { useNavigate } from "react-router-dom";
 import { TrashIcon } from "lucide-react";
 import { FaSearch, FaTrash } from "react-icons/fa";
+import axios from "axios";
+import { BASEURL, IMAGEURL } from "../../utils/constant";
 const Activity = () => {
   const navigate = useNavigate();
-  const [playerTypes, setPlayerTypes] = useState([
-    { type: "Non Goalkeeper", imageSrc: "/path/to/non-goalkeeper-image.jpg" },
-    { type: "Goalkeeper", imageSrc: "/path/to/goalkeeper-image.jpg" },
-  ]);
+  const [playerTypes, setPlayerTypes] = useState([]);
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const [plans1, setPlans1] = useState([1, 2, 3, 4, 5]);
-  const [plans2, setPlans2] = useState([6, 7, 8, 9, 10, 11, 12, 13]);
-  const [plans3, setPlans3] = useState([]);
   const [mealTypes, setMealTypes] = useState([]);
+  const [expertsData, setExpertsData] = useState([]); // State to store the user data
+  const [loading, setLoading] = useState(true); // State to manage loading
+  const [searchQuery, setSearchQuery] = useState(""); // State for search query
+  const [filteredExperts, setFilteredExperts] = useState([]); // State to store the filtered experts
   const [physioPlans, setPhysioPlans] = useState([
     {
       id: 1,
@@ -31,10 +31,70 @@ const Activity = () => {
     { id: 3, name: "Improved Balance", description: "" },
     { id: 4, name: "Improve hand eye Coordination", description: "" },
   ]);
+  const firstPlayerData = playerTypes[0] || {}; // Access the first item or use an empty object as fallback
 
+  const mustHavePlans = firstPlayerData?.essentials?.mustHave || [];
+  const advancePlans = firstPlayerData?.essentials?.advance || [];
+  const optimalPlans = firstPlayerData?.essentials?.optimal || [];
+
+  const timeForConsume = firstPlayerData?.timeForConsume || {
+    mustHave: [],
+    advance: [],
+    optimal: [],
+  };
+
+  console.log("hello", mustHavePlans);
+
+  // Function to fetch user data
+  const fetchExpertsData = async () => {
+    try {
+      const response = await axios.get(`${BASEURL}expert`, {
+        headers: {
+          VerifyMe: "RGVlcGFrS3VzaHdhaGE5Mzk5MzY5ODU0", // Add your custom header here
+        },
+      });
+      setExpertsData(response.data.experts || []); // Set the user data in state
+    } catch (error) {
+      console.error("Error fetching users:", error);
+    } finally {
+      setLoading(false); // Stop the loading state
+    }
+  };
+
+  useEffect(() => {
+    fetchExpertsData(); // Fetch the user data when the component mounts
+  }, []);
+
+  useEffect(() => {
+    // Filter experts based on the search query
+    const results = expertsData.filter((expert) =>
+      expert.name.toLowerCase().includes(searchQuery.toLowerCase())
+    );
+    setFilteredExperts(results);
+  }, [searchQuery, expertsData]);
   const handleDeletePlan = (id) => {
     setPhysioPlans(physioPlans.filter((plan) => plan.id !== id));
   };
+
+  const fetchPlayerType = async () => {
+    try {
+      const response = await axios.get(`${BASEURL}playersType/1`, {
+        headers: {
+          VerifyMe: "RGVlcGFrS3VzaHdhaGE5Mzk5MzY5ODU0", // Add your custom header here
+        },
+      });
+      setPlayerTypes(response.data.players || []); // Set the user data in state
+    } catch (error) {
+      console.error("Error fetching users:", error);
+    } finally {
+      setLoading(false); // Stop the loading state
+    }
+  };
+
+  useEffect(() => {
+    fetchPlayerType(); // Fetch the user data when the component mounts
+  }, []);
+
   const handleDelete = (index) => {
     const newPlayerTypes = [...playerTypes];
     newPlayerTypes.splice(index, 1);
@@ -56,19 +116,35 @@ const Activity = () => {
     setPlayerTypes([...playerTypes, newPlayerType]);
   };
 
-  const handleDelete1 = (id) => {
-    console.log(`Deleting plan with id: ${id}`);
-    setPlans1(plans1.filter((plan) => plan !== id));
-  };
+  // const handleDelete1 = (id) => {
+  //   console.log(`Deleting plan with id: ${id}`);
+  //   setPlans1(plans1.filter((plan) => plan !== id));
+  // };
 
-  const handleDelete2 = (id) => {
-    console.log(`Deleting plan with id: ${id}`);
-    setPlans2(plans2.filter((plan) => plan !== id));
-  };
-  const handleDelete3 = (id) => {
-    console.log(`Deleting plan with id: ${id}`);
-    setPlans3(plans3.filter((plan) => plan !== id));
-  };
+  // const handleDelete2 = (id) => {
+  //   console.log(`Deleting plan with id: ${id}`);
+  //   setPlans2(plans2.filter((plan) => plan !== id));
+  // };
+  // const handleDelete3 = (id) => {
+  //   console.log(`Deleting plan with id: ${id}`);
+  //   setPlans3(plans3.filter((plan) => plan !== id));
+  // };
+
+  // const plans1 = playerTypes.essentials.mustHave.map((item) => ({
+  //   ...item,
+  //   timeForConsume: playerTypes.timeForConsume.mustHave,
+  // }));
+  // console.log('plans1',plans1);
+
+  // const plans2 = playerTypes.essentials.advance.map((item) => ({
+  //   ...item,
+  //   timeForConsume: playerTypes.timeForConsume.advance,
+  // }));
+
+  // const plans3 = playerTypes.essentials.optimal.map((item) => ({
+  //   ...item,
+  //   timeForConsume: playerTypes.timeForConsume.optimal,
+  // }));
 
   const handleEdit1 = (id) => {
     console.log(`Editing plan with id: ${id}`);
@@ -123,8 +199,8 @@ const Activity = () => {
               {playerTypes.map((playerType, index) => (
                 <PlayerTypeCard
                   key={index}
-                  imageSrc={"images/Rectangle 4557.png"}
-                  type={playerType.type}
+                  imageSrc={`${IMAGEURL}${playerType.image}`}
+                  type={playerType.title}
                   onDelete={() => handleDelete(index)}
                   onEdit={() => handleEdit(index)}
                   title={"Football Player"}
@@ -151,11 +227,11 @@ const Activity = () => {
             {physioPlans.map((plan) => (
               <div key={plan.id} className="relative">
                 <span className="text-black font-semibold">{plan.name}</span>
-                <div className="relative">
+                <div className="relative  bg-white rounded-[10px] w-[600px] h-[45px]">
                   <input
                     type="text"
                     placeholder="Search Blog"
-                    className="w-[600px] h-[36px] p-2 pr-[38px] border rounded-[10px] mt-2"
+                    className="w-[600px] h-[36px] p-2 pr-[38px] mt-1 text-[12px] "
                     value={plan.description}
                     onChange={(e) =>
                       setPhysioPlans(
@@ -167,14 +243,13 @@ const Activity = () => {
                       )
                     }
                   />
-                  <span>
                   <button
-                    className="absolute inset-y-0 right-2 flex items-center bg-[#FB5458] rounded-[6px] w-[27.78px] h-[24px] justify-center"
+                    className="absolute top-1/2 right-2 transform -translate-y-1/2 bg-[#FB5458] rounded-[6px] w-[27.78px] h-[24px] flex items-center justify-center"
                     onClick={() => handleDeletePlan(plan.id)}
                   >
                     <FaTrash className="w-[7.78px] h-[10px] text-white" />
                   </button>
-                  </span>
+                            
                 </div>
               </div>
             ))}
@@ -183,103 +258,43 @@ const Activity = () => {
         <hr className="border border-gray-300 mt-0" />
         <div className="add-activity">
           <h3 className="text-xl font-bold p-2 text-gray-800 mb-2">Experts</h3>
-          <div className="grid grid-cols-1 gap-4">
-          <div className="flex items-center h-[50px] w-[462px] bg-white border border-border rounded-md">
-          <span className="flex items-center justify-center h-full px-2">
-          <FaSearch  className="h-4 w-4 text-lightgray" />
-        </span>
-          <input
-          type="text"
-          placeholder='Search "User"'
-          className="flex-grow  text-sm   text-lightgray bg-transparent rounded-[10px] px-2 outline-none"
-        />
-        
-        </div>
-            <div className="grid grid-cols-2 gap-0">
-              <div className="flex items-center  h-[123px] w-[351px] border rounded-lg p-2">
+          <div className="flex items-center h-[50px] w-[462px] bg-white border border-border rounded-md mb-4">
+            <span className="flex items-center justify-center h-full px-2">
+              <FaSearch className="h-4 w-4 text-lightgray" />
+            </span>
+            <input
+              type="text"
+              placeholder="Search Experts"
+              className="flex-grow text-sm text-lightgray bg-transparent rounded-[10px] px-2 outline-none"
+              value={searchQuery}
+              onChange={(e) => setSearchQuery(e.target.value)}
+            />
+          </div>
+          <div className="grid grid-cols-2 gap-0">
+            {filteredExperts.map((expert) => (
+              <div
+                key={expert.id}
+                className="flex items-center h-[123px] w-[351px] border rounded-lg p-4"
+              >
                 <img
-                  src="/images/2.png"
-                  alt="Expert"
+                  src={`${IMAGEURL}${expert.image}` || "/images/2.png"} // Use imageSrc from expertsData or default image
+                  alt={expert.name}
                   className="w-[96px] h-[96px] rounded-[7px] mr-4"
                 />
                 <div>
-                  <h4 className="font-bold text-[14px] ">Robert Fox</h4>
-                  <p className="text-sm text-lightgray text-[10px]">Health Specialist</p>
+                  <h4 className="font-bold text-[14px]">{expert.name}</h4>
+                  <p className="text-sm text-lightgray text-[10px]">
+                    {expert.title}
+                  </p>
                   <button className="text-lightgray text-[8px]">
                     View Profile
                   </button>
                 </div>
-                
-                <button
-                    className="ml-auto bg-[#FB5458] rounded-[6px] w-[27.78px] h-[24px] justify-center"
-                    
-                  >
-                    <FaTrash className="w-[7.78px] h-[12px]  text-white" />
-                  </button>
+                <button className="ml-auto bg-[#FB5458] rounded-[6px] w-[27.78px] h-[24px] flex items-center justify-center">
+                  <FaTrash className="w-[7.78px] h-[12px] text-white" />
+                </button>
               </div>
-              <div className="flex items-center  h-[123px] w-[351px] border rounded-lg p-4">
-                <img
-                  src="/images/2.png"
-                  alt="Expert"
-                  className="w-[96px] h-[96px] rounded-[7px] mr-4"
-                />
-                <div>
-                  <h4 className="font-bold text-[14px] ">Robert Fox</h4>
-                  <p className="text-sm text-lightgray text-[10px]">Health Specialist</p>
-                  <button className="text-lightgray text-[8px]">
-                    View Profile
-                  </button>
-                </div>
-                
-                <button
-                    className="ml-auto bg-[#FB5458] rounded-[6px] w-[27.78px] h-[24px] justify-center"
-                    
-                  >
-                    <FaTrash className="w-[7.78px] h-[12px]  text-white" />
-                  </button>
-              </div>
-              <div className="flex items-center  h-[123px] w-[351px] border rounded-lg p-4">
-                <img
-                  src="/images/2.png"
-                  alt="Expert"
-                  className="w-[96px] h-[96px] rounded-[7px] mr-4"
-                />
-                <div>
-                  <h4 className="font-bold text-[14px] ">Robert Fox</h4>
-                  <p className="text-sm text-lightgray text-[10px]">Health Specialist</p>
-                  <button className="text-lightgray text-[8px]">
-                    View Profile
-                  </button>
-                </div>
-                
-                <button
-                    className="ml-auto bg-[#FB5458] rounded-[6px] w-[27.78px] h-[24px] justify-center"
-                    
-                  >
-                    <FaTrash className="w-[7.78px] h-[12px]  text-white" />
-                  </button>
-              </div>
-              <div className="flex items-center  h-[123px] w-[351px] border rounded-lg p-4">
-                <img
-                  src="/images/2.png"
-                  alt="Expert"
-                  className="w-[96px] h-[96px] rounded-[7px] mr-4"
-                />
-                <div>
-                  <h4 className="font-bold text-[14px] ">Robert Fox</h4>
-                  <p className="text-sm text-lightgray text-[10px]">Health Specialist</p>
-                  <button className="text-lightgray text-[8px]">
-                    View Profile
-                  </button>
-                </div>
-                
-                <button
-                    className="ml-auto bg-[#FB5458] rounded-[6px] w-[27.78px] h-[24px] justify-center"
-                    
-                  >
-                    <FaTrash className="w-[7.78px] h-[12px]  text-white" />
-                  </button>
-              </div>            </div>
+            ))}
           </div>
         </div>
         <div className="add-activity">
@@ -290,24 +305,24 @@ const Activity = () => {
           <div className="py-10 flex space-x-10">
             <Dropdown
               title="Must have"
-              plans={plans1}
-              handleDelete={handleDelete1}
+              plans={mustHavePlans}
+              // handleDelete={handleDelete1}
               handleEdit={handleEdit1}
               toggleModal={toggleModal}
               ItemComponent={Essentials}
             />
             <Dropdown
               title="Advance"
-              plans={plans2}
-              handleDelete={handleDelete2}
+              plans={advancePlans}
+              // handleDelete={handleDelete2}
               handleEdit={handleEdit2}
               toggleModal={toggleModal}
               ItemComponent={Essentials}
             />
             <Dropdown
               title="Optimal"
-              plans={plans3}
-              handleDelete={handleDelete3}
+              plans={optimalPlans}
+              // handleDelete={handleDelete3}
               handleEdit={handleEdit3}
               toggleModal={toggleModal}
               ItemComponent={Essentials}

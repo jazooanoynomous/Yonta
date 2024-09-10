@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Layout from "../../Layout";
 import {
   appointmentsData,
@@ -16,15 +16,56 @@ import { FaSearch } from "react-icons/fa";
 import AddExpertsModal from "../../components/Modals/addExperts";
 import StatsCard from "../../components/statsCard";
 import MetricCard from "../../components/metricCard";
+import { BASEURL } from "../../utils/constant";
+import axios from "axios";
 
 function Experts() {
   const navigate = useNavigate();
   const [isModalOpen, setIsModalOpen] = useState(false); // State to control the modal
+  const [expertsData, setExpertsData] = useState([]); // State to store the user data
+  const [loading, setLoading] = useState(true); // State to manage loading
+
+  // Function to fetch user data
+  const fetchExpertsData = async () => {
+    try {
+      const response = await axios.get(`${BASEURL}expert`, {
+        headers: {
+          'VerifyMe': 'RGVlcGFrS3VzaHdhaGE5Mzk5MzY5ODU0', // Add your custom header here
+        }
+      });
+      setExpertsData(response.data.experts || []); // Set the user data in state
+    } catch (error) {
+      console.error('Error fetching users:', error);
+    } finally {
+      setLoading(false); // Stop the loading state
+    }
+  };
+
+  useEffect(() => {
+    fetchExpertsData(); // Fetch the user data when the component mounts
+  }, []);
+//   const handleEditStatus = async (updatedCategory) => {
+//     try {
+//         const { id } = updatedCategory;
+//         const response = await axios.put(`${BASEURL}expert/${id}`, updatedCategory, {
+//             headers: {
+//                 'VerifyMe': 'RGVlcGFrS3VzaHdhaGE5Mzk5MzY5ODU0',
+//             },
+//         });
+//         // Update state with edited category
+//         setCategoryData((prevData) =>
+//             prevData.map((category) => (category.id === id ? response.data : category))
+//         );
+//     } catch (error) {
+//         console.error('Error editing category:', error);
+//     }
+// };
 
   // Function to preview payment (not directly related to modal)
   const previewPayment = (id) => {
     navigate(`/experts/preview/${id}`);
   };
+
 
   // Function to toggle the modal
   const toggleModal = () => {
@@ -99,7 +140,7 @@ function Experts() {
       >
         <div className="mt-8 w-full overflow-x-scroll">
           <ExpertTable
-            data={ExpertData}
+            data={expertsData}
             functions={{
               preview: previewPayment,
             }}

@@ -1844,11 +1844,43 @@ export  const MetricCardData = [
     { title: 'Monthly Logins', value: '6,065', change: '+3.5%', description: 'from last month' },
   ];
 
+  export const bestSellersData = [
+    {
+      id: 1,
+      productName: "MuscleBlaze Biozyme Performance Whey, 2 kg (4.4 lb), Rich Chocolate",
+      price: "₹4,886",
+      totalSales: "966"
+    },
+    {
+      id: 2,
+      productName: "MuscleBlaze Biozyme Performance Whey, 2 kg (4.4 lb), Rich Chocolate",
+      price: "₹4,886",
+      totalSales: "966"
+    },
+    {
+      id: 3,
+      productName: "MuscleBlaze Biozyme Performance Whey, 2 kg (4.4 lb), Rich Chocolate",
+      price: "₹4,886",
+      totalSales: "966"
+    },
+    {
+      id: 4,
+      productName: "MuscleBlaze Biozyme Performance Whey, 2 kg (4.4 lb), Rich Chocolate",
+      price: "₹4,886",
+      totalSales: "966"
+    },
+    {
+      id: 5,
+      productName: "MuscleBlaze Biozyme Performance Whey, 2 kg (4.4 lb), Rich Chocolate",
+      price: "₹4,886",
+      totalSales: "966"
+    }
+  ];
   
 export const orderData = [
   {
     orderID: "#Order-1144",
-    itemImage: "/images/1(1).png",
+    itemImage: "/images/Group 183382 (1).png",
     itemName: "MuscleBlaze Biozyme Performance Whey, 2 kg (4.4 lb), Rich Chocolate",
     customerName: "Mayur Kumblo",
     date: "12/10/2021",
@@ -1859,7 +1891,7 @@ export const orderData = [
   },
   {
     orderID: "#Order-1145",
-    itemImage: "/images/1(1).png",
+    itemImage: "/images/Group 183382 (1).png",
     itemName: "Optimum Nutrition Gold Standard 100% Whey, 5 lb, Double Rich Chocolate",
     customerName: "Amit Verma",
     date: "15/10/2021",
@@ -1870,7 +1902,7 @@ export const orderData = [
   },
   {
     orderID: "#Order-1146",
-    itemImage: "/images/1(1).png",
+    itemImage: "/images/Group 183382 (1).png",
     itemName: "Ultimate Nutrition Prostar 100% Whey Protein, 2.39 lb, Chocolate Crème",
     customerName: "Priya Singh",
     date: "20/10/2021",
@@ -1882,7 +1914,7 @@ export const orderData = [
   },
   {
     orderID: "#Order-1147",
-    itemImage: "/images/1(1).png",
+    itemImage: "/images/Group 183382 (1).png",
     itemName: "Dymatize Elite 100% Whey Protein, 5 lb, Rich Chocolate",
     customerName: "Rohan Sharma",
     date: "25/10/2021",
@@ -1894,7 +1926,7 @@ export const orderData = [
   },
   {
     orderID: "#Order-1148",
-    itemImage: "/images/1(1).png",
+    itemImage: "/images/Group 183382 (1).png",
     itemName: "MyProtein Impact Whey Protein, 2.5 kg, Vanilla",
     customerName: "Sonal Mehta",
     date: "28/10/2021",
@@ -1906,7 +1938,7 @@ export const orderData = [
   },
   {
     orderID: "#Order-1149",
-    itemImage: "/images/1(1).png",
+    itemImage: "/images/Group 183382 (1).png",
     itemName: "Isopure Zero Carb Protein Powder, 3 lb, Dutch Chocolate",
     customerName: "Vikram Chawla",
     date: "02/11/2021",
@@ -1918,7 +1950,7 @@ export const orderData = [
   },
   {
     orderID: "#Order-1150",
-    itemImage: "/images/1(1).png",
+    itemImage: "/images/Group 183382 (1).png",
     itemName: "ON Gold Standard 100% Whey, 2 lb, Extreme Milk Chocolate",
     customerName: "Nisha Kumar",
     date: "05/11/2021",

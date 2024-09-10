@@ -1,27 +1,29 @@
 import React from "react";
 import { PieChart, Pie, Cell } from "recharts";
 
-const StatsCard = ({ title, total, data }) => {
+const StatsCard = ({ title, total, data, backgroundColor }) => {
   const COLORS = ["#FF69B4", "#4169E1", "#9370DB", "#20B2AA"];
 
   return (
     <div
-      className="bg-backgroundgray p-3 lg:p-4  rounded-lg shadow-sm w-[95%]  md:w-[198px] 
-      md:m-3 mt-0 lg:w-[150px] xl:w-[200px] 
-      sm:h-[min-content] md:h-[280px] "
+      className={`${
+        backgroundColor ? backgroundColor : "bg-backgroundgray"
+      } p-4 rounded-lg shadow-sm`}
+      style={{ width: "198px", height: "230px" }}
     >
+      {" "}
       <h2 className="text-[14px] font-bold text-bluetext mb-2">{title}</h2>
       <p className="text-[32px] font-bold text-bluetext mb-4">
         {total.toLocaleString()}
       </p>
-      <div className="flex flex-col   lg:flex-row space-x-2">
+      <div className="flex space-x-2">
         <div>
           <PieChart width={70} height={70}>
             <Pie
               data={data}
               cx={35} // 86 / 2
               cy={35} // 86 / 2
-              innerRadius={20}
+              innerRadius={20} // Adjust as needed
               outerRadius={30} // Adjust as needed
               paddingAngle={5}
               dataKey="value"

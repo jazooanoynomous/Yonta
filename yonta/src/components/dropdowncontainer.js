@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { FaChevronDown, FaChevronUp, FaPlus } from 'react-icons/fa';
+import { useState } from "react";
+import { FaChevronDown, FaChevronUp, FaPlus } from "react-icons/fa";
 
 const Dropdown = ({ title, plans, handleDelete, handleEdit, toggleModal, ItemComponent }) => {
   const [isOpen, setIsOpen] = useState(false);
@@ -17,7 +17,7 @@ const Dropdown = ({ title, plans, handleDelete, handleEdit, toggleModal, ItemCom
         </button>
       )}
 
-      <div className={`mt-4 bg-white shadow-md rounded-lg p-4  transition-all duration-300 ${isOpen ? 'block' : 'hidden'}`}>
+      <div className={`mt-4 bg-white shadow-md rounded-lg p-4 transition-all duration-300 ${isOpen ? 'block' : 'hidden'}`}>
         <div className="flex justify-between items-center mb-4">
           <h2 className="text-xl font-bold">{title}</h2>
           <button onClick={toggleDropdown} className="p-2 rounded">
@@ -26,7 +26,12 @@ const Dropdown = ({ title, plans, handleDelete, handleEdit, toggleModal, ItemCom
         </div>
 
         {plans.map((box, index) => (
-          <ItemComponent key={index} box={box} handleDelete={handleDelete} handleEdit={handleEdit} />
+          <ItemComponent 
+            key={index} 
+            box={box} 
+            handleDelete={handleDelete} 
+            handleEdit={handleEdit} 
+          />
         ))}
 
         <div className="mb-4 h-[114px] w-[191px]">
@@ -38,11 +43,9 @@ const Dropdown = ({ title, plans, handleDelete, handleEdit, toggleModal, ItemCom
             <span className="ml-2 text-lg text-[#1782AF]">Add New Plan</span>
           </div>
         </div>
-        
       </div>
-   
     </div>
   );
 };
 
-export default Dropdown;
+export default Dropdown

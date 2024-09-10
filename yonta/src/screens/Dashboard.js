@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import Layout from "../Layout";
 // import bgImg from "../bg.png";
 import {
@@ -13,10 +13,13 @@ import { FaAngleLeft } from "react-icons/fa";
 import { FaAngleRight } from "react-icons/fa";
 import {
   appointmentsData,
+  bestSellersData,
   dashboardCards,
   expertsTypeData,
   memberData,
   MetricCardData,
+  orderData,
+  orders,
   regionData,
   transactionData,
 } from "../components/Datas";
@@ -24,51 +27,16 @@ import { Link } from "react-router-dom";
 import MetricCard from "../components/metricCard";
 import StatsCard from "../components/statsCard";
 import BarChartC from "../components/BarChartC";
+import { TransactionTable } from "../components/Tables";
 
-import { Transactiontable as TransactionTable } from "../components/Tables";
 
 function Dashboard() {
+  const [timeFilter, setTimeFilter] = useState("last30days");
+  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+
+  const timeOptions = ["Last 30 days", "Last week", "Yesterday", "Year"];
   return (
-    <Layout>
-      <div>
-        {/* boxes */}
-        {/* <div className="w-full grid xl:grid-cols-4 gap-6 lg:grid-cols-3 sm:grid-cols-2 grid-cols-1">
-        {dashboardCards.map((card, index) => (
-          <div
-            key={card.id}
-            className=" bg-white rounded-xl border-[1px] border-border p-5"
-          >
-            <div className="flex gap-4 items-center">
-              <div
-                className={`w-10 h-10 flex-colo bg-opacity-10 rounded-md ${card.color[1]} ${card.color[0]}`}
-              >
-                <card.icon />
-              </div>
-              <h2 className="text-sm font-medium">{card.title}</h2>
-            </div>
-            <div className="grid grid-cols-8 gap-4 mt-4 bg-dry py-5 px-8 items-center rounded-xl">
-              <div className="flex flex-col gap-4 col-span-3">
-                <h4 className="text-md font-medium">
-                  {card.value}
-                  {
-                    // if the id === 4 then add the $ sign
-                    card.id === 4 ? '$' : '+'
-                  }
-                </h4>
-                <p className={`text-sm flex gap-2 ${card.color[1]}`}>
-                  {card.percent > 50 && <BsArrowUpRight />}
-                  {card.percent > 30 && card.percent < 50 && (
-                    <BsArrowDownRight />
-                  )}
-                  {card.percent < 30 && <BsArrowDownLeft />}
-                  {card.percent}%
-                </p>
-              </div>
-            </div>
-          </div>
-        ))}
-      </div> */}
-      </div>
+    <Layout>     
       <div
         style={{
           backgroundImage: `images/blueheader.png`,
@@ -112,7 +80,7 @@ function Dashboard() {
                 User
               </h2>
               <div
-                className="flex  flex-wrap lg:flex-nowrap gap-3 lg:gap-0 
+                className="flex bg-backgroundgray flex-wrap lg:flex-nowrap gap-3 lg:gap-0 
                space-x-1 sm:h-[min-content]  p-4 pt-0 lg:p-0 justify-center
                items-center rounded-[10px]"
               >
@@ -120,12 +88,15 @@ function Dashboard() {
                   title="Total Experts"
                   total={42703}
                   data={expertsTypeData}
+                  backgroundColor={'bg-white'}
                 />
 
                 <StatsCard
                   title="Total Appointment"
                   total={61065}
                   data={appointmentsData}
+                  backgroundColor={'bg-white'}
+
                 />
               </div>
             </div>
@@ -189,31 +160,54 @@ function Dashboard() {
       <div className=" mt-10  flex flex-col md:flex-row md:space-x-2  justify-center m-3.5">
         {/* <BarChartComponent /> */}
         <BarChartC />
-        <div className=" rounded-xl border-[1px] border-border w-[100%] md:w-[50%]  p-5">
-          <h2 className="text-sm font-medium">Best Sellers</h2>
-          <div className=" grid grid-cols-4 gap-7">
-            <h1 className=" col-span-2 text-sm">Product Name</h1>
-            <h1 className=" col-span-1 text-sm">Price</h1>
-            <h1 className=" col-span-1 text-sm">Total Sales</h1>
-          </div>
-          <div className=" ">
-            {memberData.slice(3, 8).map((member, index) => (
-              <Link
-                to={`/patients/preview/${member.id}`}
-                key={index}
-                className=" grid grid-cols-4 gap-7  space-y-7"
-              >
-                <h3 className="text-xs mt-7  text-gray-400 col-span-2">
-                  {member.title}
-                </h3>
-                <p className="text-xs text-gray-400 col-span-1">
-                  {member.phone}
-                </p>
-                <p className="text-xs text-textGray col-span-1">2:00 PM</p>
-              </Link>
-            ))}
-          </div>
+        <div className="rounded-xl border-[1px] border-border w-[100%] md:w-[50%] p-5 bg-white">
+      <div className="flex justify-between items-center mb-4">
+        <h2 className="text-sm font-medium">Best Sellers</h2>
+        <div className="relative bg-lightgraybg">
+          <button 
+            onClick={() => setIsDropdownOpen(!isDropdownOpen)}
+            className="w-[140px] text-xs border rounded px-2 py-1 flex justify-between items-center bg-white"
+          >
+            {timeFilter}
+            <span className="ml-2">▼</span>
+          </button>
+          {isDropdownOpen && (
+            <ul className="absolute right-0 mt-1 w-[140px] bg-white border rounded shadow-lg">
+              {timeOptions.map((option) => (
+                <li 
+                  key={option}
+                  className="text-xs px-2 py-1 hover:bg-gray-100 cursor-pointer"
+                  onClick={() => {
+                    setTimeFilter(option);
+                    setIsDropdownOpen(false);
+                  }}
+                >
+                  {option}
+                </li>
+              ))}
+            </ul>
+          )}
         </div>
+      </div>
+      <div className="grid grid-cols-4 gap-7 mb-2 bg-white">
+        <h1 className="col-span-2 text-sm font-medium">Product Name</h1>
+        <h1 className="col-span-1 text-sm font-medium">Price</h1>
+        <h1 className="col-span-1 text-sm font-medium">Total Sales</h1>
+      </div>
+      <div className="space-y-4 rounded-lg p-2 bg-lightgraybg">
+        {bestSellersData.map((item, index) => (
+          <Link
+            to={`/products/${item.id}`}
+            key={index}
+            className="grid grid-cols-4 gap-7 hover:bg-gray-50 transition-colors duration-150 ease-in-out"
+          >
+            <h3 className="text-xs text-gray-600 col-span-2">{item.productName}</h3>
+            <p className="text-xs text-gray-600 col-span-1">{item.price}</p>
+            <p className="text-xs text-gray-600 col-span-1">{item.totalSales}</p>
+          </Link>
+        ))}
+      </div>
+    </div>
       </div>
       <div className="w-full my-6 grid xl:grid-cols-8 grid-cols-1 gap-6 p-3">
         <div className="xl:col-span-8  w-full">
@@ -223,11 +217,10 @@ function Dashboard() {
               <h2 className="text-sm font-medium">Total Sales</h2>
             </div>
             {/* table */}
-            <div className="mt-4 overflow-x-scroll">
+            <div className="mt-4 ">
               <TransactionTable
-                data={transactionData.slice(0, 5)}
-                action={false}
-                isTrue={true}
+                data={orderData}
+               
               />
             </div>
           </div>
