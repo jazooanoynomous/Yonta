@@ -1890,7 +1890,6 @@ export const MetricCardData = [
 ];
 
 
-<<<<<<< Updated upstream
   export const bestSellersData = [
     {
       id: 1,
@@ -1924,8 +1923,6 @@ export const MetricCardData = [
     }
   ];
   
-=======
->>>>>>> Stashed changes
 export const orderData = [
   {
     orderID: "#Order-1144",
