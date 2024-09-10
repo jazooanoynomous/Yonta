@@ -23,7 +23,8 @@ import {
 import { Link } from "react-router-dom";
 import MetricCard from "../components/metricCard";
 import StatsCard from "../components/statsCard";
-import BarChartComponent from "../components/barChart";
+import BarChartC from "../components/BarChartC";
+
 import { Transactiontable as TransactionTable } from "../components/Tables";
 
 function Dashboard() {
@@ -78,7 +79,7 @@ function Dashboard() {
         }}
       >
         <div
-          className=" flex flex-row  justify-between items-center px-10 -mt-10 pb-10 h-full
+          className=" w-[100vw] flex flex-row  justify-between items-center px-10 -mt-10 pb-10 h-full
           "
           style={{
             background: "linear-gradient(to right, #6D68E0, #9216FE)",
@@ -94,27 +95,31 @@ function Dashboard() {
         </div>
       </div>
       <div
-        className=" flex   flex-row justify-center md:justify-between
+        className=" flex pr-3 md:pr-0  flex-row justify-center md:justify-between w-[100vw] 
         -mt-28 "
       >
         {/* section 1 */}
         <div>
           <div
-            className="flex justify-center
-             flex-col md:flex-row sm:flex-wrap lg:flex-nowrap sm:ml-0 lg:ml-3.5 space-x-2
-             pr-3"
+            className="flex  justify-center lg:justify-between lg:ml-1
+             flex-col md:flex-row sm:flex-wrap lg:flex-nowrap sm:ml-0  space-x-2 
+             "
           >
             <div className=" space-y-3">
-              <h2 className=" text-white pl-5">User</h2>
+              <h2 className=" text-black lg:text-white font-semibold pl-5 ml-2 md:ml-3 ">
+                User
+              </h2>
               <div
-                className="flex  flex-wrap gap-3
-               space-x-2 sm:h-[min-content]  p-4 bg-white rounded-[10px]"
+                className="flex  flex-wrap lg:flex-nowrap gap-3 lg:gap-0 
+               space-x-1 sm:h-[min-content]  p-4 pt-0 lg:p-0 justify-center
+               items-center rounded-[10px]"
               >
                 <StatsCard
                   title="Total Experts"
                   total={42703}
                   data={expertsTypeData}
                 />
+
                 <StatsCard
                   title="Total Appointment"
                   total={61065}
@@ -123,8 +128,13 @@ function Dashboard() {
               </div>
             </div>
             <div className=" space-y-3">
-              <h2 className=" text-white pl-5">Ecommerce</h2>
-              <div className="bg-white p-3 rounded-[16px] flex flex-row  items-center space-x-3 h-[254px] space-y-[12px] w-[min-content] ">
+              <h2 className=" text-black lg:text-white font-semibold pl-5">
+                Ecommerce
+              </h2>
+              <div
+                className="bg-white p-3 rounded-[16px] flex flex-row m-3.5 mr-5 lg:m-0 lg:ml-2 items-center space-x-3
+               h-[254px] space-y-[12px] w-[min-content]  "
+              >
                 <div className=" space-y-3">
                   <MetricCard
                     title={MetricCardData[0].title}
@@ -147,9 +157,14 @@ function Dashboard() {
                 </div>
               </div>
             </div>
-            <div className=" space-y-3">
-              <h2 className=" text-white pl-5">Products</h2>
-              <div className="bg-white p-3 rounded-[16px] flex flex-row  items-center space-x-3 h-[254px] space-y-[12px] w-[min-content] ">
+            <div className=" space-y-3 pt-3 md:pt-0">
+              <h2 className=" text-black lg:text-white font-semibold pl-5">
+                Products
+              </h2>
+              <div
+                className="bg-white p-3 rounded-[16px] flex flex-row m-3.5  items-center space-x-3
+               h-[254px] space-y-[12px] w-[min-content] "
+              >
                 <div className=" space-y-3">
                   <MetricCard
                     title={MetricCardData[0].title}
@@ -169,9 +184,10 @@ function Dashboard() {
         {/* Exports section  */}
         <div></div>
       </div>
-      <div className=" mt-10 flex flex-col md:flex-row space-x-2  ml-3.5">
-        <BarChartComponent />
-        <div className="bg-white rounded-xl border-[1px] border-border p-5">
+      <div className=" mt-10  flex flex-col md:flex-row md:space-x-2  justify-center m-3.5">
+        {/* <BarChartComponent /> */}
+        <BarChartC />
+        <div className=" rounded-xl border-[1px] border-border w-[100%] md:w-[50%]  p-5">
           <h2 className="text-sm font-medium">Best Sellers</h2>
           <div className=" grid grid-cols-4 gap-7">
             <h1 className=" col-span-2 text-sm">Product Name</h1>
@@ -197,7 +213,7 @@ function Dashboard() {
           </div>
         </div>
       </div>
-      <div className="w-full my-6 grid xl:grid-cols-8 grid-cols-1 gap-6 p-2">
+      <div className="w-full my-6 grid xl:grid-cols-8 grid-cols-1 gap-6 p-3">
         <div className="xl:col-span-8  w-full">
           {/* transaction */}
           <div className="mt-6 bg-white rounded-xl border-[1px] border-border p-5">

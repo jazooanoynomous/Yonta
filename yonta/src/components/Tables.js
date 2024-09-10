@@ -1,8 +1,6 @@
 import React, { useMemo, useState } from "react";
 import { Button, MenuSelect } from "./Form";
 import { BiDotsHorizontalRounded, BiPlus } from "react-icons/bi";
-import { FaAngleLeft } from "react-icons/fa";
-import { FaAngleRight } from "react-icons/fa";
 import {
   FiChevronLeft,
   FiChevronRight,
@@ -124,44 +122,6 @@ export function Transactiontable({ data, action, functions, isTrue }) {
           ))}
         </tbody>
       </table>
-      <div className=" w-full flex justify-center mt-5">
-        <div
-          className="w-[250px] mb-20
-      flex flex-col items-start justify-center gap-4"
-        >
-          <p className="text-black text-sm font-semibold">
-            Showing 1 to 5 of 45,365 enteries
-          </p>
-          <div className="flex space-x-3 items-center justify-center">
-            <p className="text-blue text-lg">
-              <FaAngleLeft />
-            </p>
-            <p className="flex space-x-2 items-center justify-center">
-              <p
-                className="w-9 h-9 rounded-full border bg-blue border-gray-500 flex items-center
-        justify-center"
-              >
-                1
-              </p>
-              <p
-                className="w-9 h-9 rounded-full border border-gray-500 flex items-center
-        justify-center"
-              >
-                2
-              </p>
-              <p
-                className="w-9 h-9 rounded-full border border-gray-500 flex items-center
-        justify-center"
-              >
-                33
-              </p>
-            </p>
-            <p className="text-blue text-lg">
-              <FaAngleRight />
-            </p>
-          </div>
-        </div>
-      </div>
     </>
   );
 }
@@ -245,44 +205,6 @@ export function InvoiceTable({ data }) {
           ))}
         </tbody>
       </table>
-      <div className=" w-full flex justify-center mt-5">
-        <div
-          className="w-[250px] mb-20
-      flex flex-col items-start justify-center gap-4"
-        >
-          <p className="text-black text-sm font-semibold">
-            Showing 1 to 5 of 45,365 enteries
-          </p>
-          <div className="flex space-x-3 items-center justify-center">
-            <p className="text-blue text-lg">
-              <FaAngleLeft />
-            </p>
-            <p className="flex space-x-2 items-center justify-center">
-              <p
-                className="w-9 h-9 rounded-full border bg-blue border-gray-500 flex items-center
-        justify-center"
-              >
-                1
-              </p>
-              <p
-                className="w-9 h-9 rounded-full border border-gray-500 flex items-center
-        justify-center"
-              >
-                2
-              </p>
-              <p
-                className="w-9 h-9 rounded-full border border-gray-500 flex items-center
-        justify-center"
-              >
-                33
-              </p>
-            </p>
-            <p className="text-blue text-lg">
-              <FaAngleRight />
-            </p>
-          </div>
-        </div>
-      </div>
     </>
   );
 }
@@ -354,44 +276,6 @@ export function MedicineTable({ data, onEdit }) {
           ))}
         </tbody>
       </table>
-      <div className=" w-full flex justify-center">
-        <div
-          className="w-[250px] mb-20
-      flex flex-col items-start justify-center gap-4"
-        >
-          <p className="text-black text-sm font-semibold">
-            Showing 1 to 5 of 45,365 enteries
-          </p>
-          <div className="flex space-x-3 items-center justify-center">
-            <p className="text-blue text-lg">
-              <FaAngleLeft />
-            </p>
-            <p className="flex space-x-2 items-center justify-center">
-              <p
-                className="w-9 h-9 rounded-full border bg-blue border-gray-500 flex items-center
-        justify-center"
-              >
-                1
-              </p>
-              <p
-                className="w-9 h-9 rounded-full border border-gray-500 flex items-center
-        justify-center"
-              >
-                2
-              </p>
-              <p
-                className="w-9 h-9 rounded-full border border-gray-500 flex items-center
-        justify-center"
-              >
-                33
-              </p>
-            </p>
-            <p className="text-blue text-lg">
-              <FaAngleRight />
-            </p>
-          </div>
-        </div>
-      </div>
     </>
   );
 }
@@ -459,44 +343,6 @@ export function ServiceTable({ data, onEdit }) {
           ))}
         </tbody>
       </table>
-      <div className=" w-full flex justify-center">
-        <div
-          className="w-[250px] mb-20
-    flex flex-col items-start justify-center gap-4"
-        >
-          <p className="text-black text-sm font-semibold">
-            Showing 1 to 5 of 45,365 enteries
-          </p>
-          <div className="flex space-x-3 items-center justify-center">
-            <p className="text-blue text-lg">
-              <FaAngleLeft />
-            </p>
-            <p className="flex space-x-2 items-center justify-center">
-              <p
-                className="w-9 h-9 rounded-full border bg-blue border-gray-500 flex items-center
-      justify-center"
-              >
-                1
-              </p>
-              <p
-                className="w-9 h-9 rounded-full border border-gray-500 flex items-center
-      justify-center"
-              >
-                2
-              </p>
-              <p
-                className="w-9 h-9 rounded-full border border-gray-500 flex items-center
-      justify-center"
-              >
-                33
-              </p>
-            </p>
-            <p className="text-blue text-lg">
-              <FaAngleRight />
-            </p>
-          </div>
-        </div>
-      </div>
     </>
   );
 }
@@ -603,44 +449,6 @@ export function UsersTable({ data, functions, used }) {
           ))}
         </tbody>
       </table>
-      <div className=" w-full flex justify-center">
-        <div
-          className="w-[250px] mb-20
-    flex flex-col items-start justify-center gap-4"
-        >
-          <p className="text-black text-sm font-semibold">
-            Showing 1 to 5 of 45,365 enteries
-          </p>
-          <div className="flex space-x-3 items-center justify-center">
-            <p className="text-blue text-lg">
-              <FaAngleLeft />
-            </p>
-            <p className="flex space-x-2 items-center justify-center">
-              <p
-                className="w-9 h-9 rounded-full border bg-blue border-gray-500 flex items-center
-      justify-center"
-              >
-                1
-              </p>
-              <p
-                className="w-9 h-9 rounded-full border border-gray-500 flex items-center
-      justify-center"
-              >
-                2
-              </p>
-              <p
-                className="w-9 h-9 rounded-full border border-gray-500 flex items-center
-      justify-center"
-              >
-                33
-              </p>
-            </p>
-            <p className="text-blue text-lg">
-              <FaAngleRight />
-            </p>
-          </div>
-        </div>
-      </div>
     </>
   );
 }
@@ -696,44 +504,6 @@ export function AgilityTable({ data }) {
             ))}
           </tbody>
         </table>
-        <div className=" w-full flex justify-center">
-          <div
-            className="w-[250px] mb-20
-      flex flex-col items-start justify-center gap-4"
-          >
-            <p className="text-black text-sm font-semibold">
-              Showing 1 to 5 of 45,365 enteries
-            </p>
-            <div className="flex space-x-3 items-center justify-center">
-              <p className="text-blue text-lg">
-                <FaAngleLeft />
-              </p>
-              <p className="flex space-x-2 items-center justify-center">
-                <p
-                  className="w-9 h-9 rounded-full border bg-blue border-gray-500 flex items-center
-        justify-center"
-                >
-                  1
-                </p>
-                <p
-                  className="w-9 h-9 rounded-full border border-gray-500 flex items-center
-        justify-center"
-                >
-                  2
-                </p>
-                <p
-                  className="w-9 h-9 rounded-full border border-gray-500 flex items-center
-        justify-center"
-                >
-                  33
-                </p>
-              </p>
-              <p className="text-blue text-lg">
-                <FaAngleRight />
-              </p>
-            </div>
-          </div>
-        </div>
       </div>
     </div>
   );
@@ -833,44 +603,6 @@ export function CouponTable({ data, functions, used }) {
             ))}
           </tbody>
         </table>
-        <div className=" w-full flex justify-center">
-          <div
-            className="w-[250px] mb-20
-      flex flex-col items-start justify-center gap-4"
-          >
-            <p className="text-black text-sm font-semibold">
-              Showing 1 to 5 of 45,365 enteries
-            </p>
-            <div className="flex space-x-3 items-center justify-center">
-              <p className="text-blue text-lg">
-                <FaAngleLeft />
-              </p>
-              <p className="flex space-x-2 items-center justify-center">
-                <p
-                  className="w-9 h-9 rounded-full border bg-blue border-gray-500 flex items-center
-        justify-center"
-                >
-                  1
-                </p>
-                <p
-                  className="w-9 h-9 rounded-full border border-gray-500 flex items-center
-        justify-center"
-                >
-                  2
-                </p>
-                <p
-                  className="w-9 h-9 rounded-full border border-gray-500 flex items-center
-        justify-center"
-                >
-                  33
-                </p>
-              </p>
-              <p className="text-blue text-lg">
-                <FaAngleRight />
-              </p>
-            </div>
-          </div>
-        </div>
       </div>
       {isModalOpen && (
         <CouponsPopup
@@ -984,44 +716,6 @@ export function ManageOffers({ data, functions, used }) {
             ))}
           </tbody>
         </table>
-        <div className=" w-full flex justify-center">
-          <div
-            className="w-[250px] mb-20
-      flex flex-col items-start justify-center gap-4"
-          >
-            <p className="text-black text-sm font-semibold">
-              Showing 1 to 5 of 45,365 enteries
-            </p>
-            <div className="flex space-x-3 items-center justify-center">
-              <p className="text-blue text-lg">
-                <FaAngleLeft />
-              </p>
-              <p className="flex space-x-2 items-center justify-center">
-                <p
-                  className="w-9 h-9 rounded-full border bg-blue border-gray-500 flex items-center
-        justify-center"
-                >
-                  1
-                </p>
-                <p
-                  className="w-9 h-9 rounded-full border border-gray-500 flex items-center
-        justify-center"
-                >
-                  2
-                </p>
-                <p
-                  className="w-9 h-9 rounded-full border border-gray-500 flex items-center
-        justify-center"
-                >
-                  33
-                </p>
-              </p>
-              <p className="text-blue text-lg">
-                <FaAngleRight />
-              </p>
-            </div>
-          </div>
-        </div>
       </div>
     </div>
   );
@@ -1119,44 +813,6 @@ export function FlashSales({ data, functions, used }) {
             ))}
           </tbody>
         </table>
-        <div className=" w-full flex justify-center">
-          <div
-            className="w-[250px] mb-20
-      flex flex-col items-start justify-center gap-4"
-          >
-            <p className="text-black text-sm font-semibold">
-              Showing 1 to 5 of 45,365 enteries
-            </p>
-            <div className="flex space-x-3 items-center justify-center">
-              <p className="text-blue text-lg">
-                <FaAngleLeft />
-              </p>
-              <p className="flex space-x-2 items-center justify-center">
-                <p
-                  className="w-9 h-9 rounded-full border bg-blue border-gray-500 flex items-center
-        justify-center"
-                >
-                  1
-                </p>
-                <p
-                  className="w-9 h-9 rounded-full border border-gray-500 flex items-center
-        justify-center"
-                >
-                  2
-                </p>
-                <p
-                  className="w-9 h-9 rounded-full border border-gray-500 flex items-center
-        justify-center"
-                >
-                  33
-                </p>
-              </p>
-              <p className="text-blue text-lg">
-                <FaAngleRight />
-              </p>
-            </div>
-          </div>
-        </div>
       </div>
     </div>
   );
@@ -1234,44 +890,6 @@ export function NotificationTable({ data, functions, used }) {
             ))}
           </tbody>
         </table>
-        <div className=" w-full flex justify-center">
-          <div
-            className="w-[250px] mb-20
-      flex flex-col items-start justify-center gap-4"
-          >
-            <p className="text-black text-sm font-semibold">
-              Showing 1 to 5 of 45,365 enteries
-            </p>
-            <div className="flex space-x-3 items-center justify-center">
-              <p className="text-blue text-lg">
-                <FaAngleLeft />
-              </p>
-              <p className="flex space-x-2 items-center justify-center">
-                <p
-                  className="w-9 h-9 rounded-full border bg-blue border-gray-500 flex items-center
-        justify-center"
-                >
-                  1
-                </p>
-                <p
-                  className="w-9 h-9 rounded-full border border-gray-500 flex items-center
-        justify-center"
-                >
-                  2
-                </p>
-                <p
-                  className="w-9 h-9 rounded-full border border-gray-500 flex items-center
-        justify-center"
-                >
-                  33
-                </p>
-              </p>
-              <p className="text-blue text-lg">
-                <FaAngleRight />
-              </p>
-            </div>
-          </div>
-        </div>
       </>
     </div>
   );
@@ -1317,44 +935,6 @@ export function VendorProductListTable({ data, functions, used }) {
             ))}
           </tbody>
         </table>
-        <div className=" w-full flex justify-center">
-          <div
-            className="w-[250px] mb-20
-      flex flex-col items-start justify-center gap-4"
-          >
-            <p className="text-black text-sm font-semibold">
-              Showing 1 to 5 of 45,365 enteries
-            </p>
-            <div className="flex space-x-3 items-center justify-center">
-              <p className="text-blue text-lg">
-                <FaAngleLeft />
-              </p>
-              <p className="flex space-x-2 items-center justify-center">
-                <p
-                  className="w-9 h-9 rounded-full border bg-blue border-gray-500 flex items-center
-        justify-center"
-                >
-                  1
-                </p>
-                <p
-                  className="w-9 h-9 rounded-full border border-gray-500 flex items-center
-        justify-center"
-                >
-                  2
-                </p>
-                <p
-                  className="w-9 h-9 rounded-full border border-gray-500 flex items-center
-        justify-center"
-                >
-                  33
-                </p>
-              </p>
-              <p className="text-blue text-lg">
-                <FaAngleRight />
-              </p>
-            </div>
-          </div>
-        </div>
       </>
     </div>
   );
@@ -1426,44 +1006,6 @@ export function VendorListTable({ data, functions, used }) {
             ))}
           </tbody>
         </table>
-        <div className=" w-full flex justify-center mt-5">
-          <div
-            className="w-[250px] mb-20
-      flex flex-col items-start justify-center gap-4"
-          >
-            <p className="text-black text-sm font-semibold">
-              Showing 1 to 5 of 45,365 enteries
-            </p>
-            <div className="flex space-x-3 items-center justify-center">
-              <p className="text-blue text-lg">
-                <FaAngleLeft />
-              </p>
-              <p className="flex space-x-2 items-center justify-center">
-                <p
-                  className="w-9 h-9 rounded-full border bg-blue border-gray-500 flex items-center
-        justify-center"
-                >
-                  1
-                </p>
-                <p
-                  className="w-9 h-9 rounded-full border border-gray-500 flex items-center
-        justify-center"
-                >
-                  2
-                </p>
-                <p
-                  className="w-9 h-9 rounded-full border border-gray-500 flex items-center
-        justify-center"
-                >
-                  33
-                </p>
-              </p>
-              <p className="text-blue text-lg">
-                <FaAngleRight />
-              </p>
-            </div>
-          </div>
-        </div>
       </>
     </div>
   );
@@ -1535,44 +1077,6 @@ export function VendorTable({ data, functions, used }) {
             ))}
           </tbody>
         </table>
-        <div className=" w-full flex justify-center">
-          <div
-            className="w-[250px] mb-20
-      flex flex-col items-start justify-center gap-4"
-          >
-            <p className="text-black text-sm font-semibold">
-              Showing 1 to 5 of 45,365 enteries
-            </p>
-            <div className="flex space-x-3 items-center justify-center">
-              <p className="text-blue text-lg">
-                <FaAngleLeft />
-              </p>
-              <p className="flex space-x-2 items-center justify-center">
-                <p
-                  className="w-9 h-9 rounded-full border bg-blue border-gray-500 flex items-center
-        justify-center"
-                >
-                  1
-                </p>
-                <p
-                  className="w-9 h-9 rounded-full border border-gray-500 flex items-center
-        justify-center"
-                >
-                  2
-                </p>
-                <p
-                  className="w-9 h-9 rounded-full border border-gray-500 flex items-center
-        justify-center"
-                >
-                  33
-                </p>
-              </p>
-              <p className="text-blue text-lg">
-                <FaAngleRight />
-              </p>
-            </div>
-          </div>
-        </div>
       </>
     </div>
   );
@@ -1657,44 +1161,6 @@ export function AppointmentsTable({ data, functions, used }) {
           ))}
         </tbody>
       </table>
-      <div className=" w-full flex justify-center">
-        <div
-          className="w-[250px] mb-20
-      flex flex-col items-start justify-center gap-4"
-        >
-          <p className="text-black text-sm font-semibold">
-            Showing 1 to 5 of 45,365 enteries
-          </p>
-          <div className="flex space-x-3 items-center justify-center">
-            <p className="text-blue text-lg">
-              <FaAngleLeft />
-            </p>
-            <p className="flex space-x-2 items-center justify-center">
-              <p
-                className="w-9 h-9 rounded-full border bg-blue border-gray-500 flex items-center
-        justify-center"
-              >
-                1
-              </p>
-              <p
-                className="w-9 h-9 rounded-full border border-gray-500 flex items-center
-        justify-center"
-              >
-                2
-              </p>
-              <p
-                className="w-9 h-9 rounded-full border border-gray-500 flex items-center
-        justify-center"
-              >
-                33
-              </p>
-            </p>
-            <p className="text-blue text-lg">
-              <FaAngleRight />
-            </p>
-          </div>
-        </div>
-      </div>
     </div>
   );
 }
@@ -1787,44 +1253,6 @@ export function ExpertTable({ data, functions }) {
           ))}
         </tbody>
       </table>
-      <div className=" w-full flex justify-center">
-        <div
-          className="w-[250px] mb-20
-      flex flex-col items-start justify-center gap-4"
-        >
-          <p className="text-black text-sm font-semibold">
-            Showing 1 to 5 of 45,365 enteries
-          </p>
-          <div className="flex space-x-3 items-center justify-center">
-            <p className="text-blue text-lg">
-              <FaAngleLeft />
-            </p>
-            <p className="flex space-x-2 items-center justify-center">
-              <p
-                className="w-9 h-9 rounded-full border bg-blue border-gray-500 flex items-center
-        justify-center"
-              >
-                1
-              </p>
-              <p
-                className="w-9 h-9 rounded-full border border-gray-500 flex items-center
-        justify-center"
-              >
-                2
-              </p>
-              <p
-                className="w-9 h-9 rounded-full border border-gray-500 flex items-center
-        justify-center"
-              >
-                33
-              </p>
-            </p>
-            <p className="text-blue text-lg">
-              <FaAngleRight />
-            </p>
-          </div>
-        </div>
-      </div>
     </div>
   );
 }
@@ -1889,44 +1317,6 @@ export function AppointmentTable({ data, functions, doctor }) {
           ))}
         </tbody>
       </table>
-      <div className=" w-full flex justify-center">
-        <div
-          className="w-[250px] mb-20
-    flex flex-col items-start justify-center gap-4"
-        >
-          <p className="text-black text-sm font-semibold">
-            Showing 1 to 5 of 45,365 enteries
-          </p>
-          <div className="flex space-x-3 items-center justify-center">
-            <p className="text-blue text-lg">
-              <FaAngleLeft />
-            </p>
-            <p className="flex space-x-2 items-center justify-center">
-              <p
-                className="w-9 h-9 rounded-full border bg-blue border-gray-500 flex items-center
-      justify-center"
-              >
-                1
-              </p>
-              <p
-                className="w-9 h-9 rounded-full border border-gray-500 flex items-center
-      justify-center"
-              >
-                2
-              </p>
-              <p
-                className="w-9 h-9 rounded-full border border-gray-500 flex items-center
-      justify-center"
-              >
-                33
-              </p>
-            </p>
-            <p className="text-blue text-lg">
-              <FaAngleRight />
-            </p>
-          </div>
-        </div>
-      </div>
     </>
   );
 }
@@ -1995,44 +1385,6 @@ export function PaymentTable({ data, functions, doctor }) {
           ))}
         </tbody>
       </table>
-      <div className=" w-full flex justify-center">
-        <div
-          className="w-[250px] mb-20
-      flex flex-col items-start justify-center gap-4"
-        >
-          <p className="text-black text-sm font-semibold">
-            Showing 1 to 5 of 45,365 enteries
-          </p>
-          <div className="flex space-x-3 items-center justify-center">
-            <p className="text-blue text-lg">
-              <FaAngleLeft />
-            </p>
-            <p className="flex space-x-2 items-center justify-center">
-              <p
-                className="w-9 h-9 rounded-full border bg-blue border-gray-500 flex items-center
-        justify-center"
-              >
-                1
-              </p>
-              <p
-                className="w-9 h-9 rounded-full border border-gray-500 flex items-center
-        justify-center"
-              >
-                2
-              </p>
-              <p
-                className="w-9 h-9 rounded-full border border-gray-500 flex items-center
-        justify-center"
-              >
-                33
-              </p>
-            </p>
-            <p className="text-blue text-lg">
-              <FaAngleRight />
-            </p>
-          </div>
-        </div>
-      </div>
     </>
   );
 }
@@ -2083,44 +1435,6 @@ export function InvoiceUsedTable({ data, functions }) {
           ))}
         </tbody>
       </table>
-      <div className=" w-full flex justify-center">
-        <div
-          className="w-[250px] mb-20
-    flex flex-col items-start justify-center gap-4"
-        >
-          <p className="text-black text-sm font-semibold">
-            Showing 1 to 5 of 45,365 enteries
-          </p>
-          <div className="flex space-x-3 items-center justify-center">
-            <p className="text-blue text-lg">
-              <FaAngleLeft />
-            </p>
-            <p className="flex space-x-2 items-center justify-center">
-              <p
-                className="w-9 h-9 rounded-full border bg-blue border-gray-500 flex items-center
-      justify-center"
-              >
-                1
-              </p>
-              <p
-                className="w-9 h-9 rounded-full border border-gray-500 flex items-center
-      justify-center"
-              >
-                2
-              </p>
-              <p
-                className="w-9 h-9 rounded-full border border-gray-500 flex items-center
-      justify-center"
-              >
-                33
-              </p>
-            </p>
-            <p className="text-blue text-lg">
-              <FaAngleRight />
-            </p>
-          </div>
-        </div>
-      </div>
     </>
   );
 }
@@ -2169,44 +1483,6 @@ export function InvoiceProductsTable({ data, functions, button }) {
           ))}
         </tbody>
       </table>
-      <div className=" w-full flex justify-center">
-        <div
-          className="w-[250px] mb-20
-      flex flex-col items-start justify-center gap-4"
-        >
-          <p className="text-black text-sm font-semibold">
-            Showing 1 to 5 of 45,365 enteries
-          </p>
-          <div className="flex space-x-3 items-center justify-center">
-            <p className="text-blue text-lg">
-              <FaAngleLeft />
-            </p>
-            <p className="flex space-x-2 items-center justify-center">
-              <p
-                className="w-9 h-9 rounded-full border bg-blue border-gray-500 flex items-center
-        justify-center"
-              >
-                1
-              </p>
-              <p
-                className="w-9 h-9 rounded-full border border-gray-500 flex items-center
-        justify-center"
-              >
-                2
-              </p>
-              <p
-                className="w-9 h-9 rounded-full border border-gray-500 flex items-center
-        justify-center"
-              >
-                33
-              </p>
-            </p>
-            <p className="text-blue text-lg">
-              <FaAngleRight />
-            </p>
-          </div>
-        </div>
-      </div>
     </>
   );
 }
@@ -2262,44 +1538,6 @@ export function MedicineDosageTable({ data, functions, button }) {
           ))}
         </tbody>
       </table>
-      <div className=" w-full flex justify-center">
-        <div
-          className="w-[250px] mb-20
-      flex flex-col items-start justify-center gap-4"
-        >
-          <p className="text-black text-sm font-semibold">
-            Showing 1 to 5 of 45,365 enteries
-          </p>
-          <div className="flex space-x-3 items-center justify-center">
-            <p className="text-blue text-lg">
-              <FaAngleLeft />
-            </p>
-            <p className="flex space-x-2 items-center justify-center">
-              <p
-                className="w-9 h-9 rounded-full border bg-blue border-gray-500 flex items-center
-        justify-center"
-              >
-                1
-              </p>
-              <p
-                className="w-9 h-9 rounded-full border border-gray-500 flex items-center
-        justify-center"
-              >
-                2
-              </p>
-              <p
-                className="w-9 h-9 rounded-full border border-gray-500 flex items-center
-        justify-center"
-              >
-                33
-              </p>
-            </p>
-            <p className="text-blue text-lg">
-              <FaAngleRight />
-            </p>
-          </div>
-        </div>
-      </div>
     </>
   );
 }
@@ -2422,44 +1660,6 @@ export function OrderTable({ data, functions }) {
           ))}
         </tbody>
       </table>
-      <div className=" w-full flex justify-center">
-        <div
-          className="w-[250px] mb-20
-      flex flex-col items-start justify-center gap-4"
-        >
-          <p className="text-black text-sm font-semibold">
-            Showing 1 to 5 of 45,365 enteries
-          </p>
-          <div className="flex space-x-3 items-center justify-center">
-            <p className="text-blue text-lg">
-              <FaAngleLeft />
-            </p>
-            <p className="flex space-x-2 items-center justify-center">
-              <p
-                className="w-9 h-9 rounded-full border bg-blue border-gray-500 flex items-center
-        justify-center"
-              >
-                1
-              </p>
-              <p
-                className="w-9 h-9 rounded-full border border-gray-500 flex items-center
-        justify-center"
-              >
-                2
-              </p>
-              <p
-                className="w-9 h-9 rounded-full border border-gray-500 flex items-center
-        justify-center"
-              >
-                33
-              </p>
-            </p>
-            <p className="text-blue text-lg">
-              <FaAngleRight />
-            </p>
-          </div>
-        </div>
-      </div>
 
       {/* Pagination Section */}
       <div className="flex flex-col items-center mt-4">
@@ -2551,44 +1751,6 @@ export function OrderDetails({ data }) {
             </tr>
           </tbody>
         </table>
-        <div className=" w-full flex justify-center">
-          <div
-            className="w-[250px] mb-20
-      flex flex-col items-start justify-center gap-4"
-          >
-            <p className="text-black text-sm font-semibold">
-              Showing 1 to 5 of 45,365 enteries
-            </p>
-            <div className="flex space-x-3 items-center justify-center">
-              <p className="text-blue text-lg">
-                <FaAngleLeft />
-              </p>
-              <p className="flex space-x-2 items-center justify-center">
-                <p
-                  className="w-9 h-9 rounded-full border bg-blue border-gray-500 flex items-center
-        justify-center"
-                >
-                  1
-                </p>
-                <p
-                  className="w-9 h-9 rounded-full border border-gray-500 flex items-center
-        justify-center"
-                >
-                  2
-                </p>
-                <p
-                  className="w-9 h-9 rounded-full border border-gray-500 flex items-center
-        justify-center"
-                >
-                  33
-                </p>
-              </p>
-              <p className="text-blue text-lg">
-                <FaAngleRight />
-              </p>
-            </div>
-          </div>
-        </div>
       </div>
       <div className="mt-4 flex justify-between items-center">
         <button
