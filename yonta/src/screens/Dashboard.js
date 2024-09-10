@@ -99,7 +99,11 @@ function Dashboard() {
       >
         {/* section 1 */}
         <div>
-          <div className="flex   justify-center flex-col md:flex-row flex-wrap sm:ml-0 lg:ml-3.5 space-x-2">
+          <div
+            className="flex justify-center
+             flex-col md:flex-row sm:flex-wrap lg:flex-nowrap sm:ml-0 lg:ml-3.5 space-x-2
+             pr-3"
+          >
             <div className=" space-y-3">
               <h2 className=" text-white pl-5">User</h2>
               <div
