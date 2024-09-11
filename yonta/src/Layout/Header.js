@@ -1,120 +1,87 @@
-import React, { useState } from "react";
-import { MenuDatas } from "../components/Datas"; // Ensure this file exports a valid MenuDatas structure
-import { Link } from "react-router-dom";
-import Header from "./Header"; // Import the Header component
+import React from 'react';
+import { MenuSelect } from '../components/Form';
+import { TbUser } from 'react-icons/tb';
+import { AiOutlinePoweroff } from 'react-icons/ai';
+import { MdOutlineNotificationsNone } from 'react-icons/md';
+import NotificationComp from '../components/NotificationComp';
+import { useNavigate } from 'react-router-dom';
+import { BiMenu } from 'react-icons/bi';
+import MenuDrawer from '../components/Drawer/MenuDrawer';
 
-function Sidebar() {
-  const [openDropdown, setOpenDropdown] = useState(null);
-  const [selectedMenu, setSelectedMenu] = useState(null);
+function Header() {
+  const [isOpen, setIsOpen] = React.useState(false);
 
-  // Check current path to highlight active link
-  const currentPath = (path) => {
-    return window.location.pathname.split("/")[1] === path.split("/")[1];
+  // toggle drawer
+  const toggleDrawer = () => {
+    setIsOpen((prevState) => !prevState);
   };
 
-  // Toggle dropdown for submenus
-  const handleDropdown = (index) => {
-    setOpenDropdown(openDropdown === index ? null : index);
-  };
-
-  // Handle menu item click
-  const handleMenuClick = (item) => {
-    console.log("Menu item clicked:", item); // Debug output
-    setSelectedMenu(item);
-    if (item.subMenu) {
-      handleDropdown(MenuDatas.indexOf(item));
-    }
-  };
+  const navigate = useNavigate();
+  const DropDown1 = [
+    {
+      title: 'Profile',
+      icon: TbUser,
+      onClick: () => {
+        navigate('/settings');
+      },
+    },
+    {
+      title: 'Logout',
+      icon: AiOutlinePoweroff,
+      onClick: () => {
+        navigate('/login');
+      },
+    },
+  ];
 
   return (
-    <div className="flex">
-      <div className="xl:shadow-lg py-6 px-4 xl:h-screen xl:overflow-y-auto w-full bg-white">
-        <Link to="/">
-          <img
-            src="/images/logo.png"
-            alt="logo"
-            className="w-[146px] h-[34px] my-[34px] object-contain"
-          />
-        </Link>
-        <div className="flex-col gap-2 h-[21px] w-[200px]">
-          {MenuDatas.map((item, index) => (
-            <div key={index}>
-              <Link
-                to={item.path || "/"} // Fallback to home if no path
-                className={`
-                  ${currentPath(item.path) ? "bg-menubg" : ""}
-                  flex gap-4 transition group items-center w-full p-4 rounded-[6px]`}
-                onClick={() => handleMenuClick(item)}
-              >
-                {item.icon && (
-                  <item.icon
-                    className={`h-[20px] w-[20px] ${
-                      currentPath(item.path)
-                        ? "text-bluetext"
-                        : "text-greytext"
-                    }`}
-                  />
-                )}
-                <p
-                  className={`text-[16px] font-medium group-hover:text-subMain ${
-                    currentPath(item.path)
-                      ? "text-bluetext"
-                      : "text-greytext"
-                  }`}
-                >
-                  {item.title || "No Title"} {/* Fallback if title is missing */}
-                </p>
-                {item.subMenu && (
-                  <span className={`ml-auto transition-transform ${
-                    openDropdown === index ? "rotate-180" : ""
-                  }`}>
-                    ▼
-                  </span>
-                )}
-              </Link>
+    <>
+      {isOpen && <MenuDrawer isOpen={isOpen} toggleDrawer={toggleDrawer} />}
 
-              {/* Dropdown for submenu */}
-              {item.subMenu && openDropdown === index && (
-                <div className="ml-6 mt-2">
-                  {item.subMenu.map((subItem, subIndex) => (
-                    <Link
-                      to={subItem.path || "/"} // Fallback to home if no path
-                      key={subIndex}
-                      className={`flex gap-4 transition group items-center w-full p-3 rounded-[6px] ${
-                        currentPath(subItem.path) ? "bg-submenubg" : ""
-                      }`}
-                    >
-                      {subItem.icon && (
-                        <subItem.icon
-                          className={`h-[16px] w-[16px] ${
-                            currentPath(subItem.path)
-                              ? "text-bluetext"
-                              : "text-greytext"
-                          }`}
-                        />
-                      )}
-                      <p
-                        className={`text-[14px] font-medium group-hover:text-subMain ${
-                          currentPath(subItem.path)
-                            ? "text-bluetext"
-                            : "text-greytext"
-                        }`}
-                      >
-                        {subItem.title || "No Title"} {/* Fallback if title is missing */}
-                      </p>
-                    </Link>
-                  ))}
+      {/* cmp */}
+      <div className="xl:w-5/6 w-full 2xl:max-w-[1640px] bg-dry grid md:grid-cols-2 grid-cols-12 items-center bg-opacity-95 fixed top-0 z-40 xs:px-8 px-2">
+        <div className="md:col-span-1 sm:col-span-11 col-span-10 flex gap-4 items-center md:py-0 py-4">
+          <button
+            onClick={toggleDrawer}
+            className="block xl:hidden border text-2xl bg-greyed w-16 md:w-12 h-12 rounded-md flex-colo text-textGray transitions hover:bg-border"
+          >
+            <BiMenu />
+          </button>
+          {/* search */}
+          <input
+            type="text"
+            placeholder='Search '
+            className="md:w-96 w-full h-12 text-sm text-main rounded-md bg-dry border border-border px-4"
+          />
+        </div>
+        <div className="md:col-span-1 sm:col-span-1 col-span-2 items-center justify-end pr-4 md:pr-0">
+          <div className="float-right flex gap-4 items-center justify-center">
+            <NotificationComp>
+              <div className="relative">
+                <MdOutlineNotificationsNone className="text-2xl hover:text-subMain" />
+                <span className="absolute -top-2.5 -right-2.5 font-semibold bg-subMain rounded-full px-1.5 py-0.5 text-xs text-white text-center">
+                  5
+                </span>
+              </div>
+            </NotificationComp>
+
+            <div className=" items-center md:flex hidden">
+              <MenuSelect datas={DropDown1}>
+                <div className="flex gap-4 items-center p-4 rounded-lg">
+                  <img
+                    src="/images/user1.png"
+                    alt="user"
+                    className="w-12 border border-border object-cover h-12 rounded-full"
+                  />
+                  <p className="text-sm text-textGray font-medium">Jahangir</p>
                 </div>
-              )}
+              </MenuSelect>
             </div>
-          ))}
+          </div>
         </div>
       </div>
-
-      {/* Render the Header component and pass the selectedMenu */}
-      <Header selectedMenu={selectedMenu} />
-    </div>
+    </>
   );
 }
 
-export default Sidebar;
+export default Header;
