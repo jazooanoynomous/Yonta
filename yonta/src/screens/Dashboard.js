@@ -103,18 +103,19 @@ function Dashboard() {
         {/* section 1 */}
         <div>
           <div
-            className="flex  justify-center lg:justify-between lg:ml-1
-             flex-col md:flex-row sm:flex-wrap lg:flex-nowrap sm:ml-0  space-x-2 
+            className="flex  justify-center lg:justify-between lg:items-center lg:ml-1 
+             flex-col md:flex-row sm:flex-wrap lg:flex-nowrap sm:ml-0  space-x-2 sm:space-y-3
              "
           >
             <div className=" space-y-3">
-              <h2 className=" text-black lg:text-white font-semibold pl-5 ml-2 md:ml-3 ">
+              <h2 className=" text-black lg:text-white font-semibold pl-5 ml-2 md:ml-3  ">
                 User
               </h2>
               <div
-                className="flex  flex-wrap lg:flex-nowrap gap-3 lg:gap-0 
-               space-x-1 sm:h-[min-content]  p-4 pt-0 lg:p-0 justify-center
-               items-center rounded-[10px]"
+                className="card flex   flex-wrap lg:flex-nowrap gap-3 lg:gap-0 
+               space-x-1 sm:h-[min-content] lg:h-[254px]   p-4  lg:p-3 lg:ml-2  justify-center
+               items-center  rounded-[10px] bg-white   
+               "
               >
                 <StatsCard
                   title="Total Experts"
@@ -130,7 +131,7 @@ function Dashboard() {
               </div>
             </div>
             <div className=" space-y-3">
-              <h2 className=" text-black lg:text-white font-semibold pl-5">
+              <h2 className=" text-black lg:text-white font-semibold pl-5 md:pl-8 lg:pl-5">
                 Ecommerce
               </h2>
               <div

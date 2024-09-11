@@ -1,20 +1,20 @@
-import React, { useEffect, useState } from 'react';
-import axios from 'axios';
-import Layout from '../Layout';
+import React, { useEffect, useState } from "react";
+import axios from "axios";
+import Layout from "../Layout";
 import {
   appointmentsData,
   expertsTypeData,
   MetricCardData,
   regionData,
-} from '../components/Datas';
-import { useNavigate } from 'react-router-dom';
-import { BiPlus } from 'react-icons/bi';
-import { BASEURL } from '../utils/constant';
-import { Button } from '../components/Form';
-import { UsersTable } from '../components/Tables';
-import { FaSearch } from 'react-icons/fa';
-import StatsCard from '../components/statsCard';
-import MetricCard from '../components/metricCard';
+} from "../components/Datas";
+import { useNavigate } from "react-router-dom";
+import { BiPlus } from "react-icons/bi";
+import { BASEURL } from "../utils/constant";
+import { Button } from "../components/Form";
+import { UsersTable } from "../components/Tables";
+import { FaSearch } from "react-icons/fa";
+import StatsCard from "../components/statsCard";
+import MetricCard from "../components/metricCard";
 
 function Users() {
   const navigate = useNavigate();
@@ -26,12 +26,12 @@ function Users() {
     try {
       const response = await axios.get(`${BASEURL}users`, {
         headers: {
-          'VerifyMe': 'RGVlcGFrS3VzaHdhaGE5Mzk5MzY5ODU0', // Add your custom header here
-        }
+          VerifyMe: "RGVlcGFrS3VzaHdhaGE5Mzk5MzY5ODU0", // Add your custom header here
+        },
       });
       setUserData(response.data.users || []); // Set the user data in state
     } catch (error) {
-      console.error('Error fetching users:', error);
+      console.error("Error fetching users:", error);
     } finally {
       setLoading(false); // Stop the loading state
     }
@@ -46,7 +46,7 @@ function Users() {
     navigate(`/patients/preview/${id}`);
   };
 
-  console.log('User data:', userData);
+  console.log("User data:", userData);
 
   return (
     <Layout>
@@ -73,8 +73,11 @@ function Users() {
           />
         </div>
       </div>
-      <div className="flex space-x-4">
-        <div className="bg-white p-3 rounded-[16px] h-[254px] space-y-[12px] w-[219px] ">
+      <div className="flex space-x-4 ">
+        <div
+          className="bg-white p-3 rounded-[16px] h-[254px] space-y-[12px] w-[min-content]
+        "
+        >
           <MetricCard
             title={MetricCardData[0].title}
             value={MetricCardData[0].value}
@@ -86,7 +89,11 @@ function Users() {
         </div>
 
         <div className="flex space-x-4 h-[254px] p-4 bg-white rounded-[10px]">
-          <StatsCard title="Total Experts" total={42703} data={expertsTypeData} />
+          <StatsCard
+            title="Total Experts"
+            total={42703}
+            data={expertsTypeData}
+          />
           <StatsCard
             title="Total Appointment"
             total={61065}
