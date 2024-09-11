@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { FaPlus, FaSave, FaUpload } from 'react-icons/fa';
+import { FaPlus } from 'react-icons/fa';
 import ProductCard from '../components/productCard';
 import Layout from '../Layout'
 import ProductCard2 from '../components/productCard2'
@@ -18,11 +18,11 @@ const Products = ({ onAddCategory, onDeleteCategory, onEditCategory }) => {
     const [categories, setCategories] = useState(initialCategories);
     const [product, setProduct] = useState(Product);
 
-    const [showModal, setShowModal] = useState(false);
-    const [newCategory, setNewCategory] = useState({ name: '', imageUrl: '' });
+    // const [showModal, setShowModal] = useState(false);
+    // const [newCategory, setNewCategory] = useState({ name: '', imageUrl: '' });
     const [activeSuggestion, setActiveSuggestion] = useState(null);
     const [isModalOpen, setIsModalOpen] = useState(false);
-    const [newPlanTitle, setNewPlanTitle] = useState('');
+    // const [newPlanTitle, setNewPlanTitle] = useState('');
 
 
     const toggleModal = () => {
@@ -33,11 +33,11 @@ const Products = ({ onAddCategory, onDeleteCategory, onEditCategory }) => {
         setCategories([...categories, { ...newCategoryData, id: Date.now() }]);
         toggleModal();
     };
-    const handleSave = () => {
-        if (newPlanTitle) {
-            toggleModal();
-        }
-    };
+    // const handleSave = () => {
+    //     if (newPlanTitle) {
+    //         toggleModal();
+    //     }
+    // };
     const handleSuggestionClick = (index) => {
         setActiveSuggestion(index);
     };
@@ -53,16 +53,16 @@ const Products = ({ onAddCategory, onDeleteCategory, onEditCategory }) => {
         onEditCategory(id);
     };
 
-    const handleImageChange = (e) => {
-        const file = e.target.files[0];
-        if (file) {
-            const reader = new FileReader();
-            reader.onloadend = () => {
-                setNewCategory({ ...newCategory, imageUrl: reader.result });
-            };
-            reader.readAsDataURL(file);
-        }
-    };
+    // const handleImageChange = (e) => {
+    //     const file = e.target.files[0];
+    //     if (file) {
+    //         const reader = new FileReader();
+    //         reader.onloadend = () => {
+    //             setNewCategory({ ...newCategory, imageUrl: reader.result });
+    //         };
+    //         reader.readAsDataURL(file);
+    //     }
+    // };
 
     return (
         <Layout>
@@ -119,9 +119,9 @@ const Products = ({ onAddCategory, onDeleteCategory, onEditCategory }) => {
                 </div>
 
                 <ProductModal
-                  isOpen={isModalOpen}
-                  onClose={toggleModal}
-                  onAddMealType={handleAddCategory}
+                    isOpen={isModalOpen}
+                    onClose={toggleModal}
+                    onAddMealType={handleAddCategory}
                 />
             </div>
         </Layout>

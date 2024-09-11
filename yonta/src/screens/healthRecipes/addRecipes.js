@@ -1,5 +1,5 @@
 import React, { useState, useRef, useEffect } from "react";
-import { FaEdit, FaTrash, FaPlus, FaSave, FaUpload } from "react-icons/fa";
+import { FaEdit, FaUpload } from "react-icons/fa";
 import Layout from "../../Layout";
 import { useLocation } from "react-router-dom";
 import { BASEURL } from "../../utils/constant";

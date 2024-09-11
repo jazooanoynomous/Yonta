@@ -75,8 +75,8 @@ function Experts() {
   return (
     <Layout>
       <div className="flex items-center justify-between">
-        <h1 className="text-xl font-semibold">Expert Board-List</h1>
-        <div className="flex items-center gap-3">
+        <h1 className="text-xl py-2 font-bold">Expert Summary</h1>
+        {/* <div className="flex items-center gap-3">
           <div className="flex items-center h-7 bg-white border border-border rounded-md">
             <input
               type="text"
@@ -95,16 +95,9 @@ function Experts() {
             }}
             className="ml-1 text-white"
           />
-        </div>
+        </div> */}
       </div>
-      <div className="pt-[12px]">
-        <Button
-          Icon={BiPlus}
-          label="Add Expert Category"
-          onClick={toggleModal} // Open the modal when this button is clicked
-          className="ml-1 p-[12px] h-[45px] w-[190px] bg-white text-gray-500 border border-gray-300"
-        />
-      </div>
+     
       <div className="flex space-x-4">
         <div className="bg-white p-3 rounded-[16px] h-[254px] space-y-[12px] w-[219px] ">
           <MetricCard
@@ -112,8 +105,8 @@ function Experts() {
             value={MetricCardData[0].value}
           />
           <MetricCard
-            title={MetricCardData[0].title}
-            value={MetricCardData[0].value}
+            title={MetricCardData[1].title}
+            value={MetricCardData[1].value}
           />
         </div>
 
@@ -138,7 +131,7 @@ function Experts() {
         data-aos-offset="200"
         className="my-8 rounded-xl"
       >
-        <div className="mt-8 w-full overflow-x-scroll">
+        <div className="mt-8  overflow-x-scroll">
           <ExpertTable
             data={expertsData}
             functions={{

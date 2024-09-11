@@ -2,14 +2,14 @@ import React from 'react';
 import { BarChart, Bar, XAxis, YAxis, Tooltip, ResponsiveContainer, CartesianGrid } from 'recharts';
 
 const data = [
-  { name: 'Omega\nFatty Acids', value: 150000000 },
-  { name: 'Gym\nAccessories', value: 180000000 },
-  { name: 'Gainer', value: 170000000 },
-  { name: 'Multivitamin', value: 140000000 },
-  { name: 'Protein', value: 250342123 },
-  { name: 'Workout\nEssentials', value: 220000000 },
-  { name: 'Pre/post\nWorkout', value: 200000000 },
-  { name: 'Hair\nSupplement', value: 190000000 },
+  { name: 'Jan', value: 150000000 },
+  { name: 'Feb', value: 180000000 },
+  { name: 'Mar', value: 170000000 },
+  { name: 'Arl', value: 140000000 },
+  { name: 'Jun', value: 250342123 },
+  { name: 'July', value: 220000000 },
+  { name: 'Aug', value: 200000000 },
+  { name: 'Stp', value: 190000000 },
 ];
 
 const CustomTooltip = ({ active, payload }) => {
@@ -27,7 +27,7 @@ const BarChartC = () => {
   return (
     <div className="w-full max-w-4xl mx-auto bg-white p-6 rounded-lg shadow">
       <div className="flex justify-between items-center mb-4">
-        <h2 className="text-lg font-semibold text-gray-700">Sales category</h2>
+        <h2 className="text-lg font-semibold text-gray-700">Revenue Overview</h2>
         <div className="flex items-center space-x-2">
           <span className="text-sm text-gray-500">Jan 2020</span>
           <span className="text-sm text-gray-500">to</span>

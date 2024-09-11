@@ -6,7 +6,7 @@ import { AppointmentsTable } from "../../components/Tables";
 import { ExpertsappointmentsData } from "../../components/Datas";
 import { IMAGEURL } from "../../utils/constant";
 const InputBox = ({ label, value }) => (
-  <div className="mb-4">
+  <div className="mb-1">
     <label className="block font-bold mb-2">{label}</label>
     <input
       type="text"
@@ -27,7 +27,9 @@ const ExpertProfileScreen = () => {
 
   return (
     <Layout>
-      <div className="bg-gray-100 p-6 max-w-6xl mx-auto">
+      <div className="p-6 max-w-6xl mx-auto">
+      <h2 className="font-semibold text-lg p-1">Profile profile</h2>
+
         <div className="grid grid-cols-3 mb-6">
           <div className="col-span-1 h-[243px] w-[243px] ">
             <img
@@ -40,8 +42,11 @@ const ExpertProfileScreen = () => {
             <div className="grid grid-cols-3 gap-4">
               <InputBox label="Expert name" value={expert.name} />
               <InputBox label="Mobile Number" value={expert.phone} />
-              <div className="row-span-2 w-[250px] h-[220px] bg-white p-4 rounded-lg pr-6">
+              <div className="row-span-2 w-[250px] h-[220px] ">
+
                 <h3 className="font-bold text-blue-800 mb-2">Stats</h3>
+                <div className=" bg-white p-2 rounded-lg ">
+
                 <div className="grid grid-cols-2  space-y-2 gap-1 rounded-[10px] ">
                   <div className="bg-backgroundgray w-[105px] h-[70px] px-2 shadow-md rounded-lg p-4">
                     <h2 className="text-black text-[10px]">Total Revenue</h2>
@@ -67,6 +72,7 @@ const ExpertProfileScreen = () => {
                       {expert.rating.toFixed(1) || "N/A"}
                     </h2>
                   </div>
+                </div>
                 </div>
               </div>
               <InputBox label="Education" value={expert.education} />

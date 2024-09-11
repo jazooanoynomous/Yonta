@@ -22,7 +22,7 @@ const CustomTooltip = ({ active, payload }) => {
 };
 const BarChartComponent = ({ title, data }) => {
   return (
-    <div className="w-[100%] md:w-[50%] max-w-4xl bg-white p-6 rounded-lg shadow mb-4">
+    <div className="w-[100%] bg-white p-6 rounded-lg shadow mb-4">
       <div className="flex justify-between items-center mb-4">
         <h2 className="text-lg font-semibold text-gray-700">{title}</h2>
         <div className="flex items-center space-x-2">

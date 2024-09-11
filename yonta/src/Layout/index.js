@@ -10,7 +10,7 @@ function index({ children }) {
         </div>
         <div className="col-span-10 xl:h-screen overflow-y-scroll relative">
           {/* <Header title={title} /> */}
-          <div className="xs:px-8 px-2 pt-4">{children}</div>
+          <div className="px-2 pt-4">{children}</div>
         </div>
       </div>
     </div>

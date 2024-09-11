@@ -1,8 +1,8 @@
 import React from 'react';
 import { useState, useEffect } from 'react';
-import { Line, Bar } from 'react-chartjs-2';
-import 'chart.js/auto';  // Automatically imports the necessary chart components
-import { FaUserAlt } from 'react-icons/fa';
+import { Line } from 'react-chartjs-2';
+import 'chart.js/auto';  
+// import { FaUserAlt } from 'react-icons/fa';
 import Layout from '../Layout'
 import StatsCard from '../components/statsCard';
 import { reportData, ReportTypeData, RevenuData } from '../components/Datas';
@@ -18,14 +18,14 @@ const Report = () => {
         // Simulate API call to fetch data
         const expertData = [
             { title: 'Net Revenue', value: '₹ 8,96,065', change: '+10.05%', description: 'since last month' },
-            { title: 'Total vendor', value: '606', change: '+5.03%', description: 'from last year' },
-            { title: 'Product Lives', value: '60', change: '+8.00%', description: 'in the last 6 months' },
+            { title: 'Total Expert', value: '606',  description: 'from last year' },
+            { title: 'Appointment Conducted', value: '60865', change: '+8.00%', description: 'in the last 6 months' },
         ];
         const vendorData = [
-            { title: 'Net Revenue', value: '₹ 8,96,065', change: '+10.05%', description: 'since last month' },
-            { title: 'Total vendor', value: '606', change: '+5.03%', description: 'from last year' },
-            { title: 'Product Lives', value: '60', change: '+8.00%', description: 'in the last 6 months' },
-            { title: 'Net sale', value: '6,', change: '+3.5%', description: 'from last month' },
+            { title: 'Net Sale', value: '₹ 62,26,065', },
+            { title: 'Monthly Sale', value: '26,065', change: '+0.2%', description: 'Per month' },
+            { title: 'Total Vendor', value: '60' },
+            { title: 'Product Live', value: '6', change: '+20%', },
         ];
         setExpertData(expertData);
         setVendorData(vendorData);
@@ -56,17 +56,17 @@ const Report = () => {
 
     return (
         <Layout>
-            <div className="bg-gray-50 min-h-screen p-8">
-                <h3 className='font-semibold text-blue mt-2 mb-4'>User</h3>
-                <div className="grid grid-cols-2 gap-4 mb-8">
-                    <div className="flex space-x-4 h-[254px] p-4 bg-white rounded-[10px]">
+            <div className=" min-h-screen py-6">
+                <h3 className='font-bold text-blue mt-2 text-xl mb-4'>User</h3>
+                <div className="grid grid-cols-2 gap-2 mb-8">
+                    <div className="flex space-x-4 h-[252px] w-[432px] p-4 bg-white rounded-[10px]">
                         <StatsCard title="Users" total={1065} data={ReportTypeData} />
 
                         <StatsCard title="Subscribed User" total={865} data={reportData} />
                     </div>
-                    <div className="bg-white shadow-md p-6 rounded-lg mb-8">
+                    <div className="bg-white shadow-md p-6 rounded-lg mb-8 w-[532px] h-[252px]">
                         <p className="text-blue-600 font-bold mb-4">Subscription Rate</p>
-                        <div className="h-64">
+                        <div>
                             <Line data={lineChartData} options={chartOptions} />
                         </div>
                     </div>
@@ -74,9 +74,11 @@ const Report = () => {
 
                 {/* Bar Chart Section */}
                 <BarChartComponent title="Subscription Revenu" data={RevenuData} />
-                <h4 className='mt-6 font-semibold mb-6 text-blue'>Expert</h4>
 
-                <div className="grid grid-cols-4 gap-[10px] mb-6">
+                <hr className="flex-1 border-gray-300 mt-6 border" />
+                <h4 className='mt-6 font-bold text-xl mb-4 text-blue'>Expert</h4>
+
+                <div className="grid grid-cols-4 mb-6">
                     {expertData.map((metric, index) => (
                         <MetricCard
                             bgColor={'bg-white'}
@@ -89,9 +91,9 @@ const Report = () => {
                     ))}
                 </div>
                 <BarChartComponent title="Appointment Revenue" data={RevenuData} />
-                <h4 className='mt-6 font-semibold mb-6 text-blue'>Vendor</h4>
+                <h4 className='mt-6 font-bold text-xl mb-4 text-blue'>Vendor</h4>
 
-                <div className="grid grid-cols-4 gap-[10px] mb-6">
+                <div className="grid grid-cols-4 mb-6">
                     {vendorData.map((metric, index) => (
                         <MetricCard
                             bgColor={'bg-white'}

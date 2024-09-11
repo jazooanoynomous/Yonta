@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import Layout from '../../Layout';
 import { VendorProductListData } from "../../components/Datas";
 import { useNavigate } from 'react-router-dom';
-import { FaPlus } from "react-icons/fa";
 import { VendorProductListTable } from "../../components/Tables";
 // Reusable Card Component
 const VendorInfo = () => {

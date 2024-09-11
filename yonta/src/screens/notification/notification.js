@@ -3,7 +3,7 @@ import Layout from "../../Layout";
 import { useNavigate } from "react-router-dom";
 
 import {   NotificationTable, } from "../../components/Tables";
-import { notificationsData } from "../../components/Datas";
+// import { notificationsData } from "../../components/Datas";
 import { FaSearch } from "react-icons/fa";
 import { Button } from "../../components/Form";
 import { BiPlus } from "react-icons/bi";

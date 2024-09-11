@@ -2,31 +2,35 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import Layout from '../Layout';
 import {
-  appointmentsData,
-  expertsTypeData,
+  // appointmentsData,
+  // expertsTypeData,
   MetricCardData,
-  regionData,
+  // regionData,
+  userappointmentsData,
+  userregionData,
+  usersubscribeData,
+  userTypeData,
 } from '../components/Datas';
 import { useNavigate } from 'react-router-dom';
-import { BiPlus } from 'react-icons/bi';
+// import { BiPlus } from 'react-icons/bi';
 import { BASEURL } from '../utils/constant';
-import { Button } from '../components/Form';
+// import { Button } from '../components/Form';
 import { UsersTable } from '../components/Tables';
-import { FaSearch } from 'react-icons/fa';
+// import { FaSearch } from 'react-icons/fa';
 import StatsCard from '../components/statsCard';
 import MetricCard from '../components/metricCard';
 
 function Users() {
   const navigate = useNavigate();
-  const [userData, setUserData] = useState([]); // State to store the user data
-  const [loading, setLoading] = useState(true); // State to manage loading
+  const [userData, setUserData] = useState([]); 
+  const [loading, setLoading] = useState(true); 
 
   // Function to fetch user data
   const fetchUserData = async () => {
     try {
       const response = await axios.get(`${BASEURL}users`, {
         headers: {
-          'VerifyMe': 'RGVlcGFrS3VzaHdhaGE5Mzk5MzY5ODU0', // Add your custom header here
+          'VerifyMe': 'RGVlcGFrS3VzaHdhaGE5Mzk5MzY5ODU0', 
         }
       });
       setUserData(response.data.users || []); // Set the user data in state
@@ -53,46 +57,43 @@ function Users() {
       <div className="flex items-center justify-between">
         <h1 className="text-xl font-semibold">Users</h1>
         <div className="flex items-center gap-3">
-          <div className="flex items-center h-7 bg-white border border-border rounded-md">
-            <input
-              type="text"
-              placeholder='Search "User"'
-              className="flex-grow h-full text-sm text-lightgray bg-transparent rounded-l-md px-2 outline-none"
-            />
-            <span className="flex items-center justify-center h-full px-2">
-              <FaSearch color="grey" className="h-4 w-4 text-main" />
-            </span>
-          </div>
-          <Button
-            Icon={BiPlus}
-            label="Add New"
-            onClick={() => {
-              // handle click
-            }}
-            className="ml-1" // 1px margin left to adjust the exact gap
-          />
+          
+        <select
+          className="py-2 px-4 rounded bg-white mb-1"
+          // value={genderFilter}
+          // onChange={(e) => setGenderFilter(e.target.value)}
+        >
+          <option value="">Today</option>
+          <option value="Male">Yesterdayy</option>
+          <option value="Female">Tomorrow</option>
+        </select>
         </div>
       </div>
       <div className="flex space-x-4">
         <div className="bg-white p-3 rounded-[16px] h-[254px] space-y-[12px] w-[219px] ">
           <MetricCard
-            title={MetricCardData[0].title}
-            value={MetricCardData[0].value}
+            title={MetricCardData[2].title}
+            value={MetricCardData[2].value}
           />
           <MetricCard
-            title={MetricCardData[0].title}
-            value={MetricCardData[0].value}
+            title={MetricCardData[3].title}
+            value={MetricCardData[3].value}
           />
         </div>
 
-        <div className="flex space-x-4 h-[254px] p-4 bg-white rounded-[10px]">
-          <StatsCard title="Total Experts" total={42703} data={expertsTypeData} />
+        <div className="flex space-x-2 h-[254px] p-2 bg-white rounded-[10px]">
+          <StatsCard title="Total User" total={61065} data={userTypeData} />
           <StatsCard
-            title="Total Appointment"
-            total={61065}
-            data={appointmentsData}
+            title="Age Group"
+            total={42703}
+            data={usersubscribeData}
           />
-          <StatsCard title="Region" total={4} data={regionData} />
+           <StatsCard
+            title="Subscribe User"
+            total={42703}
+            data={userappointmentsData}
+          />
+          <StatsCard title="Region" total={''} data={userregionData} />
         </div>
       </div>
       <div
@@ -100,7 +101,7 @@ function Users() {
         data-aos-duration="1000"
         data-aos-delay="10"
         data-aos-offset="200"
-        className="bg-white my-8 rounded-xl border-[1px] border-border p-5"
+        className="bg-white my-8 rounded-xl  p-5"
       >
         {loading ? (
           <p>Loading...</p> // Show loading state while data is being fetched

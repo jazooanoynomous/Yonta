@@ -13,7 +13,7 @@ export default function AddNotification() {
   const [link, setLink] = useState({ section: '', page: '' });
   const [notificationFrequency, setNotificationFrequency] = useState('Daily');
   const [frequency, setFrequency] = useState([]); // Stores selected custom dates
-  const [selectedDate, setSelectedDate] = useState(''); // Date + Time combined
+  // const [selectedDate, setSelectedDate] = useState(''); // Date + Time combined
   const navigate = useNavigate();
 
   const handleModuleChange = (module) => setModule(module);
@@ -46,7 +46,7 @@ export default function AddNotification() {
         },
       });
      
-      if (response.data.message =='Please provide all required fields' ) {
+      if (response.data.message ==='Please provide all required fields' ) {
         console.log('hello');
         
         alert('Please provide all required fields'); // Show alert based on the API response

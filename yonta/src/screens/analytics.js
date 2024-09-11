@@ -23,7 +23,7 @@ const Analytics = () => {
 
   return (
     <Layout>
-    <div className="p-6 bg-gray-100 min-h-screen">
+    <div className="p-6 min-h-screen">
       {/* Top Metrics */}
       <div className="grid grid-cols-4 gap-[10px] mb-6">
         {metricsData.map((metric, index) => (
@@ -39,7 +39,7 @@ const Analytics = () => {
       </div>
 
       {/* Bar Chart */}
-      <BarChartComponent title="Category Data" data={data} />
+      <BarChartComponent title="Clicks" data={data} />
 
       {/* Lower Sections */}
       <div className="grid grid-cols-3 gap-4 mt-6">

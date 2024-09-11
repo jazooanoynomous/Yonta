@@ -23,8 +23,8 @@ const StatsCard = ({ title, total, data, backgroundColor }) => {
               data={data}
               cx={35} // 86 / 2
               cy={35} // 86 / 2
-              innerRadius={20} // Adjust as needed
-              outerRadius={30} // Adjust as needed
+              innerRadius={20} 
+              outerRadius={30} 
               paddingAngle={5}
               dataKey="value"
             >
@@ -45,7 +45,7 @@ const StatsCard = ({ title, total, data, backgroundColor }) => {
             >
               <div className="flex items-center">
                 <div
-                  className="w-[10px] h-[10px] rounded-[2px] mr-2"
+                  className="w-[10px] h-[10px] rounded-[2px] mr-2 bg-white"
                   style={{ backgroundColor: COLORS[index % COLORS.length] }}
                 ></div>
                 <span>{item.name}</span>

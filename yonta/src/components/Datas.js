@@ -1063,9 +1063,9 @@ export const sortsDatas = {
   ],
 };export const ReportTypeData = [
 
-  { id: 1,name: 'InActive', value: 7 },
+  { id: 1,name: 'InActive', value: 386 },
     {id: 2, name: 'Active', value: 30 },
-    {id: 3, name: 'New', value: 45 },
+    {id: 3, name: 'New', value: 621 },
 ];
 export const reportData = [
   { name: 'Paid', value: 70 },
@@ -1073,6 +1073,32 @@ export const reportData = [
 ];
 
 
+export const userTypeData = [
+
+  { id: 1,name: 'Dietician', value: 7 },
+    {id: 2, name: 'Physio', value: 30 },
+    {id: 3, name: 'Fitness', value: 45 },
+    {id: 4, name: 'Medical', value: 25 },
+];
+export const usersubscribeData = [
+
+  { id: 1,name: 'Dietician', value: 7 },
+    {id: 2, name: 'Physio', value: 30 },
+    {id: 3, name: 'Fitness', value: 45 },
+    {id: 4, name: 'Medical', value: 25 },
+];
+export const userregionData = [
+  { name: 'East', value: 25 },
+  { name: 'West', value: 30 },
+  { name: 'North', value: 25 },
+  { name: 'South', value: 20 },
+];
+
+
+export const userappointmentsData = [
+  { name: 'Voice Call', value: 70 },
+  { name: 'Video Call', value: 30 },
+];
 export const expertsTypeData = [
 
   { id: 1,name: 'Dietician', value: 7 },
@@ -1838,10 +1864,19 @@ export const ExpertData = [
 
 
 export  const MetricCardData = [
-    { title: 'Net Revenue', value: '₹ 8,96,065', change: '+10.05%', description: 'since last month' },
-    { title: 'App Downloads', value: '6,065 M', change: '+5.03%', description: 'from last year' },
-    { title: 'Avg Session Duration', value: '6,065 Mins', change: '+8.00%', description: 'in the last 6 months' },
-    { title: 'Monthly Logins', value: '6,065', change: '+3.5%', description: 'from last month' },
+    { title: 'Active Expert', value: '2065', change: '+10.05%', description: 'since last month' },
+    { title: 'Total Earning (gross)', value: '₹ 9105', change: '+5.03%', description: 'from last year' },
+    { title: 'New User', value: '65', change: '+8.00%', description: 'in the last 6 months' },
+    { title: 'Active User', value: '2065', change: '+3.5%', description: 'from last month' },
+    { title: 'Total Appointment', value: '6065', change: '+3.5%', description: 'from last month' },
+    { title: 'Total Order', value: '16,065', change: '+3.5%', description: 'from last month' },
+    { title: 'Unit Soild', value: '19,865', change: '+8.00%', description: 'in the last 6 months' },
+    { title: 'Total Customer', value: '1065', change: '+3.5%', description: 'from last month' },
+
+
+
+
+  
   ];
 
 
