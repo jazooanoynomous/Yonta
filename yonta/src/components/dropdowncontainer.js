@@ -1,11 +1,14 @@
 import { useState } from "react";
 import { FaChevronDown, FaChevronUp, FaPlus } from "react-icons/fa";
 
-const Dropdown = ({ title, plans, handleDelete, handleEdit, toggleModal, ItemComponent }) => {
+const Dropdown = ({ title, plans, handleDelete, handleEdit, toggleModal, ItemComponent, onSelect, selectedItems }) => {
   const [isOpen, setIsOpen] = useState(false);
 
   const toggleDropdown = () => {
     setIsOpen(!isOpen);
+  };
+  const handleSelection = (id) => {
+    onSelect(id); // Pass the selected item's ID to parent
   };
 
   return (

@@ -1,15 +1,52 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Layout from "../../Layout";
 import { community, couponData} from "../../components/Datas";
 import { useNavigate } from "react-router-dom";
 
 import {  CouponTable, FlashSales, ManageOffers, } from "../../components/Tables";
+import axios from "axios";
+import { BASEURL } from "../../utils/constant";
 
 
 function Coupons() {
   const navigate = useNavigate();
-  const [isModalOpen, setIsModalOpen] = useState(false); // State to control the modal
-
+  const [isModalOpen, setIsModalOpen] = useState(false); 
+  const [coupons, setCoupons] = useState([]);
+  const [offers,setOffers] = useState([])
+  const fetchCouponsData = async () => {
+    try {
+      const response = await axios.get(`${BASEURL}coupon`, {
+        headers: {
+          VerifyMe: "RGVlcGFrS3VzaHdhaGE5Mzk5MzY5ODU0",
+        },
+      });
+      const couponData = response.data.coupons;
+      setCoupons(couponData);
+     
+    } catch (error) {
+      console.error("Error fetching banner data:", error);
+    }
+  };
+  useEffect(() => {
+  fetchCouponsData();
+}, []);
+const fetchOffersData = async () => {
+  try {
+    const response = await axios.get(`${BASEURL}ecomDeal`, {
+      headers: {
+        VerifyMe: "RGVlcGFrS3VzaHdhaGE5Mzk5MzY5ODU0",
+      },
+    });
+    const offerData = response.data.deals;
+    setOffers(offerData);
+   
+  } catch (error) {
+    console.error("Error fetching banner data:", error);
+  }
+};
+useEffect(() => {
+fetchOffersData();
+}, []);
 
   return (
     <Layout>
@@ -25,11 +62,11 @@ function Coupons() {
       >
         <div className="mt-8 w-full overflow-x-scroll">
           <CouponTable
-            data={couponData}
+            data={coupons}
             used={false}            
           />
             <ManageOffers
-              data={couponData}
+              data={offers}
               used={false}            
             />
           <FlashSales
