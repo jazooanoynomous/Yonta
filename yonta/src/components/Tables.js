@@ -148,10 +148,11 @@ export function MedicineTable({ data, onEdit }) {
               <td className={`${tdclass} font-semibold`}>{item?.price}</td>
               <td className={tdclass}>
                 <span
-                  className={`text-xs font-medium ${item?.status === "Out of stock"
+                  className={`text-xs font-medium ${
+                    item?.status === "Out of stock"
                       ? "text-red-600"
                       : "text-green-600"
-                    }`}
+                  }`}
                 >
                   {item?.status}
                 </span>
@@ -218,8 +219,9 @@ export function ServiceTable({ data, onEdit }) {
               <td className={`${tdclass} font-semibold`}>{item?.price}</td>
               <td className={tdclass}>
                 <span
-                  className={`text-xs font-medium ${!item?.status ? "text-red-600" : "text-green-600"
-                    }`}
+                  className={`text-xs font-medium ${
+                    !item?.status ? "text-red-600" : "text-green-600"
+                  }`}
                 >
                   {!item?.status ? "Disabled" : "Enabled"}
                 </span>
@@ -241,6 +243,7 @@ export function ServiceTable({ data, onEdit }) {
 
 // users table
 export function UsersTable({ data, functions, used }) {
+  const navigate = useNavigate();
   const [genderFilter, setGenderFilter] = useState(""); // State for gender filter
   const [statusFilter, setStatusFilter] = useState(""); // State for status filter
 
@@ -286,7 +289,6 @@ export function UsersTable({ data, functions, used }) {
       {/* Dropdown filters */}
       <h3 className="font-semibold text-xl">User List</h3>
       <div className="flex justify-end space-x-4 mb-4">
-
         {/* Gender Filter */}
         <select
           className="py-2 px-4 rounded-xl bg-backgroundgray "
@@ -318,11 +320,10 @@ export function UsersTable({ data, functions, used }) {
           <option value="Inactive">Above</option>
         </select>
         <input
-              type="text"
-              placeholder="Search Users"
-              className=" rounded-xl px-2 py-1 mr-28 w-[360px] bg-backgroundgray"
-              
-            />
+          type="text"
+          placeholder="Search Users"
+          className=" rounded-xl px-2 py-1 mr-28 w-[360px] bg-backgroundgray"
+        />
       </div>
 
       <table className="table-auto w-full">
@@ -341,13 +342,18 @@ export function UsersTable({ data, functions, used }) {
           {filteredData.map((item) => (
             <tr
               key={item.id}
-              className="border-b border-border hover:bg-greyed transitions"
+              className="border-b border-border hover:bg-greyed transitions cursor-pointer"
+              onClick={() =>
+                navigate("/userProfile", { state: { expert: item } })
+              } // Navigate on row click
             >
               <td className={tdclasse}>
                 <div className="flex gap-4 items-center">
                   <span className="w-12">
                     <img
-                      src={`${IMAGEURL}${item.profilePic}` || "default-avatar.png"} // Handle null profilePic
+                      src={
+                        `${IMAGEURL}${item.profilePic}` || "default-avatar.png"
+                      } // Handle null profilePic
                       alt={`${item.firstName} ${item.lastName}`}
                       className="w-full h-12 rounded-full object-cover border border-border"
                     />
@@ -363,7 +369,11 @@ export function UsersTable({ data, functions, used }) {
               <td className={tdclasse}>{item.phone}</td>
               <td className={tdclasse}>
                 <span
-                  className={`py-1 px-4 ${item.gender === "Male" ? "bg-green text-bluetext" : "bg-red text-pinktext"} bg-opacity-10 text-xs rounded-xl`}
+                  className={`py-1 px-4 ${
+                    item.gender === "Male"
+                      ? "bg-green text-bluetext"
+                      : "bg-red text-pinktext"
+                  } bg-opacity-10 text-xs rounded-xl`}
                 >
                   {item.gender}
                 </span>
@@ -371,7 +381,9 @@ export function UsersTable({ data, functions, used }) {
               <td className={tdclasse}>{item.mainGoal}</td>
               <td className={tdclasse}>
                 <span
-                  className={`py-1 px-4 ${item.status === "Active" ? "text-textgreen" : "text-textred"} bg-opacity-10 text-xs rounded-xl`}
+                  className={`py-1 px-4 ${
+                    item.status === "Active" ? "text-textgreen" : "text-textred"
+                  } bg-opacity-10 text-xs rounded-xl`}
                 >
                   {item.status}
                 </span>
@@ -459,30 +471,30 @@ export function CouponTable({ data, functions, used }) {
   };
   const DropDown1 = !used
     ? [
-      {
-        title: "View",
-        icon: FiEye,
-        onClick: (data) => {
-          functions.preview(data.id);
+        {
+          title: "View",
+          icon: FiEye,
+          onClick: (data) => {
+            functions.preview(data.id);
+          },
         },
-      },
-      {
-        title: "Delete",
-        icon: RiDeleteBin6Line,
-        onClick: () => {
-          toast.error("This feature is not available yet");
+        {
+          title: "Delete",
+          icon: RiDeleteBin6Line,
+          onClick: () => {
+            toast.error("This feature is not available yet");
+          },
         },
-      },
-    ]
+      ]
     : [
-      {
-        title: "View",
-        icon: FiEye,
-        onClick: (data) => {
-          functions.preview(data.id);
+        {
+          title: "View",
+          icon: FiEye,
+          onClick: (data) => {
+            functions.preview(data.id);
+          },
         },
-      },
-    ];
+      ];
 
   return (
     <div className="p-6 rounded-lg">
@@ -523,10 +535,11 @@ export function CouponTable({ data, functions, used }) {
                 <td className="py-4 px-4 text-sm">{item.lastModified}</td>
                 <td className="py-4 px-4 text-sm">
                   <span
-                    className={`py-1 px-4 ${item.status === "Active"
+                    className={`py-1 px-4 ${
+                      item.status === "Active"
                         ? "text-textgreen"
                         : " text-textred"
-                      } bg-opacity-10 text-xs rounded-xl`}
+                    } bg-opacity-10 text-xs rounded-xl`}
                   >
                     {item.status}
                   </span>
@@ -556,30 +569,30 @@ export function CouponTable({ data, functions, used }) {
 export function ManageOffers({ data, functions, used }) {
   const DropDown1 = !used
     ? [
-      {
-        title: "View",
-        icon: FiEye,
-        onClick: (data) => {
-          functions.preview(data.id);
+        {
+          title: "View",
+          icon: FiEye,
+          onClick: (data) => {
+            functions.preview(data.id);
+          },
         },
-      },
-      {
-        title: "Delete",
-        icon: RiDeleteBin6Line,
-        onClick: () => {
-          toast.error("This feature is not available yet");
+        {
+          title: "Delete",
+          icon: RiDeleteBin6Line,
+          onClick: () => {
+            toast.error("This feature is not available yet");
+          },
         },
-      },
-    ]
+      ]
     : [
-      {
-        title: "View",
-        icon: FiEye,
-        onClick: (data) => {
-          functions.preview(data.id);
+        {
+          title: "View",
+          icon: FiEye,
+          onClick: (data) => {
+            functions.preview(data.id);
+          },
         },
-      },
-    ];
+      ];
 
   return (
     <div className="p-6 rounded-lg">
@@ -600,7 +613,7 @@ export function ManageOffers({ data, functions, used }) {
 
           <button
             className="flex items-center justify-center bg-[#1782AF] rounded-[6px] w-[56.01px] h-[24px] p-[7px_10px]"
-          // onClick={onEdit}
+            // onClick={onEdit}
           >
             <FaEdit className="w-[10.01px] h-[10px] text-white mr-2" />
             <span className="text-[10px] font-normal leading-[100%] tracking-[-0.01em] text-white">
@@ -635,10 +648,11 @@ export function ManageOffers({ data, functions, used }) {
                 <td className="py-4 px-4 text-sm">{item.lastModified}</td>
                 <td className="py-4 px-4 text-sm">
                   <span
-                    className={`py-1 px-4 ${item.status === "Active"
+                    className={`py-1 px-4 ${
+                      item.status === "Active"
                         ? "text-textgreen"
                         : " text-textred"
-                      } bg-opacity-10 text-xs rounded-xl`}
+                    } bg-opacity-10 text-xs rounded-xl`}
                   >
                     {item.status}
                   </span>
@@ -661,30 +675,30 @@ export function ManageOffers({ data, functions, used }) {
 export function FlashSales({ data, functions, used }) {
   const DropDown1 = !used
     ? [
-      {
-        title: "View",
-        icon: FiEye,
-        onClick: (data) => {
-          functions.preview(data.id);
+        {
+          title: "View",
+          icon: FiEye,
+          onClick: (data) => {
+            functions.preview(data.id);
+          },
         },
-      },
-      {
-        title: "Delete",
-        icon: RiDeleteBin6Line,
-        onClick: () => {
-          toast.error("This feature is not available yet");
+        {
+          title: "Delete",
+          icon: RiDeleteBin6Line,
+          onClick: () => {
+            toast.error("This feature is not available yet");
+          },
         },
-      },
-    ]
+      ]
     : [
-      {
-        title: "View",
-        icon: FiEye,
-        onClick: (data) => {
-          functions.preview(data.id);
+        {
+          title: "View",
+          icon: FiEye,
+          onClick: (data) => {
+            functions.preview(data.id);
+          },
         },
-      },
-    ];
+      ];
 
   return (
     <div className="p-6 rounded-lg">
@@ -696,7 +710,7 @@ export function FlashSales({ data, functions, used }) {
 
           <button
             className="flex items-center justify-center bg-[#1782AF] rounded-[6px] w-[56.01px] h-[24px] p-[7px_10px]"
-          // onClick={onEdit}
+            // onClick={onEdit}
           >
             <FaEdit className="w-[10.01px] h-[10px] text-white mr-2" />
             <span className="text-[10px] font-normal leading-[100%] tracking-[-0.01em] text-white">
@@ -731,10 +745,11 @@ export function FlashSales({ data, functions, used }) {
                 <td className="py-4 px-4 text-sm">{item.lastModified}</td>
                 <td className="py-4 px-4 text-sm">
                   <span
-                    className={`py-1 px-4 ${item.status === "Active"
+                    className={`py-1 px-4 ${
+                      item.status === "Active"
                         ? "text-textgreen"
                         : " text-textred"
-                      } bg-opacity-10 text-xs rounded-xl`}
+                    } bg-opacity-10 text-xs rounded-xl`}
                   >
                     {item.status}
                   </span>
@@ -758,30 +773,30 @@ export function FlashSales({ data, functions, used }) {
 export function NotificationTable({ data, functions, used }) {
   const DropDown1 = !used
     ? [
-      {
-        title: "View",
-        icon: FiEye,
-        onClick: (data) => {
-          functions.preview(data.id);
+        {
+          title: "View",
+          icon: FiEye,
+          onClick: (data) => {
+            functions.preview(data.id);
+          },
         },
-      },
-      {
-        title: "Delete",
-        icon: RiDeleteBin6Line,
-        onClick: (data) => {
-          functions.deleteNotification(data.id); // Call delete function
+        {
+          title: "Delete",
+          icon: RiDeleteBin6Line,
+          onClick: (data) => {
+            functions.deleteNotification(data.id); // Call delete function
+          },
         },
-      },
-    ]
+      ]
     : [
-      {
-        title: "View",
-        icon: FiEye,
-        onClick: (data) => {
-          functions.preview(data.id);
+        {
+          title: "View",
+          icon: FiEye,
+          onClick: (data) => {
+            functions.preview(data.id);
+          },
         },
-      },
-    ];
+      ];
 
   return (
     <div className="p-6 rounded-lg">
@@ -881,30 +896,30 @@ export function VendorProductListTable({ data, functions, used }) {
 export function VendorListTable({ data, functions, used }) {
   const DropDown1 = !used
     ? [
-      {
-        title: "View",
-        icon: FiEye,
-        onClick: (data) => {
-          functions.preview(data.id);
+        {
+          title: "View",
+          icon: FiEye,
+          onClick: (data) => {
+            functions.preview(data.id);
+          },
         },
-      },
-      {
-        title: "Delete",
-        icon: RiDeleteBin6Line,
-        onClick: () => {
-          toast.error("This feature is not available yet");
+        {
+          title: "Delete",
+          icon: RiDeleteBin6Line,
+          onClick: () => {
+            toast.error("This feature is not available yet");
+          },
         },
-      },
-    ]
+      ]
     : [
-      {
-        title: "View",
-        icon: FiEye,
-        onClick: (data) => {
-          functions.preview(data.id);
+        {
+          title: "View",
+          icon: FiEye,
+          onClick: (data) => {
+            functions.preview(data.id);
+          },
         },
-      },
-    ];
+      ];
 
   return (
     <div className="p-6 rounded-lg">
@@ -952,30 +967,30 @@ export function VendorListTable({ data, functions, used }) {
 export function VendorTable({ data, functions, used }) {
   const DropDown1 = !used
     ? [
-      {
-        title: "View",
-        icon: FiEye,
-        onClick: (data) => {
-          functions.preview(data.id);
+        {
+          title: "View",
+          icon: FiEye,
+          onClick: (data) => {
+            functions.preview(data.id);
+          },
         },
-      },
-      {
-        title: "Delete",
-        icon: RiDeleteBin6Line,
-        onClick: () => {
-          toast.error("This feature is not available yet");
+        {
+          title: "Delete",
+          icon: RiDeleteBin6Line,
+          onClick: () => {
+            toast.error("This feature is not available yet");
+          },
         },
-      },
-    ]
+      ]
     : [
-      {
-        title: "View",
-        icon: FiEye,
-        onClick: (data) => {
-          functions.preview(data.id);
+        {
+          title: "View",
+          icon: FiEye,
+          onClick: (data) => {
+            functions.preview(data.id);
+          },
         },
-      },
-    ];
+      ];
 
   return (
     <div className="p-6 rounded-lg">
@@ -1024,36 +1039,36 @@ export function VendorTable({ data, functions, used }) {
 export function AppointmentsTable({ data, functions, used }) {
   const DropDown1 = !used
     ? [
-      {
-        title: "View",
-        icon: FiEye,
-        onClick: (data) => {
-          functions.preview(data.id);
+        {
+          title: "View",
+          icon: FiEye,
+          onClick: (data) => {
+            functions.preview(data.id);
+          },
         },
-      },
-      {
-        title: "Delete",
-        icon: RiDeleteBin6Line,
-        onClick: () => {
-          toast.error("This feature is not available yet");
+        {
+          title: "Delete",
+          icon: RiDeleteBin6Line,
+          onClick: () => {
+            toast.error("This feature is not available yet");
+          },
         },
-      },
-    ]
+      ]
     : [
-      {
-        title: "View",
-        icon: FiEye,
-        onClick: (data) => {
-          functions.preview(data.id);
+        {
+          title: "View",
+          icon: FiEye,
+          onClick: (data) => {
+            functions.preview(data.id);
+          },
         },
-      },
-    ];
+      ];
   const imageUrl = `${IMAGEURL}${data.image}`;
 
   return (
     <div className="p-6 rounded-lg bg-white">
-      <div flex >
-      <h2 className="font-bold "> Appointment data</h2>
+      <div flex>
+        <h2 className="font-bold "> Appointment data</h2>
       </div>
       <table className="w-full border-separate border-spacing-y-4 px-4 h-[60px] rounded-[10px]">
         <thead>
@@ -1071,23 +1086,23 @@ export function AppointmentsTable({ data, functions, used }) {
         </thead>
         <tbody>
           {data.map((item, index) => (
-            <tr key={index} className="bg-backgroundgray relative h-[60px] rounded-2xl">
+            <tr
+              key={index}
+              className="bg-backgroundgray relative h-[60px] rounded-2xl"
+            >
               <td className="py-4 px-4 text-sm rounded-l-xl flex ">
-              
-                  <span className="w-10">
-                    <img
-                      src={imageUrl || "/images/hero.png"} // Handle null profilePic
-                      alt={`${item.Username}`}
-                      className="w-10 h-10 rounded-full object-cover border border-border"
-                    />
-                  </span>
-                    <h4 className="text-sm font-medium mt-2 ml-2">{item.Username}</h4>
-                 
-                
+                <span className="w-10">
+                  <img
+                    src={imageUrl || "/images/hero.png"} // Handle null profilePic
+                    alt={`${item.Username}`}
+                    className="w-10 h-10 rounded-full object-cover border border-border"
+                  />
+                </span>
+                <h4 className="text-sm font-medium mt-2 ml-2">
+                  {item.Username}
+                </h4>
               </td>
-              <td className="py-4 px-4 text-sm ">
-                {item.AppointmentID}
-              </td>
+              <td className="py-4 px-4 text-sm ">{item.AppointmentID}</td>
               <td className="py-4 px-4 text-sm">{item.PhoneNumber}</td>
               <td className="py-4 px-4 text-sm">{item.Slot}</td>
               <td className="py-4 px-4 text-sm">{item.Time}</td>
@@ -1108,7 +1123,6 @@ export function AppointmentsTable({ data, functions, used }) {
     </div>
   );
 }
-
 
 export function ExpertTable({ data, functions }) {
   const navigate = useNavigate();
@@ -1237,12 +1251,13 @@ export function AppointmentTable({ data, functions, doctor }) {
               </td>
               <td className={tdclass}>
                 <span
-                  className={`py-1  px-4 ${item.status === "Approved"
+                  className={`py-1  px-4 ${
+                    item.status === "Approved"
                       ? "bg-subMain text-subMain"
                       : item.status === "Pending"
-                        ? "bg-orange-500 text-orange-500"
-                        : item.status === "Cancel" && "bg-red-600 text-red-600"
-                    } bg-opacity-10 text-xs rounded-xl`}
+                      ? "bg-orange-500 text-orange-500"
+                      : item.status === "Cancel" && "bg-red-600 text-red-600"
+                  } bg-opacity-10 text-xs rounded-xl`}
                 >
                   {item.status}
                 </span>
@@ -1301,12 +1316,13 @@ export function PaymentTable({ data, functions, doctor }) {
               </td>
               <td className={tdclass}>
                 <span
-                  className={`py-1  px-4 ${item.status === "Paid"
+                  className={`py-1  px-4 ${
+                    item.status === "Paid"
                       ? "bg-subMain text-subMain"
                       : item.status === "Pending"
-                        ? "bg-orange-500 text-orange-500"
-                        : item.status === "Cancel" && "bg-red-600 text-red-600"
-                    } bg-opacity-10 text-xs rounded-xl`}
+                      ? "bg-orange-500 text-orange-500"
+                      : item.status === "Cancel" && "bg-red-600 text-red-600"
+                  } bg-opacity-10 text-xs rounded-xl`}
                 >
                   {item.status}
                 </span>
@@ -1581,14 +1597,19 @@ export function OrderTable({ data, functions }) {
           {paginatedData.map((item, index) => (
             <tr
               key={index}
-              className={`bg-backgroundgray relative h-[60px] ${index === 0 ? "rounded-t-lg" : ""
-                } ${index === paginatedData.length - 1 ? "rounded-b-lg" : ""}`}
+              className={`bg-backgroundgray relative h-[60px] ${
+                index === 0 ? "rounded-t-lg" : ""
+              } ${index === paginatedData.length - 1 ? "rounded-b-lg" : ""}`}
               onClick={() => handleRowClick(item)}
             >
-              <td className={`py-4 px-4 text-sm ${index === 0 ? "rounded-tl-lg" : ""} ${index === paginatedData.length - 1 ? "rounded-bl-lg" : ""}`}>
+              <td
+                className={`py-4 px-4 text-sm ${
+                  index === 0 ? "rounded-tl-lg" : ""
+                } ${index === paginatedData.length - 1 ? "rounded-bl-lg" : ""}`}
+              >
                 {item.orderID}
               </td>
-              <td className='py-4 px-4 text-sm'>
+              <td className="py-4 px-4 text-sm">
                 <div className="flex items-center">
                   <img
                     src={imageUrl}
@@ -1598,19 +1619,21 @@ export function OrderTable({ data, functions }) {
                   <span>{item.itemName}</span>
                 </div>
               </td>
-              <td className='py-4 px-4 text-sm'>{item.customerName}</td>
-              <td className='py-4 px-4 text-sm'>{item.date}</td>
-              <td className='py-4 px-4 text-sm'>{item.paymentInfo}</td>
-              <td className='py-4 px-4 text-sm'>₹ {item.price}</td>
-              <td className={`py-4 px-4 text-sm ${statusColors[item.status]} ${index === 0 ? "rounded-tr-lg" : ""} ${index === paginatedData.length - 1 ? "rounded-br-lg" : ""}`}>
+              <td className="py-4 px-4 text-sm">{item.customerName}</td>
+              <td className="py-4 px-4 text-sm">{item.date}</td>
+              <td className="py-4 px-4 text-sm">{item.paymentInfo}</td>
+              <td className="py-4 px-4 text-sm">₹ {item.price}</td>
+              <td
+                className={`py-4 px-4 text-sm ${statusColors[item.status]} ${
+                  index === 0 ? "rounded-tr-lg" : ""
+                } ${index === paginatedData.length - 1 ? "rounded-br-lg" : ""}`}
+              >
                 {item.status}
               </td>
             </tr>
           ))}
         </tbody>
       </table>
-
-
 
       {/* Pagination Section */}
       <div className="flex flex-col items-center mt-4">
@@ -1632,8 +1655,9 @@ export function OrderTable({ data, functions }) {
             <button
               key={page}
               onClick={() => setCurrentPage(page)}
-              className={`mx-1 px-3 py-1 border rounded-[45px] ${currentPage === page ? "bg-blue text-white" : ""
-                }`}
+              className={`mx-1 px-3 py-1 border rounded-[45px] ${
+                currentPage === page ? "bg-blue text-white" : ""
+              }`}
             >
               {page}
             </button>
@@ -1653,8 +1677,7 @@ export function OrderTable({ data, functions }) {
   );
 }
 
-
-export function TransactionTable({ data, }) {
+export function TransactionTable({ data }) {
   const [searchTerm, setSearchTerm] = useState("");
   const [statusFilter, setStatusFilter] = useState("All");
   const [entriesPerPage, setEntriesPerPage] = useState(5);
@@ -1688,7 +1711,6 @@ export function TransactionTable({ data, }) {
     navigate("/orderdetail", { state: { orderData: order } });
   };
   const imageUrl = `${IMAGEURL}${data.image}`;
-
 
   return (
     <div className="p-6 ">
@@ -1752,7 +1774,9 @@ export function TransactionTable({ data, }) {
               className="bg-backgroundgray  hover:bg-gray-50 cursor-pointer"
               onClick={() => handleRowClick(item)}
             >
-              <td className="py-4 px-4 text-sm text-gray-700 rounded-l-xl">{item.orderID}</td>
+              <td className="py-4 px-4 text-sm text-gray-700 rounded-l-xl">
+                {item.orderID}
+              </td>
               <td className={tdClass}>
                 <div className="flex items-center">
                   <img
@@ -1767,7 +1791,11 @@ export function TransactionTable({ data, }) {
               <td className={tdClass}>{item.date}</td>
               <td className={tdClass}>{item.paymentInfo}</td>
               <td className={tdClass}>₹ {item.price}</td>
-              <td className={`py-4 px-4 text-sm text-gray-700 rounded-r-xl ${statusColors[item.status]}`}>
+              <td
+                className={`py-4 px-4 text-sm text-gray-700 rounded-r-xl ${
+                  statusColors[item.status]
+                }`}
+              >
                 {item.status}
               </td>
             </tr>
@@ -1795,8 +1823,9 @@ export function TransactionTable({ data, }) {
             <button
               key={page}
               onClick={() => setCurrentPage(page)}
-              className={`mx-1 px-3 py-1 border rounded-[45px] ${currentPage === page ? "bg-blue text-white" : ""
-                }`}
+              className={`mx-1 px-3 py-1 border rounded-[45px] ${
+                currentPage === page ? "bg-blue text-white" : ""
+              }`}
             >
               {page}
             </button>
@@ -1831,7 +1860,7 @@ export function OrderDetails({ data }) {
 
   const calculateTotal = () => {
     return price * quantity, 0;
-  }
+  };
 
   return (
     <div className="p-6 rounded-lg bg-white shadow-md">

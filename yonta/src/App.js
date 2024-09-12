@@ -3,6 +3,7 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Toast from "./components/Notifications/Toast";
 import Dashboard from "./screens/Dashboard";
 import Users from "./screens/users";
+import UserProfile from "./screens/userProfile";
 import ActivityAdd from "./screens/Activity/activityAdd";
 import PodCasts from "./screens/poscasts";
 import DietPlans from "./screens/dietPlans";
@@ -97,6 +98,7 @@ function App() {
           <Route path="/banner" element={<Banner />} />
           <Route path="/editbanner" element={<EditBanner />} />
           <Route path="/report" element={<Report />} />
+          <Route path="/userProfile" element={<UserProfile />} />
         </Routes>
       </BrowserRouter>
     </>

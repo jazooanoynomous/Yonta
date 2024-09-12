@@ -20,6 +20,7 @@ const InputBox = ({ label, value }) => (
 const ExpertProfileScreen = () => {
   const location = useLocation();
   const expert = location.state?.expert;
+  console.log(expert);
 
   if (!expert) {
     return <div className="p-6 text-center">Expert data not found.</div>;
@@ -28,9 +29,12 @@ const ExpertProfileScreen = () => {
   return (
     <Layout>
       <div className="p-6 max-w-6xl mx-auto">
-      <h2 className="font-semibold text-lg p-1">Profile profile</h2>
+        <h2 className="font-semibold text-lg p-1">Profile profile</h2>
 
-        <div className="grid grid-cols-3 mb-6">
+        <div
+          className="grid mb-6 gap-3"
+          style={{ gridTemplateColumns: "1fr 2fr 1fr" }}
+        >
           <div className="col-span-1 h-[243px] w-[243px] ">
             <img
               src={`${IMAGEURL}${expert.image}`}
@@ -43,36 +47,36 @@ const ExpertProfileScreen = () => {
               <InputBox label="Expert name" value={expert.name} />
               <InputBox label="Mobile Number" value={expert.phone} />
               <div className="row-span-2 w-[250px] h-[220px] ">
-
                 <h3 className="font-bold text-blue-800 mb-2">Stats</h3>
                 <div className=" bg-white p-2 rounded-lg ">
-
-                <div className="grid grid-cols-2  space-y-2 gap-1 rounded-[10px] ">
-                  <div className="bg-backgroundgray w-[105px] h-[70px] px-2 shadow-md rounded-lg p-4">
-                    <h2 className="text-black text-[10px]">Total Revenue</h2>
-                    <h2 className="text-[18px] text-blue font-bold">
-                      {expert.totalRevenue || "N/A"}
-                    </h2>
+                  <div className="grid grid-cols-2   gap-1 rounded-[10px] ">
+                    <div className="bg-backgroundgray w-[105px] h-[70px] px-2 shadow-md rounded-lg p-4">
+                      <h2 className="text-black text-[10px]">Total Revenue</h2>
+                      <h2 className="text-[18px] text-blue font-bold">
+                        {expert.totalRevenue || "N/A"}
+                      </h2>
+                    </div>
+                    <div className="bg-backgroundgray w-[105px] h-[70px] px-2 shadow-md rounded-lg p-4">
+                      <h2 className="text-black text-[10px]">
+                        Monthly Revenue
+                      </h2>
+                      <h2 className="text-[18px] text-blue font-bold">
+                        {expert.monthlyRevenue || "N/A"}
+                      </h2>
+                    </div>
+                    <div className="bg-backgroundgray w-[105px] h-[70px] px-2 shadow-md rounded-lg p-4">
+                      <h2 className="text-black text-[10px]">Total Revenue</h2>
+                      <h2 className="text-[18px] text-blue font-bold">
+                        {expert.appointments || "N/A"}
+                      </h2>
+                    </div>
+                    <div className="bg-backgroundgray w-[105px] h-[70px] px-2 shadow-md rounded-lg p-4">
+                      <h2 className="text-black text-[10px]">Total Revenue</h2>
+                      <h2 className="text-[18px] text-blue font-bold">
+                        {expert.rating.toFixed(1) || "N/A"}
+                      </h2>
+                    </div>
                   </div>
-                  <div className="bg-backgroundgray w-[105px] h-[70px] px-2 shadow-md rounded-lg p-4">
-                    <h2 className="text-black text-[10px]">Monthly Revenue</h2>
-                    <h2 className="text-[18px] text-blue font-bold">
-                      {expert.monthlyRevenue || "N/A"}
-                    </h2>
-                  </div>
-                  <div className="bg-backgroundgray w-[105px] h-[70px] px-2 shadow-md rounded-lg p-4">
-                    <h2 className="text-black text-[10px]">Total Revenue</h2>
-                    <h2 className="text-[18px] text-blue font-bold">
-                      {expert.appointments || "N/A"}
-                    </h2>
-                  </div>
-                  <div className="bg-backgroundgray w-[105px] h-[70px] px-2 shadow-md rounded-lg p-4">
-                    <h2 className="text-black text-[10px]">Total Revenue</h2>
-                    <h2 className="text-[18px] text-blue font-bold">
-                      {expert.rating.toFixed(1) || "N/A"}
-                    </h2>
-                  </div>
-                </div>
                 </div>
               </div>
               <InputBox label="Education" value={expert.education} />
