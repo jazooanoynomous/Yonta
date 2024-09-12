@@ -190,8 +190,8 @@ const Blog = ({  onDeleteCategory }) => {
   return (
     <Layout>
       <div className="mb-20">
-        <header className="flex justify-between items-center mb-6">
-          <h1 className="text-2xl font-bold">Blog</h1>
+        <header className="flex justify-end mt-1 items-center">
+          {/* <h1 className="text-2xl font-bold">Blog</h1> */}
           <input
             type="text"
             placeholder="Search..."

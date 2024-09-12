@@ -58,7 +58,7 @@ const Ingredient = () => {
   return (
     <Layout>
       <div className="mb-20">
-        <header className="flex justify-between items-center mb-6">
+        <header className="flex justify-between items-center mb-6 mt-2">
           <h1 className="text-2xl font-bold">Nutrition & diet</h1>
           <div className="flex space-x-4">
             <input

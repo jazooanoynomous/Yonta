@@ -40,15 +40,13 @@ function Dashboard() {
   return (
     <Layout>
       <div >
-        <div
-          style={{
-            backgroundImage: `images/blueheader.png`,
-            backgroundSize: "cover", // Ensures the image covers the entire div
-            // backgroundPosition: "center", // Centers the image within the div
-            height: "245px", // Sets a height for the div
-            width: "220%",
-          }}
-        >
+        
+           <img
+           src={`/images/blueheader.png`}
+           alt="Profile"
+           className=" w-[1663px] h-[180px] mr-4"
+         />
+        
           <div
             className=" w-[100%]  flex flex-row   justify-between items-center px-10 -mt-10 pb-10 h-full
           "
@@ -60,10 +58,10 @@ function Dashboard() {
             }}
           >
             <div className="flex-row">
-              <div className=" text-white absolute top-4 left-5 md:left-12 w-[100vw] ">
+              <div className=" text-white absolute top-16 left-5 md:left-12 w-[100vw] ">
                 <h2 className="font-bold text-xl pt-5">Hello Admin,</h2>
                 <p>
-                  Here’s you statistics for today. Hope you have a<br /> great day
+                  Here’s you statistics for today. Hope you have a great day
                 </p>
               </div>
               
@@ -228,7 +226,7 @@ function Dashboard() {
           </div>
           {/* side 2 */}
         </div>
-      </div>
+      
     </Layout>
   );
 }

@@ -54,8 +54,8 @@ function Users() {
 
   return (
     <Layout>
-      <div className="flex items-center justify-between">
-        <h1 className="text-xl font-semibold">Users</h1>
+      <div className="flex items-center justify-end">
+        {/* <h1 className="text-xl font-semibold">Users</h1> */}
         <div className="flex items-center gap-3">
           
         <select

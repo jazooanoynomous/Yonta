@@ -44,6 +44,7 @@ import Banner from "./screens/banner/banner";
 import EditBanner from "./screens/banner/editBanner";
 import Report from "./screens/report";
 import OrderDetail from "./screens/ecommerce/orderDetail";
+import LoginPage from "./screens/loginScreen";
 
 function App() {
   return (
@@ -52,7 +53,9 @@ function App() {
 
       <BrowserRouter>
         <Routes>
-          <Route path="/" element={<Dashboard />} />
+          <Route path="/" element={<LoginPage/>}/>
+          <Route path="/dashboard" element={<Dashboard />} />
+
           <Route path="/patients" element={<Users />} />
           <Route path="/add-workout" element={<AddWorkout />} />
           <Route path="/activityadd" element={<ActivityAdd />} />

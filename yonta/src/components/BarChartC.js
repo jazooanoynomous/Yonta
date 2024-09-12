@@ -10,6 +10,9 @@ const data = [
   { name: 'July', value: 220000000 },
   { name: 'Aug', value: 200000000 },
   { name: 'Stp', value: 190000000 },
+  { name: 'Jan', value: 150000000 },
+  { name: 'Feb', value: 180000000 },
+  { name: 'Mar', value: 170000000 },
 ];
 
 const CustomTooltip = ({ active, payload }) => {

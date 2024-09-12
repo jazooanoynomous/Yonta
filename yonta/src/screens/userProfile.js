@@ -54,8 +54,8 @@ const UserProfile = () => {
               <InputBox label="Email" value={expert.email} />
               <div className="row-span-2 w-[250px] h-[220px] ">
                 <h3 className="font-bold text-blue-800 mb-2">Stats</h3>
-                <div className=" bg-white p-2 rounded-lg ">
-                  <div className="grid grid-cols-2 gap-1 rounded-[10px] ">
+                <div className=" bg-white p-3 rounded-lg ">
+                  <div className="grid grid-cols-2 gap-3 rounded-[10px] ">
                     <div className="bg-backgroundgray flex flex-col items-center w-[105px] h-[70px] px-2 shadow-md rounded-lg p-4">
                       <h2 className="text-black text-[10px]">Total Orders</h2>
                       <h2 className="text-[18px] text-blue font-bold">
@@ -98,8 +98,9 @@ const UserProfile = () => {
             </div>
           </div>
         </div>
-        <div className="font-bold text-medium">Orders</div>
-        <div className="p-6 rounded-lg bg-white">
+        <div className="p-4 rounded-lg bg-white">
+        <h3 className="font-bold text-medium mb-2">Orders</h3>
+
           <div className="flex space-x-2  pl-12 mb-3">
             <span>Show</span>
             <input
@@ -132,7 +133,7 @@ const UserProfile = () => {
                   className="text-left text-[12px] text-greytext bg-backgroundgray"
                   key={index}
                 >
-                  <th className="px-4 w-[200px]">
+                  <th className="px-4 w-[200px] rounded-l-xl ">
                     <span className="flex space-x-3 items-center p-2">
                       <th>{item.orderID}</th>
                       <th className="border border-gray-300 p-1 ">
@@ -145,7 +146,7 @@ const UserProfile = () => {
                   <th className="px-4">{item.date}</th>
                   <th className="px-4">{item.paymentInfo}</th>
                   <th className="px-4">{item.price}</th>
-                  <th className="px-4">{item.status}</th>
+                  <th className="px-4 rounded-r-xl">{item.status}</th>
                   {/* <th className="px-4">Actions</th> */}
                 </tr>
               ))}

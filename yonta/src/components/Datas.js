@@ -6,7 +6,7 @@ import {
   TbLockAccess,
   TbUsers,
 } from 'react-icons/tb';
-import {  FaTelegramPlane, FaWhatsapp } from 'react-icons/fa';
+import {  FaTelegramPlane, FaUser, FaWhatsapp } from 'react-icons/fa';
 import {
   RiFileList3Line,
   RiHeartLine,
@@ -28,34 +28,78 @@ import { BsGraphUp } from 'react-icons/bs';
 import {  RiArticleLine } from 'react-icons/ri';
 import { GiNotebook } from 'react-icons/gi';
 import { BiNews } from 'react-icons/bi';
+import { BiSolidReport } from "react-icons/bi";
+import {RxDashboard} from 'react-icons/rx'
+import { FaHome } from "react-icons/fa";
+import { IoMdAnalytics } from "react-icons/io";
+import { CiApple } from "react-icons/ci";
+import { MdOutlineNotificationsActive } from "react-icons/md";
+import { GrUserExpert } from "react-icons/gr";
+import { FaBlogger } from "react-icons/fa";
+import { IoSettingsOutline } from "react-icons/io5";
+import { GiBananaBunch } from "react-icons/gi";
+import { TfiBag } from "react-icons/tfi";
+import { MdOutlineVideoSettings } from "react-icons/md";
+
+
+
 import { Subtitles } from 'lucide-react';
 
 export const MenuDatas = [
   {
     title: 'Dashboard',
-    path: '/',
-    icon: FiGrid, // Square grid icon
+    path: '/dashboard',
+    icon: RxDashboard, // Square grid icon
+  },
+  {
+    title: 'Home Page',
+    path: '/dietplans',
+    icon: FaHome, 
+    subItems: [ // Dropdown sub-items
+      { title: 'Diet Plans', path: '/dietplans' },
+      {
+        title: 'Activity',
+        path: '/activity',
+        
+      },
+      {
+        title: 'Fitness',
+        path: '/fitness',
+        
+      },
+      {
+        title: 'Agility',
+        path: '/agility',
+        
+      },
+      {
+        title: 'Mindfullness',
+        path: '/podcasts',
+        
+      },
+    ]
   },
   {
     title: 'Vendors',
     path: '/vendors',
-    icon: FaRegGem, // Gem/Diamond icon
+    icon: FaUser, // Gem/Diamond icon
+    subItems: [ 
+      { title: 'Vendor Dashboard', path: '/vendors' },
+      { title: 'Vendor Profile', path: '/vendorinfo' },
+    ]
+  
   },
   {
-    title: 'Subscription',
-    path: '/subscription',
-    icon: FaRegGem, // Gem/Diamond icon (same as above)
-  },  
-  {
-    title: 'Add Expert',
-    path: '/expertsBoard',
-    icon: FaRegGem, // Gem/Diamond icon (same as above)
+  title: 'Subscription',
+  path: '/subscription',
+  icon: FaRegGem, 
+ 
+},
   
-  }, 
   {
     title: 'E Commerce',
     path: '/orders',
-    icon: FaRegGem, // Gem/Diamond icon (same as above)
+    icon: TfiBag, // Gem/Diamond icon (same as above)
   }, 
  
   {
@@ -63,40 +107,32 @@ export const MenuDatas = [
     path: '/patients',
     icon: FiUsers, // Group of users icon
   },
-  {
-    title: 'Sliders',
-    path: '/sliders',
-    icon: FiBox, // Image/Slider icon
-  },
+  
   {
     title: 'Expert',
     path: '/experts',
-    icon: GiNotebook, // Notebook icon
+    icon: GrUserExpert, // Notebook icon
   },
   {
     title: 'Analytics',
     path: '/analytics',
-    icon: GiNotebook, // Notebook icon
+    icon: IoMdAnalytics, // Notebook icon
   },
   {
     title: 'Report',
     path: '/report',
-    icon: GiNotebook, // Notebook icon
+    icon: BiSolidReport, // Notebook icon
   },
   {
     title: 'Banner',
     path: '/banner',
     icon: GiNotebook, // Notebook icon
   },
-  {
-    title: 'Diet Plans',
-    path: '/dietplans',
-    icon: RiArticleLine, // Document icon
-  },
+ 
   {
     title: 'Healthy recipes',
     path: '/healthyrecipes',
-    icon: RiArticleLine, // Document icon
+    icon: GiBananaBunch, // Document icon
   },
   {
     title: 'Coupons & Offer',
@@ -106,33 +142,25 @@ export const MenuDatas = [
   {
     title: 'Ingredients',
     path: '/ingredients',
-    icon: GiNotebook, // Ingredient icon
+    icon: CiApple, // Ingredient icon
   },
   {
     title: 'Product',
     path: '/product',
     icon: GiNotebook, // Ingredient icon
   },
-  {
-    title: 'Activity',
-    path: '/activity',
-    icon: BsGraphUp, // Graph icon
-  },
-  {
-    title: 'Podcasts',
-    path: '/podcasts',
-    icon: MdOutlineCampaign, // Microphone/Podcast icon
-  },
+ 
+
   {
     title: 'Notification',
     path: '/notification',
-    icon: MdOutlineCampaign, // Microphone/Podcast icon
+    icon: MdOutlineNotificationsActive, // Microphone/Podcast icon
   },
 
   {
     title: 'Blogs',
     path: '/blogs',
-    icon: BiNews, // Blog/Newspaper icon
+    icon: FaBlogger, // Blog/Newspaper icon
   },
   {
     title: 'Questionars',
@@ -142,8 +170,14 @@ export const MenuDatas = [
   {
     title: 'Video',
     path: '/videos',
-    icon: BiNews, // Ecommerce icon
+    icon: MdOutlineVideoSettings, // Ecommerce icon
   },
+  {
+    title: 'Setting',
+    path: '/settings',
+    icon: IoSettingsOutline, // Ecommerce icon
+  },
+  
 
 ];
 export const orders = [
@@ -520,13 +554,16 @@ export const dataMonth = [
   { name: 'Jul', value: 2000 },
 ];
 export const RevenuData = [
-  { name: 'Jan', value: 1900 },
-  { name: 'Feb', value: "2500" },
-  { name: 'Mar', value: 18000 },
-  { name: 'Apr', value: 22000 },
-  { name: 'May', value: 3000 },
-  { name: 'Jun', value: 20000 },
-  { name: 'Jul', value: 2000 },
+  { name: 'Jan', value: 190000 },
+  { name: 'Feb', value: 250000 },
+  { name: 'Mar', value: 1800000 },
+  { name: 'Apr', value: 2200000 },
+  { name: 'May', value: 300000 },
+  { name: 'Jun', value: 2000000 },
+  { name: 'Jul', value: 2000000 },
+  { name: 'Aug', value: 3000000 },
+  { name: 'Step', value: 2000000 },
+  { name: 'Oct', value: 2000000 },
 ];
 export const vendordata=[
   {

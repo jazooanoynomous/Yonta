@@ -27,20 +27,20 @@ function Subscription({ plans }) {
   const handlePriceChange = (e) => setPrice(e.target.value);
   const handleSectionChange = (index, checked) => {
     const updatedSections = [...sections];
-    
+
     // Update the status of the section at the specified index
     if (updatedSections[index]) {
       updatedSections[index].status = checked;
       setSections(updatedSections);
     }
   };
-  
+
   const parseSections = (sectionsData) => {
     // Check if sectionsData is a string
     if (typeof sectionsData === 'string') {
       // First, replace escaped quotes and extra slashes if present
       const cleanedSections = sectionsData.replace(/\\/g, '').replace(/^"(.*)"$/, '$1'); // Removes surrounding quotes and slashes
-      
+
       // Try parsing the cleaned string
       try {
         return JSON.parse(cleanedSections);
@@ -49,15 +49,15 @@ function Subscription({ plans }) {
         return []; // Return an empty array if parsing fails
       }
     }
-    
+
     // If sectionsData is already an object (correct format), return it as is
     return sectionsData;
   };
-  
-  
-  
+
+
+
   const handleSubmit = async (e) => {
-    e.preventDefault();  
+    e.preventDefault();
     const updatedPlan = {
       name: planName,
       offerTag,
@@ -66,7 +66,7 @@ function Subscription({ plans }) {
       sections: JSON.stringify(sections),  // Correctly stringify sections here
       status: isActive ? "active" : "inactive",
     };
-  
+
     try {
       // If editPlanId is provided, use PUT, otherwise use POST for new subscription
       if (editPlanId) {
@@ -84,10 +84,10 @@ function Subscription({ plans }) {
         });
         toast.success("Successfully created");
       }
-  
+
       // Optionally refetch subscription data to ensure UI is up-to-date
       fetchsubscriptionData();
-  
+
       // Close the modal
       toggleModal();
     } catch (error) {
@@ -96,7 +96,7 @@ function Subscription({ plans }) {
       toast.error(`Failed to ${editPlanId ? "update" : "create"} plan`);
     }
   };
-  
+
 
   const handleEdit = (plan) => {
     setPlanName(plan.name);
@@ -104,7 +104,7 @@ function Subscription({ plans }) {
     setIsActive(plan.status === "active");
     setBillingCycle(plan.monthlyPrice ? "monthly" : "yearly");
     setPrice(plan.monthlyPrice || plan.yearlyPrice);
-  
+
     try {
       // Check if the sections string is double-escaped and fix it
       let sectionsData = plan.sections;
@@ -114,19 +114,19 @@ function Subscription({ plans }) {
         // Replace escaped quotes and backslashes
         sectionsData = sectionsData.replace(/\\"/g, '"').replace(/\\\\/g, '\\');
       }
-      
+
       const parsedSections = JSON.parse(sectionsData || "[]");
       setSections(Array.isArray(parsedSections) ? parsedSections : []);
     } catch (error) {
       console.error("Error parsing sections:", error);
       setSections([]);
     }
-  
+
     setEditPlanId(plan.id); // Set plan ID for PUT request
     toggleModal();
   };
-  
-  
+
+
 
   const fetchsubscriptionData = async () => {
     try {
@@ -186,8 +186,8 @@ function Subscription({ plans }) {
 
         {/* Plans listing */}
         <div className="grid grid-cols-3 gap-4">
-        {subscriptionData.map(subscription => {
-  const sections = parseSections(subscription.sections);
+          {subscriptionData.map(subscription => {
+            const sections = parseSections(subscription.sections);
 
 
             // Debugging
@@ -206,25 +206,25 @@ function Subscription({ plans }) {
                 <h1 className="text-5xl font-bold text-indigo-600 mb-4">{`$${subscription.monthlyPrice}`}</h1>
                 <p className="text-indigo-600 mb-4">/monthly</p>
                 <ul className="list-none text-gray-600">
-  {sections.length > 0 ? (
-    sections.map((section, idx) => (
-      <li key={idx} className="flex items-center justify-start gap-2 mb-2">
-        {section.status ? (
-          <FaCheck className="text-indigo-600" />
-        ) : (
-          <FaTimes className="text-lightred" />
-        )}
-        <span className={section.status ? "" : "text-red-500"}>
-          {section.name}
-        </span>
-      </li>
-    ))
-  ) : (
-    <p>No sections available</p>
-  )}
-</ul>
+                  {sections.length > 0 ? (
+                    sections.map((section, idx) => (
+                      <li key={idx} className="flex items-center justify-start gap-2 mb-2">
+                        {section.status ? (
+                          <FaCheck className="text-indigo-600" />
+                        ) : (
+                          <FaTimes className="text-lightred" />
+                        )}
+                        <span className={section.status ? "" : "text-red-500"}>
+                          {section.name}
+                        </span>
+                      </li>
+                    ))
+                  ) : (
+                    <p>No sections available</p>
+                  )}
+                </ul>
 
-          
+
                 <div className="flex gap-2 ml-auto justify-end">
                   <button
                     className="bg-[#FB5458] p-2 rounded-lg flex items-center"

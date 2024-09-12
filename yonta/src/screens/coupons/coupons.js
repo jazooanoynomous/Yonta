@@ -13,7 +13,7 @@ function Coupons() {
 
   return (
     <Layout>
-        <h1 className="text-xl font-semibold">Coupons & Offers</h1>
+        {/* <h1 className="text-xl font-semibold">Coupons & Offers</h1> */}
        
       
       <div
@@ -23,7 +23,7 @@ function Coupons() {
         data-aos-offset="200"
         className=" rounded-xl"
       >
-        <div className="mt-8 w-full overflow-x-scroll">
+        <div className="mt-4 w-full overflow-x-scroll">
           <CouponTable
             data={couponData}
             used={false}            

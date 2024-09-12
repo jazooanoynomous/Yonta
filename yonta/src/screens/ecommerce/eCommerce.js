@@ -102,7 +102,7 @@ function ECommerce() {
         data-aos-offset="200"
         className="my-8 flex rounded-xl"
       >
-        <div className="mt-8 w-[120%] mr-32">
+        <div className="mt-8 w-[150%] mr-44">
         <BarChartC/>
 
         </div>       

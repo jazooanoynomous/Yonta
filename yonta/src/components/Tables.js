@@ -1088,9 +1088,9 @@ export function AppointmentsTable({ data, functions, used }) {
           {data.map((item, index) => (
             <tr
               key={index}
-              className="bg-backgroundgray relative h-[60px] rounded-2xl"
+              className="bg-backgroundgray relative h-[60px]"
             >
-              <td className="py-4 px-4 text-sm rounded-l-xl flex ">
+              <td className="py-4 px-4 text-sm rounded-l-2xl flex ">
                 <span className="w-10">
                   <img
                     src={imageUrl || "/images/hero.png"} // Handle null profilePic
@@ -1612,7 +1612,7 @@ export function OrderTable({ data, functions }) {
               <td className="py-4 px-4 text-sm">
                 <div className="flex items-center">
                   <img
-                    src={imageUrl}
+                    src={"/images/1 (1).png"}
                     alt={item.itemName}
                     className="w-10 h-10 mr-3 bg-white rounded-[4px] object-cover"
                   />
@@ -1713,7 +1713,7 @@ export function TransactionTable({ data }) {
   const imageUrl = `${IMAGEURL}${data.image}`;
 
   return (
-    <div className="p-6 ">
+    <div className="px-6 ">
       <div className="flex justify-between items-center mb-4">
         <h2 className="text-lg font-bold">Trasanctions</h2>
 
@@ -1728,7 +1728,7 @@ export function TransactionTable({ data }) {
             />
             <FiSearch className="absolute left-3 top-3 text-gray-400" />
           </div>
-          <select
+          {/* <select
             value={statusFilter}
             onChange={(e) => setStatusFilter(e.target.value)}
             className="bg-backgroundgray h-[38px] border-backgroundgray text-[12px] text-textGray rounded-md px-2 py-1 text-sm"
@@ -1737,7 +1737,7 @@ export function TransactionTable({ data }) {
             <option value="Processing">Processing</option>
             <option value="Shipping">Shipping</option>
             <option value="Delivered">Delivered</option>
-          </select>
+          </select> */}
         </div>
       </div>
 
@@ -1780,7 +1780,7 @@ export function TransactionTable({ data }) {
               <td className={tdClass}>
                 <div className="flex items-center">
                   <img
-                    src={imageUrl}
+                    src={"/images/1 (1).png"}
                     alt={item.itemName}
                     className="w-10 h-10 mr-3 bg-white rounded-[4px] object-cover"
                   />
