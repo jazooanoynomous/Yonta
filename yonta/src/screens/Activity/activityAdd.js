@@ -20,6 +20,11 @@ const Activity = () => {
   const [loading, setLoading] = useState(true); // State to manage loading
   const [searchQuery, setSearchQuery] = useState(""); // State for search query
   const [filteredExperts, setFilteredExperts] = useState([]); // State to store the filtered experts
+  const [selectedMustHave, setSelectedMustHave] = useState([]);
+  const [activityName, setActivityName] = useState('Football'); // Default value
+  const [activityImage, setActivityImage] = useState('');
+  const [selectedAdvance, setSelectedAdvance] = useState([]);
+  const [selectedOptimal, setSelectedOptimal] = useState([]);
   const [physioPlans, setPhysioPlans] = useState([
     {
       id: 1,
@@ -44,6 +49,14 @@ const Activity = () => {
   };
 
   console.log("hello", mustHavePlans);
+  // Example: Set selected items
+const handleSelectMustHave = (id) => {
+  setSelectedMustHave(prevState => 
+    prevState.includes(id) 
+      ? prevState.filter(item => item !== id) 
+      : [...prevState, id]
+  );
+};
 
   // Function to fetch user data
   const fetchExpertsData = async () => {
@@ -95,6 +108,50 @@ const Activity = () => {
     fetchPlayerType(); // Fetch the user data when the component mounts
   }, []);
 
+
+  const handleImageUpload = async (imageFile) => {
+    const formData = new FormData();
+    formData.append("image", imageFile);
+
+    try {
+      const response = await axios.post(`${BASEURL}upload`, formData, {
+        headers: {
+          // 'Content-Type': 'multipart/form-data',
+          VerifyMe: "RGVlcGFrS3VzaHdhaGE5Mzk5MzY5ODU0", 
+
+        },
+      });
+
+      const imagePath = `/uploads/${response.data.filename}`; // Assuming response contains the image filename
+      setActivityImage(imagePath);
+    } catch (error) {
+      console.error("Error uploading image:", error);
+    }
+  };
+
+  const handleSave = async () => {
+    
+    setLoading(true);
+
+    try {
+      // API to save activity details
+      await axios.post(`${BASEURL}activity`, {
+        title: activityName,
+        image: activityImage,
+      }, {
+        headers: {
+          VerifyMe: "RGVlcGFrS3VzaHdhaGE5Mzk5MzY5ODU0",
+        },
+      });
+
+      navigate("/add-workout"); // Proceed to the next step
+    } catch (error) {
+      console.error("Error saving activity:", error);
+    } finally {
+      setLoading(false);
+    }
+  };
+
   const handleDelete = (index) => {
     const newPlayerTypes = [...playerTypes];
     newPlayerTypes.splice(index, 1);
@@ -115,36 +172,6 @@ const Activity = () => {
   const handleAddPlayerType = (newPlayerType) => {
     setPlayerTypes([...playerTypes, newPlayerType]);
   };
-
-  // const handleDelete1 = (id) => {
-  //   console.log(`Deleting plan with id: ${id}`);
-  //   setPlans1(plans1.filter((plan) => plan !== id));
-  // };
-
-  // const handleDelete2 = (id) => {
-  //   console.log(`Deleting plan with id: ${id}`);
-  //   setPlans2(plans2.filter((plan) => plan !== id));
-  // };
-  // const handleDelete3 = (id) => {
-  //   console.log(`Deleting plan with id: ${id}`);
-  //   setPlans3(plans3.filter((plan) => plan !== id));
-  // };
-
-  // const plans1 = playerTypes.essentials.mustHave.map((item) => ({
-  //   ...item,
-  //   timeForConsume: playerTypes.timeForConsume.mustHave,
-  // }));
-  // console.log('plans1',plans1);
-
-  // const plans2 = playerTypes.essentials.advance.map((item) => ({
-  //   ...item,
-  //   timeForConsume: playerTypes.timeForConsume.advance,
-  // }));
-
-  // const plans3 = playerTypes.essentials.optimal.map((item) => ({
-  //   ...item,
-  //   timeForConsume: playerTypes.timeForConsume.optimal,
-  // }));
 
   const handleEdit1 = (id) => {
     console.log(`Editing plan with id: ${id}`);
@@ -174,20 +201,25 @@ const Activity = () => {
                 Activity Title Image
               </h3>
 
-              <UploadImageModal />
+              <UploadImageModal onImageUpload={handleImageUpload} />
+          {activityImage && (
+            <img src={activityImage} alt="Activity" className="mt-2" width="100" />
+          
+            )}
             </div>
 
-            <div className="col-span-2 ">
-              <h3 className="text-[16px] text-blacktext font-bold mb-4">
-                Activity Name
-              </h3>
-              <input
-                type="text"
-                placeholder="Activity Name"
-                className="w-[90%] p-3 border rounded-lg"
-                value="Football"
-              />
-            </div>
+            <div className="col-span-2">
+            <h3 className="text-[16px] text-blacktext font-bold mb-4">
+              Activity Name
+            </h3>
+            <input
+              type="text"
+              placeholder="Activity Name"
+              className="w-[90%] p-3 border rounded-lg"
+              value={activityName}
+              onChange={(e) => setActivityName(e.target.value)} // Update state on input change
+            />
+          </div>
           </div>
 
           <div className="mt-8">
@@ -213,7 +245,7 @@ const Activity = () => {
           <div className="flex justify-end mt-8 py-2">
             <button
               className="bg-blue text-white px-6 py-2 rounded-lg"
-              onClick={handleSaveAndProceed}
+              onClick={handleSave}
             >
               Save & proceed to workout selection
             </button>

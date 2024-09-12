@@ -1,12 +1,13 @@
 import React from 'react';
 import { FaTrash, FaEdit } from 'react-icons/fa';
+import { IMAGEURL } from '../../utils/constant';
 
 const BannerCardModel = ({ imageSrc, type, onDelete, onEdit, title }) => {
   return (
     <div className=" px-2 py-3">
       <div className="relative ">
         <img
-          src={imageSrc}
+          src={`${IMAGEURL}${imageSrc}`}
           alt={type}
           className="h-[180px] w-[345px] object-cover rounded-2xl"
         />
