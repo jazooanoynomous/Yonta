@@ -30,6 +30,7 @@ import MetricCard from "../components/metricCard";
 import StatsCard from "../components/statsCard";
 import BarChartC from "../components/BarChartC";
 import { TransactionTable } from "../components/Tables";
+import blueheader from '../assets/blueheader.PNG'
 
 
 function Dashboard() {
@@ -41,7 +42,7 @@ function Dashboard() {
     <Layout>
       <div >
 
-        <img src={`${process.env.PUBLIC_URL}/images/blueheader.png`} alt="Profile" className="w-[1663px] h-[180px] mr-4" />
+      <img src={blueheader} alt="Profile" className="w-[1663px] h-[180px] mr-4" />
 
 
         <div
