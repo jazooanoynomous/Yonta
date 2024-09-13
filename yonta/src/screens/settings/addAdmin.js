@@ -1,6 +1,7 @@
 import React, { useState, useRef } from 'react';
 import { FaEdit, FaTrash, FaPlus, FaSave, FaUpload } from 'react-icons/fa';
 import Layout from '../../Layout';
+import blueheader from '../../assets/blueheader.PNG'
 
 const AddAdmin = () => {
     const [image, setImage] = useState(null);
@@ -85,11 +86,8 @@ const AddAdmin = () => {
 
     return (
         <Layout>
-            <img
-                src={`/images/blueheader.png`}
-                alt="Profile"
-                className=" w-[1663px] h-[145px] mr-4"
-              />
+                 <img src={blueheader} alt="Profile" className="w-[1663px] h-[150px] mr-4" />
+
             <div className="p-4">
                 <h4 className="text-[16px] mt-2 text-blacktext font-bold pb-1">User Image</h4>
                 <div className="flex justify-start text-start mr-60 gap-6">
